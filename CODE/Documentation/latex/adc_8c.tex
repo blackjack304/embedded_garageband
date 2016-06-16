@@ -1,0 +1,60 @@
+\hypertarget{adc_8c}{
+\section{adc.c File Reference}
+\label{adc_8c}\index{adc.c@{adc.c}}
+}
+{\ttfamily \#include \char`\"{}adc.h\char`\"{}}\par
+{\ttfamily \#include $<$ioCC2431.h$>$}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{hal__types_8h_a259fa4834387bd68627ddf37bb3ebdb9}{int16} \hyperlink{adc_8c_a889de971419f723b43f0ebdc6a1062f8}{adcSampleSingle} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} reference, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} resolution, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} channel)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{adc_8c_a889de971419f723b43f0ebdc6a1062f8}{
+\index{adc.c@{adc.c}!adcSampleSingle@{adcSampleSingle}}
+\index{adcSampleSingle@{adcSampleSingle}!adc.c@{adc.c}}
+\subsubsection[{adcSampleSingle}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int16} adcSampleSingle (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8}}]{reference, }
+\item[{{\bf uint8}}]{resolution, }
+\item[{{\bf uint8}}]{channel}
+\end{DoxyParamCaption}
+)}}
+\label{adc_8c_a889de971419f723b43f0ebdc6a1062f8}
+
+
+Definition at line 33 of file adc.c.
+
+
+\begin{DoxyCode}
+{
+    int16 value;
+
+    ADC_ENABLE_CHANNEL(channel);
+
+    ADCIF = 0;
+
+    ADC_SINGLE_CONVERSION(reference | resolution | channel);
+    while(!ADCIF);
+
+    value  = (ADCH << 8) & 0xff00;
+    value |= ADCL;
+
+    ADC_DISABLE_CHANNEL(channel);
+
+    //  The variable 'value' contains 16 bits where
+    //     bit 15 is a sign bit
+    //     bit [14 .. 0] contain the absolute sample value
+    //     Only the r upper bits are significant, where r is the resolution
+    //     Resolution:
+    //        12   -> [14 .. 3] (bitmask 0x7FF8)
+    //        10   -> [14 .. 5] (bitmask 0x7FE0)
+    //         9   -> [14 .. 6] (bitmask 0x7FC0)
+    //         7   -> [14 .. 8] (bitmask 0x7F00)
+    
+    value = (value & 0x7FF8) >> 3;
+
+    return value;
+}\end{DoxyCode}

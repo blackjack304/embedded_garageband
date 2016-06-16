@@ -1,0 +1,290 @@
+\hypertarget{basic__rf_8h}{
+\section{basic\_\-rf.h File Reference}
+\label{basic__rf_8h}\index{basic\_\-rf.h@{basic\_\-rf.h}}
+}
+{\ttfamily \#include \char`\"{}hal\_\-types.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-defs.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structbasic_rf_cfg__t}{basicRfCfg\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{basic__rf_8h_ae2490e5735320b9688cab4c259287801}{basicRfInit} (\hyperlink{structbasic_rf_cfg__t}{basicRfCfg\_\-t} $\ast$pRfConfig)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{basic__rf_8h_aca5cf1dd9663ea55c8b77a0c315e7e95}{basicRfSendPacket} (\hyperlink{hal__types_8h_a05f6b0ae8f6a6e135b0e290c25fe0e4e}{uint16} destAddr, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$pPayload, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} length)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{basic__rf_8h_a222c6dfbb12d4b67ce35257de2138d92}{basicRfPacketIsReady} (void)
+\item 
+\hyperlink{hal__types_8h_a1b956fe1df85f3c132b21edb4e116458}{int8} \hyperlink{basic__rf_8h_aa2412e5f3dd41253f37116354e856e2a}{basicRfGetRssi} (void)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{basic__rf_8h_af9fb2231fcee94f6996af72b5a9a80e7}{basicRfReceive} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$pRxData, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} len, \hyperlink{hal__types_8h_a259fa4834387bd68627ddf37bb3ebdb9}{int16} $\ast$pRssi)
+\item 
+void \hyperlink{basic__rf_8h_ae4911221feea8be8e36f8e497d3e0a87}{basicRfReceiveOn} (void)
+\item 
+void \hyperlink{basic__rf_8h_afb44c177594fb28d443c35289e4a87df}{basicRfReceiveOff} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{basic__rf_8h_aa2412e5f3dd41253f37116354e856e2a}{
+\index{basic\_\-rf.h@{basic\_\-rf.h}!basicRfGetRssi@{basicRfGetRssi}}
+\index{basicRfGetRssi@{basicRfGetRssi}!basic_rf.h@{basic\_\-rf.h}}
+\subsubsection[{basicRfGetRssi}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int8} basicRfGetRssi (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{basic__rf_8h_aa2412e5f3dd41253f37116354e856e2a}
+
+
+Definition at line 543 of file basic\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    if(rxi.rssi < 128){
+        return rxi.rssi - halRfGetRssiOffset();
+    }
+    else{
+        return (rxi.rssi - 256) - halRfGetRssiOffset();
+    }
+}
+\end{DoxyCode}
+\hypertarget{basic__rf_8h_ae2490e5735320b9688cab4c259287801}{
+\index{basic\_\-rf.h@{basic\_\-rf.h}!basicRfInit@{basicRfInit}}
+\index{basicRfInit@{basicRfInit}!basic_rf.h@{basic\_\-rf.h}}
+\subsubsection[{basicRfInit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} basicRfInit (
+\begin{DoxyParamCaption}
+\item[{{\bf basicRfCfg\_\-t} $\ast$}]{pRfConfig}
+\end{DoxyParamCaption}
+)}}
+\label{basic__rf_8h_ae2490e5735320b9688cab4c259287801}
+
+
+Definition at line 365 of file basic\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    if (halRfInit()==FAILED)
+        return FAILED;
+
+    halIntOff();
+
+    // Set the protocol configuration
+    pConfig = pRfConfig;
+    rxi.pPayload   = NULL;
+
+    txState.receiveOn = TRUE;
+    txState.frameCounter = 0;
+
+    // Set channel
+    halRfSetChannel(pConfig->channel);
+
+    // Write the short address and the PAN ID to the CC2520 RAM
+    halRfSetShortAddr(pConfig->myAddr);
+    halRfSetPanId(pConfig->panId);
+
+    // if security is enabled, write key and nonce
+    #ifdef SECURITY_CCM
+    basicRfSecurityInit(pConfig);
+    #endif
+
+    // Set up receive interrupt (received data or acknowlegment)
+    halRfRxInterruptConfig(basicRfRxFrmDoneIsr);
+
+    halIntOn();
+
+    return SUCCESS;
+}
+\end{DoxyCode}
+\hypertarget{basic__rf_8h_a222c6dfbb12d4b67ce35257de2138d92}{
+\index{basic\_\-rf.h@{basic\_\-rf.h}!basicRfPacketIsReady@{basicRfPacketIsReady}}
+\index{basicRfPacketIsReady@{basicRfPacketIsReady}!basic_rf.h@{basic\_\-rf.h}}
+\subsubsection[{basicRfPacketIsReady}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} basicRfPacketIsReady (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{basic__rf_8h_a222c6dfbb12d4b67ce35257de2138d92}
+
+
+Definition at line 492 of file basic\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    return rxi.isReady;
+}
+\end{DoxyCode}
+\hypertarget{basic__rf_8h_af9fb2231fcee94f6996af72b5a9a80e7}{
+\index{basic\_\-rf.h@{basic\_\-rf.h}!basicRfReceive@{basicRfReceive}}
+\index{basicRfReceive@{basicRfReceive}!basic_rf.h@{basic\_\-rf.h}}
+\subsubsection[{basicRfReceive}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} basicRfReceive (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8} $\ast$}]{pRxData, }
+\item[{{\bf uint8}}]{len, }
+\item[{{\bf int16} $\ast$}]{pRssi}
+\end{DoxyParamCaption}
+)}}
+\label{basic__rf_8h_af9fb2231fcee94f6996af72b5a9a80e7}
+
+
+Definition at line 511 of file basic\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    // Accessing shared variables -> this is a critical region
+    // Critical region start
+    halIntOff();
+    memcpy(pRxData, rxi.pPayload, min(rxi.length, len));
+    if(pRssi != NULL) {
+        if(rxi.rssi < 128){
+            *pRssi = rxi.rssi - halRfGetRssiOffset();
+        }
+        else{
+            *pRssi = (rxi.rssi - 256) - halRfGetRssiOffset();
+        }
+    }
+    rxi.isReady = FALSE;
+    halIntOn();
+
+    // Critical region end
+
+    return min(rxi.length, len);
+}
+\end{DoxyCode}
+\hypertarget{basic__rf_8h_afb44c177594fb28d443c35289e4a87df}{
+\index{basic\_\-rf.h@{basic\_\-rf.h}!basicRfReceiveOff@{basicRfReceiveOff}}
+\index{basicRfReceiveOff@{basicRfReceiveOff}!basic_rf.h@{basic\_\-rf.h}}
+\subsubsection[{basicRfReceiveOff}]{\setlength{\rightskip}{0pt plus 5cm}void basicRfReceiveOff (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{basic__rf_8h_afb44c177594fb28d443c35289e4a87df}
+
+
+Definition at line 578 of file basic\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    txState.receiveOn = FALSE;
+    halRfReceiveOff();
+}
+\end{DoxyCode}
+\hypertarget{basic__rf_8h_ae4911221feea8be8e36f8e497d3e0a87}{
+\index{basic\_\-rf.h@{basic\_\-rf.h}!basicRfReceiveOn@{basicRfReceiveOn}}
+\index{basicRfReceiveOn@{basicRfReceiveOn}!basic_rf.h@{basic\_\-rf.h}}
+\subsubsection[{basicRfReceiveOn}]{\setlength{\rightskip}{0pt plus 5cm}void basicRfReceiveOn (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{basic__rf_8h_ae4911221feea8be8e36f8e497d3e0a87}
+
+
+Definition at line 562 of file basic\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    txState.receiveOn = TRUE;
+    halRfReceiveOn();
+}
+\end{DoxyCode}
+\hypertarget{basic__rf_8h_aca5cf1dd9663ea55c8b77a0c315e7e95}{
+\index{basic\_\-rf.h@{basic\_\-rf.h}!basicRfSendPacket@{basicRfSendPacket}}
+\index{basicRfSendPacket@{basicRfSendPacket}!basic_rf.h@{basic\_\-rf.h}}
+\subsubsection[{basicRfSendPacket}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} basicRfSendPacket (
+\begin{DoxyParamCaption}
+\item[{{\bf uint16}}]{destAddr, }
+\item[{{\bf uint8} $\ast$}]{pPayload, }
+\item[{{\bf uint8}}]{length}
+\end{DoxyParamCaption}
+)}}
+\label{basic__rf_8h_aca5cf1dd9663ea55c8b77a0c315e7e95}
+
+
+Definition at line 414 of file basic\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    uint8 mpduLength;
+    uint8 status;
+
+    // Turn on receiver if its not on
+    if(!txState.receiveOn) {
+        halRfReceiveOn();
+    }
+
+    // Check packet length
+    length = min(length, BASIC_RF_MAX_PAYLOAD_SIZE);
+
+    // Wait until the transceiver is idle
+    halRfWaitTransceiverReady();
+
+    // Turn off RX frame done interrupt to avoid interference on the SPI interfac
+      e
+    halRfDisableRxInterrupt();
+
+    mpduLength = basicRfBuildMpdu(destAddr, pPayload, length);
+
+    #ifdef SECURITY_CCM
+    halRfWriteTxBufSecure(txMpdu, mpduLength, length, BASIC_RF_LEN_AUTH, 
+      BASIC_RF_SECURITY_M);
+    txState.frameCounter++;     // Increment frame counter field
+    #else
+    halRfWriteTxBuf(txMpdu, mpduLength);
+    #endif
+
+    // Turn on RX frame done interrupt for ACK reception
+    halRfEnableRxInterrupt();
+
+    // Send frame with CCA. return FAILED if not successful
+    if(halRfTransmit() != SUCCESS) {
+        status = FAILED;
+    }
+
+    // Wait for the acknowledge to be received, if any
+    if (pConfig->ackRequest) {
+        txState.ackReceived = FALSE;
+
+        // We'll enter RX automatically, so just wait until we can be sure that t
+      he ack reception should have finished
+        // The timeout consists of a 12-symbol turnaround time, the ack packet du
+      ration, and a small margin
+        halMcuWaitUs((12 * BASIC_RF_SYMBOL_DURATION) + (BASIC_RF_ACK_DURATION) + 
+      (2 * BASIC_RF_SYMBOL_DURATION) + 10);
+
+        // If an acknowledgment has been received (by RxFrmDoneIsr), the ackRecei
+      ved flag should be set
+        status = txState.ackReceived ? SUCCESS : FAILED;
+
+    } else {
+        status = SUCCESS;
+    }
+
+    // Turn off the receiver if it should not continue to be enabled
+    if (!txState.receiveOn) {
+        halRfReceiveOff();
+    }
+
+    if(status == SUCCESS) {
+        txState.txSeqNumber++;
+    }
+
+#ifdef SECURITY_CCM
+    halRfIncNonceTx();          // Increment nonce value
+#endif
+
+    return status;
+
+}
+\end{DoxyCode}

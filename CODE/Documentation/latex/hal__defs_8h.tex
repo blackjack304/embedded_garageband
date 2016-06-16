@@ -1,0 +1,397 @@
+\hypertarget{hal__defs_8h}{
+\section{hal\_\-defs.h File Reference}
+\label{hal__defs_8h}\index{hal\_\-defs.h@{hal\_\-defs.h}}
+}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{hal__defs_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}~1
+\item 
+\#define \hyperlink{hal__defs_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}~0
+\item 
+\#define \hyperlink{hal__defs_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}~(void $\ast$)0
+\item 
+\#define \hyperlink{hal__defs_8h_aa90cac659d18e8ef6294c7ae337f6b58}{SUCCESS}~0
+\item 
+\#define \hyperlink{hal__defs_8h_a681680feae4df4182d532564c42fa1fc}{FAILED}~1
+\item 
+\#define \hyperlink{hal__defs_8h_a23c9c8c18abfb7d5f0807cd4ebdbb468}{BV}(n)~(1 $<$$<$ (n))
+\item 
+\#define \hyperlink{hal__defs_8h_a21d373f404320f5b258abc4247ec3bd6}{BM}(n)~(1 $<$$<$ (n))
+\item 
+\#define \hyperlink{hal__defs_8h_ab5d68b9d0ca26dd6dacc2d38694c9606}{BF}(\hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x}, b, s)~(((\hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x}) \& (b)) $>$$>$ (s))
+\item 
+\#define \hyperlink{hal__defs_8h_a6dfd57d9273a64266cb1b29e5a1f3929}{MIN}(n, m)~(((n) $<$ (m)) ? (n) : (m))
+\item 
+\#define \hyperlink{hal__defs_8h_a05058b758eb635c3c300e063147ff3a6}{MAX}(n, m)~(((n) $<$ (m)) ? (m) : (n))
+\item 
+\#define \hyperlink{hal__defs_8h_a144863298ff0e1bf0676cc2fb8620563}{ABS}(n)~(((n) $<$ 0) ? -\/(n) : (n))
+\item 
+\#define \hyperlink{hal__defs_8h_ac0190ef16cf7156de6be452104f6a69a}{BREAK\_\-UINT32}(var, ByteNum)~(\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8})((\hyperlink{hal__types_8h_a4b435a49c74bb91f284f075e63416cb6}{uint32})(((var) $>$$>$((ByteNum) $\ast$ 8)) \& 0x00FF))
+\item 
+\#define \hyperlink{hal__defs_8h_a26096234aaf2269fdbb2b8c30b339775}{BUILD\_\-UINT32}(Byte0, Byte1, Byte2, Byte3)
+\item 
+\#define \hyperlink{hal__defs_8h_a6c312808cdfde4f7b7c5c66dd0246c50}{HI\_\-UINT32}(a)~((\hyperlink{hal__types_8h_a05f6b0ae8f6a6e135b0e290c25fe0e4e}{uint16}) (((\hyperlink{hal__types_8h_a4b435a49c74bb91f284f075e63416cb6}{uint32})(a)) $>$$>$ 16))
+\item 
+\#define \hyperlink{hal__defs_8h_a5753ba8c264117a62ff58a420cbe868c}{LO\_\-UINT32}(a)~((\hyperlink{hal__types_8h_a05f6b0ae8f6a6e135b0e290c25fe0e4e}{uint16}) ((\hyperlink{hal__types_8h_a4b435a49c74bb91f284f075e63416cb6}{uint32})(a)))
+\item 
+\#define \hyperlink{hal__defs_8h_ad2af494bbd433546064b907de08a4104}{BUILD\_\-UINT16}(loByte, hiByte)~((\hyperlink{hal__types_8h_a05f6b0ae8f6a6e135b0e290c25fe0e4e}{uint16})(((loByte) \& 0x00FF) + (((hiByte) \& 0x00FF) $<$$<$ 8)))
+\item 
+\#define \hyperlink{hal__defs_8h_a869398c9f0eb7bcf1c8e101b052eed07}{HI\_\-UINT16}(a)~(((\hyperlink{hal__types_8h_a05f6b0ae8f6a6e135b0e290c25fe0e4e}{uint16})(a) $>$$>$ 8) \& 0xFF)
+\item 
+\#define \hyperlink{hal__defs_8h_ab2b94e11f455d94fd743666d4f1364d7}{LO\_\-UINT16}(a)~((\hyperlink{hal__types_8h_a05f6b0ae8f6a6e135b0e290c25fe0e4e}{uint16})(a) \& 0xFF)
+\item 
+\#define \hyperlink{hal__defs_8h_abb6a538a5563fd049e7fcba20a715d33}{BUILD\_\-UINT8}(hiByte, loByte)~((\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8})(((loByte) \& 0x0F) + (((hiByte) \& 0x0F) $<$$<$ 4)))
+\item 
+\#define \hyperlink{hal__defs_8h_a7629869e29cb401a58e84d99e0ae82ad}{HI\_\-UINT8}(a)~(((\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8})(a) $>$$>$ 4) \& 0x0F)
+\item 
+\#define \hyperlink{hal__defs_8h_a9844003fc4febd0713865b611af2505c}{LO\_\-UINT8}(a)~((\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8})(a) \& 0x0F)
+\item 
+\#define \hyperlink{hal__defs_8h_a1ca08b45eb7a4e8ba78f10748afbd4f5}{UINT16\_\-HTON}(\hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x})
+\item 
+\#define \hyperlink{hal__defs_8h_a55c3504bfa289dd789f38553fd65e36e}{UINT16\_\-NTOH}(\hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x})
+\item 
+\#define \hyperlink{hal__defs_8h_a4163e79f8331211dcd59cc741ce769c6}{UINT32\_\-HTON}(\hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x})
+\item 
+\#define \hyperlink{hal__defs_8h_a18f0ea61865d6cda9985259b35121d5b}{UINT32\_\-NTOH}(\hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x})
+\item 
+\#define \hyperlink{hal__defs_8h_a2e8173b720a3eed301262ae808ee976d}{st}(\hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x})~do \{ \hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x} \} while (\_\-\_\-LINE\_\-\_\- == -\/1)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{hal__defs_8h_a144863298ff0e1bf0676cc2fb8620563}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!ABS@{ABS}}
+\index{ABS@{ABS}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{ABS}]{\setlength{\rightskip}{0pt plus 5cm}\#define ABS(
+\begin{DoxyParamCaption}
+\item[{}]{n}
+\end{DoxyParamCaption}
+)~(((n) $<$ 0) ? -\/(n) : (n))}}
+\label{hal__defs_8h_a144863298ff0e1bf0676cc2fb8620563}
+
+
+Definition at line 80 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_ab5d68b9d0ca26dd6dacc2d38694c9606}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!BF@{BF}}
+\index{BF@{BF}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{BF}]{\setlength{\rightskip}{0pt plus 5cm}\#define BF(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}, }
+\item[{}]{b, }
+\item[{}]{s}
+\end{DoxyParamCaption}
+)~((({\bf x}) \& (b)) $>$$>$ (s))}}
+\label{hal__defs_8h_ab5d68b9d0ca26dd6dacc2d38694c9606}
+
+
+Definition at line 68 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_a21d373f404320f5b258abc4247ec3bd6}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!BM@{BM}}
+\index{BM@{BM}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{BM}]{\setlength{\rightskip}{0pt plus 5cm}\#define BM(
+\begin{DoxyParamCaption}
+\item[{}]{n}
+\end{DoxyParamCaption}
+)~(1 $<$$<$ (n))}}
+\label{hal__defs_8h_a21d373f404320f5b258abc4247ec3bd6}
+
+
+Definition at line 64 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_ac0190ef16cf7156de6be452104f6a69a}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!BREAK\_\-UINT32@{BREAK\_\-UINT32}}
+\index{BREAK\_\-UINT32@{BREAK\_\-UINT32}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{BREAK\_\-UINT32}]{\setlength{\rightskip}{0pt plus 5cm}\#define BREAK\_\-UINT32(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{ByteNum}
+\end{DoxyParamCaption}
+)~({\bf uint8})(({\bf uint32})(((var) $>$$>$((ByteNum) $\ast$ 8)) \& 0x00FF))}}
+\label{hal__defs_8h_ac0190ef16cf7156de6be452104f6a69a}
+
+
+Definition at line 85 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_ad2af494bbd433546064b907de08a4104}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!BUILD\_\-UINT16@{BUILD\_\-UINT16}}
+\index{BUILD\_\-UINT16@{BUILD\_\-UINT16}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{BUILD\_\-UINT16}]{\setlength{\rightskip}{0pt plus 5cm}\#define BUILD\_\-UINT16(
+\begin{DoxyParamCaption}
+\item[{}]{loByte, }
+\item[{}]{hiByte}
+\end{DoxyParamCaption}
+)~(({\bf uint16})(((loByte) \& 0x00FF) + (((hiByte) \& 0x00FF) $<$$<$ 8)))}}
+\label{hal__defs_8h_ad2af494bbd433546064b907de08a4104}
+
+
+Definition at line 99 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_a26096234aaf2269fdbb2b8c30b339775}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!BUILD\_\-UINT32@{BUILD\_\-UINT32}}
+\index{BUILD\_\-UINT32@{BUILD\_\-UINT32}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{BUILD\_\-UINT32}]{\setlength{\rightskip}{0pt plus 5cm}\#define BUILD\_\-UINT32(
+\begin{DoxyParamCaption}
+\item[{}]{Byte0, }
+\item[{}]{Byte1, }
+\item[{}]{Byte2, }
+\item[{}]{Byte3}
+\end{DoxyParamCaption}
+)}}
+\label{hal__defs_8h_a26096234aaf2269fdbb2b8c30b339775}
+{\bfseries Value:}
+\begin{DoxyCode}
+((uint32)((uint32)((Byte0) & 0x00FF) \
+        + ((uint32)((Byte1) & 0x00FF) << 8) \
+            + ((uint32)((Byte2) & 0x00FF) << 16) \
+                + ((uint32)((Byte3) & 0x00FF) << 24)))
+\end{DoxyCode}
+
+
+Definition at line 88 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_abb6a538a5563fd049e7fcba20a715d33}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!BUILD\_\-UINT8@{BUILD\_\-UINT8}}
+\index{BUILD\_\-UINT8@{BUILD\_\-UINT8}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{BUILD\_\-UINT8}]{\setlength{\rightskip}{0pt plus 5cm}\#define BUILD\_\-UINT8(
+\begin{DoxyParamCaption}
+\item[{}]{hiByte, }
+\item[{}]{loByte}
+\end{DoxyParamCaption}
+)~(({\bf uint8})(((loByte) \& 0x0F) + (((hiByte) \& 0x0F) $<$$<$ 4)))}}
+\label{hal__defs_8h_abb6a538a5563fd049e7fcba20a715d33}
+
+
+Definition at line 107 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_a23c9c8c18abfb7d5f0807cd4ebdbb468}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!BV@{BV}}
+\index{BV@{BV}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{BV}]{\setlength{\rightskip}{0pt plus 5cm}\#define BV(
+\begin{DoxyParamCaption}
+\item[{}]{n}
+\end{DoxyParamCaption}
+)~(1 $<$$<$ (n))}}
+\label{hal__defs_8h_a23c9c8c18abfb7d5f0807cd4ebdbb468}
+
+
+Definition at line 60 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_a681680feae4df4182d532564c42fa1fc}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!FAILED@{FAILED}}
+\index{FAILED@{FAILED}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{FAILED}]{\setlength{\rightskip}{0pt plus 5cm}\#define FAILED~1}}
+\label{hal__defs_8h_a681680feae4df4182d532564c42fa1fc}
+
+
+Definition at line 47 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_aa93f0eb578d23995850d61f7d61c55c1}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{FALSE}]{\setlength{\rightskip}{0pt plus 5cm}\#define FALSE~0}}
+\label{hal__defs_8h_aa93f0eb578d23995850d61f7d61c55c1}
+
+
+Definition at line 24 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_a869398c9f0eb7bcf1c8e101b052eed07}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!HI\_\-UINT16@{HI\_\-UINT16}}
+\index{HI\_\-UINT16@{HI\_\-UINT16}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{HI\_\-UINT16}]{\setlength{\rightskip}{0pt plus 5cm}\#define HI\_\-UINT16(
+\begin{DoxyParamCaption}
+\item[{}]{a}
+\end{DoxyParamCaption}
+)~((({\bf uint16})(a) $>$$>$ 8) \& 0xFF)}}
+\label{hal__defs_8h_a869398c9f0eb7bcf1c8e101b052eed07}
+
+
+Definition at line 102 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_a6c312808cdfde4f7b7c5c66dd0246c50}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!HI\_\-UINT32@{HI\_\-UINT32}}
+\index{HI\_\-UINT32@{HI\_\-UINT32}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{HI\_\-UINT32}]{\setlength{\rightskip}{0pt plus 5cm}\#define HI\_\-UINT32(
+\begin{DoxyParamCaption}
+\item[{}]{a}
+\end{DoxyParamCaption}
+)~(({\bf uint16}) ((({\bf uint32})(a)) $>$$>$ 16))}}
+\label{hal__defs_8h_a6c312808cdfde4f7b7c5c66dd0246c50}
+
+
+Definition at line 94 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_a7629869e29cb401a58e84d99e0ae82ad}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!HI\_\-UINT8@{HI\_\-UINT8}}
+\index{HI\_\-UINT8@{HI\_\-UINT8}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{HI\_\-UINT8}]{\setlength{\rightskip}{0pt plus 5cm}\#define HI\_\-UINT8(
+\begin{DoxyParamCaption}
+\item[{}]{a}
+\end{DoxyParamCaption}
+)~((({\bf uint8})(a) $>$$>$ 4) \& 0x0F)}}
+\label{hal__defs_8h_a7629869e29cb401a58e84d99e0ae82ad}
+
+
+Definition at line 110 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_ab2b94e11f455d94fd743666d4f1364d7}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!LO\_\-UINT16@{LO\_\-UINT16}}
+\index{LO\_\-UINT16@{LO\_\-UINT16}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{LO\_\-UINT16}]{\setlength{\rightskip}{0pt plus 5cm}\#define LO\_\-UINT16(
+\begin{DoxyParamCaption}
+\item[{}]{a}
+\end{DoxyParamCaption}
+)~(({\bf uint16})(a) \& 0xFF)}}
+\label{hal__defs_8h_ab2b94e11f455d94fd743666d4f1364d7}
+
+
+Definition at line 103 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_a5753ba8c264117a62ff58a420cbe868c}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!LO\_\-UINT32@{LO\_\-UINT32}}
+\index{LO\_\-UINT32@{LO\_\-UINT32}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{LO\_\-UINT32}]{\setlength{\rightskip}{0pt plus 5cm}\#define LO\_\-UINT32(
+\begin{DoxyParamCaption}
+\item[{}]{a}
+\end{DoxyParamCaption}
+)~(({\bf uint16}) (({\bf uint32})(a)))}}
+\label{hal__defs_8h_a5753ba8c264117a62ff58a420cbe868c}
+
+
+Definition at line 95 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_a9844003fc4febd0713865b611af2505c}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!LO\_\-UINT8@{LO\_\-UINT8}}
+\index{LO\_\-UINT8@{LO\_\-UINT8}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{LO\_\-UINT8}]{\setlength{\rightskip}{0pt plus 5cm}\#define LO\_\-UINT8(
+\begin{DoxyParamCaption}
+\item[{}]{a}
+\end{DoxyParamCaption}
+)~(({\bf uint8})(a) \& 0x0F)}}
+\label{hal__defs_8h_a9844003fc4febd0713865b611af2505c}
+
+
+Definition at line 111 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_a05058b758eb635c3c300e063147ff3a6}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!MAX@{MAX}}
+\index{MAX@{MAX}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{MAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX(
+\begin{DoxyParamCaption}
+\item[{}]{n, }
+\item[{}]{m}
+\end{DoxyParamCaption}
+)~(((n) $<$ (m)) ? (m) : (n))}}
+\label{hal__defs_8h_a05058b758eb635c3c300e063147ff3a6}
+
+
+Definition at line 76 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_a6dfd57d9273a64266cb1b29e5a1f3929}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!MIN@{MIN}}
+\index{MIN@{MIN}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{MIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define MIN(
+\begin{DoxyParamCaption}
+\item[{}]{n, }
+\item[{}]{m}
+\end{DoxyParamCaption}
+)~(((n) $<$ (m)) ? (n) : (m))}}
+\label{hal__defs_8h_a6dfd57d9273a64266cb1b29e5a1f3929}
+
+
+Definition at line 72 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!NULL@{NULL}}
+\index{NULL@{NULL}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{NULL}]{\setlength{\rightskip}{0pt plus 5cm}\#define NULL~(void $\ast$)0}}
+\label{hal__defs_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}
+
+
+Definition at line 32 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_a2e8173b720a3eed301262ae808ee976d}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!st@{st}}
+\index{st@{st}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{st}]{\setlength{\rightskip}{0pt plus 5cm}\#define st(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)~do \{ {\bf x} \} while (\_\-\_\-LINE\_\-\_\- == -\/1)}}
+\label{hal__defs_8h_a2e8173b720a3eed301262ae808ee976d}
+
+
+Definition at line 154 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_aa90cac659d18e8ef6294c7ae337f6b58}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!SUCCESS@{SUCCESS}}
+\index{SUCCESS@{SUCCESS}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{SUCCESS}]{\setlength{\rightskip}{0pt plus 5cm}\#define SUCCESS~0}}
+\label{hal__defs_8h_aa90cac659d18e8ef6294c7ae337f6b58}
+
+
+Definition at line 40 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!TRUE@{TRUE}}
+\index{TRUE@{TRUE}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{TRUE}]{\setlength{\rightskip}{0pt plus 5cm}\#define TRUE~1}}
+\label{hal__defs_8h_aa8cecfc5c5c054d2875c03e77b7be15d}
+
+
+Definition at line 16 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_a1ca08b45eb7a4e8ba78f10748afbd4f5}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!UINT16\_\-HTON@{UINT16\_\-HTON}}
+\index{UINT16\_\-HTON@{UINT16\_\-HTON}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{UINT16\_\-HTON}]{\setlength{\rightskip}{0pt plus 5cm}\#define UINT16\_\-HTON(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)}}
+\label{hal__defs_8h_a1ca08b45eb7a4e8ba78f10748afbd4f5}
+
+
+Definition at line 123 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_a55c3504bfa289dd789f38553fd65e36e}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!UINT16\_\-NTOH@{UINT16\_\-NTOH}}
+\index{UINT16\_\-NTOH@{UINT16\_\-NTOH}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{UINT16\_\-NTOH}]{\setlength{\rightskip}{0pt plus 5cm}\#define UINT16\_\-NTOH(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)}}
+\label{hal__defs_8h_a55c3504bfa289dd789f38553fd65e36e}
+
+
+Definition at line 124 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_a4163e79f8331211dcd59cc741ce769c6}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!UINT32\_\-HTON@{UINT32\_\-HTON}}
+\index{UINT32\_\-HTON@{UINT32\_\-HTON}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{UINT32\_\-HTON}]{\setlength{\rightskip}{0pt plus 5cm}\#define UINT32\_\-HTON(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)}}
+\label{hal__defs_8h_a4163e79f8331211dcd59cc741ce769c6}
+
+
+Definition at line 126 of file hal\_\-defs.h.
+
+\hypertarget{hal__defs_8h_a18f0ea61865d6cda9985259b35121d5b}{
+\index{hal\_\-defs.h@{hal\_\-defs.h}!UINT32\_\-NTOH@{UINT32\_\-NTOH}}
+\index{UINT32\_\-NTOH@{UINT32\_\-NTOH}!hal_defs.h@{hal\_\-defs.h}}
+\subsubsection[{UINT32\_\-NTOH}]{\setlength{\rightskip}{0pt plus 5cm}\#define UINT32\_\-NTOH(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)}}
+\label{hal__defs_8h_a18f0ea61865d6cda9985259b35121d5b}
+
+
+Definition at line 127 of file hal\_\-defs.h.
+

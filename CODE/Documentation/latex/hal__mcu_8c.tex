@@ -1,0 +1,154 @@
+\hypertarget{hal__mcu_8c}{
+\section{hal\_\-mcu.c File Reference}
+\label{hal__mcu_8c}\index{hal\_\-mcu.c@{hal\_\-mcu.c}}
+}
+{\ttfamily \#include \char`\"{}hal\_\-types.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-mcu.h\char`\"{}}\par
+{\ttfamily \#include $<$ioCC2431.h$>$}\par
+{\ttfamily \#include \char`\"{}clock.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{hal__mcu_8c_ae3032c5d662aafde068458550f54ddec}{halMcuInit} (void)
+\item 
+void \hyperlink{hal__mcu_8c_ae4c291df9a657ba3f741e98ce96bd758}{halMcuWaitUs} (\hyperlink{hal__types_8h_a05f6b0ae8f6a6e135b0e290c25fe0e4e}{uint16} usec)
+\item 
+void \hyperlink{hal__mcu_8c_ac64cd9077a4f471a9a03617605e55f0e}{halMcuWaitMs} (\hyperlink{hal__types_8h_a05f6b0ae8f6a6e135b0e290c25fe0e4e}{uint16} msec)
+\item 
+void \hyperlink{hal__mcu_8c_ae2908664fa34ecd527feb90fd0245555}{halMcuSetLowPowerMode} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{kb_8c_a74b654271a172a244c844fb86277cd8a}{mode})
+\item 
+void \hyperlink{hal__mcu_8c_a2aa5e675e5fa63173d3f37986d80b26b}{halMcuReset} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{hal__mcu_8c_ae3032c5d662aafde068458550f54ddec}{
+\index{hal\_\-mcu.c@{hal\_\-mcu.c}!halMcuInit@{halMcuInit}}
+\index{halMcuInit@{halMcuInit}!hal_mcu.c@{hal\_\-mcu.c}}
+\subsubsection[{halMcuInit}]{\setlength{\rightskip}{0pt plus 5cm}void halMcuInit (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__mcu_8c_ae3032c5d662aafde068458550f54ddec}
+
+
+Definition at line 28 of file hal\_\-mcu.c.
+
+
+\begin{DoxyCode}
+{
+    clockSetMainSrc(CLOCK_SRC_XOSC);
+}
+\end{DoxyCode}
+\hypertarget{hal__mcu_8c_a2aa5e675e5fa63173d3f37986d80b26b}{
+\index{hal\_\-mcu.c@{hal\_\-mcu.c}!halMcuReset@{halMcuReset}}
+\index{halMcuReset@{halMcuReset}!hal_mcu.c@{hal\_\-mcu.c}}
+\subsubsection[{halMcuReset}]{\setlength{\rightskip}{0pt plus 5cm}void halMcuReset (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__mcu_8c_a2aa5e675e5fa63173d3f37986d80b26b}
+
+
+Definition at line 136 of file hal\_\-mcu.c.
+
+
+\begin{DoxyCode}
+{
+    const uint8 WDT_INTERVAL_MSEC_2=   0x03;   // after ~2 ms
+
+    WDCTL = ((WDCTL & 0xFC) | (WDT_INTERVAL_MSEC_2 & 0x03));
+    // Start watchdog
+    WDCTL &= ~0x04;     // Select watchdog mode
+    WDCTL |= 0x08;      // Enable timer
+    while(1);                                   // Halt here until reset
+}\end{DoxyCode}
+\hypertarget{hal__mcu_8c_ae2908664fa34ecd527feb90fd0245555}{
+\index{hal\_\-mcu.c@{hal\_\-mcu.c}!halMcuSetLowPowerMode@{halMcuSetLowPowerMode}}
+\index{halMcuSetLowPowerMode@{halMcuSetLowPowerMode}!hal_mcu.c@{hal\_\-mcu.c}}
+\subsubsection[{halMcuSetLowPowerMode}]{\setlength{\rightskip}{0pt plus 5cm}void halMcuSetLowPowerMode (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8}}]{mode}
+\end{DoxyParamCaption}
+)}}
+\label{hal__mcu_8c_ae2908664fa34ecd527feb90fd0245555}
+
+
+Definition at line 114 of file hal\_\-mcu.c.
+
+
+\begin{DoxyCode}
+{
+  // comment: not yet implemented
+  //HAL_ASSERT(FALSE);
+}
+\end{DoxyCode}
+\hypertarget{hal__mcu_8c_ac64cd9077a4f471a9a03617605e55f0e}{
+\index{hal\_\-mcu.c@{hal\_\-mcu.c}!halMcuWaitMs@{halMcuWaitMs}}
+\index{halMcuWaitMs@{halMcuWaitMs}!hal_mcu.c@{hal\_\-mcu.c}}
+\subsubsection[{halMcuWaitMs}]{\setlength{\rightskip}{0pt plus 5cm}void halMcuWaitMs (
+\begin{DoxyParamCaption}
+\item[{{\bf uint16}}]{msec}
+\end{DoxyParamCaption}
+)}}
+\label{hal__mcu_8c_ac64cd9077a4f471a9a03617605e55f0e}
+
+
+Definition at line 95 of file hal\_\-mcu.c.
+
+
+\begin{DoxyCode}
+{
+    while(msec--)
+        halMcuWaitUs(1000);
+}
+\end{DoxyCode}
+\hypertarget{hal__mcu_8c_ae4c291df9a657ba3f741e98ce96bd758}{
+\index{hal\_\-mcu.c@{hal\_\-mcu.c}!halMcuWaitUs@{halMcuWaitUs}}
+\index{halMcuWaitUs@{halMcuWaitUs}!hal_mcu.c@{hal\_\-mcu.c}}
+\subsubsection[{halMcuWaitUs}]{\setlength{\rightskip}{0pt plus 5cm}void halMcuWaitUs (
+\begin{DoxyParamCaption}
+\item[{{\bf uint16}}]{usec}
+\end{DoxyParamCaption}
+)}}
+\label{hal__mcu_8c_ae4c291df9a657ba3f741e98ce96bd758}
+
+
+Definition at line 48 of file hal\_\-mcu.c.
+
+
+\begin{DoxyCode}
+{
+    usec>>= 1;
+
+    while(usec-->0)
+    {
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+    }
+}
+\end{DoxyCode}

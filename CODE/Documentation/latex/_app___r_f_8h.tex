@@ -1,0 +1,414 @@
+\hypertarget{_app___r_f_8h}{
+\section{App\_\-RF.h File Reference}
+\label{_app___r_f_8h}\index{App\_\-RF.h@{App\_\-RF.h}}
+}
+{\ttfamily \#include \char`\"{}hal\_\-defs.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-types.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_ref___data_payload}{Ref\_\-DataPayload}
+\item 
+struct \hyperlink{struct_loc___data_payload}{Loc\_\-DataPayload}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_app___r_f_8h_a66ddecd9e0c4d1ae223e79de0fc11a65}{RF\_\-CHANNEL}~25
+\item 
+\#define \hyperlink{_app___r_f_8h_a30931c9744e3a05a13e7c0f36ef20255}{PAN\_\-ID}~0x2007
+\item 
+\#define \hyperlink{_app___r_f_8h_a024f63966afeb907ae5add8746f6bd26}{APP\_\-PAYLOAD\_\-LENGTH}~4
+\item 
+\#define \hyperlink{_app___r_f_8h_a62a72fbf1dc086492eefa47977755b5e}{LIGHT\_\-TOGGLE\_\-CMD}~0
+\item 
+\#define \hyperlink{_app___r_f_8h_a444520642b456ad1000b7d22291fedbe}{M1ADDR}~0xBEEF
+\item 
+\#define \hyperlink{_app___r_f_8h_a94a70ed3b45f6d46956028f05c54fe3a}{M2ADDR}~0x2520
+\item 
+\#define \hyperlink{_app___r_f_8h_a95b6f502847d398026b3df3d4b07d454}{M3ADDR}~0x5050
+\item 
+\#define \hyperlink{_app___r_f_8h_a8f37b4b9c167c4513417ff6b21a8b9a4}{LOGGER\_\-ADDR}~0x1234
+\item 
+\#define \hyperlink{_app___r_f_8h_a6d278cb94979a05a8add13a120658515}{RF\_\-TX}~1
+\item 
+\#define \hyperlink{_app___r_f_8h_a204307e56395cba1325e22ba5a258332}{RF\_\-RX}~2
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \par
+\hyperlink{_app___r_f_8h_a06fc87d81c62e9abb8790b6e5713c55ba96b72206b46fce9b29007add313fe01a}{PingReq} =  1, 
+\hyperlink{_app___r_f_8h_a06fc87d81c62e9abb8790b6e5713c55baba929a0579a17a04854737546c47c284}{PingRsp} =  2, 
+\hyperlink{_app___r_f_8h_a06fc87d81c62e9abb8790b6e5713c55ba3598432e8b0cb805adec451bfa071fb3}{AckRsp} =  3, 
+\hyperlink{_app___r_f_8h_a06fc87d81c62e9abb8790b6e5713c55ba9e9fe92134ae08ce957a1ca714669a81}{Toggle\_\-LED\_\-Req} =  4, 
+\par
+\hyperlink{_app___r_f_8h_a06fc87d81c62e9abb8790b6e5713c55bad9901d3d0f62c361e53e61fdeea20843}{Ref\_\-Data} =  5, 
+\hyperlink{_app___r_f_8h_a06fc87d81c62e9abb8790b6e5713c55baae247cf24c34619ee256019fc202593a}{Loc\_\-Data} =  6
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_app___r_f_8h_ad5d407681ead0bf2bff277436047814c}{Init\_\-AppRF} (void)
+\item 
+bool \hyperlink{_app___r_f_8h_ada6fb726b76e0d38303417857b59f9bd}{RF\_\-Send} (unsigned char $\ast$bufptr, unsigned int len)
+\item 
+bool \hyperlink{_app___r_f_8h_a0c56eb7429f90811469d2b0c865339c0}{RF\_\-Peek} ()
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{_app___r_f_8h_a6e168e633133b0f13bc8fa95b90b5035}{RF\_\-Receive} (unsigned char $\ast$bufptr)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{_app___r_f_8h_ab30a5d1d7e9bcc5e7a2a8d68c22234ec}{RF\_\-gets\_\-blk} (unsigned char $\ast$bufptr)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{_app___r_f_8h_ad0cba9bb772bb15a2be1701edee7d7c3}{RF\_\-gets\_\-nblk} (unsigned char $\ast$bufptr)
+\item 
+bool \hyperlink{_app___r_f_8h_ae94948a7b7f89cbfb7e2032ecfbf0afa}{RF\_\-puts} (unsigned char $\ast$bufptr)
+\item 
+bool \hyperlink{_app___r_f_8h_a3332f16cbed568924dacf7230cf16004}{RF\_\-puts\_\-SD} (unsigned char $\ast$bufptr, unsigned int len)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+enum  \{ ... \}  \hyperlink{_app___r_f_8h_ad7074364f2a48a5439aa865933346085}{Packet\_\-Type}
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{_app___r_f_8h_a024f63966afeb907ae5add8746f6bd26}{
+\index{App\_\-RF.h@{App\_\-RF.h}!APP\_\-PAYLOAD\_\-LENGTH@{APP\_\-PAYLOAD\_\-LENGTH}}
+\index{APP\_\-PAYLOAD\_\-LENGTH@{APP\_\-PAYLOAD\_\-LENGTH}!App_RF.h@{App\_\-RF.h}}
+\subsubsection[{APP\_\-PAYLOAD\_\-LENGTH}]{\setlength{\rightskip}{0pt plus 5cm}\#define APP\_\-PAYLOAD\_\-LENGTH~4}}
+\label{_app___r_f_8h_a024f63966afeb907ae5add8746f6bd26}
+
+
+Definition at line 23 of file App\_\-RF.h.
+
+\hypertarget{_app___r_f_8h_a62a72fbf1dc086492eefa47977755b5e}{
+\index{App\_\-RF.h@{App\_\-RF.h}!LIGHT\_\-TOGGLE\_\-CMD@{LIGHT\_\-TOGGLE\_\-CMD}}
+\index{LIGHT\_\-TOGGLE\_\-CMD@{LIGHT\_\-TOGGLE\_\-CMD}!App_RF.h@{App\_\-RF.h}}
+\subsubsection[{LIGHT\_\-TOGGLE\_\-CMD}]{\setlength{\rightskip}{0pt plus 5cm}\#define LIGHT\_\-TOGGLE\_\-CMD~0}}
+\label{_app___r_f_8h_a62a72fbf1dc086492eefa47977755b5e}
+
+
+Definition at line 24 of file App\_\-RF.h.
+
+\hypertarget{_app___r_f_8h_a8f37b4b9c167c4513417ff6b21a8b9a4}{
+\index{App\_\-RF.h@{App\_\-RF.h}!LOGGER\_\-ADDR@{LOGGER\_\-ADDR}}
+\index{LOGGER\_\-ADDR@{LOGGER\_\-ADDR}!App_RF.h@{App\_\-RF.h}}
+\subsubsection[{LOGGER\_\-ADDR}]{\setlength{\rightskip}{0pt plus 5cm}\#define LOGGER\_\-ADDR~0x1234}}
+\label{_app___r_f_8h_a8f37b4b9c167c4513417ff6b21a8b9a4}
+
+
+Definition at line 29 of file App\_\-RF.h.
+
+\hypertarget{_app___r_f_8h_a444520642b456ad1000b7d22291fedbe}{
+\index{App\_\-RF.h@{App\_\-RF.h}!M1ADDR@{M1ADDR}}
+\index{M1ADDR@{M1ADDR}!App_RF.h@{App\_\-RF.h}}
+\subsubsection[{M1ADDR}]{\setlength{\rightskip}{0pt plus 5cm}\#define M1ADDR~0xBEEF}}
+\label{_app___r_f_8h_a444520642b456ad1000b7d22291fedbe}
+
+
+Definition at line 26 of file App\_\-RF.h.
+
+\hypertarget{_app___r_f_8h_a94a70ed3b45f6d46956028f05c54fe3a}{
+\index{App\_\-RF.h@{App\_\-RF.h}!M2ADDR@{M2ADDR}}
+\index{M2ADDR@{M2ADDR}!App_RF.h@{App\_\-RF.h}}
+\subsubsection[{M2ADDR}]{\setlength{\rightskip}{0pt plus 5cm}\#define M2ADDR~0x2520}}
+\label{_app___r_f_8h_a94a70ed3b45f6d46956028f05c54fe3a}
+
+
+Definition at line 27 of file App\_\-RF.h.
+
+\hypertarget{_app___r_f_8h_a95b6f502847d398026b3df3d4b07d454}{
+\index{App\_\-RF.h@{App\_\-RF.h}!M3ADDR@{M3ADDR}}
+\index{M3ADDR@{M3ADDR}!App_RF.h@{App\_\-RF.h}}
+\subsubsection[{M3ADDR}]{\setlength{\rightskip}{0pt plus 5cm}\#define M3ADDR~0x5050}}
+\label{_app___r_f_8h_a95b6f502847d398026b3df3d4b07d454}
+
+
+Definition at line 28 of file App\_\-RF.h.
+
+\hypertarget{_app___r_f_8h_a30931c9744e3a05a13e7c0f36ef20255}{
+\index{App\_\-RF.h@{App\_\-RF.h}!PAN\_\-ID@{PAN\_\-ID}}
+\index{PAN\_\-ID@{PAN\_\-ID}!App_RF.h@{App\_\-RF.h}}
+\subsubsection[{PAN\_\-ID}]{\setlength{\rightskip}{0pt plus 5cm}\#define PAN\_\-ID~0x2007}}
+\label{_app___r_f_8h_a30931c9744e3a05a13e7c0f36ef20255}
+
+
+Definition at line 22 of file App\_\-RF.h.
+
+\hypertarget{_app___r_f_8h_a66ddecd9e0c4d1ae223e79de0fc11a65}{
+\index{App\_\-RF.h@{App\_\-RF.h}!RF\_\-CHANNEL@{RF\_\-CHANNEL}}
+\index{RF\_\-CHANNEL@{RF\_\-CHANNEL}!App_RF.h@{App\_\-RF.h}}
+\subsubsection[{RF\_\-CHANNEL}]{\setlength{\rightskip}{0pt plus 5cm}\#define RF\_\-CHANNEL~25}}
+\label{_app___r_f_8h_a66ddecd9e0c4d1ae223e79de0fc11a65}
+
+
+Definition at line 19 of file App\_\-RF.h.
+
+\hypertarget{_app___r_f_8h_a204307e56395cba1325e22ba5a258332}{
+\index{App\_\-RF.h@{App\_\-RF.h}!RF\_\-RX@{RF\_\-RX}}
+\index{RF\_\-RX@{RF\_\-RX}!App_RF.h@{App\_\-RF.h}}
+\subsubsection[{RF\_\-RX}]{\setlength{\rightskip}{0pt plus 5cm}\#define RF\_\-RX~2}}
+\label{_app___r_f_8h_a204307e56395cba1325e22ba5a258332}
+
+
+Definition at line 32 of file App\_\-RF.h.
+
+\hypertarget{_app___r_f_8h_a6d278cb94979a05a8add13a120658515}{
+\index{App\_\-RF.h@{App\_\-RF.h}!RF\_\-TX@{RF\_\-TX}}
+\index{RF\_\-TX@{RF\_\-TX}!App_RF.h@{App\_\-RF.h}}
+\subsubsection[{RF\_\-TX}]{\setlength{\rightskip}{0pt plus 5cm}\#define RF\_\-TX~1}}
+\label{_app___r_f_8h_a6d278cb94979a05a8add13a120658515}
+
+
+Definition at line 31 of file App\_\-RF.h.
+
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{_app___r_f_8h_a06fc87d81c62e9abb8790b6e5713c55b}{
+\subsubsection[{"@0}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}}
+\label{_app___r_f_8h_a06fc87d81c62e9abb8790b6e5713c55b}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{PingReq@{PingReq}!App\_\-RF.h@{App\_\-RF.h}}\index{App\_\-RF.h@{App\_\-RF.h}!PingReq@{PingReq}}\item[{\em 
+\hypertarget{_app___r_f_8h_a06fc87d81c62e9abb8790b6e5713c55ba96b72206b46fce9b29007add313fe01a}{
+PingReq}
+\label{_app___r_f_8h_a06fc87d81c62e9abb8790b6e5713c55ba96b72206b46fce9b29007add313fe01a}
+}]\index{PingRsp@{PingRsp}!App\_\-RF.h@{App\_\-RF.h}}\index{App\_\-RF.h@{App\_\-RF.h}!PingRsp@{PingRsp}}\item[{\em 
+\hypertarget{_app___r_f_8h_a06fc87d81c62e9abb8790b6e5713c55baba929a0579a17a04854737546c47c284}{
+PingRsp}
+\label{_app___r_f_8h_a06fc87d81c62e9abb8790b6e5713c55baba929a0579a17a04854737546c47c284}
+}]\index{AckRsp@{AckRsp}!App\_\-RF.h@{App\_\-RF.h}}\index{App\_\-RF.h@{App\_\-RF.h}!AckRsp@{AckRsp}}\item[{\em 
+\hypertarget{_app___r_f_8h_a06fc87d81c62e9abb8790b6e5713c55ba3598432e8b0cb805adec451bfa071fb3}{
+AckRsp}
+\label{_app___r_f_8h_a06fc87d81c62e9abb8790b6e5713c55ba3598432e8b0cb805adec451bfa071fb3}
+}]\index{Toggle\_\-LED\_\-Req@{Toggle\_\-LED\_\-Req}!App\_\-RF.h@{App\_\-RF.h}}\index{App\_\-RF.h@{App\_\-RF.h}!Toggle\_\-LED\_\-Req@{Toggle\_\-LED\_\-Req}}\item[{\em 
+\hypertarget{_app___r_f_8h_a06fc87d81c62e9abb8790b6e5713c55ba9e9fe92134ae08ce957a1ca714669a81}{
+Toggle\_\-LED\_\-Req}
+\label{_app___r_f_8h_a06fc87d81c62e9abb8790b6e5713c55ba9e9fe92134ae08ce957a1ca714669a81}
+}]\index{Ref\_\-Data@{Ref\_\-Data}!App\_\-RF.h@{App\_\-RF.h}}\index{App\_\-RF.h@{App\_\-RF.h}!Ref\_\-Data@{Ref\_\-Data}}\item[{\em 
+\hypertarget{_app___r_f_8h_a06fc87d81c62e9abb8790b6e5713c55bad9901d3d0f62c361e53e61fdeea20843}{
+Ref\_\-Data}
+\label{_app___r_f_8h_a06fc87d81c62e9abb8790b6e5713c55bad9901d3d0f62c361e53e61fdeea20843}
+}]\index{Loc\_\-Data@{Loc\_\-Data}!App\_\-RF.h@{App\_\-RF.h}}\index{App\_\-RF.h@{App\_\-RF.h}!Loc\_\-Data@{Loc\_\-Data}}\item[{\em 
+\hypertarget{_app___r_f_8h_a06fc87d81c62e9abb8790b6e5713c55baae247cf24c34619ee256019fc202593a}{
+Loc\_\-Data}
+\label{_app___r_f_8h_a06fc87d81c62e9abb8790b6e5713c55baae247cf24c34619ee256019fc202593a}
+}]\end{description}
+\end{Desc}
+
+
+
+Definition at line 35 of file App\_\-RF.h.
+
+
+\begin{DoxyCode}
+     {
+   PingReq                  = 1,
+   PingRsp                  = 2,
+   AckRsp                   = 3,
+   Toggle_LED_Req           = 4,
+   Ref_Data                 = 5,
+   Loc_Data                 = 6
+   }Packet_Type;
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\hypertarget{_app___r_f_8h_ad5d407681ead0bf2bff277436047814c}{
+\index{App\_\-RF.h@{App\_\-RF.h}!Init\_\-AppRF@{Init\_\-AppRF}}
+\index{Init\_\-AppRF@{Init\_\-AppRF}!App_RF.h@{App\_\-RF.h}}
+\subsubsection[{Init\_\-AppRF}]{\setlength{\rightskip}{0pt plus 5cm}void Init\_\-AppRF (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{_app___r_f_8h_ad5d407681ead0bf2bff277436047814c}
+
+
+Definition at line 37 of file App\_\-RF.c.
+
+
+\begin{DoxyCode}
+{
+    // Config basicRF
+    basicRfConfig.panId = PAN_ID;
+    basicRfConfig.channel = RF_CHANNEL;
+    basicRfConfig.ackRequest = TRUE;
+                basicRfConfig.myAddr = M2ADDR;
+                
+                // Initialize BasicRF
+                if(basicRfInit(&basicRfConfig)==FAILED) {
+      HAL_ASSERT(FALSE);
+    }
+                
+                basicRfReceiveOn();
+}
+\end{DoxyCode}
+\hypertarget{_app___r_f_8h_ab30a5d1d7e9bcc5e7a2a8d68c22234ec}{
+\index{App\_\-RF.h@{App\_\-RF.h}!RF\_\-gets\_\-blk@{RF\_\-gets\_\-blk}}
+\index{RF\_\-gets\_\-blk@{RF\_\-gets\_\-blk}!App_RF.h@{App\_\-RF.h}}
+\subsubsection[{RF\_\-gets\_\-blk}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} RF\_\-gets\_\-blk (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{bufptr}
+\end{DoxyParamCaption}
+)}}
+\label{_app___r_f_8h_ab30a5d1d7e9bcc5e7a2a8d68c22234ec}
+
+
+Definition at line 107 of file App\_\-RF.c.
+
+
+\begin{DoxyCode}
+                                         {
+
+  while (!RF_Peek());   //block
+  return RF_Receive(bufptr);    
+}
+\end{DoxyCode}
+\hypertarget{_app___r_f_8h_ad0cba9bb772bb15a2be1701edee7d7c3}{
+\index{App\_\-RF.h@{App\_\-RF.h}!RF\_\-gets\_\-nblk@{RF\_\-gets\_\-nblk}}
+\index{RF\_\-gets\_\-nblk@{RF\_\-gets\_\-nblk}!App_RF.h@{App\_\-RF.h}}
+\subsubsection[{RF\_\-gets\_\-nblk}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} RF\_\-gets\_\-nblk (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{bufptr}
+\end{DoxyParamCaption}
+)}}
+\label{_app___r_f_8h_ad0cba9bb772bb15a2be1701edee7d7c3}
+
+
+Definition at line 114 of file App\_\-RF.c.
+
+
+\begin{DoxyCode}
+                                          {
+
+  if (RF_Peek()) {
+        return RF_Receive(bufptr);      
+        }
+        else return 0;
+}
+\end{DoxyCode}
+\hypertarget{_app___r_f_8h_a0c56eb7429f90811469d2b0c865339c0}{
+\index{App\_\-RF.h@{App\_\-RF.h}!RF\_\-Peek@{RF\_\-Peek}}
+\index{RF\_\-Peek@{RF\_\-Peek}!App_RF.h@{App\_\-RF.h}}
+\subsubsection[{RF\_\-Peek}]{\setlength{\rightskip}{0pt plus 5cm}bool RF\_\-Peek (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{_app___r_f_8h_a0c56eb7429f90811469d2b0c865339c0}
+
+
+Definition at line 86 of file App\_\-RF.c.
+
+
+\begin{DoxyCode}
+{
+  return basicRfPacketIsReady();
+}
+\end{DoxyCode}
+\hypertarget{_app___r_f_8h_ae94948a7b7f89cbfb7e2032ecfbf0afa}{
+\index{App\_\-RF.h@{App\_\-RF.h}!RF\_\-puts@{RF\_\-puts}}
+\index{RF\_\-puts@{RF\_\-puts}!App_RF.h@{App\_\-RF.h}}
+\subsubsection[{RF\_\-puts}]{\setlength{\rightskip}{0pt plus 5cm}bool RF\_\-puts (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{bufptr}
+\end{DoxyParamCaption}
+)}}
+\label{_app___r_f_8h_ae94948a7b7f89cbfb7e2032ecfbf0afa}
+
+
+Definition at line 123 of file App\_\-RF.c.
+
+
+\begin{DoxyCode}
+                                    {
+  return RF_Send(bufptr, strlen((const char*)bufptr));
+}
+\end{DoxyCode}
+\hypertarget{_app___r_f_8h_a3332f16cbed568924dacf7230cf16004}{
+\index{App\_\-RF.h@{App\_\-RF.h}!RF\_\-puts\_\-SD@{RF\_\-puts\_\-SD}}
+\index{RF\_\-puts\_\-SD@{RF\_\-puts\_\-SD}!App_RF.h@{App\_\-RF.h}}
+\subsubsection[{RF\_\-puts\_\-SD}]{\setlength{\rightskip}{0pt plus 5cm}bool RF\_\-puts\_\-SD (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{bufptr, }
+\item[{unsigned int}]{len}
+\end{DoxyParamCaption}
+)}}
+\label{_app___r_f_8h_a3332f16cbed568924dacf7230cf16004}
+
+
+Definition at line 128 of file App\_\-RF.c.
+
+
+\begin{DoxyCode}
+                                                          {
+        basicRfReceiveOff();
+  for(uint8 i = 0; i<5; i++) {
+    if(basicRfSendPacket(M3ADDR, bufptr, len) == SUCCESS)  {
+                        basicRfReceiveOn();
+                        return true;
+                }
+        }
+        basicRfReceiveOn();
+  return false;
+}\end{DoxyCode}
+\hypertarget{_app___r_f_8h_a6e168e633133b0f13bc8fa95b90b5035}{
+\index{App\_\-RF.h@{App\_\-RF.h}!RF\_\-Receive@{RF\_\-Receive}}
+\index{RF\_\-Receive@{RF\_\-Receive}!App_RF.h@{App\_\-RF.h}}
+\subsubsection[{RF\_\-Receive}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} RF\_\-Receive (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{bufptr}
+\end{DoxyParamCaption}
+)}}
+\label{_app___r_f_8h_a6e168e633133b0f13bc8fa95b90b5035}
+
+
+Definition at line 101 of file App\_\-RF.c.
+
+
+\begin{DoxyCode}
+{
+  return basicRfReceive(bufptr, 255, NULL);
+}
+\end{DoxyCode}
+\hypertarget{_app___r_f_8h_ada6fb726b76e0d38303417857b59f9bd}{
+\index{App\_\-RF.h@{App\_\-RF.h}!RF\_\-Send@{RF\_\-Send}}
+\index{RF\_\-Send@{RF\_\-Send}!App_RF.h@{App\_\-RF.h}}
+\subsubsection[{RF\_\-Send}]{\setlength{\rightskip}{0pt plus 5cm}bool RF\_\-Send (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{bufptr, }
+\item[{unsigned int}]{len}
+\end{DoxyParamCaption}
+)}}
+\label{_app___r_f_8h_ada6fb726b76e0d38303417857b59f9bd}
+
+
+Definition at line 63 of file App\_\-RF.c.
+
+
+\begin{DoxyCode}
+{
+        basicRfReceiveOff();
+  for(uint8 i = 0; i<5; i++) {
+    if(basicRfSendPacket(M1ADDR, bufptr, len) == SUCCESS)  {
+                        basicRfReceiveOn();
+                        return true;
+                }
+        }
+        basicRfReceiveOn();
+  return false;
+}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\hypertarget{_app___r_f_8h_ad7074364f2a48a5439aa865933346085}{
+\index{App\_\-RF.h@{App\_\-RF.h}!Packet\_\-Type@{Packet\_\-Type}}
+\index{Packet\_\-Type@{Packet\_\-Type}!App_RF.h@{App\_\-RF.h}}
+\subsubsection[{Packet\_\-Type}]{\setlength{\rightskip}{0pt plus 5cm}enum \{ ... \}  {\bf Packet\_\-Type}}}
+\label{_app___r_f_8h_ad7074364f2a48a5439aa865933346085}

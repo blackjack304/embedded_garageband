@@ -1,0 +1,258 @@
+\hypertarget{hal__mcu_8h}{
+\section{hal\_\-mcu.h File Reference}
+\label{hal__mcu_8h}\index{hal\_\-mcu.h@{hal\_\-mcu.h}}
+}
+{\ttfamily \#include $<$hal\_\-types.h$>$}\par
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \par
+\hyperlink{hal__mcu_8h_abc6126af1d45847bc59afa0aa3216b04aec47d31dd103b031fcd8a22e9d1ac341}{HAL\_\-MCU\_\-LPM\_\-0}, 
+\hyperlink{hal__mcu_8h_abc6126af1d45847bc59afa0aa3216b04a0cd3ff3cf3e614761643891140ec1c17}{HAL\_\-MCU\_\-LPM\_\-1}, 
+\hyperlink{hal__mcu_8h_abc6126af1d45847bc59afa0aa3216b04ac10e36730bf8e2b24d8dbb148c973721}{HAL\_\-MCU\_\-LPM\_\-2}, 
+\hyperlink{hal__mcu_8h_abc6126af1d45847bc59afa0aa3216b04a5d730b8bdf79d06e46becaa70e501044}{HAL\_\-MCU\_\-LPM\_\-3}, 
+\par
+\hyperlink{hal__mcu_8h_abc6126af1d45847bc59afa0aa3216b04a1ebc4345b449f284db949b4ca2fc30f0}{HAL\_\-MCU\_\-LPM\_\-4}
+ \}
+\item 
+enum \{ \hyperlink{hal__mcu_8h_adc29c2ff13d900c2f185ee95427fb06caae8911d4f673b5ac1371e83ceefea2c1}{HAL\_\-MCU\_\-RESET\_\-CAUSE\_\-POR}, 
+\hyperlink{hal__mcu_8h_adc29c2ff13d900c2f185ee95427fb06cad68a15b3b58221e8b8e1ad4487430a29}{HAL\_\-MCU\_\-RESET\_\-CAUSE\_\-EXTERNAL}, 
+\hyperlink{hal__mcu_8h_adc29c2ff13d900c2f185ee95427fb06ca42b322f55663e8b0a64995dd97f7a93a}{HAL\_\-MCU\_\-RESET\_\-CAUSE\_\-WATCHDOG}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{hal__mcu_8h_ae3032c5d662aafde068458550f54ddec}{halMcuInit} (void)
+\item 
+void \hyperlink{hal__mcu_8h_ae4c291df9a657ba3f741e98ce96bd758}{halMcuWaitUs} (\hyperlink{hal__types_8h_a05f6b0ae8f6a6e135b0e290c25fe0e4e}{uint16} usec)
+\item 
+void \hyperlink{hal__mcu_8h_ac64cd9077a4f471a9a03617605e55f0e}{halMcuWaitMs} (\hyperlink{hal__types_8h_a05f6b0ae8f6a6e135b0e290c25fe0e4e}{uint16} msec)
+\item 
+void \hyperlink{hal__mcu_8h_ae2908664fa34ecd527feb90fd0245555}{halMcuSetLowPowerMode} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{kb_8c_a74b654271a172a244c844fb86277cd8a}{mode})
+\item 
+void \hyperlink{hal__mcu_8h_a2aa5e675e5fa63173d3f37986d80b26b}{halMcuReset} (void)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{hal__mcu_8h_ac96e9ca7b1d5ff614a11fa1d63fad4b9}{halMcuGetResetCause} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{hal__mcu_8h_abc6126af1d45847bc59afa0aa3216b04}{
+\subsubsection[{"@3}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}}
+\label{hal__mcu_8h_abc6126af1d45847bc59afa0aa3216b04}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{HAL\_\-MCU\_\-LPM\_\-0@{HAL\_\-MCU\_\-LPM\_\-0}!hal\_\-mcu.h@{hal\_\-mcu.h}}\index{hal\_\-mcu.h@{hal\_\-mcu.h}!HAL\_\-MCU\_\-LPM\_\-0@{HAL\_\-MCU\_\-LPM\_\-0}}\item[{\em 
+\hypertarget{hal__mcu_8h_abc6126af1d45847bc59afa0aa3216b04aec47d31dd103b031fcd8a22e9d1ac341}{
+HAL\_\-MCU\_\-LPM\_\-0}
+\label{hal__mcu_8h_abc6126af1d45847bc59afa0aa3216b04aec47d31dd103b031fcd8a22e9d1ac341}
+}]\index{HAL\_\-MCU\_\-LPM\_\-1@{HAL\_\-MCU\_\-LPM\_\-1}!hal\_\-mcu.h@{hal\_\-mcu.h}}\index{hal\_\-mcu.h@{hal\_\-mcu.h}!HAL\_\-MCU\_\-LPM\_\-1@{HAL\_\-MCU\_\-LPM\_\-1}}\item[{\em 
+\hypertarget{hal__mcu_8h_abc6126af1d45847bc59afa0aa3216b04a0cd3ff3cf3e614761643891140ec1c17}{
+HAL\_\-MCU\_\-LPM\_\-1}
+\label{hal__mcu_8h_abc6126af1d45847bc59afa0aa3216b04a0cd3ff3cf3e614761643891140ec1c17}
+}]\index{HAL\_\-MCU\_\-LPM\_\-2@{HAL\_\-MCU\_\-LPM\_\-2}!hal\_\-mcu.h@{hal\_\-mcu.h}}\index{hal\_\-mcu.h@{hal\_\-mcu.h}!HAL\_\-MCU\_\-LPM\_\-2@{HAL\_\-MCU\_\-LPM\_\-2}}\item[{\em 
+\hypertarget{hal__mcu_8h_abc6126af1d45847bc59afa0aa3216b04ac10e36730bf8e2b24d8dbb148c973721}{
+HAL\_\-MCU\_\-LPM\_\-2}
+\label{hal__mcu_8h_abc6126af1d45847bc59afa0aa3216b04ac10e36730bf8e2b24d8dbb148c973721}
+}]\index{HAL\_\-MCU\_\-LPM\_\-3@{HAL\_\-MCU\_\-LPM\_\-3}!hal\_\-mcu.h@{hal\_\-mcu.h}}\index{hal\_\-mcu.h@{hal\_\-mcu.h}!HAL\_\-MCU\_\-LPM\_\-3@{HAL\_\-MCU\_\-LPM\_\-3}}\item[{\em 
+\hypertarget{hal__mcu_8h_abc6126af1d45847bc59afa0aa3216b04a5d730b8bdf79d06e46becaa70e501044}{
+HAL\_\-MCU\_\-LPM\_\-3}
+\label{hal__mcu_8h_abc6126af1d45847bc59afa0aa3216b04a5d730b8bdf79d06e46becaa70e501044}
+}]\index{HAL\_\-MCU\_\-LPM\_\-4@{HAL\_\-MCU\_\-LPM\_\-4}!hal\_\-mcu.h@{hal\_\-mcu.h}}\index{hal\_\-mcu.h@{hal\_\-mcu.h}!HAL\_\-MCU\_\-LPM\_\-4@{HAL\_\-MCU\_\-LPM\_\-4}}\item[{\em 
+\hypertarget{hal__mcu_8h_abc6126af1d45847bc59afa0aa3216b04a1ebc4345b449f284db949b4ca2fc30f0}{
+HAL\_\-MCU\_\-LPM\_\-4}
+\label{hal__mcu_8h_abc6126af1d45847bc59afa0aa3216b04a1ebc4345b449f284db949b4ca2fc30f0}
+}]\end{description}
+\end{Desc}
+
+
+
+Definition at line 29 of file hal\_\-mcu.h.
+
+
+\begin{DoxyCode}
+     {                  // Input values to halMcuSetLowPowerMode()
+    HAL_MCU_LPM_0,
+    HAL_MCU_LPM_1,
+    HAL_MCU_LPM_2,
+    HAL_MCU_LPM_3,
+    HAL_MCU_LPM_4
+};
+\end{DoxyCode}
+\hypertarget{hal__mcu_8h_adc29c2ff13d900c2f185ee95427fb06c}{
+\subsubsection[{"@4}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}}
+\label{hal__mcu_8h_adc29c2ff13d900c2f185ee95427fb06c}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{HAL\_\-MCU\_\-RESET\_\-CAUSE\_\-POR@{HAL\_\-MCU\_\-RESET\_\-CAUSE\_\-POR}!hal\_\-mcu.h@{hal\_\-mcu.h}}\index{hal\_\-mcu.h@{hal\_\-mcu.h}!HAL\_\-MCU\_\-RESET\_\-CAUSE\_\-POR@{HAL\_\-MCU\_\-RESET\_\-CAUSE\_\-POR}}\item[{\em 
+\hypertarget{hal__mcu_8h_adc29c2ff13d900c2f185ee95427fb06caae8911d4f673b5ac1371e83ceefea2c1}{
+HAL\_\-MCU\_\-RESET\_\-CAUSE\_\-POR}
+\label{hal__mcu_8h_adc29c2ff13d900c2f185ee95427fb06caae8911d4f673b5ac1371e83ceefea2c1}
+}]\index{HAL\_\-MCU\_\-RESET\_\-CAUSE\_\-EXTERNAL@{HAL\_\-MCU\_\-RESET\_\-CAUSE\_\-EXTERNAL}!hal\_\-mcu.h@{hal\_\-mcu.h}}\index{hal\_\-mcu.h@{hal\_\-mcu.h}!HAL\_\-MCU\_\-RESET\_\-CAUSE\_\-EXTERNAL@{HAL\_\-MCU\_\-RESET\_\-CAUSE\_\-EXTERNAL}}\item[{\em 
+\hypertarget{hal__mcu_8h_adc29c2ff13d900c2f185ee95427fb06cad68a15b3b58221e8b8e1ad4487430a29}{
+HAL\_\-MCU\_\-RESET\_\-CAUSE\_\-EXTERNAL}
+\label{hal__mcu_8h_adc29c2ff13d900c2f185ee95427fb06cad68a15b3b58221e8b8e1ad4487430a29}
+}]\index{HAL\_\-MCU\_\-RESET\_\-CAUSE\_\-WATCHDOG@{HAL\_\-MCU\_\-RESET\_\-CAUSE\_\-WATCHDOG}!hal\_\-mcu.h@{hal\_\-mcu.h}}\index{hal\_\-mcu.h@{hal\_\-mcu.h}!HAL\_\-MCU\_\-RESET\_\-CAUSE\_\-WATCHDOG@{HAL\_\-MCU\_\-RESET\_\-CAUSE\_\-WATCHDOG}}\item[{\em 
+\hypertarget{hal__mcu_8h_adc29c2ff13d900c2f185ee95427fb06ca42b322f55663e8b0a64995dd97f7a93a}{
+HAL\_\-MCU\_\-RESET\_\-CAUSE\_\-WATCHDOG}
+\label{hal__mcu_8h_adc29c2ff13d900c2f185ee95427fb06ca42b322f55663e8b0a64995dd97f7a93a}
+}]\end{description}
+\end{Desc}
+
+
+
+Definition at line 38 of file hal\_\-mcu.h.
+
+
+\begin{DoxyCode}
+     {                  // Return values of halMcuGetResetCause()
+    HAL_MCU_RESET_CAUSE_POR,
+    HAL_MCU_RESET_CAUSE_EXTERNAL,
+    HAL_MCU_RESET_CAUSE_WATCHDOG
+};
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\hypertarget{hal__mcu_8h_ac96e9ca7b1d5ff614a11fa1d63fad4b9}{
+\index{hal\_\-mcu.h@{hal\_\-mcu.h}!halMcuGetResetCause@{halMcuGetResetCause}}
+\index{halMcuGetResetCause@{halMcuGetResetCause}!hal_mcu.h@{hal\_\-mcu.h}}
+\subsubsection[{halMcuGetResetCause}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} halMcuGetResetCause (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__mcu_8h_ac96e9ca7b1d5ff614a11fa1d63fad4b9}
+\hypertarget{hal__mcu_8h_ae3032c5d662aafde068458550f54ddec}{
+\index{hal\_\-mcu.h@{hal\_\-mcu.h}!halMcuInit@{halMcuInit}}
+\index{halMcuInit@{halMcuInit}!hal_mcu.h@{hal\_\-mcu.h}}
+\subsubsection[{halMcuInit}]{\setlength{\rightskip}{0pt plus 5cm}void halMcuInit (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__mcu_8h_ae3032c5d662aafde068458550f54ddec}
+
+
+Definition at line 28 of file hal\_\-mcu.c.
+
+
+\begin{DoxyCode}
+{
+    clockSetMainSrc(CLOCK_SRC_XOSC);
+}
+\end{DoxyCode}
+\hypertarget{hal__mcu_8h_a2aa5e675e5fa63173d3f37986d80b26b}{
+\index{hal\_\-mcu.h@{hal\_\-mcu.h}!halMcuReset@{halMcuReset}}
+\index{halMcuReset@{halMcuReset}!hal_mcu.h@{hal\_\-mcu.h}}
+\subsubsection[{halMcuReset}]{\setlength{\rightskip}{0pt plus 5cm}void halMcuReset (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__mcu_8h_a2aa5e675e5fa63173d3f37986d80b26b}
+
+
+Definition at line 136 of file hal\_\-mcu.c.
+
+
+\begin{DoxyCode}
+{
+    const uint8 WDT_INTERVAL_MSEC_2=   0x03;   // after ~2 ms
+
+    WDCTL = ((WDCTL & 0xFC) | (WDT_INTERVAL_MSEC_2 & 0x03));
+    // Start watchdog
+    WDCTL &= ~0x04;     // Select watchdog mode
+    WDCTL |= 0x08;      // Enable timer
+    while(1);                                   // Halt here until reset
+}\end{DoxyCode}
+\hypertarget{hal__mcu_8h_ae2908664fa34ecd527feb90fd0245555}{
+\index{hal\_\-mcu.h@{hal\_\-mcu.h}!halMcuSetLowPowerMode@{halMcuSetLowPowerMode}}
+\index{halMcuSetLowPowerMode@{halMcuSetLowPowerMode}!hal_mcu.h@{hal\_\-mcu.h}}
+\subsubsection[{halMcuSetLowPowerMode}]{\setlength{\rightskip}{0pt plus 5cm}void halMcuSetLowPowerMode (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8}}]{mode}
+\end{DoxyParamCaption}
+)}}
+\label{hal__mcu_8h_ae2908664fa34ecd527feb90fd0245555}
+
+
+Definition at line 114 of file hal\_\-mcu.c.
+
+
+\begin{DoxyCode}
+{
+  // comment: not yet implemented
+  //HAL_ASSERT(FALSE);
+}
+\end{DoxyCode}
+\hypertarget{hal__mcu_8h_ac64cd9077a4f471a9a03617605e55f0e}{
+\index{hal\_\-mcu.h@{hal\_\-mcu.h}!halMcuWaitMs@{halMcuWaitMs}}
+\index{halMcuWaitMs@{halMcuWaitMs}!hal_mcu.h@{hal\_\-mcu.h}}
+\subsubsection[{halMcuWaitMs}]{\setlength{\rightskip}{0pt plus 5cm}void halMcuWaitMs (
+\begin{DoxyParamCaption}
+\item[{{\bf uint16}}]{msec}
+\end{DoxyParamCaption}
+)}}
+\label{hal__mcu_8h_ac64cd9077a4f471a9a03617605e55f0e}
+
+
+Definition at line 95 of file hal\_\-mcu.c.
+
+
+\begin{DoxyCode}
+{
+    while(msec--)
+        halMcuWaitUs(1000);
+}
+\end{DoxyCode}
+\hypertarget{hal__mcu_8h_ae4c291df9a657ba3f741e98ce96bd758}{
+\index{hal\_\-mcu.h@{hal\_\-mcu.h}!halMcuWaitUs@{halMcuWaitUs}}
+\index{halMcuWaitUs@{halMcuWaitUs}!hal_mcu.h@{hal\_\-mcu.h}}
+\subsubsection[{halMcuWaitUs}]{\setlength{\rightskip}{0pt plus 5cm}void halMcuWaitUs (
+\begin{DoxyParamCaption}
+\item[{{\bf uint16}}]{usec}
+\end{DoxyParamCaption}
+)}}
+\label{hal__mcu_8h_ae4c291df9a657ba3f741e98ce96bd758}
+
+
+Definition at line 48 of file hal\_\-mcu.c.
+
+
+\begin{DoxyCode}
+{
+    usec>>= 1;
+
+    while(usec-->0)
+    {
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+    }
+}
+\end{DoxyCode}

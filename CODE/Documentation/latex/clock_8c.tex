@@ -1,0 +1,92 @@
+\hypertarget{clock_8c}{
+\section{clock.c File Reference}
+\label{clock_8c}\index{clock.c@{clock.c}}
+}
+{\ttfamily \#include \char`\"{}clock.h\char`\"{}}\par
+{\ttfamily \#include $<$hal\_\-mcu.h$>$}\par
+{\ttfamily \#include $<$ioCC2430.h$>$}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{clock_8c_a52eecef8b09d07f33df78985f795efb8}{clockSetMainSrc} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} source)
+\item 
+void \hyperlink{clock_8c_a6d6e12526c1f5c1eedeab49d1103a1fc}{clockSelect32k} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} source)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{clock_8c_a6d6e12526c1f5c1eedeab49d1103a1fc}{
+\index{clock.c@{clock.c}!clockSelect32k@{clockSelect32k}}
+\index{clockSelect32k@{clockSelect32k}!clock.c@{clock.c}}
+\subsubsection[{clockSelect32k}]{\setlength{\rightskip}{0pt plus 5cm}void clockSelect32k (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8}}]{source}
+\end{DoxyParamCaption}
+)}}
+\label{clock_8c_a6d6e12526c1f5c1eedeab49d1103a1fc}
+
+
+Definition at line 82 of file clock.c.
+
+
+\begin{DoxyCode}
+{
+    if (source == CLOCK_32K_XTAL)
+    {
+        CLKCON &= ~CLKCON_OSC32K_BM;
+    }
+    else if (source == CLOCK_32K_RCOSC)
+    {
+        CLKCON |= CLKCON_OSC32K_BM;
+    }
+}
+\end{DoxyCode}
+\hypertarget{clock_8c_a52eecef8b09d07f33df78985f795efb8}{
+\index{clock.c@{clock.c}!clockSetMainSrc@{clockSetMainSrc}}
+\index{clockSetMainSrc@{clockSetMainSrc}!clock.c@{clock.c}}
+\subsubsection[{clockSetMainSrc}]{\setlength{\rightskip}{0pt plus 5cm}void clockSetMainSrc (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8}}]{source}
+\end{DoxyParamCaption}
+)}}
+\label{clock_8c_a52eecef8b09d07f33df78985f795efb8}
+
+
+Definition at line 38 of file clock.c.
+
+
+\begin{DoxyCode}
+{
+    register uint8 osc32k_bm = CLKCON & CLKCON_OSC32K_BM;
+
+    // Source can have the following values:
+    // CLOCK_SRC_XOSC   0x00  High speed Crystal Oscillator (XOSC)
+    // CLOCK_SRC_HFRC   0x01  Low power RC Oscillator (HFRC)
+
+    if (source == CLOCK_SRC_HFRC)
+    {
+        SLEEP &= ~SLEEP_OSC_PD_BM;       // power up both oscillators
+        while (!CC2430_IS_HFRC_STABLE());// wait until the oscillator is stable
+
+        asm("NOP");
+        CLKCON = (osc32k_bm | CLKCON_OSC_BM | TICKSPD_DIV_1 | CLKCON_CLKSPD_BM);
+        while (CLKCON != (osc32k_bm | CLKCON_OSC_BM | TICKSPD_DIV_1 | 
+      CLKCON_CLKSPD_BM));
+
+        SLEEP |= SLEEP_OSC_PD_BM;        // power down the unused oscillator
+    }
+    else if (source == CLOCK_SRC_XOSC)
+    {
+        SLEEP &= ~SLEEP_OSC_PD_BM;       // power up both oscillators
+        while (!CC2430_IS_XOSC_STABLE());// wait until the XOSC is stable
+
+        asm("NOP");
+        halMcuWaitUs(64);
+        CLKCON = (osc32k_bm | TICKSPD_DIV_1);
+        while (CLKCON != (osc32k_bm | TICKSPD_DIV_1));
+
+        SLEEP |= SLEEP_OSC_PD_BM;        // power down the unused oscillator
+    }
+
+}
+\end{DoxyCode}

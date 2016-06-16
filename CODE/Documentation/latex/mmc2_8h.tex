@@ -1,0 +1,691 @@
+\hypertarget{mmc2_8h}{
+\section{mmc2.h File Reference}
+\label{mmc2_8h}\index{mmc2.h@{mmc2.h}}
+}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{mmc2_8h_a4c9caedf210e9e4e61475e4e86293123}{FAT\_\-TESTING\_\-ONLY}
+\item 
+\#define \hyperlink{mmc2_8h_ab42aba8ac59f4a88718f351bf6e30874}{SD\_\-CS\_\-ASSERT}~CS\_\-LOW();
+\item 
+\#define \hyperlink{mmc2_8h_ac13a5b7ed7d2ee96da07f2b2ae9249fe}{SD\_\-CS\_\-DEASSERT}~CS\_\-HIGH();
+\item 
+\#define \hyperlink{mmc2_8h_a939c1c73db7a96767f5d06dfe7591b01}{GO\_\-IDLE\_\-STATE}~0
+\item 
+\#define \hyperlink{mmc2_8h_a2397afdad46162ab52c4008d8f5dab23}{SEND\_\-OP\_\-COND}~1
+\item 
+\#define \hyperlink{mmc2_8h_a01bcf82717d75d8ccf0a8664d431738d}{SEND\_\-IF\_\-COND}~8
+\item 
+\#define \hyperlink{mmc2_8h_a85a884eec438d450dc1c05e8d9d29044}{SEND\_\-CSD}~9
+\item 
+\#define \hyperlink{mmc2_8h_a0f220568605a0eaa9a5cbb3d3cc82408}{STOP\_\-TRANSMISSION}~12
+\item 
+\#define \hyperlink{mmc2_8h_a7f98c79059221d788e2219865d770648}{SEND\_\-STATUS}~13
+\item 
+\#define \hyperlink{mmc2_8h_a2f0756e65bb52b5d7e7934ce1d5ec0da}{SET\_\-BLOCK\_\-LEN}~16
+\item 
+\#define \hyperlink{mmc2_8h_a078b4c06f187324dd4e14cf59a6c87c2}{READ\_\-SINGLE\_\-BLOCK}~17
+\item 
+\#define \hyperlink{mmc2_8h_ac1b68c53e7902f7197cd9f52b163bda1}{READ\_\-MULTIPLE\_\-BLOCKS}~18
+\item 
+\#define \hyperlink{mmc2_8h_ae24d09e65670aa853aa83889b55a92a0}{WRITE\_\-SINGLE\_\-BLOCK}~24
+\item 
+\#define \hyperlink{mmc2_8h_a8cf5245e676d5405878f2af647491553}{WRITE\_\-MULTIPLE\_\-BLOCKS}~25
+\item 
+\#define \hyperlink{mmc2_8h_a0fe84e05b768d0f4b0f98a7f48a19f7f}{ERASE\_\-BLOCK\_\-START\_\-ADDR}~32
+\item 
+\#define \hyperlink{mmc2_8h_ade170f78d275c9bfd354e726e12435e2}{ERASE\_\-BLOCK\_\-END\_\-ADDR}~33
+\item 
+\#define \hyperlink{mmc2_8h_ae9177be3107326be877417b3b02e3a83}{ERASE\_\-SELECTED\_\-BLOCKS}~38
+\item 
+\#define \hyperlink{mmc2_8h_a38e73c548131f1fd3f8acdad82fd44fb}{SD\_\-SEND\_\-OP\_\-COND}~41
+\item 
+\#define \hyperlink{mmc2_8h_acdb057504ceebb40cb4a5df3197a8fb5}{APP\_\-CMD}~55
+\item 
+\#define \hyperlink{mmc2_8h_a9903337fbf33e03e1a9182fbca009313}{READ\_\-OCR}~58
+\item 
+\#define \hyperlink{mmc2_8h_a5104895f45f0891d5bedef91b7dd4a92}{CRC\_\-ON\_\-OFF}~59
+\item 
+\#define \hyperlink{mmc2_8h_ad76d1750a6cdeebd506bfcd6752554d2}{ON}~1
+\item 
+\#define \hyperlink{mmc2_8h_a29e413f6725b2ba32d165ffaa35b01e5}{OFF}~0
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \hyperlink{mmc2_8h_a1b26e131140b8ab739faa4dd100d6cf2}{SD\_\-init} (void)
+\item 
+unsigned char \hyperlink{mmc2_8h_a9faa6fa4ebcf98a07808f2d2c040dcfd}{SD\_\-sendCommand} (unsigned char cmd, unsigned long arg)
+\item 
+unsigned char \hyperlink{mmc2_8h_a479d5a79e118601ffede156b20d87494}{SD\_\-readSingleBlock} (unsigned long \hyperlink{mmc2_8h_aef9ccbd37ff89101204c1ab239f94453}{startBlock})
+\item 
+unsigned char \hyperlink{mmc2_8h_aa72e78c5d2b4664dfdbb339030a1798c}{SD\_\-writeSingleBlock} (unsigned long \hyperlink{mmc2_8h_aef9ccbd37ff89101204c1ab239f94453}{startBlock})
+\item 
+unsigned char \hyperlink{mmc2_8h_a53bffe1cf14bfa7bf68d9573e31a2970}{SD\_\-readMultipleBlock} (unsigned long \hyperlink{mmc2_8h_aef9ccbd37ff89101204c1ab239f94453}{startBlock}, unsigned long \hyperlink{mmc2_8h_a18e6ba0217759ba11da835a1aa52edbf}{totalBlocks})
+\item 
+unsigned char \hyperlink{mmc2_8h_af2c67f72a35334e82eedebef71964d9a}{SD\_\-writeMultipleBlock} (unsigned long \hyperlink{mmc2_8h_aef9ccbd37ff89101204c1ab239f94453}{startBlock}, unsigned long \hyperlink{mmc2_8h_a18e6ba0217759ba11da835a1aa52edbf}{totalBlocks})
+\item 
+unsigned char \hyperlink{mmc2_8h_a42f0a626164a7e52e260d0cd735e5479}{SD\_\-erase} (unsigned long \hyperlink{mmc2_8h_aef9ccbd37ff89101204c1ab239f94453}{startBlock}, unsigned long \hyperlink{mmc2_8h_a18e6ba0217759ba11da835a1aa52edbf}{totalBlocks})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile unsigned long \hyperlink{mmc2_8h_aef9ccbd37ff89101204c1ab239f94453}{startBlock}
+\item 
+volatile unsigned long \hyperlink{mmc2_8h_a18e6ba0217759ba11da835a1aa52edbf}{totalBlocks}
+\item 
+volatile unsigned char \hyperlink{mmc2_8h_a7fa85cbe61c04a9f71c57aaf1c04cfcc}{SDHC\_\-flag}
+\item 
+volatile unsigned char \hyperlink{mmc2_8h_add9f7153567b2f38191b157d2caf7b79}{cardType}
+\item 
+unsigned char \hyperlink{mmc2_8h_abbb739d03dfe3d5766f427e435af90aa}{sd\_\-buffer} \mbox{[}512\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{mmc2_8h_acdb057504ceebb40cb4a5df3197a8fb5}{
+\index{mmc2.h@{mmc2.h}!APP\_\-CMD@{APP\_\-CMD}}
+\index{APP\_\-CMD@{APP\_\-CMD}!mmc2.h@{mmc2.h}}
+\subsubsection[{APP\_\-CMD}]{\setlength{\rightskip}{0pt plus 5cm}\#define APP\_\-CMD~55}}
+\label{mmc2_8h_acdb057504ceebb40cb4a5df3197a8fb5}
+
+
+Definition at line 57 of file mmc2.h.
+
+\hypertarget{mmc2_8h_a5104895f45f0891d5bedef91b7dd4a92}{
+\index{mmc2.h@{mmc2.h}!CRC\_\-ON\_\-OFF@{CRC\_\-ON\_\-OFF}}
+\index{CRC\_\-ON\_\-OFF@{CRC\_\-ON\_\-OFF}!mmc2.h@{mmc2.h}}
+\subsubsection[{CRC\_\-ON\_\-OFF}]{\setlength{\rightskip}{0pt plus 5cm}\#define CRC\_\-ON\_\-OFF~59}}
+\label{mmc2_8h_a5104895f45f0891d5bedef91b7dd4a92}
+
+
+Definition at line 59 of file mmc2.h.
+
+\hypertarget{mmc2_8h_ade170f78d275c9bfd354e726e12435e2}{
+\index{mmc2.h@{mmc2.h}!ERASE\_\-BLOCK\_\-END\_\-ADDR@{ERASE\_\-BLOCK\_\-END\_\-ADDR}}
+\index{ERASE\_\-BLOCK\_\-END\_\-ADDR@{ERASE\_\-BLOCK\_\-END\_\-ADDR}!mmc2.h@{mmc2.h}}
+\subsubsection[{ERASE\_\-BLOCK\_\-END\_\-ADDR}]{\setlength{\rightskip}{0pt plus 5cm}\#define ERASE\_\-BLOCK\_\-END\_\-ADDR~33}}
+\label{mmc2_8h_ade170f78d275c9bfd354e726e12435e2}
+
+
+Definition at line 54 of file mmc2.h.
+
+\hypertarget{mmc2_8h_a0fe84e05b768d0f4b0f98a7f48a19f7f}{
+\index{mmc2.h@{mmc2.h}!ERASE\_\-BLOCK\_\-START\_\-ADDR@{ERASE\_\-BLOCK\_\-START\_\-ADDR}}
+\index{ERASE\_\-BLOCK\_\-START\_\-ADDR@{ERASE\_\-BLOCK\_\-START\_\-ADDR}!mmc2.h@{mmc2.h}}
+\subsubsection[{ERASE\_\-BLOCK\_\-START\_\-ADDR}]{\setlength{\rightskip}{0pt plus 5cm}\#define ERASE\_\-BLOCK\_\-START\_\-ADDR~32}}
+\label{mmc2_8h_a0fe84e05b768d0f4b0f98a7f48a19f7f}
+
+
+Definition at line 53 of file mmc2.h.
+
+\hypertarget{mmc2_8h_ae9177be3107326be877417b3b02e3a83}{
+\index{mmc2.h@{mmc2.h}!ERASE\_\-SELECTED\_\-BLOCKS@{ERASE\_\-SELECTED\_\-BLOCKS}}
+\index{ERASE\_\-SELECTED\_\-BLOCKS@{ERASE\_\-SELECTED\_\-BLOCKS}!mmc2.h@{mmc2.h}}
+\subsubsection[{ERASE\_\-SELECTED\_\-BLOCKS}]{\setlength{\rightskip}{0pt plus 5cm}\#define ERASE\_\-SELECTED\_\-BLOCKS~38}}
+\label{mmc2_8h_ae9177be3107326be877417b3b02e3a83}
+
+
+Definition at line 55 of file mmc2.h.
+
+\hypertarget{mmc2_8h_a4c9caedf210e9e4e61475e4e86293123}{
+\index{mmc2.h@{mmc2.h}!FAT\_\-TESTING\_\-ONLY@{FAT\_\-TESTING\_\-ONLY}}
+\index{FAT\_\-TESTING\_\-ONLY@{FAT\_\-TESTING\_\-ONLY}!mmc2.h@{mmc2.h}}
+\subsubsection[{FAT\_\-TESTING\_\-ONLY}]{\setlength{\rightskip}{0pt plus 5cm}\#define FAT\_\-TESTING\_\-ONLY}}
+\label{mmc2_8h_a4c9caedf210e9e4e61475e4e86293123}
+
+
+Definition at line 31 of file mmc2.h.
+
+\hypertarget{mmc2_8h_a939c1c73db7a96767f5d06dfe7591b01}{
+\index{mmc2.h@{mmc2.h}!GO\_\-IDLE\_\-STATE@{GO\_\-IDLE\_\-STATE}}
+\index{GO\_\-IDLE\_\-STATE@{GO\_\-IDLE\_\-STATE}!mmc2.h@{mmc2.h}}
+\subsubsection[{GO\_\-IDLE\_\-STATE}]{\setlength{\rightskip}{0pt plus 5cm}\#define GO\_\-IDLE\_\-STATE~0}}
+\label{mmc2_8h_a939c1c73db7a96767f5d06dfe7591b01}
+
+
+Definition at line 42 of file mmc2.h.
+
+\hypertarget{mmc2_8h_a29e413f6725b2ba32d165ffaa35b01e5}{
+\index{mmc2.h@{mmc2.h}!OFF@{OFF}}
+\index{OFF@{OFF}!mmc2.h@{mmc2.h}}
+\subsubsection[{OFF}]{\setlength{\rightskip}{0pt plus 5cm}\#define OFF~0}}
+\label{mmc2_8h_a29e413f6725b2ba32d165ffaa35b01e5}
+
+
+Definition at line 63 of file mmc2.h.
+
+\hypertarget{mmc2_8h_ad76d1750a6cdeebd506bfcd6752554d2}{
+\index{mmc2.h@{mmc2.h}!ON@{ON}}
+\index{ON@{ON}!mmc2.h@{mmc2.h}}
+\subsubsection[{ON}]{\setlength{\rightskip}{0pt plus 5cm}\#define ON~1}}
+\label{mmc2_8h_ad76d1750a6cdeebd506bfcd6752554d2}
+
+
+Definition at line 62 of file mmc2.h.
+
+\hypertarget{mmc2_8h_ac1b68c53e7902f7197cd9f52b163bda1}{
+\index{mmc2.h@{mmc2.h}!READ\_\-MULTIPLE\_\-BLOCKS@{READ\_\-MULTIPLE\_\-BLOCKS}}
+\index{READ\_\-MULTIPLE\_\-BLOCKS@{READ\_\-MULTIPLE\_\-BLOCKS}!mmc2.h@{mmc2.h}}
+\subsubsection[{READ\_\-MULTIPLE\_\-BLOCKS}]{\setlength{\rightskip}{0pt plus 5cm}\#define READ\_\-MULTIPLE\_\-BLOCKS~18}}
+\label{mmc2_8h_ac1b68c53e7902f7197cd9f52b163bda1}
+
+
+Definition at line 50 of file mmc2.h.
+
+\hypertarget{mmc2_8h_a9903337fbf33e03e1a9182fbca009313}{
+\index{mmc2.h@{mmc2.h}!READ\_\-OCR@{READ\_\-OCR}}
+\index{READ\_\-OCR@{READ\_\-OCR}!mmc2.h@{mmc2.h}}
+\subsubsection[{READ\_\-OCR}]{\setlength{\rightskip}{0pt plus 5cm}\#define READ\_\-OCR~58}}
+\label{mmc2_8h_a9903337fbf33e03e1a9182fbca009313}
+
+
+Definition at line 58 of file mmc2.h.
+
+\hypertarget{mmc2_8h_a078b4c06f187324dd4e14cf59a6c87c2}{
+\index{mmc2.h@{mmc2.h}!READ\_\-SINGLE\_\-BLOCK@{READ\_\-SINGLE\_\-BLOCK}}
+\index{READ\_\-SINGLE\_\-BLOCK@{READ\_\-SINGLE\_\-BLOCK}!mmc2.h@{mmc2.h}}
+\subsubsection[{READ\_\-SINGLE\_\-BLOCK}]{\setlength{\rightskip}{0pt plus 5cm}\#define READ\_\-SINGLE\_\-BLOCK~17}}
+\label{mmc2_8h_a078b4c06f187324dd4e14cf59a6c87c2}
+
+
+Definition at line 49 of file mmc2.h.
+
+\hypertarget{mmc2_8h_ab42aba8ac59f4a88718f351bf6e30874}{
+\index{mmc2.h@{mmc2.h}!SD\_\-CS\_\-ASSERT@{SD\_\-CS\_\-ASSERT}}
+\index{SD\_\-CS\_\-ASSERT@{SD\_\-CS\_\-ASSERT}!mmc2.h@{mmc2.h}}
+\subsubsection[{SD\_\-CS\_\-ASSERT}]{\setlength{\rightskip}{0pt plus 5cm}\#define SD\_\-CS\_\-ASSERT~CS\_\-LOW();}}
+\label{mmc2_8h_ab42aba8ac59f4a88718f351bf6e30874}
+
+
+Definition at line 34 of file mmc2.h.
+
+\hypertarget{mmc2_8h_ac13a5b7ed7d2ee96da07f2b2ae9249fe}{
+\index{mmc2.h@{mmc2.h}!SD\_\-CS\_\-DEASSERT@{SD\_\-CS\_\-DEASSERT}}
+\index{SD\_\-CS\_\-DEASSERT@{SD\_\-CS\_\-DEASSERT}!mmc2.h@{mmc2.h}}
+\subsubsection[{SD\_\-CS\_\-DEASSERT}]{\setlength{\rightskip}{0pt plus 5cm}\#define SD\_\-CS\_\-DEASSERT~CS\_\-HIGH();}}
+\label{mmc2_8h_ac13a5b7ed7d2ee96da07f2b2ae9249fe}
+
+
+Definition at line 35 of file mmc2.h.
+
+\hypertarget{mmc2_8h_a38e73c548131f1fd3f8acdad82fd44fb}{
+\index{mmc2.h@{mmc2.h}!SD\_\-SEND\_\-OP\_\-COND@{SD\_\-SEND\_\-OP\_\-COND}}
+\index{SD\_\-SEND\_\-OP\_\-COND@{SD\_\-SEND\_\-OP\_\-COND}!mmc2.h@{mmc2.h}}
+\subsubsection[{SD\_\-SEND\_\-OP\_\-COND}]{\setlength{\rightskip}{0pt plus 5cm}\#define SD\_\-SEND\_\-OP\_\-COND~41}}
+\label{mmc2_8h_a38e73c548131f1fd3f8acdad82fd44fb}
+
+
+Definition at line 56 of file mmc2.h.
+
+\hypertarget{mmc2_8h_a85a884eec438d450dc1c05e8d9d29044}{
+\index{mmc2.h@{mmc2.h}!SEND\_\-CSD@{SEND\_\-CSD}}
+\index{SEND\_\-CSD@{SEND\_\-CSD}!mmc2.h@{mmc2.h}}
+\subsubsection[{SEND\_\-CSD}]{\setlength{\rightskip}{0pt plus 5cm}\#define SEND\_\-CSD~9}}
+\label{mmc2_8h_a85a884eec438d450dc1c05e8d9d29044}
+
+
+Definition at line 45 of file mmc2.h.
+
+\hypertarget{mmc2_8h_a01bcf82717d75d8ccf0a8664d431738d}{
+\index{mmc2.h@{mmc2.h}!SEND\_\-IF\_\-COND@{SEND\_\-IF\_\-COND}}
+\index{SEND\_\-IF\_\-COND@{SEND\_\-IF\_\-COND}!mmc2.h@{mmc2.h}}
+\subsubsection[{SEND\_\-IF\_\-COND}]{\setlength{\rightskip}{0pt plus 5cm}\#define SEND\_\-IF\_\-COND~8}}
+\label{mmc2_8h_a01bcf82717d75d8ccf0a8664d431738d}
+
+
+Definition at line 44 of file mmc2.h.
+
+\hypertarget{mmc2_8h_a2397afdad46162ab52c4008d8f5dab23}{
+\index{mmc2.h@{mmc2.h}!SEND\_\-OP\_\-COND@{SEND\_\-OP\_\-COND}}
+\index{SEND\_\-OP\_\-COND@{SEND\_\-OP\_\-COND}!mmc2.h@{mmc2.h}}
+\subsubsection[{SEND\_\-OP\_\-COND}]{\setlength{\rightskip}{0pt plus 5cm}\#define SEND\_\-OP\_\-COND~1}}
+\label{mmc2_8h_a2397afdad46162ab52c4008d8f5dab23}
+
+
+Definition at line 43 of file mmc2.h.
+
+\hypertarget{mmc2_8h_a7f98c79059221d788e2219865d770648}{
+\index{mmc2.h@{mmc2.h}!SEND\_\-STATUS@{SEND\_\-STATUS}}
+\index{SEND\_\-STATUS@{SEND\_\-STATUS}!mmc2.h@{mmc2.h}}
+\subsubsection[{SEND\_\-STATUS}]{\setlength{\rightskip}{0pt plus 5cm}\#define SEND\_\-STATUS~13}}
+\label{mmc2_8h_a7f98c79059221d788e2219865d770648}
+
+
+Definition at line 47 of file mmc2.h.
+
+\hypertarget{mmc2_8h_a2f0756e65bb52b5d7e7934ce1d5ec0da}{
+\index{mmc2.h@{mmc2.h}!SET\_\-BLOCK\_\-LEN@{SET\_\-BLOCK\_\-LEN}}
+\index{SET\_\-BLOCK\_\-LEN@{SET\_\-BLOCK\_\-LEN}!mmc2.h@{mmc2.h}}
+\subsubsection[{SET\_\-BLOCK\_\-LEN}]{\setlength{\rightskip}{0pt plus 5cm}\#define SET\_\-BLOCK\_\-LEN~16}}
+\label{mmc2_8h_a2f0756e65bb52b5d7e7934ce1d5ec0da}
+
+
+Definition at line 48 of file mmc2.h.
+
+\hypertarget{mmc2_8h_a0f220568605a0eaa9a5cbb3d3cc82408}{
+\index{mmc2.h@{mmc2.h}!STOP\_\-TRANSMISSION@{STOP\_\-TRANSMISSION}}
+\index{STOP\_\-TRANSMISSION@{STOP\_\-TRANSMISSION}!mmc2.h@{mmc2.h}}
+\subsubsection[{STOP\_\-TRANSMISSION}]{\setlength{\rightskip}{0pt plus 5cm}\#define STOP\_\-TRANSMISSION~12}}
+\label{mmc2_8h_a0f220568605a0eaa9a5cbb3d3cc82408}
+
+
+Definition at line 46 of file mmc2.h.
+
+\hypertarget{mmc2_8h_a8cf5245e676d5405878f2af647491553}{
+\index{mmc2.h@{mmc2.h}!WRITE\_\-MULTIPLE\_\-BLOCKS@{WRITE\_\-MULTIPLE\_\-BLOCKS}}
+\index{WRITE\_\-MULTIPLE\_\-BLOCKS@{WRITE\_\-MULTIPLE\_\-BLOCKS}!mmc2.h@{mmc2.h}}
+\subsubsection[{WRITE\_\-MULTIPLE\_\-BLOCKS}]{\setlength{\rightskip}{0pt plus 5cm}\#define WRITE\_\-MULTIPLE\_\-BLOCKS~25}}
+\label{mmc2_8h_a8cf5245e676d5405878f2af647491553}
+
+
+Definition at line 52 of file mmc2.h.
+
+\hypertarget{mmc2_8h_ae24d09e65670aa853aa83889b55a92a0}{
+\index{mmc2.h@{mmc2.h}!WRITE\_\-SINGLE\_\-BLOCK@{WRITE\_\-SINGLE\_\-BLOCK}}
+\index{WRITE\_\-SINGLE\_\-BLOCK@{WRITE\_\-SINGLE\_\-BLOCK}!mmc2.h@{mmc2.h}}
+\subsubsection[{WRITE\_\-SINGLE\_\-BLOCK}]{\setlength{\rightskip}{0pt plus 5cm}\#define WRITE\_\-SINGLE\_\-BLOCK~24}}
+\label{mmc2_8h_ae24d09e65670aa853aa83889b55a92a0}
+
+
+Definition at line 51 of file mmc2.h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{mmc2_8h_a42f0a626164a7e52e260d0cd735e5479}{
+\index{mmc2.h@{mmc2.h}!SD\_\-erase@{SD\_\-erase}}
+\index{SD\_\-erase@{SD\_\-erase}!mmc2.h@{mmc2.h}}
+\subsubsection[{SD\_\-erase}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char SD\_\-erase (
+\begin{DoxyParamCaption}
+\item[{unsigned long}]{startBlock, }
+\item[{unsigned long}]{totalBlocks}
+\end{DoxyParamCaption}
+)}}
+\label{mmc2_8h_a42f0a626164a7e52e260d0cd735e5479}
+
+
+Definition at line 195 of file mmc2.c.
+
+
+\begin{DoxyCode}
+{
+  unsigned char response;
+  
+  response = SD_sendCommand(ERASE_BLOCK_START_ADDR, startBlock); //send starting 
+      block address
+  if(response != 0x00) //check for SD status: 0x00 - OK (No flags set)
+    return response;
+  
+  response = SD_sendCommand(ERASE_BLOCK_END_ADDR,(startBlock + totalBlocks - 1));
+       //send end block address
+  if(response != 0x00)
+    return response;
+  
+  response = SD_sendCommand(ERASE_SELECTED_BLOCKS, 0); //erase all selected block
+      s
+  if(response != 0x00)
+    return response;
+  
+  return 0; //normal return
+}
+\end{DoxyCode}
+\hypertarget{mmc2_8h_a1b26e131140b8ab739faa4dd100d6cf2}{
+\index{mmc2.h@{mmc2.h}!SD\_\-init@{SD\_\-init}}
+\index{SD\_\-init@{SD\_\-init}!mmc2.h@{mmc2.h}}
+\subsubsection[{SD\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char SD\_\-init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{mmc2_8h_a1b26e131140b8ab739faa4dd100d6cf2}
+
+
+Definition at line 37 of file mmc2.c.
+
+
+\begin{DoxyCode}
+{
+  unsigned char i, response, SD_version;
+  unsigned int retry=0 ;
+  
+    // Chip Select
+  MCU_IO_OUTPUT(MMC_CS_PORT,MMC_CS_PIN,1);  //MMC_CS_PxDIR |= MMC_CS;
+  
+  // Init SPI Module
+  halSPISetup();
+  
+  for(i=0;i<10;i++)
+    SPI_transmit(0xff);   //80 clock pulses spent before sending the first comman
+      d
+  
+  SD_CS_ASSERT;
+  do
+  {
+    
+    response = SD_sendCommand(GO_IDLE_STATE, 0); //send 'reset & go idle' command
+      
+    retry++;
+    if(retry>0x20) 
+      return 1;   //time out, card not detected
+    
+  } while(response != 0x01);
+  
+  SD_CS_DEASSERT;
+  SPI_transmit (0xff);
+  SPI_transmit (0xff);
+  
+  retry = 0;
+  
+  SD_version = 2; //default set to SD compliance with ver2.x; 
+  //this may change after checking the next command
+  do
+  {
+    response = SD_sendCommand(SEND_IF_COND,0x000001AA); //Check power supply stat
+      us, mendatory for SDHC card
+    retry++;
+    if(retry>0xfe) 
+    {
+      //TX_NEWLINE;
+      SD_version = 1;
+      cardType = 1;
+      break;
+    } //time out
+    
+  }while(response != 0x01);
+  
+  retry = 0;
+  
+  do
+  {
+    response = SD_sendCommand(APP_CMD,0); //CMD55, must be sent before sending an
+      y ACMD command
+    response = SD_sendCommand(SD_SEND_OP_COND,0x40000000); //ACMD41
+    
+    retry++;
+    if(retry>0xfe) 
+    {
+      //TX_NEWLINE;
+      return 2;  //time out, card initialization failed
+    } 
+    
+  }while(response != 0x00);
+  
+  
+  retry = 0;
+  SDHC_flag = 0;
+  
+  if (SD_version == 2)
+  { 
+    do
+    {
+      response = SD_sendCommand(READ_OCR,0);
+      retry++;
+      if(retry>0xfe) 
+      {
+        //TX_NEWLINE;
+        cardType = 0;
+        break;
+      } //time out
+      
+    }while(response != 0x00);
+    
+    if(SDHC_flag == 1) cardType = 2;
+    else cardType = 3;
+  }
+  
+  //SD_sendCommand(CRC_ON_OFF, OFF); //disable CRC; deafault - CRC disabled in SP
+      I mode
+  SD_sendCommand(SET_BLOCK_LEN, 512); //set block size to 512; default size is 51
+      2
+  
+  
+  return 0; //successful return
+}
+\end{DoxyCode}
+\hypertarget{mmc2_8h_a53bffe1cf14bfa7bf68d9573e31a2970}{
+\index{mmc2.h@{mmc2.h}!SD\_\-readMultipleBlock@{SD\_\-readMultipleBlock}}
+\index{SD\_\-readMultipleBlock@{SD\_\-readMultipleBlock}!mmc2.h@{mmc2.h}}
+\subsubsection[{SD\_\-readMultipleBlock}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char SD\_\-readMultipleBlock (
+\begin{DoxyParamCaption}
+\item[{unsigned long}]{startBlock, }
+\item[{unsigned long}]{totalBlocks}
+\end{DoxyParamCaption}
+)}}
+\label{mmc2_8h_a53bffe1cf14bfa7bf68d9573e31a2970}
+\hypertarget{mmc2_8h_a479d5a79e118601ffede156b20d87494}{
+\index{mmc2.h@{mmc2.h}!SD\_\-readSingleBlock@{SD\_\-readSingleBlock}}
+\index{SD\_\-readSingleBlock@{SD\_\-readSingleBlock}!mmc2.h@{mmc2.h}}
+\subsubsection[{SD\_\-readSingleBlock}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char SD\_\-readSingleBlock (
+\begin{DoxyParamCaption}
+\item[{unsigned long}]{startBlock}
+\end{DoxyParamCaption}
+)}}
+\label{mmc2_8h_a479d5a79e118601ffede156b20d87494}
+
+
+Definition at line 220 of file mmc2.c.
+
+
+\begin{DoxyCode}
+{
+  unsigned char response;
+  unsigned int i, retry=0;
+  
+  response = SD_sendCommand(READ_SINGLE_BLOCK, startBlock); //read a Block comman
+      d
+  
+  if(response != 0x00) return response; //check for SD status: 0x00 - OK (No flag
+      s set)
+  
+  SD_CS_ASSERT;
+  
+  retry = 0;
+  while(SPI_transmit(0xFF) != 0xfe) //wait for start block token 0xfe (0x11111110
+      )
+    if(retry++ > 0xfffe){SD_CS_DEASSERT; return 1;} //return if time-out
+  
+  for(i=0; i<512; i++) //read 512 bytes
+    sd_buffer[i] = SPI_transmit(0xFF);
+  
+  SPI_transmit(0xFF); //receive incoming CRC (16-bit), CRC is ignored here
+  SPI_transmit(0xFF);
+  
+  SPI_transmit(0xFF); //extra 8 clock pulses
+  SD_CS_DEASSERT;
+  
+  return 0;
+}
+\end{DoxyCode}
+\hypertarget{mmc2_8h_a9faa6fa4ebcf98a07808f2d2c040dcfd}{
+\index{mmc2.h@{mmc2.h}!SD\_\-sendCommand@{SD\_\-sendCommand}}
+\index{SD\_\-sendCommand@{SD\_\-sendCommand}!mmc2.h@{mmc2.h}}
+\subsubsection[{SD\_\-sendCommand}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char SD\_\-sendCommand (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{cmd, }
+\item[{unsigned long}]{arg}
+\end{DoxyParamCaption}
+)}}
+\label{mmc2_8h_a9faa6fa4ebcf98a07808f2d2c040dcfd}
+
+
+Definition at line 136 of file mmc2.c.
+
+
+\begin{DoxyCode}
+{
+  unsigned char response, retry=0, status;
+  
+  //SD card accepts byte address while SDHC accepts block address in multiples of
+       512
+  //so, if it's SD card we need to convert block address into corresponding byte 
+      address by 
+  //multipying it with 512. which is equivalent to shifting it left 9 times
+  //following 'if' loop does that
+  
+  if(SDHC_flag == 0)            
+    if(cmd == READ_SINGLE_BLOCK     ||
+       cmd == READ_MULTIPLE_BLOCKS  ||
+         cmd == WRITE_SINGLE_BLOCK    ||
+           cmd == WRITE_MULTIPLE_BLOCKS ||
+             cmd == ERASE_BLOCK_START_ADDR|| 
+               cmd == ERASE_BLOCK_END_ADDR ) 
+    {
+      arg = arg << 9;
+    }      
+  
+  SD_CS_ASSERT;
+  
+  SPI_transmit(cmd | 0x40); //send command, first two bits always '01'
+  SPI_transmit(arg>>24);
+  SPI_transmit(arg>>16);
+  SPI_transmit(arg>>8);
+  SPI_transmit(arg);
+  
+  if(cmd == SEND_IF_COND)        //it is compulsory to send correct CRC for CMD8 
+      (CRC=0x87) & CMD0 (CRC=0x95)
+    SPI_transmit(0x87);    //for remaining commands, CRC is ignored in SPI mode
+  else 
+    SPI_transmit(0x95); 
+  
+  while((response = SPI_transmit(0xFF)) == 0xff) //wait response
+    if(retry++ > 0xfe) break; //time out error
+  
+  if(response == 0x00 && cmd == 58)  //checking response of CMD58
+  {
+    status = SPI_transmit(0xFF) & 0x40;     //first byte of the OCR register (bit
+       31:24)
+    if(status == 0x40) SDHC_flag = 1;  //we need it to verify SDHC card
+    else SDHC_flag = 0;
+    
+    SPI_transmit(0xFF); //remaining 3 bytes of the OCR register are ignored here
+    SPI_transmit(0xFF); //one can use these bytes to check power supply limits of
+       SD
+    SPI_transmit(0xFF); 
+  }
+  
+  SPI_transmit(0xFF); //extra 8 CLK
+  SD_CS_DEASSERT;
+  
+  return response; //return state
+}
+\end{DoxyCode}
+\hypertarget{mmc2_8h_af2c67f72a35334e82eedebef71964d9a}{
+\index{mmc2.h@{mmc2.h}!SD\_\-writeMultipleBlock@{SD\_\-writeMultipleBlock}}
+\index{SD\_\-writeMultipleBlock@{SD\_\-writeMultipleBlock}!mmc2.h@{mmc2.h}}
+\subsubsection[{SD\_\-writeMultipleBlock}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char SD\_\-writeMultipleBlock (
+\begin{DoxyParamCaption}
+\item[{unsigned long}]{startBlock, }
+\item[{unsigned long}]{totalBlocks}
+\end{DoxyParamCaption}
+)}}
+\label{mmc2_8h_af2c67f72a35334e82eedebef71964d9a}
+\hypertarget{mmc2_8h_aa72e78c5d2b4664dfdbb339030a1798c}{
+\index{mmc2.h@{mmc2.h}!SD\_\-writeSingleBlock@{SD\_\-writeSingleBlock}}
+\index{SD\_\-writeSingleBlock@{SD\_\-writeSingleBlock}!mmc2.h@{mmc2.h}}
+\subsubsection[{SD\_\-writeSingleBlock}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char SD\_\-writeSingleBlock (
+\begin{DoxyParamCaption}
+\item[{unsigned long}]{startBlock}
+\end{DoxyParamCaption}
+)}}
+\label{mmc2_8h_aa72e78c5d2b4664dfdbb339030a1798c}
+
+
+Definition at line 253 of file mmc2.c.
+
+
+\begin{DoxyCode}
+{
+  unsigned char response;
+  unsigned int i, retry=0;
+  
+  response = SD_sendCommand(WRITE_SINGLE_BLOCK, startBlock); //write a Block comm
+      and
+  
+  if(response != 0x00) return response; //check for SD status: 0x00 - OK (No flag
+      s set)
+  
+  SD_CS_ASSERT;
+  
+  SPI_transmit(0xfe);     //Send start block token 0xfe (0x11111110)
+  
+  for(i=0; i<512; i++)    //send 512 bytes data
+    SPI_transmit(sd_buffer[i]);
+  
+  SPI_transmit(0xff);     //transmit dummy CRC (16-bit), CRC is ignored here
+  SPI_transmit(0xff);
+  
+  response = SPI_transmit(0xFF);
+  
+  if( (response & 0x1f) != 0x05) //response= 0xXXX0AAA1 ; AAA='010' - data accept
+      ed
+  {                              //AAA='101'-data rejected due to CRC error
+    SD_CS_DEASSERT;              //AAA='110'-data rejected due to write error
+    return response;
+  }
+  
+  while(!SPI_transmit(0xFF)) //wait for SD card to complete writing and get idle
+    if(retry++ > 0xfffe){SD_CS_DEASSERT; return 1;}
+  
+  SD_CS_DEASSERT;
+  SPI_transmit(0xff);   //just spend 8 clock cycle delay before reasserting the C
+      S line
+  SD_CS_ASSERT;         //re-asserting the CS line to verify if card is still bus
+      y
+  
+  while(!SPI_transmit(0xFF)) //wait for SD card to complete writing and get idle
+    if(retry++ > 0xfffe){SD_CS_DEASSERT; return 1;}
+  SD_CS_DEASSERT;
+  
+  return 0;
+}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\hypertarget{mmc2_8h_add9f7153567b2f38191b157d2caf7b79}{
+\index{mmc2.h@{mmc2.h}!cardType@{cardType}}
+\index{cardType@{cardType}!mmc2.h@{mmc2.h}}
+\subsubsection[{cardType}]{\setlength{\rightskip}{0pt plus 5cm}volatile unsigned char {\bf cardType}}}
+\label{mmc2_8h_add9f7153567b2f38191b157d2caf7b79}
+
+
+Definition at line 66 of file mmc2.h.
+
+\hypertarget{mmc2_8h_abbb739d03dfe3d5766f427e435af90aa}{
+\index{mmc2.h@{mmc2.h}!sd\_\-buffer@{sd\_\-buffer}}
+\index{sd\_\-buffer@{sd\_\-buffer}!mmc2.h@{mmc2.h}}
+\subsubsection[{sd\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char {\bf sd\_\-buffer}\mbox{[}512\mbox{]}}}
+\label{mmc2_8h_abbb739d03dfe3d5766f427e435af90aa}
+
+
+Definition at line 31 of file Main\_\-mod3.c.
+
+\hypertarget{mmc2_8h_a7fa85cbe61c04a9f71c57aaf1c04cfcc}{
+\index{mmc2.h@{mmc2.h}!SDHC\_\-flag@{SDHC\_\-flag}}
+\index{SDHC\_\-flag@{SDHC\_\-flag}!mmc2.h@{mmc2.h}}
+\subsubsection[{SDHC\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}volatile unsigned char {\bf SDHC\_\-flag}}}
+\label{mmc2_8h_a7fa85cbe61c04a9f71c57aaf1c04cfcc}
+
+
+Definition at line 66 of file mmc2.h.
+
+\hypertarget{mmc2_8h_aef9ccbd37ff89101204c1ab239f94453}{
+\index{mmc2.h@{mmc2.h}!startBlock@{startBlock}}
+\index{startBlock@{startBlock}!mmc2.h@{mmc2.h}}
+\subsubsection[{startBlock}]{\setlength{\rightskip}{0pt plus 5cm}volatile unsigned long {\bf startBlock}}}
+\label{mmc2_8h_aef9ccbd37ff89101204c1ab239f94453}
+
+
+Definition at line 65 of file mmc2.h.
+
+\hypertarget{mmc2_8h_a18e6ba0217759ba11da835a1aa52edbf}{
+\index{mmc2.h@{mmc2.h}!totalBlocks@{totalBlocks}}
+\index{totalBlocks@{totalBlocks}!mmc2.h@{mmc2.h}}
+\subsubsection[{totalBlocks}]{\setlength{\rightskip}{0pt plus 5cm}volatile unsigned long {\bf totalBlocks}}}
+\label{mmc2_8h_a18e6ba0217759ba11da835a1aa52edbf}
+
+
+Definition at line 65 of file mmc2.h.
+

@@ -1,0 +1,260 @@
+.TH "Main_mod1.c" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Main_mod1.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <hal_led.h>\fP
+.br
+\fC#include <hal_assert.h>\fP
+.br
+\fC#include <hal_board.h>\fP
+.br
+\fC#include <hal_int.h>\fP
+.br
+\fC#include 'hal_mcu.h'\fP
+.br
+\fC#include 'hal_rf.h'\fP
+.br
+\fC#include 'basic_rf.h'\fP
+.br
+\fC#include 'uart_intfc.h'\fP
+.br
+\fC#include 'TouchScreen.h'\fP
+.br
+\fC#include <stdio.h>\fP
+.br
+\fC#include <string.h>\fP
+.br
+\fC#include <stdlib.h>\fP
+.br
+\fC#include 'hal_spi.h'\fP
+.br
+\fC#include 'TimerManager.h'\fP
+.br
+\fC#include 'Drum.h'\fP
+.br
+\fC#include 'midi.h'\fP
+.br
+\fC#include 'graphics_lcd.h'\fP
+.br
+\fC#include 'key_map.h'\fP
+.br
+\fC#include 'App_RF.h'\fP
+.br
+\fC#include 'kb.h'\fP
+.br
+\fC#include 'utilMisc.h'\fP
+.br
+\fC#include 'piano.h'\fP
+.br
+
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBSZ_RFBUF\fP   50"
+.br
+.ti -1c
+.RI "#define \fBbzero\fP(b, len)   (memset((b), '\\0', (len)), (void) 0)"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBrfStat\fP { \fBrfHello\fP =  1, \fBrfVPiano\fP, \fBrfVDrum\fP, \fBrfVGuitar\fP, \fBrfHello\fP =  1, \fBrfVPiano\fP, \fBrfVDrum\fP, \fBrfVGuitar\fP, \fBrfRPiano\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBmidiTest\fP (void)"
+.br
+.ti -1c
+.RI "void \fBlcdTest\fP (void)"
+.br
+.ti -1c
+.RI "void \fBmain\fP (void)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "unsigned char \fBrfBuf\fP [SZ_RFBUF] = {0}"
+.br
+.ti -1c
+.RI "unsigned char \fBCheck_Flag\fP = 1"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define bzero(b, len)   (memset((b), '\\0', (len)), (void) 0)"
+.PP
+Definition at line 39 of file Main_mod1.c.
+.SS "#define SZ_RFBUF   50"
+.PP
+Definition at line 37 of file Main_mod1.c.
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBrfStat\fP"
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fIrfHello \fP\fP
+.TP
+\fB\fIrfVPiano \fP\fP
+.TP
+\fB\fIrfVDrum \fP\fP
+.TP
+\fB\fIrfVGuitar \fP\fP
+.TP
+\fB\fIrfHello \fP\fP
+.TP
+\fB\fIrfVPiano \fP\fP
+.TP
+\fB\fIrfVDrum \fP\fP
+.TP
+\fB\fIrfVGuitar \fP\fP
+.TP
+\fB\fIrfRPiano \fP\fP
+
+.PP
+Definition at line 41 of file Main_mod1.c.
+.PP
+.nf
+            {
+        rfHello = 1,
+        rfVPiano,
+        rfVDrum,
+        rfVGuitar
+};
+.fi
+.SH "Function Documentation"
+.PP 
+.SS "void lcdTest (void)"
+.SS "void main (void)"
+.PP
+Definition at line 66 of file Main_mod1.c.
+.PP
+.nf
+{
+        //rf flags-----
+        unsigned char rfStatus = 0;
+        
+        // Initalise board peripherals
+  halBoardInit();
+  uart_intfc_init();
+  TimerInterface_Initialize();
+        Init_AppRF();
+        halMcuWaitMs(2000);
+
+  printf_pc('Init done (M1)\n\r');
+
+  while (1) {
+                
+                bzero(rfBuf, SZ_RFBUF);
+                RF_gets_blk(rfBuf);
+                
+                if (NULL != strstr((const char*)rfBuf, 'HELLO')) rfStatus = rfHello;
+                if (NULL != strstr((const char*)rfBuf, 'VPIANO')) rfStatus = rfVPiano;
+                if (NULL != strstr((const char*)rfBuf, 'VDRUM')) rfStatus = rfVDrum;
+                if (NULL != strstr((const char*)rfBuf, 'VGUITAR')) rfStatus = rfVGuitar;
+                
+                switch (rfStatus) {
+                        
+                        case rfHello:
+                                printf_pc('In rfHello\n\r');
+                                halMcuWaitMs(100);
+                                RF_puts('ACK');
+                                break;
+                                
+                        case rfVPiano:
+                                printf_pc('In rfVPiano\n\r');
+                                clear_screen_lcd();                                             //Clears LCD screen
+                                draw_piano();                                                   //Draws a Piano
+                                RF_puts('ACK');
+                                playVPiano();
+                                break;
+                                
+                        case rfVDrum:
+                                printf_pc('In rfVDrum\n\r');
+                                clear_screen_lcd();                                             //Clear LCD screen
+                                draw_drums();                                                                   //Draws Drums
+                                RF_puts('ACK');
+                                playVDrum();
+                                break;
+                                
+                        case rfVGuitar:
+                                printf_pc('In rfVGuitar\n\r');
+                                clear_screen_lcd();                                             //Clear LCD screen
+                                draw_guitar();                                                          //Draws Guitar Strings
+                                RF_puts('ACK');
+                                playVGuitar();
+                                break;
+                                
+                        default:
+                                printf_pc('In default\n\r');
+                                RF_puts('NACK');
+                                
+                } //end switch
+  }// end while(1)
+}
+.fi
+.SS "void midiTest (void)"
+.PP
+Definition at line 265 of file Main_mod2.c.
+.PP
+.nf
+                {
+        
+        midiReset();
+        midiVolSet(120);
+        //midiBankSet(DRUMS1);
+        //midiPatchSet(5);
+        midiBankSet(MELODY);
+        midiPatchSet(PIANO_ELG);
+        halMcuWaitMs(100);
+
+//  midiReset();
+//      midiVolSet(120); //set channel volume to near max (127)
+//      midiBankSet(MELODY); //0x79 = melodious instruments
+//      midiPatchSet(118);
+//      noteOn(0, 51, 0x3D);
+//      halMcuWaitMs(500);
+        
+        
+//      for (i=0; i<50; i++) {
+//              noteOn(0, i+30, 0x48);
+//              halMcuWaitMs(100);
+//              //noteOff(0, i+30, 0x48);
+//              halMcuWaitMs(100);
+//
+//      }
+//      for (i=50; i>=0; i--) {
+//              noteOn(0, i+30, 0x48);
+//              halMcuWaitMs(100);
+//              //noteOff(0, i+30, 0x48);
+//              halMcuWaitMs(100);
+//      }
+        
+        //tx1_send('Done\n\r', 6);
+        while (1);
+}
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "unsigned char \fBCheck_Flag\fP = 1"
+.PP
+Definition at line 49 of file Main_mod1.c.
+.SS "unsigned char \fBrfBuf\fP[SZ_RFBUF] = {0}"
+.PP
+Definition at line 48 of file Main_mod1.c.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

@@ -1,0 +1,152 @@
+.TH "hal_SPI.c" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+hal_SPI.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'hal_SPI.h'\fP
+.br
+\fC#include 'hal_board.h'\fP
+.br
+\fC#include 'hal_cc8051.h'\fP
+.br
+\fC#include 'hal_mcu.h'\fP
+.br
+
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fB_SPILIB_C\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBhalSPISetup\fP (void)"
+.br
+.ti -1c
+.RI "unsigned char \fBspiSendByte\fP (const unsigned char data)"
+.br
+.ti -1c
+.RI "unsigned char \fBspiReadFrame\fP (unsigned char *pBuffer, unsigned int size)"
+.br
+.ti -1c
+.RI "unsigned char \fBspiSendFrame\fP (unsigned char *pBuffer, unsigned int size)"
+.br
+.ti -1c
+.RI "unsigned char \fBSPI_transmit\fP (const unsigned char data)"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define _SPILIB_C"
+.PP
+Definition at line 12 of file hal_SPI.c.
+.SH "Function Documentation"
+.PP 
+.SS "void halSPISetup (void)"
+.PP
+Definition at line 36 of file hal_SPI.c.
+.PP
+.nf
+{
+    U0CSR |= 0X40;                              
+    U0UCR = 0x80;
+    U0CSR = 0x00; 
+    P0SEL |= (SPI_SIMO + SPI_SOMI + SPI_UCLK);
+    
+    PERCFG |= 0x00;
+    
+    //IO_DIR_PORT_PIN(0,3,IO_OUT); // txd / MOSI
+    //IO_DIR_PORT_PIN(0,2,IO_IN); // Rxd / MISO
+    //IO_DIR_PORT_PIN(0,4,IO_OUT); // CTS / SS_N
+    //IO_DIR_PORT_PIN(0,5,IO_OUT); // txd / SCK
+    
+    U0GCR = BAUD_E(115200, CLKSPD);
+    U0BAUD = BAUD_M(115200);
+    
+     //Configure SPI Polarity, Clock Phase, and Bit Order
+    U0CSR =   U0CSR & ~0x80;    // Set U0CSR bit 7 to 0 for SPI Mode
+    U0CSR =   U0CSR & ~0x20;    // Set U0CSR bit 5 to 0 for Master
+    U0GCR =  (U0GCR | 0x80);   // Set U0GCR bit 7   to 1 for CPOL = 1
+    U0GCR =  (U0GCR | 0x20);    // Set U0GCR bit 5 to 1 for MSB first
+    U0GCR =  (U0GCR & ~0x40);    // Set U0GCR bit 6 to 0 for CPHA = 0
+    
+    U0CSR |= 0x40;      
+    
+    URX0IF = 0;
+
+    halSPI_SEND(DUMMY_CHAR);
+}
+.fi
+.SS "unsigned char SPI_transmit (const unsigned chardata)"
+.PP
+Definition at line 158 of file hal_SPI.c.
+.PP
+.nf
+{
+  while (halSPITXREADY);    // wait while not ready for TX
+  halSPI_SEND(data);            // write
+  while(!(U0CSR & U0CSR_TX_BYTE));            // wait
+  U0CSR &= ~U0CSR_TX_BYTE;                       // clear flag
+  while (halSPIRXREADY ==0);    // wait for RX buffer (full)
+  return (halSPIRXBUF);
+}
+.fi
+.SS "unsigned char spiReadFrame (unsigned char *pBuffer, unsigned intsize)"
+.PP
+Definition at line 104 of file hal_SPI.c.
+.PP
+.nf
+{
+  unsigned long i = 0;
+  // clock the actual data transfer and receive the bytes; spi_read automatically finds the Data Block
+  for (i = 0; i < size; i++){
+    while (halSPITXREADY);   // wait while not ready for TX
+    halSPI_SEND(DUMMY_CHAR);     // dummy write
+    while(!(U0CSR & U0CSR_TX_BYTE));            // wait
+    U0CSR &= ~U0CSR_TX_BYTE;                       // clear fl
+    pBuffer[i] = halSPIRXBUF;
+  }
+  return(0);
+}
+.fi
+.SS "unsigned char spiSendByte (const unsigned chardata)"
+.PP
+Definition at line 79 of file hal_SPI.c.
+.PP
+.nf
+{
+  while (halSPITXREADY);    // wait while not ready for TX
+  halSPI_SEND(data);            // write
+  while(!(U0CSR & U0CSR_TX_BYTE));            // wait
+  U0CSR &= ~U0CSR_TX_BYTE;                       // clear flag
+  while (halSPIRXREADY ==0);    // wait for RX buffer (full)
+  return (halSPIRXBUF);
+}
+.fi
+.SS "unsigned char spiSendFrame (unsigned char *pBuffer, unsigned intsize)"
+.PP
+Definition at line 132 of file hal_SPI.c.
+.PP
+.nf
+{
+  unsigned long i = 0;
+  // clock the actual data transfer and receive the bytes; spi_read automatically finds the Data Block
+  for (i = 0; i < size; i++){
+    while (halSPITXREADY);   // wait while not ready for TX
+    halSPI_SEND(pBuffer[i]);     // write
+    while(!(U0CSR & U0CSR_TX_BYTE));            // wait
+    U0CSR &= ~U0CSR_TX_BYTE;                       // clear fl
+    pBuffer[i] = halSPIRXBUF;
+  }
+  return(0);
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

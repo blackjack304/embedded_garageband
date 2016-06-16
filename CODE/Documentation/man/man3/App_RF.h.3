@@ -1,0 +1,276 @@
+.TH "App_RF.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+App_RF.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'hal_defs.h'\fP
+.br
+\fC#include 'hal_types.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBRef_DataPayload\fP"
+.br
+.ti -1c
+.RI "struct \fBLoc_DataPayload\fP"
+.br
+.in -1c
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBRF_CHANNEL\fP   25"
+.br
+.ti -1c
+.RI "#define \fBPAN_ID\fP   0x2007"
+.br
+.ti -1c
+.RI "#define \fBAPP_PAYLOAD_LENGTH\fP   4"
+.br
+.ti -1c
+.RI "#define \fBLIGHT_TOGGLE_CMD\fP   0"
+.br
+.ti -1c
+.RI "#define \fBM1ADDR\fP   0xBEEF"
+.br
+.ti -1c
+.RI "#define \fBM2ADDR\fP   0x2520"
+.br
+.ti -1c
+.RI "#define \fBM3ADDR\fP   0x5050"
+.br
+.ti -1c
+.RI "#define \fBLOGGER_ADDR\fP   0x1234"
+.br
+.ti -1c
+.RI "#define \fBRF_TX\fP   1"
+.br
+.ti -1c
+.RI "#define \fBRF_RX\fP   2"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBPingReq\fP =  1, \fBPingRsp\fP =  2, \fBAckRsp\fP =  3, \fBToggle_LED_Req\fP =  4, \fBRef_Data\fP =  5, \fBLoc_Data\fP =  6 }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBInit_AppRF\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBRF_Send\fP (unsigned char *bufptr, unsigned int len)"
+.br
+.ti -1c
+.RI "bool \fBRF_Peek\fP ()"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBRF_Receive\fP (unsigned char *bufptr)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBRF_gets_blk\fP (unsigned char *bufptr)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBRF_gets_nblk\fP (unsigned char *bufptr)"
+.br
+.ti -1c
+.RI "bool \fBRF_puts\fP (unsigned char *bufptr)"
+.br
+.ti -1c
+.RI "bool \fBRF_puts_SD\fP (unsigned char *bufptr, unsigned int len)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "enum  { ... }  \fBPacket_Type\fP"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define APP_PAYLOAD_LENGTH   4"
+.PP
+Definition at line 23 of file App_RF.h.
+.SS "#define LIGHT_TOGGLE_CMD   0"
+.PP
+Definition at line 24 of file App_RF.h.
+.SS "#define LOGGER_ADDR   0x1234"
+.PP
+Definition at line 29 of file App_RF.h.
+.SS "#define M1ADDR   0xBEEF"
+.PP
+Definition at line 26 of file App_RF.h.
+.SS "#define M2ADDR   0x2520"
+.PP
+Definition at line 27 of file App_RF.h.
+.SS "#define M3ADDR   0x5050"
+.PP
+Definition at line 28 of file App_RF.h.
+.SS "#define PAN_ID   0x2007"
+.PP
+Definition at line 22 of file App_RF.h.
+.SS "#define RF_CHANNEL   25"
+.PP
+Definition at line 19 of file App_RF.h.
+.SS "#define RF_RX   2"
+.PP
+Definition at line 32 of file App_RF.h.
+.SS "#define RF_TX   1"
+.PP
+Definition at line 31 of file App_RF.h.
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "anonymous enum"
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fIPingReq \fP\fP
+.TP
+\fB\fIPingRsp \fP\fP
+.TP
+\fB\fIAckRsp \fP\fP
+.TP
+\fB\fIToggle_LED_Req \fP\fP
+.TP
+\fB\fIRef_Data \fP\fP
+.TP
+\fB\fILoc_Data \fP\fP
+
+.PP
+Definition at line 35 of file App_RF.h.
+.PP
+.nf
+     {
+   PingReq                  = 1,
+   PingRsp                  = 2,
+   AckRsp                   = 3,
+   Toggle_LED_Req           = 4,
+   Ref_Data                 = 5,
+   Loc_Data                 = 6
+   }Packet_Type;
+.fi
+.SH "Function Documentation"
+.PP 
+.SS "void Init_AppRF (void)"
+.PP
+Definition at line 37 of file App_RF.c.
+.PP
+.nf
+{
+    // Config basicRF
+    basicRfConfig.panId = PAN_ID;
+    basicRfConfig.channel = RF_CHANNEL;
+    basicRfConfig.ackRequest = TRUE;
+                basicRfConfig.myAddr = M2ADDR;
+                
+                // Initialize BasicRF
+                if(basicRfInit(&basicRfConfig)==FAILED) {
+      HAL_ASSERT(FALSE);
+    }
+                
+                basicRfReceiveOn();
+}
+.fi
+.SS "\fBuint8\fP RF_gets_blk (unsigned char *bufptr)"
+.PP
+Definition at line 107 of file App_RF.c.
+.PP
+.nf
+                                         {
+
+  while (!RF_Peek());   //block
+  return RF_Receive(bufptr);    
+}
+.fi
+.SS "\fBuint8\fP RF_gets_nblk (unsigned char *bufptr)"
+.PP
+Definition at line 114 of file App_RF.c.
+.PP
+.nf
+                                          {
+
+  if (RF_Peek()) {
+        return RF_Receive(bufptr);      
+        }
+        else return 0;
+}
+.fi
+.SS "bool RF_Peek ()"
+.PP
+Definition at line 86 of file App_RF.c.
+.PP
+.nf
+{
+  return basicRfPacketIsReady();
+}
+.fi
+.SS "bool RF_puts (unsigned char *bufptr)"
+.PP
+Definition at line 123 of file App_RF.c.
+.PP
+.nf
+                                    {
+  return RF_Send(bufptr, strlen((const char*)bufptr));
+}
+.fi
+.SS "bool RF_puts_SD (unsigned char *bufptr, unsigned intlen)"
+.PP
+Definition at line 128 of file App_RF.c.
+.PP
+.nf
+                                                          {
+        basicRfReceiveOff();
+  for(uint8 i = 0; i<5; i++) {
+    if(basicRfSendPacket(M3ADDR, bufptr, len) == SUCCESS)  {
+                        basicRfReceiveOn();
+                        return true;
+                }
+        }
+        basicRfReceiveOn();
+  return false;
+}
+.fi
+.SS "\fBuint8\fP RF_Receive (unsigned char *bufptr)"
+.PP
+Definition at line 101 of file App_RF.c.
+.PP
+.nf
+{
+  return basicRfReceive(bufptr, 255, NULL);
+}
+.fi
+.SS "bool RF_Send (unsigned char *bufptr, unsigned intlen)"
+.PP
+Definition at line 63 of file App_RF.c.
+.PP
+.nf
+{
+        basicRfReceiveOff();
+  for(uint8 i = 0; i<5; i++) {
+    if(basicRfSendPacket(M1ADDR, bufptr, len) == SUCCESS)  {
+                        basicRfReceiveOn();
+                        return true;
+                }
+        }
+        basicRfReceiveOn();
+  return false;
+}
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "enum { ... }  \fBPacket_Type\fP"
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

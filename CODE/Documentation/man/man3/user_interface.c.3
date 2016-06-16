@@ -1,0 +1,1002 @@
+.TH "user_interface.c" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+user_interface.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'utilMisc.h'\fP
+.br
+\fC#include <hal_board.h>\fP
+.br
+\fC#include <stdio.h>\fP
+.br
+\fC#include <string.h>\fP
+.br
+\fC#include <stdlib.h>\fP
+.br
+\fC#include 'user_interface.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBprint_rv_screen\fP (void)"
+.br
+.ti -1c
+.RI "void \fBprint_sel_real_screen\fP (void)"
+.br
+.ti -1c
+.RI "void \fBprint_sel_virtual_screen\fP (void)"
+.br
+.ti -1c
+.RI "void \fBprint_sel_piano_types\fP (void)"
+.br
+.ti -1c
+.RI "void \fBprint_sel_guitar_types\fP (void)"
+.br
+.ti -1c
+.RI "void \fBprint_audio_termination_screen\fP (void)"
+.br
+.ti -1c
+.RI "void \fBprint_record_screen\fP (void)"
+.br
+.ti -1c
+.RI "void \fBprint_track_screen\fP (void)"
+.br
+.ti -1c
+.RI "void \fBprint_playback_screen\fP (void)"
+.br
+.ti -1c
+.RI "char \fBexpect_value\fP (char max_number)"
+.br
+.ti -1c
+.RI "void \fBget_track_option\fP (void)"
+.br
+.ti -1c
+.RI "void \fBget_playback_option\fP (void)"
+.br
+.ti -1c
+.RI "void \fBget_audio_termination\fP (void)"
+.br
+.ti -1c
+.RI "void \fBget_record_option\fP (void)"
+.br
+.ti -1c
+.RI "void \fBget_real_virtual\fP (void)"
+.br
+.ti -1c
+.RI "void \fBselect_within_real_virtual\fP (void)"
+.br
+.ti -1c
+.RI "void \fBselect_sub_instruments\fP (void)"
+.br
+.ti -1c
+.RI "void \fBselect_piano_type\fP (void)"
+.br
+.ti -1c
+.RI "void \fBselect_guitar_type\fP (void)"
+.br
+.ti -1c
+.RI "void \fBstart_my_menu\fP (void)"
+.br
+.ti -1c
+.RI "void \fBclear_screen\fP (void)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "char \fBdrum_piano_guitar\fP = 0"
+.br
+.ti -1c
+.RI "char \fBreal_virtual\fP = 0"
+.br
+.ti -1c
+.RI "char \fBdrum_piano_guitar_rv\fP = 0"
+.br
+.ti -1c
+.RI "char \fBpiano_type\fP = 0"
+.br
+.ti -1c
+.RI "char \fBguitar_type\fP = 0"
+.br
+.ti -1c
+.RI "char \fBaudio_termination\fP = 0"
+.br
+.ti -1c
+.RI "char \fBrecord_notes\fP = FALSE"
+.br
+.ti -1c
+.RI "char \fBplay_recorded_notes\fP = FALSE"
+.br
+.ti -1c
+.RI "char \fBtrack\fP = FALSE"
+.br
+.ti -1c
+.RI "char \fBplayback\fP = FALSE"
+.br
+.ti -1c
+.RI "char \fBrv_loop\fP = FALSE"
+.br
+.ti -1c
+.RI "char \fBwrv_loop\fP = FALSE"
+.br
+.ti -1c
+.RI "char \fBpiano_loop\fP = FALSE"
+.br
+.ti -1c
+.RI "char \fBguitar_loop\fP = FALSE"
+.br
+.ti -1c
+.RI "char \fBaudio_loop\fP = FALSE"
+.br
+.ti -1c
+.RI "char \fBrecord_loop\fP = FALSE"
+.br
+.ti -1c
+.RI "char \fBtrack_loop\fP = FALSE"
+.br
+.ti -1c
+.RI "char \fBplayback_loop\fP = FALSE"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void clear_screen (void)"
+.PP
+Definition at line 774 of file user_interface.c.
+.PP
+.nf
+{
+        printf_pc_code((__code char*)'\033c');                  //Reset Terminal
+        halMcuWaitMs(200);
+
+        printf_pc_code((__code char*)'\033[2J');                        //Clear Screen
+        halMcuWaitMs(200);
+}
+.fi
+.SS "char expect_value (charmax_number)"
+.PP
+Definition at line 138 of file user_interface.c.
+.PP
+.nf
+{
+        char bufsize_ascii[5];
+        char bufsize={0};
+        char mybuf[2]={0};
+
+        bzero(mybuf,2);
+
+        printf_pc_code((__code char*)'Please Enter one of the options, VALID [1-');
+        sprintf(mybuf,'%d',max_number); //TODO
+
+        printf_pc(mybuf);
+
+        printf_pc_code((__code char*)']:');
+
+        bzero(bufsize_ascii,5);                                                                                                                                         //zero out buffer
+
+        getstr(bufsize_ascii);                                                                                                                                          //wait for string from user
+        bufsize = atoi(bufsize_ascii);                                                                                                                          //convert to int
+
+        clear_screen();
+
+        if(bufsize > 0 && bufsize <=max_number)
+                return bufsize;
+        else
+                return 0;
+}
+.fi
+.SS "void get_audio_termination (void)"
+.PP
+Definition at line 280 of file user_interface.c.
+.PP
+.nf
+{
+        char mybuf[4];
+        char user_data=0;
+
+        while(audio_loop == TRUE)
+        {
+                print_audio_termination_screen();
+                user_data = expect_value(2);
+
+                if( user_data != 0)
+                {       //Goes here if data is valid;
+                        bzero(mybuf,4);
+                        //sprintf(mybuf,'%d',user_data); //TODO
+                        if(user_data == 1)
+                        {
+                                printf_pc_code((__code char*)'\n\n\rPC will be used as Audio Termination.\n\r');
+                                audio_termination = PC;
+                        }
+                        else
+                        {
+                                printf_pc_code((__code char*)'VS1053 will be used as Audio Termination.\n\r');
+                                audio_termination = VS1053;
+                        }
+                        break;  //break out of while loop
+                }
+                else
+                {
+                        printf_pc_code((__code char*)'INVALID DATA\n\r');
+                        halMcuWaitMs(1000);
+                        clear_screen();
+                }
+        }
+}
+.fi
+.SS "void get_playback_option (void)"
+.PP
+Definition at line 223 of file user_interface.c.
+.PP
+.nf
+{
+        char mybuf[4];
+        char user_data=0;
+
+        while(playback_loop == TRUE)
+        {
+                print_playback_screen();
+                user_data = expect_value(4);
+
+                if( user_data != 0)
+                {       //Goes here if data is valid;
+                        bzero(mybuf,4);
+                        //sprintf(mybuf,'%d',user_data); //TODO
+
+                                                        switch(user_data)
+                                                {
+                                                case 1:
+                                                {
+                                                        playback=0;
+                                                        break;
+                                                }
+
+                                                case 2:
+                                                {
+                                                        playback=1;
+                                                        break;
+                                                }
+
+                                                case 3:
+                                                {
+                                                        playback=2;
+                                                        break;
+                                                }
+
+                                                case 4:
+                                                {
+                                                        playback=3;
+                                                        break;
+                                                }
+                                                default:
+                                                        break;
+                                                }
+
+                        break;  //break out of while loop
+                }
+                else
+                {
+                        printf_pc_code((__code char*)'INVALID DATA\n\r');
+                        halMcuWaitMs(1000);
+                        clear_screen();
+                }
+        }
+}
+.fi
+.SS "void get_real_virtual (void)"
+.PP
+Definition at line 364 of file user_interface.c.
+.PP
+.nf
+{
+        char mybuf[4];
+        char user_data=0;
+
+        while(rv_loop == TRUE)
+        {
+                print_rv_screen();
+                user_data = expect_value(2);
+
+                if( user_data != 0)
+                {                                                                                                                               //Goes here if data is valid;
+                        bzero(mybuf,4);
+
+                        switch(user_data)
+                        {
+                                case 1:
+                                {
+                                        //printf_pc_code((__code char*)'\n\rReal Instruments Selected***\n\r');
+                                        real_virtual = REAL_INSTRUMENT;
+                                        break;
+                                }
+
+                                case 2:
+                                {
+                                        //printf_pc_code((__code char*)'\n\r***Virtual Instruments Selected***\n\r');
+                                        real_virtual = VIRTUAL_INSTRUMENT;
+                                        break;
+                                }
+
+                                default:
+                                        break;
+                        }
+
+                        break;  //break out of while loop
+                }
+                else
+                {
+                        printf_pc_code((__code char*)'INVALID DATA\n\r');
+                        halMcuWaitMs(1000);
+                        clear_screen();
+                }
+        }
+}
+.fi
+.SS "void get_record_option (void)"
+.PP
+Definition at line 316 of file user_interface.c.
+.PP
+.nf
+{
+        char mybuf[4];
+        char user_data=0;
+
+        while(record_loop == TRUE)
+        {
+                print_record_screen();
+                user_data = expect_value(3);
+
+                if( user_data != 0)
+                {                                                                                                                                       //Goes here if data is valid;
+                        bzero(mybuf,4);
+                        if(user_data == 1)
+                        {
+                                record_notes = TRUE;
+                        }
+                        else if(user_data == 2)
+                        {
+                                record_notes = FALSE;
+                        }
+                        else
+                        {
+                                play_recorded_notes = TRUE;
+
+                                rv_loop = FALSE;
+                                wrv_loop= FALSE;
+                                guitar_loop=FALSE;
+                                piano_loop = FALSE;
+                                audio_loop=FALSE;
+                                record_loop=FALSE;
+                                track_loop=FALSE;
+                                playback_loop=TRUE;
+
+                        }
+
+                        break;  //break out of while loop
+                }
+                else
+                {
+                        printf_pc_code((__code char*)'INVALID DATA\n\r');
+                        halMcuWaitMs(1000);
+                        clear_screen();
+                }
+        }
+}
+.fi
+.SS "void get_track_option (void)"
+.PP
+Definition at line 167 of file user_interface.c.
+.PP
+.nf
+{
+        char mybuf[4];
+        char user_data=0;
+
+        while(track_loop == TRUE)
+        {
+                print_track_screen();
+                user_data = expect_value(4);
+
+                if( user_data != 0)
+                {       //Goes here if data is valid;
+                        bzero(mybuf,4);
+                        //sprintf(mybuf,'%d',user_data); //TODO
+
+                                                        switch(user_data)
+                                                {
+                                                case 1:
+                                                {
+                                                        track=0;
+                                                        break;
+                                                }
+
+                                                case 2:
+                                                {
+                                                        track=1;
+                                                        break;
+                                                }
+
+                                                case 3:
+                                                {
+                                                        track=2;
+                                                        break;
+                                                }
+
+                                                case 4:
+                                                {
+                                                        track=3;
+                                                        break;
+                                                }
+                                                default:
+                                                        break;
+                                                }
+
+                        break;  //break out of while loop
+                }
+                else
+                {
+                        printf_pc_code((__code char*)'INVALID DATA\n\r');
+                        halMcuWaitMs(1000);
+                        clear_screen();
+                }
+        }
+}
+.fi
+.SS "void print_audio_termination_screen (void)"
+.PP
+Definition at line 102 of file user_interface.c.
+.PP
+.nf
+{
+        
+        printf_pc_code((__code char*)'\n\rWhere do you Want to play your MIDI notes?\n\n\r');
+        printf_pc_code((__code char*)'1. Play on computer (MIDI synthesizer software)\n\r');
+        printf_pc_code((__code char*)'2. Play on attached speaker (VS1053 MIDI Decoder)\n\n\r');
+}
+.fi
+.SS "void print_playback_screen (void)"
+.PP
+Definition at line 128 of file user_interface.c.
+.PP
+.nf
+{
+        printf_pc_code((__code char*)'\n\rSelect Track to playback:\n\n\r');
+        printf_pc_code((__code char*)'1. Track-0\n\r');
+        printf_pc_code((__code char*)'2. Track-1\n\r');
+        printf_pc_code((__code char*)'3. Track-2\n\r');
+        printf_pc_code((__code char*)'4. Track-3\n\n\r');
+}
+.fi
+.SS "void print_record_screen (void)"
+.PP
+Definition at line 110 of file user_interface.c.
+.PP
+.nf
+{
+        
+        printf_pc_code((__code char*)'\n\rWould you like to record your music?\n\n\r');
+        printf_pc_code((__code char*)'1. Play & Record on SD Card\n\r');
+        printf_pc_code((__code char*)'2. Play without recording on SD card\n\r');
+        printf_pc_code((__code char*)'3. PlayBack my previously stored Music\n\n\r');
+}
+.fi
+.SS "void print_rv_screen (void)"
+.PP
+Definition at line 48 of file user_interface.c.
+.PP
+.nf
+{
+        printf_pc_code((__code char*)'\n\rSelect from the options below:\n\n\n\r');
+        printf_pc_code((__code char*)'1. Play Real Instrument\n\r');
+        printf_pc_code((__code char*)'2. Play Virtual Instrument\n\n\r');
+}
+.fi
+.SS "void print_sel_guitar_types (void)"
+.PP
+Definition at line 88 of file user_interface.c.
+.PP
+.nf
+{
+        printf_pc_code((__code char*)'The following Guitar Types are supported\n\n\r');
+
+        printf_pc_code((__code char*)'1. Acoustic Guitar (Nylon)\n\r');
+        printf_pc_code((__code char*)'2. Acoustic Guitar (Steel)\n\r');
+        printf_pc_code((__code char*)'3. Electric Guitar (Jazz)\n\r');
+        printf_pc_code((__code char*)'4. Electric Guitar (Clean)\n\r');
+        printf_pc_code((__code char*)'5. Electric Guitar (Muted)\n\r');
+        printf_pc_code((__code char*)'6. Overdriven Guitar\n\r');
+        printf_pc_code((__code char*)'7. Distortion Guitar\n\r');
+        printf_pc_code((__code char*)'8. Guitar Harmonics\n\n\r');
+}
+.fi
+.SS "void print_sel_piano_types (void)"
+.PP
+Definition at line 73 of file user_interface.c.
+.PP
+.nf
+{
+        
+
+        printf_pc_code((__code char*)'\n\rThe following Piano Types are supported\n\n\r');
+
+        printf_pc_code((__code char*)'1. Acoustic Grand Piano\n\r');
+        printf_pc_code((__code char*)'2. Bright Acoustic Piano\n\r');
+        printf_pc_code((__code char*)'3. Electric Grand Piano\n\r');
+        printf_pc_code((__code char*)'4. Honky Tonky Piano\n\r');
+        printf_pc_code((__code char*)'5. Electric Piano 1\n\r');
+        printf_pc_code((__code char*)'6. Electric Piano 2\n\n\r');
+}
+.fi
+.SS "void print_sel_real_screen (void)"
+.PP
+Definition at line 55 of file user_interface.c.
+.PP
+.nf
+{
+        
+        printf_pc_code((__code char*)'\n\rYou have Selected Real Instruments.\n\n\r');
+        printf_pc_code((__code char*)'1. Play Drums\n\r');
+        printf_pc_code((__code char*)'2. Play Piano\n\n\r');
+}
+.fi
+.SS "void print_sel_virtual_screen (void)"
+.PP
+Definition at line 63 of file user_interface.c.
+.PP
+.nf
+{
+        
+        printf_pc_code((__code char*)'\n\rYou have Selected Virtual Instruments.\n\n\r');
+        printf_pc_code((__code char*)'1. Play Drums\n\r');
+        printf_pc_code((__code char*)'2. Play Piano\n\r');
+        printf_pc_code((__code char*)'3. Play Guitar\n\n\r');
+}
+.fi
+.SS "void print_track_screen (void)"
+.PP
+Definition at line 119 of file user_interface.c.
+.PP
+.nf
+{
+        printf_pc_code((__code char*)'\n\rSelect Track to record your music on:\n\n\r');
+        printf_pc_code((__code char*)'1. Track-0\n\r');
+        printf_pc_code((__code char*)'2. Track-1\n\r');
+        printf_pc_code((__code char*)'3. Track-2\n\r');
+        printf_pc_code((__code char*)'4. Track-3\n\n\r');
+}
+.fi
+.SS "void select_guitar_type (void)"
+.PP
+Definition at line 625 of file user_interface.c.
+.PP
+.nf
+{
+
+        char mybuf[4];
+        char user_data=0;
+
+        while(guitar_loop == TRUE)
+                        {
+                                print_sel_guitar_types();
+                                user_data = expect_value(8);
+
+                                        if( user_data != 0)
+                                        {
+                                                bzero(mybuf,4);
+                                                //sprintf(mybuf,'%d',user_data);
+
+                                                switch(user_data)
+                                                {
+                                                        case 1:
+                                                        {
+                                                                //printf_pc_code((__code char*)'\n\r***Acoustic Guitar (Nylon) is the selected Instrument***\n\n\r');
+                                                                piano_type = ACOUSTIC_GUITAR_NYLON;
+                                                                break;
+                                                        }
+
+                                                        case 2:
+                                                        {
+                                                                //printf_pc_code((__code char*)'\n\r***Acoustic Guitar (Steel) is the selected Instrument***\n\n\r');
+                                                                piano_type = ACOUSTIC_GUITAR_STEEL;
+                                                                break;
+                                                        }
+
+
+                                                        case 3:
+                                                        {
+                                                                //printf_pc_code((__code char*)'\n\r***Electric Guitar (Jazz) is the selected Instrument***\n\n\r');
+                                                                piano_type = ELECTRIC_GUITAR_JAZZ;
+                                                                break;
+                                                        }
+
+
+
+                                                        case 4:
+                                                        {
+                                                                //printf_pc_code((__code char*)'\n\r***Electric Guitar (Clean) is the selected Instrument***\n\n\r');
+                                                                piano_type = ELECTRIC_GUITAR_CLEAN;
+                                                                break;
+                                                        }
+
+
+                                                        case 5:
+                                                        {
+                                                                //printf_pc_code((__code char*)'\n\r***Electric Guitar (Muted) is the selected Instrument***\n\n\r');
+                                                                piano_type = ELECTRIC_GUITAR_MUTED;
+                                                                break;
+                                                        }
+
+
+                                                        case 6:
+                                                        {
+                                                                //printf_pc_code((__code char*)'\n\r***Overdriven Guitar is the selected Instrument***\n\n\r');
+                                                                piano_type = OVERDRIVEN_GUITAR;
+                                                                break;
+                                                        }
+
+
+                                                        case 7:
+                                                        {
+                                                                //printf_pc_code((__code char*)'\n\r***Distortion Guitar is the selected Instrument***\n\n\r');
+                                                                piano_type = DISTORTION_GUITAR;
+                                                                break;
+                                                        }
+
+
+                                                        case 8:
+                                                        {
+                                                                //printf_pc_code((__code char*)'\n\r***Guitar Harmonics is the selected Instrument***\n\n\r');
+                                                                piano_type = GUITAR_HARMONICS;
+                                                                break;
+                                                        }
+
+                                                        default:
+                                                                break;
+                                                }
+
+                                                break;
+                                        }
+                                        else
+                                        {
+                                                printf_pc_code((__code char*)'INVALID DATA\n\r');
+                                                halMcuWaitMs(1000);
+                                                clear_screen();
+                                        }
+                        }
+}
+.fi
+.SS "void select_piano_type (void)"
+.PP
+Definition at line 553 of file user_interface.c.
+.PP
+.nf
+{
+
+        char mybuf[4];
+        char user_data=0;
+
+        while(piano_loop == TRUE)
+                        {
+                                print_sel_piano_types();
+                                user_data = expect_value(6);
+
+                                        if( user_data != 0)
+                                        {
+                                                bzero(mybuf,4);
+                                                //sprintf(mybuf,'%d',user_data);
+
+                                                switch(user_data)
+                                                {
+                                                        case 1:
+                                                        {
+                                                                //printf_pc_code((__code char*)'\n\r***Acoustic Grand Piano is the selected Instrument***\n\n\r');
+                                                                piano_type = ACOUSTIC_GRAND_PIANO;
+                                                                break;
+                                                        }
+                                                        case 2:
+                                                        {
+                                                                //printf_pc_code((__code char*)'\n\r***Bright Acoustic Piano is the selected Instrument***\n\r');
+                                                                piano_type = BRIGHT_ACOUSTIC_PIANO;
+                                                                break;
+                                                        }
+                                                        case 3:
+                                                        {
+                                                                //printf_pc_code((__code char*)'\n\r***Electric Grand Piano is the selected Instrument***\n\n\r');
+                                                                piano_type = ELECTRIC_GRAND_PIANO;
+                                                                break;
+                                                        }
+                                                        case 4:
+                                                        {
+                                                                //printf_pc_code((__code char*)'\n\r***Honky Tonky Piano is the selected Instrument***\n\n\r');
+                                                                piano_type = HONKY_TONKY_PIANO;
+                                                                break;
+                                                        }
+                                                        case 5:
+                                                        {
+                                                                //printf_pc_code((__code char*)'\n\r***Electric Piano 1 is the selected Instrument***\n\n\r');
+                                                                piano_type = ELECTRIC_PIANO_1;
+                                                                break;
+                                                        }
+                                                        case 6:
+                                                        {
+                                                                //printf_pc_code((__code char*)'\n\r***Electric Piano 2 is the selected Instrument***\n\n\r');
+                                                                piano_type = ELECTRIC_PIANO_2;
+                                                                break;
+                                                        }
+
+                                                        default:
+                                                                break;
+                                                }
+
+                                                break;
+                                        }
+                                        else
+                                        {
+                                                printf_pc_code((__code char*)'INVALID DATA\n\r');
+                                                halMcuWaitMs(1000);
+                                                clear_screen();
+                                        }
+                        }
+}
+.fi
+.SS "void select_sub_instruments (void)"
+.PP
+Definition at line 523 of file user_interface.c.
+.PP
+.nf
+{
+        if(drum_piano_guitar == DRUM)
+        {
+                printf_pc_code((__code char*)'No sub-options for Drums available\n\r');
+        }
+        else
+        {
+                switch(drum_piano_guitar)
+                {
+                        case PIANO:
+                        {
+                                select_piano_type();
+                                break;
+                        }
+
+                        case GUITAR:
+                        {
+                                select_guitar_type();
+                                break;
+                        }
+
+                        default:
+                                break;
+                }
+        }
+}
+.fi
+.SS "void select_within_real_virtual (void)"
+.PP
+Definition at line 410 of file user_interface.c.
+.PP
+.nf
+{
+
+        char mybuf[4];
+        char user_data=0;
+
+
+        if(real_virtual == REAL_INSTRUMENT)
+        {
+                while(wrv_loop == TRUE)
+                {
+                        print_sel_real_screen();
+                        user_data = expect_value(2);
+
+                                if( user_data != 0)
+                                {
+                                        bzero(mybuf,4);
+                                        //sprintf(mybuf,'%d',user_data);  //TODO
+
+                                        switch(user_data)
+                                        {
+                                                case 1:
+                                                {
+                                                        printf_pc_code((__code char*)'\n\r***Drum is the selected Instrument***\n\r');
+                                                        drum_piano_guitar_rv = DRUM_REAL_INSTRUMENT;
+                                                        drum_piano_guitar = DRUM;
+                                                        break;
+                                                }
+
+                                                case 2:
+                                                {
+                                                        printf_pc_code((__code char*)'***\n\rPiano is the selected Instrument***\n\r');
+                                                        drum_piano_guitar_rv = PIANO_REAL_INSTRUMENT;
+                                                        drum_piano_guitar = PIANO;
+                                                        break;
+                                                }
+
+                                                default:
+                                                        break;
+                                        }
+
+                                        break;
+                                }
+                                else
+                                {
+                                        printf_pc_code((__code char*)'INVALID DATA\n\r');
+                                        halMcuWaitMs(1000);
+                                        clear_screen();
+                                }
+                }
+        }
+        else if(real_virtual == VIRTUAL_INSTRUMENT)     //Virtual Instrument
+        {
+                while(wrv_loop == TRUE)
+                {
+                        print_sel_virtual_screen();
+                        user_data = expect_value(3);
+
+                                if( user_data != 0)
+                                {
+                                        bzero(mybuf,4);
+                                        //sprintf(mybuf,'%d',user_data);  //TODO
+
+                                        switch(user_data)
+                                        {
+                                                case 1:
+                                                {
+                                                        printf_pc_code((__code char*)'\n\r***Drum is the selected Virtual Instrument***\n\r');
+                                                        drum_piano_guitar_rv = DRUM_VIRTUAL_INSTRUMENT;
+                                                        drum_piano_guitar = DRUM;
+                                                        break;
+                                                }
+
+                                                case 2:
+                                                {
+                                                        printf_pc_code((__code char*)'\n\r***Piano is the selected Virtual Instrument***\n\r');
+                                                        drum_piano_guitar_rv = PIANO_VIRTUAL_INSTRUMENT;
+                                                        drum_piano_guitar = PIANO;
+                                                        break;
+                                                }
+
+                                                case 3:
+                                                {
+                                                        printf_pc_code((__code char*)'\n\r***Guitar is the selected Virtual Instrument***\n\r');
+                                                        drum_piano_guitar_rv = GUITAR_VIRTUAL_INSTRUMENT;
+                                                        drum_piano_guitar = GUITAR;
+                                                        break;
+                                                }
+
+                                                default:
+                                                        break;
+                                        }
+
+
+                                        break;
+                                }
+                                else
+                                {
+                                        printf_pc_code((__code char*)'INVALID DATA\n\r');
+                                        halMcuWaitMs(1000);
+                                        clear_screen();
+                                }
+
+                }
+        }
+
+}
+.fi
+.SS "void start_my_menu (void)"
+.PP
+Definition at line 724 of file user_interface.c.
+.PP
+.nf
+{
+
+        drum_piano_guitar=0;
+        real_virtual=0;
+        piano_type=0;
+        guitar_type=0;
+        drum_piano_guitar_rv=0;
+        audio_termination=VS1053;
+        record_notes=FALSE;
+        play_recorded_notes=FALSE;
+        track=FALSE;
+        playback=FALSE;
+
+        rv_loop = TRUE;
+        wrv_loop= TRUE;
+        guitar_loop=TRUE;
+        piano_loop = TRUE;
+        audio_loop=TRUE;
+        record_loop=TRUE;
+        track_loop=TRUE;
+        playback_loop=TRUE;
+        
+        clear_screen();
+        //print_welcome_message();
+
+        get_audio_termination();
+        get_record_option();
+
+        if(record_notes == TRUE)
+                get_track_option();
+        
+        if(play_recorded_notes == TRUE)
+                get_playback_option();
+
+        get_real_virtual();
+
+        select_within_real_virtual();
+
+
+        select_sub_instruments();
+
+        //clear_screen();
+        printf_pc_code((__code char*)'\n\r**************************************');
+        printf_pc_code((__code char*)'\n\rAll the initialization is now complete');
+        printf_pc_code((__code char*)'\n\r**************************************');
+}
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "char \fBaudio_loop\fP = FALSE"
+.PP
+Definition at line 34 of file user_interface.c.
+.SS "char \fBaudio_termination\fP = 0"
+.PP
+Definition at line 24 of file user_interface.c.
+.SS "char \fBdrum_piano_guitar\fP = 0"
+.PP
+Definition at line 19 of file user_interface.c.
+.SS "char \fBdrum_piano_guitar_rv\fP = 0"
+.PP
+Definition at line 21 of file user_interface.c.
+.SS "char \fBguitar_loop\fP = FALSE"
+.PP
+Definition at line 33 of file user_interface.c.
+.SS "char \fBguitar_type\fP = 0"
+.PP
+Definition at line 23 of file user_interface.c.
+.SS "char \fBpiano_loop\fP = FALSE"
+.PP
+Definition at line 32 of file user_interface.c.
+.SS "char \fBpiano_type\fP = 0"
+.PP
+Definition at line 22 of file user_interface.c.
+.SS "char \fBplay_recorded_notes\fP = FALSE"
+.PP
+Definition at line 26 of file user_interface.c.
+.SS "char \fBplayback\fP = FALSE"
+.PP
+Definition at line 28 of file user_interface.c.
+.SS "char \fBplayback_loop\fP = FALSE"
+.PP
+Definition at line 37 of file user_interface.c.
+.SS "char \fBreal_virtual\fP = 0"
+.PP
+Definition at line 20 of file user_interface.c.
+.SS "char \fBrecord_loop\fP = FALSE"
+.PP
+Definition at line 35 of file user_interface.c.
+.SS "char \fBrecord_notes\fP = FALSE"
+.PP
+Definition at line 25 of file user_interface.c.
+.SS "char \fBrv_loop\fP = FALSE"
+.PP
+Definition at line 30 of file user_interface.c.
+.SS "char \fBtrack\fP = FALSE"
+.PP
+Definition at line 27 of file user_interface.c.
+.SS "char \fBtrack_loop\fP = FALSE"
+.PP
+Definition at line 36 of file user_interface.c.
+.SS "char \fBwrv_loop\fP = FALSE"
+.PP
+Definition at line 31 of file user_interface.c.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

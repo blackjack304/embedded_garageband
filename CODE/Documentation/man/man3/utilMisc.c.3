@@ -1,0 +1,151 @@
+.TH "utilMisc.c" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+utilMisc.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <string.h>\fP
+.br
+\fC#include <hal_board.h>\fP
+.br
+\fC#include <hal_int.h>\fP
+.br
+\fC#include 'hal_mcu.h'\fP
+.br
+\fC#include 'uart_intfc.h'\fP
+.br
+\fC#include 'utilMisc.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBprintf_lcd\fP (char *buf)"
+.br
+.ti -1c
+.RI "void \fBsend_midi\fP (char *buf)"
+.br
+.ti -1c
+.RI "void \fBprintf_pc\fP (char *buf)"
+.br
+.ti -1c
+.RI "void \fBprintf_pc_code\fP (char __code *buf)"
+.br
+.ti -1c
+.RI "void \fBputchar_pc\fP (char buf)"
+.br
+.ti -1c
+.RI "char \fBgetchar_pc\fP (void)"
+.br
+.ti -1c
+.RI "int \fBgetstr\fP (char *s)"
+.br
+.ti -1c
+.RI "char \fBgetchar_pc_nb\fP (void)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "char getchar_pc (void)"
+.PP
+Definition at line 45 of file utilMisc.c.
+.PP
+.nf
+                      {
+        
+        char ch = 0;
+        
+  while (!rx_peek());
+        rx_receive((void*)&ch, 1);
+        return ch;
+}
+.fi
+.SS "char getchar_pc_nb (void)"
+.PP
+Definition at line 69 of file utilMisc.c.
+.PP
+.nf
+                         {
+        
+        char ch = 0;
+        
+  if (rx_peek())
+        {
+                rx_receive((void*)&ch, 1);
+                return ch;
+        }
+        else
+                return 0;
+}
+.fi
+.SS "int getstr (char *s)"
+.PP
+Definition at line 54 of file utilMisc.c.
+.PP
+.nf
+                     {
+        
+        int i = 0;
+        
+        do {
+                                        s[i] = getchar_pc();
+                                        putchar_pc(s[i]);
+                                        i++;
+        } while(s[i-1] != 0x0D);              //0x0D is <CR>
+        s[i-1] = 0x00;                        //replace <CR> with NULL (0x00)
+        putchar_pc('\n');
+        putchar_pc('\r');
+        return (i-1);
+}
+.fi
+.SS "void printf_lcd (char *buf)"
+.PP
+Definition at line 23 of file utilMisc.c.
+.PP
+.nf
+                           {
+  tx0_send(buf, strlen(buf));
+}
+.fi
+.SS "void printf_pc (char *buf)"
+.PP
+Definition at line 31 of file utilMisc.c.
+.PP
+.nf
+                          {
+  tx1_send(buf, strlen(buf));
+}
+.fi
+.SS "void printf_pc_code (char __code *buf)"
+.PP
+Definition at line 35 of file utilMisc.c.
+.PP
+.nf
+                                      {
+  tx1_send((const char*)buf, strlen((const char*)buf));
+}
+.fi
+.SS "void putchar_pc (charbuf)"
+.PP
+Definition at line 41 of file utilMisc.c.
+.PP
+.nf
+                          {
+  tx1_send((void*)&buf, 1);
+}
+.fi
+.SS "void send_midi (char *buf)"
+.PP
+Definition at line 27 of file utilMisc.c.
+.PP
+.nf
+                          {
+  tx0_send(buf, strlen(buf));
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

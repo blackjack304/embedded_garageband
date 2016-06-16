@@ -1,0 +1,179 @@
+.TH "App_RF.c" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+App_RF.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <hal_led.h>\fP
+.br
+\fC#include <hal_assert.h>\fP
+.br
+\fC#include <hal_board.h>\fP
+.br
+\fC#include <hal_int.h>\fP
+.br
+\fC#include 'hal_mcu.h'\fP
+.br
+\fC#include 'hal_rf.h'\fP
+.br
+\fC#include 'string.h'\fP
+.br
+\fC#include 'basic_rf.h'\fP
+.br
+\fC#include 'uart_intfc.h'\fP
+.br
+\fC#include 'App_RF.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBInit_AppRF\fP ()"
+.br
+.ti -1c
+.RI "bool \fBRF_Send\fP (unsigned char *bufptr, unsigned int len)"
+.br
+.ti -1c
+.RI "bool \fBRF_Peek\fP ()"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBRF_Receive\fP (unsigned char *bufptr)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBRF_gets_blk\fP (unsigned char *bufptr)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBRF_gets_nblk\fP (unsigned char *bufptr)"
+.br
+.ti -1c
+.RI "bool \fBRF_puts\fP (unsigned char *bufptr)"
+.br
+.ti -1c
+.RI "bool \fBRF_puts_SD\fP (unsigned char *bufptr, unsigned int len)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "static \fBbasicRfCfg_t\fP \fBbasicRfConfig\fP"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void Init_AppRF (void)"
+.PP
+Definition at line 37 of file App_RF.c.
+.PP
+.nf
+{
+    // Config basicRF
+    basicRfConfig.panId = PAN_ID;
+    basicRfConfig.channel = RF_CHANNEL;
+    basicRfConfig.ackRequest = TRUE;
+                basicRfConfig.myAddr = M2ADDR;
+                
+                // Initialize BasicRF
+                if(basicRfInit(&basicRfConfig)==FAILED) {
+      HAL_ASSERT(FALSE);
+    }
+                
+                basicRfReceiveOn();
+}
+.fi
+.SS "\fBuint8\fP RF_gets_blk (unsigned char *bufptr)"
+.PP
+Definition at line 107 of file App_RF.c.
+.PP
+.nf
+                                         {
+
+  while (!RF_Peek());   //block
+  return RF_Receive(bufptr);    
+}
+.fi
+.SS "\fBuint8\fP RF_gets_nblk (unsigned char *bufptr)"
+.PP
+Definition at line 114 of file App_RF.c.
+.PP
+.nf
+                                          {
+
+  if (RF_Peek()) {
+        return RF_Receive(bufptr);      
+        }
+        else return 0;
+}
+.fi
+.SS "bool RF_Peek ()"
+.PP
+Definition at line 86 of file App_RF.c.
+.PP
+.nf
+{
+  return basicRfPacketIsReady();
+}
+.fi
+.SS "bool RF_puts (unsigned char *bufptr)"
+.PP
+Definition at line 123 of file App_RF.c.
+.PP
+.nf
+                                    {
+  return RF_Send(bufptr, strlen((const char*)bufptr));
+}
+.fi
+.SS "bool RF_puts_SD (unsigned char *bufptr, unsigned intlen)"
+.PP
+Definition at line 128 of file App_RF.c.
+.PP
+.nf
+                                                          {
+        basicRfReceiveOff();
+  for(uint8 i = 0; i<5; i++) {
+    if(basicRfSendPacket(M3ADDR, bufptr, len) == SUCCESS)  {
+                        basicRfReceiveOn();
+                        return true;
+                }
+        }
+        basicRfReceiveOn();
+  return false;
+}
+.fi
+.SS "\fBuint8\fP RF_Receive (unsigned char *bufptr)"
+.PP
+Definition at line 101 of file App_RF.c.
+.PP
+.nf
+{
+  return basicRfReceive(bufptr, 255, NULL);
+}
+.fi
+.SS "bool RF_Send (unsigned char *bufptr, unsigned intlen)"
+.PP
+Definition at line 63 of file App_RF.c.
+.PP
+.nf
+{
+        basicRfReceiveOff();
+  for(uint8 i = 0; i<5; i++) {
+    if(basicRfSendPacket(M1ADDR, bufptr, len) == SUCCESS)  {
+                        basicRfReceiveOn();
+                        return true;
+                }
+        }
+        basicRfReceiveOn();
+  return false;
+}
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "\fBbasicRfCfg_t\fP \fBbasicRfConfig\fP\fC [static]\fP"
+.PP
+Definition at line 26 of file App_RF.c.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

@@ -1,0 +1,417 @@
+\hypertarget{graphics__lcd_8h}{
+\section{graphics\_\-lcd.h File Reference}
+\label{graphics__lcd_8h}\index{graphics\_\-lcd.h@{graphics\_\-lcd.h}}
+}
+{\ttfamily \#include \char`\"{}hal\_\-defs.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-types.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{graphics__lcd_8h_a3faebad727614f595011bec6bf293010}{pixel} (char S\_\-R, char \hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x}, char \hyperlink{_touch_screen_8h_ac30de26db5f6d1c18c63913729adca7d}{y})
+\item 
+void \hyperlink{graphics__lcd_8h_ad3af090910ca4e26b598e03c44d812d5}{line} (char S\_\-R, char x1, char y1, char x2, char y2)
+\item 
+void \hyperlink{graphics__lcd_8h_a6319c21fe989ac5b6133a0abde19e873}{circle} (char S\_\-R, int \hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x}, int \hyperlink{_touch_screen_8h_ac30de26db5f6d1c18c63913729adca7d}{y}, int r)
+\item 
+void \hyperlink{graphics__lcd_8h_a9c654844c4146a3612e69b6097241b96}{set\_\-text\_\-position} (char \hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x}, char \hyperlink{_touch_screen_8h_ac30de26db5f6d1c18c63913729adca7d}{y})
+\item 
+void \hyperlink{graphics__lcd_8h_a74a3e1b8aee8b3bac9cb75fc94a2eda0}{small\_\-delay} (int \hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x})
+\item 
+void \hyperlink{graphics__lcd_8h_a1039075ca5815fd4b00402b1eb828f17}{clear\_\-screen\_\-lcd} (void)
+\item 
+void \hyperlink{graphics__lcd_8h_a075974f819434412c2a4074b39ad7391}{draw\_\-piano} (void)
+\item 
+void \hyperlink{graphics__lcd_8h_a330b1ad2e8730b6213c50fbd4eb0ac4f}{draw\_\-drums} (void)
+\item 
+void \hyperlink{graphics__lcd_8h_a7d48f78f8835286d283af5676d754765}{draw\_\-guitar} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{graphics__lcd_8h_a6319c21fe989ac5b6133a0abde19e873}{
+\index{graphics\_\-lcd.h@{graphics\_\-lcd.h}!circle@{circle}}
+\index{circle@{circle}!graphics_lcd.h@{graphics\_\-lcd.h}}
+\subsubsection[{circle}]{\setlength{\rightskip}{0pt plus 5cm}void circle (
+\begin{DoxyParamCaption}
+\item[{char}]{S\_\-R, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{r}
+\end{DoxyParamCaption}
+)}}
+\label{graphics__lcd_8h_a6319c21fe989ac5b6133a0abde19e873}
+
+
+Definition at line 127 of file graphics\_\-lcd.c.
+
+
+\begin{DoxyCode}
+{
+        char c1 = 0x7c;
+        char c2 = 0x03;
+        
+        tx0_send(&c1, 1);
+        tx0_send(&c2, 1);
+        
+        tx0_send(&x, 1);
+        tx0_send(&y, 1);
+        tx0_send(&r, 1);
+        tx0_send(&S_R, 1);
+}
+\end{DoxyCode}
+\hypertarget{graphics__lcd_8h_a1039075ca5815fd4b00402b1eb828f17}{
+\index{graphics\_\-lcd.h@{graphics\_\-lcd.h}!clear\_\-screen\_\-lcd@{clear\_\-screen\_\-lcd}}
+\index{clear\_\-screen\_\-lcd@{clear\_\-screen\_\-lcd}!graphics_lcd.h@{graphics\_\-lcd.h}}
+\subsubsection[{clear\_\-screen\_\-lcd}]{\setlength{\rightskip}{0pt plus 5cm}void clear\_\-screen\_\-lcd (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{graphics__lcd_8h_a1039075ca5815fd4b00402b1eb828f17}
+
+
+Definition at line 31 of file graphics\_\-lcd.c.
+
+
+\begin{DoxyCode}
+{
+        char c1 = 0x7c;
+        char c2 = 0x00;
+        
+        tx0_send(&c1, 1);
+        tx0_send(&c2, 1);
+        
+        tx1_send(&c1, 1);
+        tx1_send(&c2, 1);
+}
+\end{DoxyCode}
+\hypertarget{graphics__lcd_8h_a330b1ad2e8730b6213c50fbd4eb0ac4f}{
+\index{graphics\_\-lcd.h@{graphics\_\-lcd.h}!draw\_\-drums@{draw\_\-drums}}
+\index{draw\_\-drums@{draw\_\-drums}!graphics_lcd.h@{graphics\_\-lcd.h}}
+\subsubsection[{draw\_\-drums}]{\setlength{\rightskip}{0pt plus 5cm}void draw\_\-drums (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{graphics__lcd_8h_a330b1ad2e8730b6213c50fbd4eb0ac4f}
+
+
+EA = 0; 
+
+
+
+Definition at line 289 of file graphics\_\-lcd.c.
+
+
+\begin{DoxyCode}
+{
+        
+        circle(1,17,17,17);
+        small_delay(700);
+        set_text_position(17,17);
+        small_delay(700);
+        tx0_send("1", 1);
+        small_delay(700);
+
+        circle(1,41,45,16);
+        small_delay(700);
+        set_text_position(41,45);
+        small_delay(700);
+        tx0_send("2", 1);
+        small_delay(700);
+
+        circle(1,64,17,17);
+        small_delay(700);
+        set_text_position(64,17);
+        small_delay(700);
+        tx0_send("3", 1);
+        small_delay(700);
+
+        circle(1,86,45,16);
+        small_delay(700);
+        set_text_position(86,45);
+        small_delay(700);
+        tx0_send("4", 1);
+        small_delay(700);
+
+        circle(1,109,17,17);
+        small_delay(700);
+
+        circle(1,109,17,13);
+        small_delay(700);
+
+        circle(1,109,17,9);
+        small_delay(700);
+
+        circle(1,109,17,5);
+        small_delay(700);
+        
+        //EA = 1;
+}
+\end{DoxyCode}
+\hypertarget{graphics__lcd_8h_a7d48f78f8835286d283af5676d754765}{
+\index{graphics\_\-lcd.h@{graphics\_\-lcd.h}!draw\_\-guitar@{draw\_\-guitar}}
+\index{draw\_\-guitar@{draw\_\-guitar}!graphics_lcd.h@{graphics\_\-lcd.h}}
+\subsubsection[{draw\_\-guitar}]{\setlength{\rightskip}{0pt plus 5cm}void draw\_\-guitar (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{graphics__lcd_8h_a7d48f78f8835286d283af5676d754765}
+
+
+Definition at line 348 of file graphics\_\-lcd.c.
+
+
+\begin{DoxyCode}
+{
+        small_delay(700);
+        line(1,0,7,127,7);
+        line(1,0,8,127,8);
+        line(1,0,9,127,9);
+        
+        small_delay(700);
+        line(1,0,18,127,18);
+        line(1,0,19,127,19);
+        
+        small_delay(700);
+        line(1,0,28,127,28);
+        line(1,0,29,127,29);
+        
+        small_delay(700);
+        line(1,0,39,127,39);
+        
+        small_delay(700);
+        line(1,0,48,127,48);
+        
+        small_delay(700);
+        line(1,0,57,127,57);
+        
+        small_delay(700);
+}
+\end{DoxyCode}
+\hypertarget{graphics__lcd_8h_a075974f819434412c2a4074b39ad7391}{
+\index{graphics\_\-lcd.h@{graphics\_\-lcd.h}!draw\_\-piano@{draw\_\-piano}}
+\index{draw\_\-piano@{draw\_\-piano}!graphics_lcd.h@{graphics\_\-lcd.h}}
+\subsubsection[{draw\_\-piano}]{\setlength{\rightskip}{0pt plus 5cm}void draw\_\-piano (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{graphics__lcd_8h_a075974f819434412c2a4074b39ad7391}
+
+
+Definition at line 185 of file graphics\_\-lcd.c.
+
+
+\begin{DoxyCode}
+{
+        unsigned char ix=0;
+        unsigned char jx=0;
+        char c1 = 0x7c;
+        char c2 = 0x02;
+        char c3 = 0x7f;
+
+        line(1,0,0,0,63);
+        small_delay(300);
+        line(1,0,63,127,63);
+        small_delay(300);
+        line(1,127,0,127,63);
+        small_delay(300);
+
+        pixel(1,1,0);
+        small_delay(300);
+
+        pixel(1,2,1);
+        small_delay(300);
+
+        for(ix=0;ix<127;ix++)
+        {
+                line(1,ix,23,ix,63);
+                switch(ix)
+                {
+                        case 7: ix=20; break;
+                        case 28: ix=41; break;
+                        case 49: ix=62; break;
+                        case 70: ix=83; break;
+                        case 91: ix=104; break;
+                        case 112: ix=200; break;
+                        default: break;
+                }
+                small_delay(300);
+        }
+
+        ix=0;
+
+        for(ix=14;ix<127;ix = ix + 21)
+        {
+                line(1,ix,2,ix,63);
+                small_delay(300);
+        }
+
+        ix=5;
+        jx=12;
+
+        while(ix<128)
+        {
+                line(1,ix,0,jx,0);
+                small_delay(700);
+                pixel(1,ix-1,1);
+                small_delay(700);
+                pixel(1,jx+1,1);
+
+                if(ix<115)
+                {
+                        small_delay(700);
+                        line(1,ix-2,2,ix-2,22);
+                }
+
+                switch(ix)
+                {
+                        case 5: ix=16; jx=23; break;
+                        case 16: ix=27; jx=33; break;
+                        case 27: ix=37; jx=43; break;
+                        case 37: ix=47; jx=54; break;
+                        case 47: ix=58; jx=65; break;
+                        case 58: ix=69; jx=75; break;
+                        case 69: ix=79; jx=85; break;
+                        case 79: ix=89; jx=96; break;
+                        case 89: ix=100; jx=107; break;
+                        case 100: ix=111; jx=118; break;
+                        case 111: ix=122; jx=125; break;
+                        case 122: ix=200; jx=0; break;
+                        default: break;
+                }
+                small_delay(700);
+        }
+
+        tx0_send(&c1, 1);
+        tx0_send(&c2, 1);
+        tx0_send(&c3, 1);
+        
+//    putchar(0x7C);
+//    putchar(0x02);
+//    putchar(0x7F);
+        
+        //EA=1;
+
+}
+\end{DoxyCode}
+\hypertarget{graphics__lcd_8h_ad3af090910ca4e26b598e03c44d812d5}{
+\index{graphics\_\-lcd.h@{graphics\_\-lcd.h}!line@{line}}
+\index{line@{line}!graphics_lcd.h@{graphics\_\-lcd.h}}
+\subsubsection[{line}]{\setlength{\rightskip}{0pt plus 5cm}void line (
+\begin{DoxyParamCaption}
+\item[{char}]{S\_\-R, }
+\item[{char}]{x1, }
+\item[{char}]{y1, }
+\item[{char}]{x2, }
+\item[{char}]{y2}
+\end{DoxyParamCaption}
+)}}
+\label{graphics__lcd_8h_ad3af090910ca4e26b598e03c44d812d5}
+
+
+Definition at line 93 of file graphics\_\-lcd.c.
+
+
+\begin{DoxyCode}
+{
+        char c1 = 0x7c;
+        char c2 = 0x0c;
+        
+        tx0_send(&c1, 1);
+        tx0_send(&c2, 1);
+        
+        tx0_send(&x1, 1);
+        tx0_send(&y1, 1);
+        tx0_send(&x2, 1);
+        tx0_send(&y2, 1);
+        tx0_send(&S_R, 1);
+}
+\end{DoxyCode}
+\hypertarget{graphics__lcd_8h_a3faebad727614f595011bec6bf293010}{
+\index{graphics\_\-lcd.h@{graphics\_\-lcd.h}!pixel@{pixel}}
+\index{pixel@{pixel}!graphics_lcd.h@{graphics\_\-lcd.h}}
+\subsubsection[{pixel}]{\setlength{\rightskip}{0pt plus 5cm}void pixel (
+\begin{DoxyParamCaption}
+\item[{char}]{S\_\-R, }
+\item[{char}]{x, }
+\item[{char}]{y}
+\end{DoxyParamCaption}
+)}}
+\label{graphics__lcd_8h_a3faebad727614f595011bec6bf293010}
+
+
+Definition at line 59 of file graphics\_\-lcd.c.
+
+
+\begin{DoxyCode}
+{
+        char c1 = 0x7c;
+        char c2 = 0x10;
+        
+        tx0_send(&c1, 1);
+        tx0_send(&c2, 1);
+        
+        tx0_send(&x, 1);
+        tx0_send(&y, 1);
+        tx0_send(&S_R, 1);
+}
+\end{DoxyCode}
+\hypertarget{graphics__lcd_8h_a9c654844c4146a3612e69b6097241b96}{
+\index{graphics\_\-lcd.h@{graphics\_\-lcd.h}!set\_\-text\_\-position@{set\_\-text\_\-position}}
+\index{set\_\-text\_\-position@{set\_\-text\_\-position}!graphics_lcd.h@{graphics\_\-lcd.h}}
+\subsubsection[{set\_\-text\_\-position}]{\setlength{\rightskip}{0pt plus 5cm}void set\_\-text\_\-position (
+\begin{DoxyParamCaption}
+\item[{char}]{x, }
+\item[{char}]{y}
+\end{DoxyParamCaption}
+)}}
+\label{graphics__lcd_8h_a9c654844c4146a3612e69b6097241b96}
+
+
+Definition at line 156 of file graphics\_\-lcd.c.
+
+
+\begin{DoxyCode}
+{
+        char c1 = 0x7c;
+        char c2 = 0x18;
+        char c3 = 0x19;
+        
+        tx0_send(&c1, 1);
+        tx0_send(&c2, 1);
+        tx0_send(&x, 1);
+        
+        tx0_send(&c1, 1);
+        tx0_send(&c3, 1);
+        tx0_send(&y, 1);
+        
+        //  putchar(0x7c); putchar(0x18); putchar(x);
+        //  putchar(0x7c); putchar(0x19); putchar(y);
+}
+\end{DoxyCode}
+\hypertarget{graphics__lcd_8h_a74a3e1b8aee8b3bac9cb75fc94a2eda0}{
+\index{graphics\_\-lcd.h@{graphics\_\-lcd.h}!small\_\-delay@{small\_\-delay}}
+\index{small\_\-delay@{small\_\-delay}!graphics_lcd.h@{graphics\_\-lcd.h}}
+\subsubsection[{small\_\-delay}]{\setlength{\rightskip}{0pt plus 5cm}void small\_\-delay (
+\begin{DoxyParamCaption}
+\item[{int}]{x}
+\end{DoxyParamCaption}
+)}}
+\label{graphics__lcd_8h_a74a3e1b8aee8b3bac9cb75fc94a2eda0}
+
+
+Definition at line 385 of file graphics\_\-lcd.c.
+
+
+\begin{DoxyCode}
+{
+        int i = 0;
+        
+        for(i=0; i<64; i++) {
+                halMcuWaitUs(x);
+        }
+}
+\end{DoxyCode}

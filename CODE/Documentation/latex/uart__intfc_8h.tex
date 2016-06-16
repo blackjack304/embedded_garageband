@@ -1,0 +1,354 @@
+\hypertarget{uart__intfc_8h}{
+\section{uart\_\-intfc.h File Reference}
+\label{uart__intfc_8h}\index{uart\_\-intfc.h@{uart\_\-intfc.h}}
+}
+{\ttfamily \#include $<$stddef.h$>$}\par
+{\ttfamily \#include \char`\"{}uart.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{uart__intfc_8h_a736e3ea69179ef0634c40b46d48b760f}{uart\_\-intfc\_\-init} (void)
+\item 
+bool \hyperlink{uart__intfc_8h_a3761dd3ce6b0b0d72738ed2c5cbc12c7}{tx1\_\-send} (const void $\ast$data, size\_\-t len)
+\item 
+bool \hyperlink{uart__intfc_8h_ab083acaad8e8a689e4d5f320aa606536}{tx1\_\-send\_\-wait} (const void $\ast$data, size\_\-t len)
+\item 
+int \hyperlink{uart__intfc_8h_aeabc1945fb1d682b4c3620f1af8dcd81}{tx1\_\-peek} (void)
+\item 
+int \hyperlink{uart__intfc_8h_ae0ca0331f7ae4ad6f6bf468b8c27622c}{rx\_\-peek} (void)
+\item 
+int \hyperlink{uart__intfc_8h_a88c715acaecdd2cc36ef4f9c705d5a7d}{rx\_\-receive} (void $\ast$data, int max\_\-len)
+\item 
+bool \hyperlink{uart__intfc_8h_a4d67166fc677575a81400c3a616ecace}{uart\_\-busy} (void)
+\item 
+bool \hyperlink{uart__intfc_8h_aa59ed8f503c3ccf3a167f691ce58c2ac}{tx0\_\-send} (const void $\ast$data, size\_\-t len)
+\item 
+bool \hyperlink{uart__intfc_8h_a0e4f3c7e2f39c52f524225f8d7d6d2e3}{tx0\_\-send\_\-wait} (const void $\ast$data, size\_\-t len)
+\item 
+int \hyperlink{uart__intfc_8h_aafa16907da4166c8d6ac58583b8f75ca}{tx0\_\-peek} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{uart__intfc_8h_ae0ca0331f7ae4ad6f6bf468b8c27622c}{
+\index{uart\_\-intfc.h@{uart\_\-intfc.h}!rx\_\-peek@{rx\_\-peek}}
+\index{rx\_\-peek@{rx\_\-peek}!uart_intfc.h@{uart\_\-intfc.h}}
+\subsubsection[{rx\_\-peek}]{\setlength{\rightskip}{0pt plus 5cm}int rx\_\-peek (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{uart__intfc_8h_ae0ca0331f7ae4ad6f6bf468b8c27622c}
+
+
+Definition at line 364 of file uart\_\-intfc.c.
+
+
+\begin{DoxyCode}
+  {
+  unsigned char* head;
+  unsigned char* tail;
+
+  BSP_CRITICAL_STATEMENT( head = rx_head; tail = rx_tail );
+
+  return buffer_used_space( head, tail );
+  }
+\end{DoxyCode}
+\hypertarget{uart__intfc_8h_a88c715acaecdd2cc36ef4f9c705d5a7d}{
+\index{uart\_\-intfc.h@{uart\_\-intfc.h}!rx\_\-receive@{rx\_\-receive}}
+\index{rx\_\-receive@{rx\_\-receive}!uart_intfc.h@{uart\_\-intfc.h}}
+\subsubsection[{rx\_\-receive}]{\setlength{\rightskip}{0pt plus 5cm}int rx\_\-receive (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{data, }
+\item[{int}]{max\_\-len}
+\end{DoxyParamCaption}
+)}}
+\label{uart__intfc_8h_a88c715acaecdd2cc36ef4f9c705d5a7d}
+
+
+Definition at line 393 of file uart\_\-intfc.c.
+
+
+\begin{DoxyCode}
+  {
+  int cnt;
+  unsigned char* head;
+
+  /* get current state of head pointer */
+  BSP_CRITICAL_STATEMENT( head = rx_head );
+
+  /* retrieve data from buffer */
+  cnt = pop_buffer( head, &rx_tail, rx_buff, data, max_len );
+
+#if( defined UART_HARDWARE_HANDSHAKE_IN_SOFTWARE )
+  /* if we need to hold off the remote transmitter */
+  if( rx_peek( ) < RX_TX_BUFFER_THROTTLE_LIMIT )
+     UART_ASSERT_RTS( UART_RTS_DEASSERTED ); /* deassert the RTS line */
+#endif
+
+  return cnt; /* indicate the number of bytes retrieved from the buffer */
+  }
+\end{DoxyCode}
+\hypertarget{uart__intfc_8h_aafa16907da4166c8d6ac58583b8f75ca}{
+\index{uart\_\-intfc.h@{uart\_\-intfc.h}!tx0\_\-peek@{tx0\_\-peek}}
+\index{tx0\_\-peek@{tx0\_\-peek}!uart_intfc.h@{uart\_\-intfc.h}}
+\subsubsection[{tx0\_\-peek}]{\setlength{\rightskip}{0pt plus 5cm}int tx0\_\-peek (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{uart__intfc_8h_aafa16907da4166c8d6ac58583b8f75ca}
+
+
+Definition at line 615 of file uart\_\-intfc.c.
+
+
+\begin{DoxyCode}
+  {
+  unsigned char* head;
+  unsigned char* tail;
+
+  BSP_CRITICAL_STATEMENT( head = tx0_head; tail = tx0_tail );
+
+  return buffer_free_space( head, tail );
+  }
+\end{DoxyCode}
+\hypertarget{uart__intfc_8h_aa59ed8f503c3ccf3a167f691ce58c2ac}{
+\index{uart\_\-intfc.h@{uart\_\-intfc.h}!tx0\_\-send@{tx0\_\-send}}
+\index{tx0\_\-send@{tx0\_\-send}!uart_intfc.h@{uart\_\-intfc.h}}
+\subsubsection[{tx0\_\-send}]{\setlength{\rightskip}{0pt plus 5cm}bool tx0\_\-send (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{data, }
+\item[{size\_\-t}]{len}
+\end{DoxyParamCaption}
+)}}
+\label{uart__intfc_8h_aa59ed8f503c3ccf3a167f691ce58c2ac}
+
+
+Definition at line 534 of file uart\_\-intfc.c.
+
+
+\begin{DoxyCode}
+  {
+  bool status;
+  unsigned char* tail;
+
+  /* get current state of tail pointer */
+  BSP_CRITICAL_STATEMENT( tail = tx0_tail );
+
+  /* put data into transmit buffer */
+  status = push_buffer( &tx0_head, tail, tx0_buff, (unsigned char*)data, len );
+
+  if( status != false ) /* if data was put in the buffer properly */
+    uart0_tx_message( tx0_handler ); /* notify the irq that data is ready to send
+       */
+
+  return status; /* return status */
+  }
+\end{DoxyCode}
+\hypertarget{uart__intfc_8h_a0e4f3c7e2f39c52f524225f8d7d6d2e3}{
+\index{uart\_\-intfc.h@{uart\_\-intfc.h}!tx0\_\-send\_\-wait@{tx0\_\-send\_\-wait}}
+\index{tx0\_\-send\_\-wait@{tx0\_\-send\_\-wait}!uart_intfc.h@{uart\_\-intfc.h}}
+\subsubsection[{tx0\_\-send\_\-wait}]{\setlength{\rightskip}{0pt plus 5cm}bool tx0\_\-send\_\-wait (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{data, }
+\item[{size\_\-t}]{len}
+\end{DoxyParamCaption}
+)}}
+\label{uart__intfc_8h_a0e4f3c7e2f39c52f524225f8d7d6d2e3}
+
+
+Definition at line 575 of file uart\_\-intfc.c.
+
+
+\begin{DoxyCode}
+  {
+  if( len > 0 && data != NULL ) /* if the information looks viable */
+    {
+    while( len > 0 )            /* while there is data left to transfer */
+      {
+      int sz = tx0_peek( );      /* get free space in the fifo */
+
+      if( sz > 0 )              /* if there is room for at least some data */
+        {
+        if( sz > len )          /* if more room than required          */
+          sz = len;             /* limit size to just the data to send */
+
+        tx0_send( data, sz );    /* send this portion of the information */
+
+        data = (unsigned char*)data + sz; /* move the pointer */
+
+        len -= sz;              /* adjust the count of remaining data to send */
+        }
+      }
+
+    return true; /* indicate success */
+    }
+
+  return false; /* otherwise indicate failure */
+  }
+\end{DoxyCode}
+\hypertarget{uart__intfc_8h_aeabc1945fb1d682b4c3620f1af8dcd81}{
+\index{uart\_\-intfc.h@{uart\_\-intfc.h}!tx1\_\-peek@{tx1\_\-peek}}
+\index{tx1\_\-peek@{tx1\_\-peek}!uart_intfc.h@{uart\_\-intfc.h}}
+\subsubsection[{tx1\_\-peek}]{\setlength{\rightskip}{0pt plus 5cm}int tx1\_\-peek (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{uart__intfc_8h_aeabc1945fb1d682b4c3620f1af8dcd81}
+
+
+Definition at line 341 of file uart\_\-intfc.c.
+
+
+\begin{DoxyCode}
+  {
+  unsigned char* head;
+  unsigned char* tail;
+
+  BSP_CRITICAL_STATEMENT( head = tx1_head; tail = tx1_tail );
+
+  return buffer_free_space( head, tail );
+  }
+\end{DoxyCode}
+\hypertarget{uart__intfc_8h_a3761dd3ce6b0b0d72738ed2c5cbc12c7}{
+\index{uart\_\-intfc.h@{uart\_\-intfc.h}!tx1\_\-send@{tx1\_\-send}}
+\index{tx1\_\-send@{tx1\_\-send}!uart_intfc.h@{uart\_\-intfc.h}}
+\subsubsection[{tx1\_\-send}]{\setlength{\rightskip}{0pt plus 5cm}bool tx1\_\-send (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{data, }
+\item[{size\_\-t}]{len}
+\end{DoxyParamCaption}
+)}}
+\label{uart__intfc_8h_a3761dd3ce6b0b0d72738ed2c5cbc12c7}
+
+
+Definition at line 312 of file uart\_\-intfc.c.
+
+
+\begin{DoxyCode}
+{
+  bool status;
+  unsigned char* tail;
+
+  /* get current state of tail pointer */
+  BSP_CRITICAL_STATEMENT( tail = tx1_tail );
+
+  /* put data into transmit buffer */
+  status = push_buffer( &tx1_head, tail, tx1_buff, (unsigned char*)data, len );
+
+  if( status != false ) /* if data was put in the buffer properly */
+    uart1_tx_message( tx1_handler ); /* notify the irq that data is ready to send
+       */
+
+  return status; /* return status */
+  }
+\end{DoxyCode}
+\hypertarget{uart__intfc_8h_ab083acaad8e8a689e4d5f320aa606536}{
+\index{uart\_\-intfc.h@{uart\_\-intfc.h}!tx1\_\-send\_\-wait@{tx1\_\-send\_\-wait}}
+\index{tx1\_\-send\_\-wait@{tx1\_\-send\_\-wait}!uart_intfc.h@{uart\_\-intfc.h}}
+\subsubsection[{tx1\_\-send\_\-wait}]{\setlength{\rightskip}{0pt plus 5cm}bool tx1\_\-send\_\-wait (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{data, }
+\item[{size\_\-t}]{len}
+\end{DoxyParamCaption}
+)}}
+\label{uart__intfc_8h_ab083acaad8e8a689e4d5f320aa606536}
+
+
+Definition at line 266 of file uart\_\-intfc.c.
+
+
+\begin{DoxyCode}
+  {
+  if( len > 0 && data != NULL ) /* if the information looks viable */
+    {
+    while( len > 0 )            /* while there is data left to transfer */
+      {
+      int sz = tx1_peek( );      /* get free space in the fifo */
+
+      if( sz > 0 )              /* if there is room for at least some data */
+        {
+        if( sz > len )          /* if more room than required          */
+          sz = len;             /* limit size to just the data to send */
+
+        tx1_send( data, sz );    /* send this portion of the information */
+
+        data = (unsigned char*)data + sz; /* move the pointer */
+
+        len -= sz;              /* adjust the count of remaining data to send */
+        }
+      }
+
+    return true; /* indicate success */
+    }
+
+  return false; /* otherwise indicate failure */
+  }
+\end{DoxyCode}
+\hypertarget{uart__intfc_8h_a4d67166fc677575a81400c3a616ecace}{
+\index{uart\_\-intfc.h@{uart\_\-intfc.h}!uart\_\-busy@{uart\_\-busy}}
+\index{uart\_\-busy@{uart\_\-busy}!uart_intfc.h@{uart\_\-intfc.h}}
+\subsubsection[{uart\_\-busy}]{\setlength{\rightskip}{0pt plus 5cm}bool uart\_\-busy (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{uart__intfc_8h_a4d67166fc677575a81400c3a616ecace}
+
+
+Definition at line 428 of file uart\_\-intfc.c.
+
+
+\begin{DoxyCode}
+  {
+  int cnt;
+  unsigned char* head;
+  unsigned char* tail;
+
+  /* get receive buffer count */
+  BSP_CRITICAL_STATEMENT( head = rx_head; tail = rx_tail );
+  cnt = buffer_used_space( head, tail );
+
+  /* get transmit buffer count */
+  BSP_CRITICAL_STATEMENT( head = tx1_head; tail = tx1_tail );
+  cnt += buffer_used_space( head, tail );
+
+  return ( ( cnt == 0 ) ? false : true ); /* return status of uart */
+  }
+\end{DoxyCode}
+\hypertarget{uart__intfc_8h_a736e3ea69179ef0634c40b46d48b760f}{
+\index{uart\_\-intfc.h@{uart\_\-intfc.h}!uart\_\-intfc\_\-init@{uart\_\-intfc\_\-init}}
+\index{uart\_\-intfc\_\-init@{uart\_\-intfc\_\-init}!uart_intfc.h@{uart\_\-intfc.h}}
+\subsubsection[{uart\_\-intfc\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void uart\_\-intfc\_\-init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{uart__intfc_8h_a736e3ea69179ef0634c40b46d48b760f}
+
+
+Definition at line 81 of file uart\_\-intfc.c.
+
+
+\begin{DoxyCode}
+  {
+  /* initialize the buffer pointers in case we are re-initialized */
+  rx_head = rx_buff;
+  rx_tail = rx_buff;
+  tx1_head = tx1_buff;
+  tx1_tail = tx1_buff;
+  tx0_head = tx0_buff;
+  tx0_tail = tx0_buff;
+
+  uart_init( ); /* initialize the uart for operations */
+  uart_rx_message( rx_handler ); /* enable us to receive uart data */
+
+#if( defined UART_HARDWARE_HANDSHAKE_IN_SOFTWARE )
+   UART_ASSERT_RTS( UART_RTS_DEASSERTED ); /* release flow control */
+#endif
+
+  return;
+  }
+\end{DoxyCode}

@@ -1,0 +1,326 @@
+\hypertarget{_main__mod1_8c}{
+\section{Main\_\-mod1.c File Reference}
+\label{_main__mod1_8c}\index{Main\_\-mod1.c@{Main\_\-mod1.c}}
+}
+{\ttfamily \#include $<$hal\_\-led.h$>$}\par
+{\ttfamily \#include $<$hal\_\-assert.h$>$}\par
+{\ttfamily \#include $<$hal\_\-board.h$>$}\par
+{\ttfamily \#include $<$hal\_\-int.h$>$}\par
+{\ttfamily \#include \char`\"{}hal\_\-mcu.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-rf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}basic\_\-rf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}uart\_\-intfc.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}TouchScreen.h\char`\"{}}\par
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include \char`\"{}hal\_\-spi.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}TimerManager.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Drum.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}midi.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}graphics\_\-lcd.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}key\_\-map.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}App\_\-RF.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}kb.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}utilMisc.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}piano.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_main__mod1_8c_a4226cc28acbf377dbc90e6d0259d3fc4}{SZ\_\-RFBUF}~50
+\item 
+\#define \hyperlink{_main__mod1_8c_ae259660715c248fa1153bb5a098de374}{bzero}(b, len)~(memset((b), '$\backslash$0', (len)), (void) 0)
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505b}{rfStat} \{ \par
+\hyperlink{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505ba63191191b20548b1cc5a7adf22414acd}{rfHello} =  1, 
+\hyperlink{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505ba77c223eeed046ac77b411c16badf7f59}{rfVPiano}, 
+\hyperlink{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505baa969ce5b5bfa123cbcc02e6174491b74}{rfVDrum}, 
+\hyperlink{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505ba1ae80667f1b838b1dc7e10d851206715}{rfVGuitar}, 
+\par
+\hyperlink{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505ba63191191b20548b1cc5a7adf22414acd}{rfHello} =  1, 
+\hyperlink{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505ba77c223eeed046ac77b411c16badf7f59}{rfVPiano}, 
+\hyperlink{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505baa969ce5b5bfa123cbcc02e6174491b74}{rfVDrum}, 
+\hyperlink{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505ba1ae80667f1b838b1dc7e10d851206715}{rfVGuitar}, 
+\par
+\hyperlink{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505baf8d6409149396ae7e6edee292ebfa60b}{rfRPiano}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_main__mod1_8c_a0ddc5ec41d72be0a577da9f82152f77c}{midiTest} (void)
+\item 
+void \hyperlink{_main__mod1_8c_a14088d23368ec8846295428a6fe6f761}{lcdTest} (void)
+\item 
+void \hyperlink{_main__mod1_8c_a6288eba0f8e8ad3ab1544ad731eb7667}{main} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \hyperlink{_main__mod1_8c_a52b070368ee39becb95d95fedc34a5a5}{rfBuf} \mbox{[}SZ\_\-RFBUF\mbox{]} = \{0\}
+\item 
+unsigned char \hyperlink{_main__mod1_8c_ae269b27f32ba70ecee2551473da902fc}{Check\_\-Flag} = 1
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{_main__mod1_8c_ae259660715c248fa1153bb5a098de374}{
+\index{Main\_\-mod1.c@{Main\_\-mod1.c}!bzero@{bzero}}
+\index{bzero@{bzero}!Main_mod1.c@{Main\_\-mod1.c}}
+\subsubsection[{bzero}]{\setlength{\rightskip}{0pt plus 5cm}\#define bzero(
+\begin{DoxyParamCaption}
+\item[{}]{b, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)~(memset((b), '$\backslash$0', (len)), (void) 0)}}
+\label{_main__mod1_8c_ae259660715c248fa1153bb5a098de374}
+
+
+Definition at line 39 of file Main\_\-mod1.c.
+
+\hypertarget{_main__mod1_8c_a4226cc28acbf377dbc90e6d0259d3fc4}{
+\index{Main\_\-mod1.c@{Main\_\-mod1.c}!SZ\_\-RFBUF@{SZ\_\-RFBUF}}
+\index{SZ\_\-RFBUF@{SZ\_\-RFBUF}!Main_mod1.c@{Main\_\-mod1.c}}
+\subsubsection[{SZ\_\-RFBUF}]{\setlength{\rightskip}{0pt plus 5cm}\#define SZ\_\-RFBUF~50}}
+\label{_main__mod1_8c_a4226cc28acbf377dbc90e6d0259d3fc4}
+
+
+Definition at line 37 of file Main\_\-mod1.c.
+
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505b}{
+\index{Main\_\-mod1.c@{Main\_\-mod1.c}!rfStat@{rfStat}}
+\index{rfStat@{rfStat}!Main_mod1.c@{Main\_\-mod1.c}}
+\subsubsection[{rfStat}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf rfStat}}}
+\label{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505b}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{rfHello@{rfHello}!Main\_\-mod1.c@{Main\_\-mod1.c}}\index{Main\_\-mod1.c@{Main\_\-mod1.c}!rfHello@{rfHello}}\item[{\em 
+\hypertarget{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505ba63191191b20548b1cc5a7adf22414acd}{
+rfHello}
+\label{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505ba63191191b20548b1cc5a7adf22414acd}
+}]\index{rfVPiano@{rfVPiano}!Main\_\-mod1.c@{Main\_\-mod1.c}}\index{Main\_\-mod1.c@{Main\_\-mod1.c}!rfVPiano@{rfVPiano}}\item[{\em 
+\hypertarget{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505ba77c223eeed046ac77b411c16badf7f59}{
+rfVPiano}
+\label{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505ba77c223eeed046ac77b411c16badf7f59}
+}]\index{rfVDrum@{rfVDrum}!Main\_\-mod1.c@{Main\_\-mod1.c}}\index{Main\_\-mod1.c@{Main\_\-mod1.c}!rfVDrum@{rfVDrum}}\item[{\em 
+\hypertarget{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505baa969ce5b5bfa123cbcc02e6174491b74}{
+rfVDrum}
+\label{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505baa969ce5b5bfa123cbcc02e6174491b74}
+}]\index{rfVGuitar@{rfVGuitar}!Main\_\-mod1.c@{Main\_\-mod1.c}}\index{Main\_\-mod1.c@{Main\_\-mod1.c}!rfVGuitar@{rfVGuitar}}\item[{\em 
+\hypertarget{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505ba1ae80667f1b838b1dc7e10d851206715}{
+rfVGuitar}
+\label{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505ba1ae80667f1b838b1dc7e10d851206715}
+}]\index{rfHello@{rfHello}!Main\_\-mod1.c@{Main\_\-mod1.c}}\index{Main\_\-mod1.c@{Main\_\-mod1.c}!rfHello@{rfHello}}\item[{\em 
+\hypertarget{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505ba63191191b20548b1cc5a7adf22414acd}{
+rfHello}
+\label{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505ba63191191b20548b1cc5a7adf22414acd}
+}]\index{rfVPiano@{rfVPiano}!Main\_\-mod1.c@{Main\_\-mod1.c}}\index{Main\_\-mod1.c@{Main\_\-mod1.c}!rfVPiano@{rfVPiano}}\item[{\em 
+\hypertarget{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505ba77c223eeed046ac77b411c16badf7f59}{
+rfVPiano}
+\label{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505ba77c223eeed046ac77b411c16badf7f59}
+}]\index{rfVDrum@{rfVDrum}!Main\_\-mod1.c@{Main\_\-mod1.c}}\index{Main\_\-mod1.c@{Main\_\-mod1.c}!rfVDrum@{rfVDrum}}\item[{\em 
+\hypertarget{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505baa969ce5b5bfa123cbcc02e6174491b74}{
+rfVDrum}
+\label{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505baa969ce5b5bfa123cbcc02e6174491b74}
+}]\index{rfVGuitar@{rfVGuitar}!Main\_\-mod1.c@{Main\_\-mod1.c}}\index{Main\_\-mod1.c@{Main\_\-mod1.c}!rfVGuitar@{rfVGuitar}}\item[{\em 
+\hypertarget{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505ba1ae80667f1b838b1dc7e10d851206715}{
+rfVGuitar}
+\label{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505ba1ae80667f1b838b1dc7e10d851206715}
+}]\index{rfRPiano@{rfRPiano}!Main\_\-mod1.c@{Main\_\-mod1.c}}\index{Main\_\-mod1.c@{Main\_\-mod1.c}!rfRPiano@{rfRPiano}}\item[{\em 
+\hypertarget{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505baf8d6409149396ae7e6edee292ebfa60b}{
+rfRPiano}
+\label{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505baf8d6409149396ae7e6edee292ebfa60b}
+}]\end{description}
+\end{Desc}
+
+
+
+Definition at line 41 of file Main\_\-mod1.c.
+
+
+\begin{DoxyCode}
+            {
+        rfHello = 1,
+        rfVPiano,
+        rfVDrum,
+        rfVGuitar
+};
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\hypertarget{_main__mod1_8c_a14088d23368ec8846295428a6fe6f761}{
+\index{Main\_\-mod1.c@{Main\_\-mod1.c}!lcdTest@{lcdTest}}
+\index{lcdTest@{lcdTest}!Main_mod1.c@{Main\_\-mod1.c}}
+\subsubsection[{lcdTest}]{\setlength{\rightskip}{0pt plus 5cm}void lcdTest (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{_main__mod1_8c_a14088d23368ec8846295428a6fe6f761}
+\hypertarget{_main__mod1_8c_a6288eba0f8e8ad3ab1544ad731eb7667}{
+\index{Main\_\-mod1.c@{Main\_\-mod1.c}!main@{main}}
+\index{main@{main}!Main_mod1.c@{Main\_\-mod1.c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}void main (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{_main__mod1_8c_a6288eba0f8e8ad3ab1544ad731eb7667}
+
+
+Definition at line 66 of file Main\_\-mod1.c.
+
+
+\begin{DoxyCode}
+{
+        //rf flags-----
+        unsigned char rfStatus = 0;
+        
+        // Initalise board peripherals
+  halBoardInit();
+  uart_intfc_init();
+  TimerInterface_Initialize();
+        Init_AppRF();
+        halMcuWaitMs(2000);
+
+  printf_pc("Init done (M1)\n\r");
+
+  while (1) {
+                
+                bzero(rfBuf, SZ_RFBUF);
+                RF_gets_blk(rfBuf);
+                
+                if (NULL != strstr((const char*)rfBuf, "HELLO")) rfStatus = 
+      rfHello;
+                if (NULL != strstr((const char*)rfBuf, "VPIANO")) rfStatus = 
+      rfVPiano;
+                if (NULL != strstr((const char*)rfBuf, "VDRUM")) rfStatus = 
+      rfVDrum;
+                if (NULL != strstr((const char*)rfBuf, "VGUITAR")) rfStatus = 
+      rfVGuitar;
+                
+                switch (rfStatus) {
+                        
+                        case rfHello:
+                                printf_pc("In rfHello\n\r");
+                                halMcuWaitMs(100);
+                                RF_puts("ACK");
+                                break;
+                                
+                        case rfVPiano:
+                                printf_pc("In rfVPiano\n\r");
+                                clear_screen_lcd();                                             /
+      /Clears LCD screen
+                                draw_piano();                                                   /
+      /Draws a Piano
+                                RF_puts("ACK");
+                                playVPiano();
+                                break;
+                                
+                        case rfVDrum:
+                                printf_pc("In rfVDrum\n\r");
+                                clear_screen_lcd();                                             /
+      /Clear LCD screen
+                                draw_drums();                                                                   /
+      /Draws Drums
+                                RF_puts("ACK");
+                                playVDrum();
+                                break;
+                                
+                        case rfVGuitar:
+                                printf_pc("In rfVGuitar\n\r");
+                                clear_screen_lcd();                                             /
+      /Clear LCD screen
+                                draw_guitar();                                                          /
+      /Draws Guitar Strings
+                                RF_puts("ACK");
+                                playVGuitar();
+                                break;
+                                
+                        default:
+                                printf_pc("In default\n\r");
+                                RF_puts("NACK");
+                                
+                } //end switch
+  }// end while(1)
+}\end{DoxyCode}
+\hypertarget{_main__mod1_8c_a0ddc5ec41d72be0a577da9f82152f77c}{
+\index{Main\_\-mod1.c@{Main\_\-mod1.c}!midiTest@{midiTest}}
+\index{midiTest@{midiTest}!Main_mod1.c@{Main\_\-mod1.c}}
+\subsubsection[{midiTest}]{\setlength{\rightskip}{0pt plus 5cm}void midiTest (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{_main__mod1_8c_a0ddc5ec41d72be0a577da9f82152f77c}
+
+
+Definition at line 265 of file Main\_\-mod2.c.
+
+
+\begin{DoxyCode}
+                {
+        
+        midiReset();
+        midiVolSet(120);
+        //midiBankSet(DRUMS1);
+        //midiPatchSet(5);
+        midiBankSet(MELODY);
+        midiPatchSet(PIANO_ELG);
+        halMcuWaitMs(100);
+
+//  midiReset();
+//      midiVolSet(120); //set channel volume to near max (127)
+//      midiBankSet(MELODY); //0x79 = melodious instruments
+//      midiPatchSet(118);
+//      noteOn(0, 51, 0x3D);
+//      halMcuWaitMs(500);
+        
+        
+//      for (i=0; i<50; i++) {
+//              noteOn(0, i+30, 0x48);
+//              halMcuWaitMs(100);
+//              //noteOff(0, i+30, 0x48);
+//              halMcuWaitMs(100);
+//
+//      }
+//      for (i=50; i>=0; i--) {
+//              noteOn(0, i+30, 0x48);
+//              halMcuWaitMs(100);
+//              //noteOff(0, i+30, 0x48);
+//              halMcuWaitMs(100);
+//      }
+        
+        //tx1_send("Done\n\r", 6);
+        while (1);
+}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\hypertarget{_main__mod1_8c_ae269b27f32ba70ecee2551473da902fc}{
+\index{Main\_\-mod1.c@{Main\_\-mod1.c}!Check\_\-Flag@{Check\_\-Flag}}
+\index{Check\_\-Flag@{Check\_\-Flag}!Main_mod1.c@{Main\_\-mod1.c}}
+\subsubsection[{Check\_\-Flag}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char {\bf Check\_\-Flag} = 1}}
+\label{_main__mod1_8c_ae269b27f32ba70ecee2551473da902fc}
+
+
+Definition at line 49 of file Main\_\-mod1.c.
+
+\hypertarget{_main__mod1_8c_a52b070368ee39becb95d95fedc34a5a5}{
+\index{Main\_\-mod1.c@{Main\_\-mod1.c}!rfBuf@{rfBuf}}
+\index{rfBuf@{rfBuf}!Main_mod1.c@{Main\_\-mod1.c}}
+\subsubsection[{rfBuf}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char {\bf rfBuf}\mbox{[}SZ\_\-RFBUF\mbox{]} = \{0\}}}
+\label{_main__mod1_8c_a52b070368ee39becb95d95fedc34a5a5}
+
+
+Definition at line 48 of file Main\_\-mod1.c.
+

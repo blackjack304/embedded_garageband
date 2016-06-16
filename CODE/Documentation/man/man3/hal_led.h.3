@@ -1,0 +1,69 @@
+.TH "hal_led.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+hal_led.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'hal_types.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBhalLedInit\fP (void)"
+.br
+.ti -1c
+.RI "void \fBhalLedSet\fP (\fBuint8\fP led_id)"
+.br
+.ti -1c
+.RI "void \fBhalLedClear\fP (\fBuint8\fP led_id)"
+.br
+.ti -1c
+.RI "void \fBhalLedToggle\fP (\fBuint8\fP led_id)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void halLedClear (\fBuint8\fPled_id)"
+.PP
+Definition at line 40 of file hal_led.c.
+.PP
+.nf
+{
+    if (id==1)
+        HAL_LED_CLR_1();
+    if (id==3)
+        HAL_LED_CLR_3();
+}
+.fi
+.SS "void halLedInit (void)"
+.SS "void halLedSet (\fBuint8\fPled_id)"
+.PP
+Definition at line 23 of file hal_led.c.
+.PP
+.nf
+{
+    if (id==1)
+        HAL_LED_SET_1();
+    if (id==3)
+        HAL_LED_SET_3();
+}
+.fi
+.SS "void halLedToggle (\fBuint8\fPled_id)"
+.PP
+Definition at line 57 of file hal_led.c.
+.PP
+.nf
+{
+    if (id==1)
+        HAL_LED_TGL_1();
+    if (id==3)
+        HAL_LED_TGL_3();
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

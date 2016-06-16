@@ -1,0 +1,172 @@
+.TH "midi.c" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+midi.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <ioCC2430.h>\fP
+.br
+\fC#include 'uart_intfc.h'\fP
+.br
+\fC#include 'hal_led.h'\fP
+.br
+\fC#include 'hal_cc8051.h'\fP
+.br
+\fC#include 'hal_mcu.h'\fP
+.br
+\fC#include 'midi.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBmidiReset\fP ()"
+.br
+.ti -1c
+.RI "void \fBnoteOn\fP (unsigned char channel, unsigned char note, unsigned char attack_velocity)"
+.br
+.ti -1c
+.RI "void \fBnoteOff\fP (unsigned char channel, unsigned char note, unsigned char release_velocity)"
+.br
+.ti -1c
+.RI "void \fBtalkMIDI\fP (unsigned char cmd, unsigned char data1, unsigned char data2)"
+.br
+.ti -1c
+.RI "void \fBmidiVolSet\fP (unsigned char vol)"
+.br
+.ti -1c
+.RI "void \fBmidiBankSet\fP (unsigned char bank)"
+.br
+.ti -1c
+.RI "void \fBmidiPatchSet\fP (unsigned char instr)"
+.br
+.ti -1c
+.RI "void \fBmidiSilence\fP ()"
+.br
+.ti -1c
+.RI "void \fBmidiChannelSet\fP (unsigned char chan)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void midiBankSet (unsigned charbank)"
+.PP
+Definition at line 157 of file midi.c.
+.PP
+.nf
+                                     {
+        talkMIDI(0xB0, 0, bank);
+}
+.fi
+.SS "void midiChannelSet (unsigned charchan)"
+.PP
+Definition at line 203 of file midi.c.
+.PP
+.nf
+                                        {
+        midiChannel = chan;
+}
+.fi
+.SS "void midiPatchSet (unsigned charinstr)"
+.PP
+Definition at line 173 of file midi.c.
+.PP
+.nf
+                                       {
+        talkMIDI(0xC0, instr, 0);
+}
+.fi
+.SS "void midiReset (void)"
+.PP
+Definition at line 29 of file midi.c.
+.PP
+.nf
+                 {
+
+        //MIDI_RESET = 1;
+        MCU_IO_OUTPUT(1,1,1);
+        //delay_millisec(100);
+        halMcuWaitMs(100);
+
+        MCU_IO_OUTPUT(1,1,0);
+        //MIDI_RESET = 0;
+        //delay_millisec(100);
+        halMcuWaitMs(100);
+        
+        //MIDI_RESET = 1;
+        MCU_IO_OUTPUT(1,1,1);
+        //delay_millisec(100);
+        halMcuWaitMs(200);
+}
+.fi
+.SS "void midiSilence (void)"
+.PP
+Definition at line 188 of file midi.c.
+.PP
+.nf
+                   {
+        talkMIDI(0xB0, 0x78, 0);
+}
+.fi
+.SS "void midiVolSet (unsigned charvol)"
+.PP
+Definition at line 141 of file midi.c.
+.PP
+.nf
+                                   {
+        talkMIDI(0xB0, 0x07, vol);
+}
+.fi
+.SS "void noteOff (unsigned charchannel, unsigned charnote, unsigned charrelease_velocity)"
+.PP
+Definition at line 85 of file midi.c.
+.PP
+.nf
+                                                                                        {
+        talkMIDI( (0x80 | channel), note, release_velocity);
+}
+.fi
+.SS "void noteOn (unsigned charchannel, unsigned charnote, unsigned charattack_velocity)"
+.PP
+Definition at line 64 of file midi.c.
+.PP
+.nf
+                                                                                      {
+        talkMIDI( (0x90 | channel), note, attack_velocity);
+}
+.fi
+.SS "void talkMIDI (unsigned charcmd, unsigned chardata1, unsigned chardata2)"
+.PP
+Definition at line 105 of file midi.c.
+.PP
+.nf
+                                                                           {
+
+        //bit_bang_tx(cmd);
+        //putchar (cmd);
+        tx0_send(&cmd, 1);
+        tx1_send(&cmd, 1);
+
+        //bit_bang_tx(data1);
+        //putchar (data1);
+        tx0_send(&data1, 1);
+        tx1_send(&data1, 1);
+        
+        //Some commands only have one data byte. All cmds less than 0xBn have 2 data bytes
+        //(sort of: http://253.ccarh.org/handout/midiprotocol/)
+        //if( (cmd & 0xF0) <= 0xB0) {
+        if(cmd <= 0xB0) {
+                //bit_bang_tx(data2);
+                //putchar (data2);
+                tx0_send(&data2, 1);
+                tx1_send(&data2, 1);
+        }
+        tx1_send('\n\r', 2);
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

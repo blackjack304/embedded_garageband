@@ -1,0 +1,646 @@
+.TH "basic_rf.c" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+basic_rf.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'hal_int.h'\fP
+.br
+\fC#include 'hal_mcu.h'\fP
+.br
+\fC#include 'util.h'\fP
+.br
+\fC#include 'string.h'\fP
+.br
+\fC#include 'hal_types.h'\fP
+.br
+\fC#include 'hal_defs.h'\fP
+.br
+\fC#include 'hal_rf.h'\fP
+.br
+\fC#include 'basic_rf.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBbasicRfRxInfo_t\fP"
+.br
+.ti -1c
+.RI "struct \fBbasicRfTxState_t\fP"
+.br
+.ti -1c
+.RI "struct \fBbasicRfPktHdr_t\fP"
+.br
+.in -1c
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBPKT_LEN_MIC\fP   8"
+.br
+.ti -1c
+.RI "#define \fBPKT_LEN_SEC\fP   PKT_LEN_UNSEC + PKT_LEN_MIC"
+.br
+.ti -1c
+.RI "#define \fBPKT_LEN_AUTH\fP   8"
+.br
+.ti -1c
+.RI "#define \fBPKT_LEN_ENCR\fP   24"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_PACKET_OVERHEAD_SIZE\fP   ((2 + 1 + 2 + 2 + 2) + (2))"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_MAX_PAYLOAD_SIZE\fP"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_ACK_PACKET_SIZE\fP   5"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_FOOTER_SIZE\fP   2"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_HDR_SIZE\fP   10"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_ACK_DURATION\fP   (0.5 * 32 * 2 * ((4 + 1) + (1) + (2 + 1) + (2)))"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_SYMBOL_DURATION\fP   (32 * 0.5)"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_PLD_LEN_MASK\fP   0x7F"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_FCF_NOACK\fP   0x8841"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_FCF_ACK\fP   0x8861"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_FCF_ACK_BM\fP   0x0020"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_FCF_BM\fP   (~BASIC_RF_FCF_ACK_BM)"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_SEC_ENABLED_FCF_BM\fP   0x0008"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_FCF_NOACK_L\fP   LO_UINT16(BASIC_RF_FCF_NOACK)"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_FCF_ACK_L\fP   LO_UINT16(BASIC_RF_FCF_ACK)"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_FCF_ACK_BM_L\fP   LO_UINT16(BASIC_RF_FCF_ACK_BM)"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_FCF_BM_L\fP   LO_UINT16(BASIC_RF_FCF_BM)"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_SEC_ENABLED_FCF_BM_L\fP   LO_UINT16(BASIC_RF_SEC_ENABLED_FCF_BM)"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_AUX_HDR_LENGTH\fP   5"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_LEN_AUTH\fP"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_SECURITY_M\fP   2"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_LEN_MIC\fP   8"
+.br
+.ti -1c
+.RI "#define \fBBASIC_RF_CRC_OK_BM\fP   0x80"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBuint8\fP \fBbasicRfBuildHeader\fP (\fBuint8\fP *buffer, \fBuint16\fP destAddr, \fBuint8\fP payloadLength)"
+.br
+.ti -1c
+.RI "static \fBuint8\fP \fBbasicRfBuildMpdu\fP (\fBuint16\fP destAddr, \fBuint8\fP *pPayload, \fBuint8\fP payloadLength)"
+.br
+.ti -1c
+.RI "static void \fBbasicRfRxFrmDoneIsr\fP (void)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBbasicRfInit\fP (\fBbasicRfCfg_t\fP *pRfConfig)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBbasicRfSendPacket\fP (\fBuint16\fP destAddr, \fBuint8\fP *pPayload, \fBuint8\fP length)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBbasicRfPacketIsReady\fP (void)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBbasicRfReceive\fP (\fBuint8\fP *pRxData, \fBuint8\fP len, \fBint16\fP *pRssi)"
+.br
+.ti -1c
+.RI "\fBint8\fP \fBbasicRfGetRssi\fP (void)"
+.br
+.ti -1c
+.RI "void \fBbasicRfReceiveOn\fP (void)"
+.br
+.ti -1c
+.RI "void \fBbasicRfReceiveOff\fP (void)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "static \fBbasicRfRxInfo_t\fP \fBrxi\fP = { 0xFF }"
+.br
+.ti -1c
+.RI "static \fBbasicRfTxState_t\fP \fBtxState\fP = { 0x00 }"
+.br
+.ti -1c
+.RI "static \fBbasicRfCfg_t\fP * \fBpConfig\fP"
+.br
+.ti -1c
+.RI "static \fBuint8\fP \fBtxMpdu\fP [BASIC_RF_MAX_PAYLOAD_SIZE+BASIC_RF_PACKET_OVERHEAD_SIZE+1]"
+.br
+.ti -1c
+.RI "static \fBuint8\fP \fBrxMpdu\fP [128]"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define BASIC_RF_ACK_DURATION   (0.5 * 32 * 2 * ((4 + 1) + (1) + (2 + 1) + (2)))"
+.PP
+Definition at line 50 of file basic_rf.c.
+.SS "#define BASIC_RF_ACK_PACKET_SIZE   5"
+.PP
+Definition at line 44 of file basic_rf.c.
+.SS "#define BASIC_RF_AUX_HDR_LENGTH   5"
+.PP
+Definition at line 71 of file basic_rf.c.
+.SS "#define BASIC_RF_CRC_OK_BM   0x80"
+.PP
+Definition at line 82 of file basic_rf.c.
+.SS "#define BASIC_RF_FCF_ACK   0x8861"
+.PP
+Definition at line 58 of file basic_rf.c.
+.SS "#define BASIC_RF_FCF_ACK_BM   0x0020"
+.PP
+Definition at line 59 of file basic_rf.c.
+.SS "#define BASIC_RF_FCF_ACK_BM_L   LO_UINT16(BASIC_RF_FCF_ACK_BM)"
+.PP
+Definition at line 66 of file basic_rf.c.
+.SS "#define BASIC_RF_FCF_ACK_L   LO_UINT16(BASIC_RF_FCF_ACK)"
+.PP
+Definition at line 65 of file basic_rf.c.
+.SS "#define BASIC_RF_FCF_BM   (~BASIC_RF_FCF_ACK_BM)"
+.PP
+Definition at line 60 of file basic_rf.c.
+.SS "#define BASIC_RF_FCF_BM_L   LO_UINT16(BASIC_RF_FCF_BM)"
+.PP
+Definition at line 67 of file basic_rf.c.
+.SS "#define BASIC_RF_FCF_NOACK   0x8841"
+.PP
+Definition at line 57 of file basic_rf.c.
+.SS "#define BASIC_RF_FCF_NOACK_L   LO_UINT16(BASIC_RF_FCF_NOACK)"
+.PP
+Definition at line 64 of file basic_rf.c.
+.SS "#define BASIC_RF_FOOTER_SIZE   2"
+.PP
+Definition at line 45 of file basic_rf.c.
+.SS "#define BASIC_RF_HDR_SIZE   10"
+.PP
+Definition at line 46 of file basic_rf.c.
+.SS "#define BASIC_RF_LEN_AUTH"\fBValue:\fP
+.PP
+.nf
+BASIC_RF_PACKET_OVERHEAD_SIZE + \
+    BASIC_RF_AUX_HDR_LENGTH - BASIC_RF_FOOTER_SIZE
+.fi
+.PP
+Definition at line 72 of file basic_rf.c.
+.SS "#define BASIC_RF_LEN_MIC   8"
+.PP
+Definition at line 75 of file basic_rf.c.
+.SS "#define BASIC_RF_MAX_PAYLOAD_SIZE"\fBValue:\fP
+.PP
+.nf
+(127 - BASIC_RF_PACKET_OVERHEAD_SIZE - \
+    BASIC_RF_AUX_HDR_LENGTH - BASIC_RF_LEN_MIC)
+.fi
+.PP
+Definition at line 42 of file basic_rf.c.
+.SS "#define BASIC_RF_PACKET_OVERHEAD_SIZE   ((2 + 1 + 2 + 2 + 2) + (2))"
+.PP
+Definition at line 41 of file basic_rf.c.
+.SS "#define BASIC_RF_PLD_LEN_MASK   0x7F"
+.PP
+Definition at line 54 of file basic_rf.c.
+.SS "#define BASIC_RF_SEC_ENABLED_FCF_BM   0x0008"
+.PP
+Definition at line 61 of file basic_rf.c.
+.SS "#define BASIC_RF_SEC_ENABLED_FCF_BM_L   LO_UINT16(BASIC_RF_SEC_ENABLED_FCF_BM)"
+.PP
+Definition at line 68 of file basic_rf.c.
+.SS "#define BASIC_RF_SECURITY_M   2"
+.PP
+Definition at line 74 of file basic_rf.c.
+.SS "#define BASIC_RF_SYMBOL_DURATION   (32 * 0.5)"
+.PP
+Definition at line 51 of file basic_rf.c.
+.SS "#define PKT_LEN_AUTH   8"
+.PP
+Definition at line 35 of file basic_rf.c.
+.SS "#define PKT_LEN_ENCR   24"
+.PP
+Definition at line 36 of file basic_rf.c.
+.SS "#define PKT_LEN_MIC   8"
+.PP
+Definition at line 33 of file basic_rf.c.
+.SS "#define PKT_LEN_SEC   PKT_LEN_UNSEC + PKT_LEN_MIC"
+.PP
+Definition at line 34 of file basic_rf.c.
+.SH "Function Documentation"
+.PP 
+.SS "static \fBuint8\fP basicRfBuildHeader (\fBuint8\fP *buffer, \fBuint16\fPdestAddr, \fBuint8\fPpayloadLength)\fC [static]\fP"
+.PP
+Definition at line 156 of file basic_rf.c.
+.PP
+.nf
+{
+    basicRfPktHdr_t *pHdr;
+    uint16 fcf;
+
+    pHdr= (basicRfPktHdr_t*)buffer;
+
+    // Populate packet header
+    pHdr->packetLength = payloadLength + BASIC_RF_PACKET_OVERHEAD_SIZE;
+    //pHdr->frameControlField = pConfig->ackRequest ? BASIC_RF_FCF_ACK : BASIC_RF_FCF_NOACK;
+    fcf= pConfig->ackRequest ? BASIC_RF_FCF_ACK : BASIC_RF_FCF_NOACK;
+    pHdr->fcf0 = LO_UINT16(fcf);
+    pHdr->fcf1 = HI_UINT16(fcf);
+    pHdr->seqNumber= txState.txSeqNumber;
+    pHdr->panId= pConfig->panId;
+    pHdr->destAddr= destAddr;
+    pHdr->srcAddr= pConfig->myAddr;
+
+    #ifdef SECURITY_CCM
+
+    // Add security to FCF, length and security header
+    pHdr->fcf0 |= BASIC_RF_SEC_ENABLED_FCF_BM_L;
+    pHdr->packetLength += PKT_LEN_MIC;
+    pHdr->packetLength += BASIC_RF_AUX_HDR_LENGTH;
+
+    pHdr->securityControl= SECURITY_CONTROL;
+    pHdr->frameCounter[0]=   LO_UINT16(LO_UINT32(txState.frameCounter));
+    pHdr->frameCounter[1]=   HI_UINT16(LO_UINT32(txState.frameCounter));
+    pHdr->frameCounter[2]=   LO_UINT16(HI_UINT32(txState.frameCounter));
+    pHdr->frameCounter[3]=   HI_UINT16(HI_UINT32(txState.frameCounter));
+
+    #endif
+
+    // Make sure bytefields are network byte order
+    UINT16_HTON(pHdr->panId);
+    UINT16_HTON(pHdr->destAddr);
+    UINT16_HTON(pHdr->srcAddr);
+
+    return BASIC_RF_HDR_SIZE;
+}
+.fi
+.SS "static \fBuint8\fP basicRfBuildMpdu (\fBuint16\fPdestAddr, \fBuint8\fP *pPayload, \fBuint8\fPpayloadLength)\fC [static]\fP"
+.PP
+Definition at line 210 of file basic_rf.c.
+.PP
+.nf
+{
+    uint8 hdrLength, n;
+
+    hdrLength = basicRfBuildHeader(txMpdu, destAddr, payloadLength);
+
+    for(n=0;n<payloadLength;n++)
+    {
+        txMpdu[hdrLength+n] = pPayload[n];
+    }
+    return hdrLength + payloadLength; // total mpdu length
+}
+.fi
+.SS "\fBint8\fP basicRfGetRssi (void)"
+.PP
+Definition at line 543 of file basic_rf.c.
+.PP
+.nf
+{
+    if(rxi.rssi < 128){
+        return rxi.rssi - halRfGetRssiOffset();
+    }
+    else{
+        return (rxi.rssi - 256) - halRfGetRssiOffset();
+    }
+}
+.fi
+.SS "\fBuint8\fP basicRfInit (\fBbasicRfCfg_t\fP *pRfConfig)"
+.PP
+Definition at line 365 of file basic_rf.c.
+.PP
+.nf
+{
+    if (halRfInit()==FAILED)
+        return FAILED;
+
+    halIntOff();
+
+    // Set the protocol configuration
+    pConfig = pRfConfig;
+    rxi.pPayload   = NULL;
+
+    txState.receiveOn = TRUE;
+    txState.frameCounter = 0;
+
+    // Set channel
+    halRfSetChannel(pConfig->channel);
+
+    // Write the short address and the PAN ID to the CC2520 RAM
+    halRfSetShortAddr(pConfig->myAddr);
+    halRfSetPanId(pConfig->panId);
+
+    // if security is enabled, write key and nonce
+    #ifdef SECURITY_CCM
+    basicRfSecurityInit(pConfig);
+    #endif
+
+    // Set up receive interrupt (received data or acknowlegment)
+    halRfRxInterruptConfig(basicRfRxFrmDoneIsr);
+
+    halIntOn();
+
+    return SUCCESS;
+}
+.fi
+.SS "\fBuint8\fP basicRfPacketIsReady (void)"
+.PP
+Definition at line 492 of file basic_rf.c.
+.PP
+.nf
+{
+    return rxi.isReady;
+}
+.fi
+.SS "\fBuint8\fP basicRfReceive (\fBuint8\fP *pRxData, \fBuint8\fPlen, \fBint16\fP *pRssi)"
+.PP
+Definition at line 511 of file basic_rf.c.
+.PP
+.nf
+{
+    // Accessing shared variables -> this is a critical region
+    // Critical region start
+    halIntOff();
+    memcpy(pRxData, rxi.pPayload, min(rxi.length, len));
+    if(pRssi != NULL) {
+        if(rxi.rssi < 128){
+            *pRssi = rxi.rssi - halRfGetRssiOffset();
+        }
+        else{
+            *pRssi = (rxi.rssi - 256) - halRfGetRssiOffset();
+        }
+    }
+    rxi.isReady = FALSE;
+    halIntOn();
+
+    // Critical region end
+
+    return min(rxi.length, len);
+}
+.fi
+.SS "void basicRfReceiveOff (void)"
+.PP
+Definition at line 578 of file basic_rf.c.
+.PP
+.nf
+{
+    txState.receiveOn = FALSE;
+    halRfReceiveOff();
+}
+.fi
+.SS "void basicRfReceiveOn (void)"
+.PP
+Definition at line 562 of file basic_rf.c.
+.PP
+.nf
+{
+    txState.receiveOn = TRUE;
+    halRfReceiveOn();
+}
+.fi
+.SS "static void basicRfRxFrmDoneIsr (void)\fC [static]\fP"
+.PP
+Definition at line 236 of file basic_rf.c.
+.PP
+.nf
+{
+    basicRfPktHdr_t *pHdr;
+    uint8 *pStatusWord;
+    #ifdef SECURITY_CCM
+    uint8 authStatus=0;
+    #endif
+
+    // Map header to packet buffer
+    pHdr= (basicRfPktHdr_t*)rxMpdu;
+
+    // Clear interrupt and disable new RX frame done interrupt
+    halRfDisableRxInterrupt();
+
+    // Enable all other interrupt sources (enables interrupt nesting)
+    halIntOn();
+
+    // Read payload length.
+    halRfReadRxBuf(&pHdr->packetLength,1);
+    pHdr->packetLength &= BASIC_RF_PLD_LEN_MASK; // Ignore MSB
+    
+    // Is this an acknowledgment packet?
+    // Only ack packets may be 5 bytes in total.
+    if (pHdr->packetLength == BASIC_RF_ACK_PACKET_SIZE) {
+
+        // Read the packet
+        halRfReadRxBuf(&rxMpdu[1], pHdr->packetLength);
+
+        // Make sure byte fields are changed from network to host byte order
+        UINT16_NTOH(pHdr->panId);
+        UINT16_NTOH(pHdr->destAddr);
+        UINT16_NTOH(pHdr->srcAddr);
+        #ifdef SECURITY_CCM
+        UINT32_NTOH(pHdr->frameCounter);
+        #endif
+
+        rxi.ackRequest = !!(pHdr->fcf0 & BASIC_RF_FCF_ACK_BM_L);
+
+        // Read the status word and check for CRC OK
+        pStatusWord= rxMpdu + 4;
+
+        // Indicate the successful ACK reception if CRC and sequence number OK
+        if ((pStatusWord[1] & BASIC_RF_CRC_OK_BM) && (pHdr->seqNumber == txState.txSeqNumber)) {
+            txState.ackReceived = TRUE;
+        }
+
+        // No, it is data
+    } else {
+
+        // It is assumed that the radio rejects packets with invalid length.
+        // Subtract the number of bytes in the frame overhead to get actual payload.
+
+        rxi.length = pHdr->packetLength - BASIC_RF_PACKET_OVERHEAD_SIZE;
+
+        #ifdef SECURITY_CCM
+        rxi.length -= (BASIC_RF_AUX_HDR_LENGTH + BASIC_RF_LEN_MIC);
+        authStatus = halRfReadRxBufSecure(&rxMpdu[1], pHdr->packetLength, rxi.length,
+                                        BASIC_RF_LEN_AUTH, BASIC_RF_SECURITY_M);
+        #else
+        halRfReadRxBuf(&rxMpdu[1], pHdr->packetLength);
+        #endif
+
+        // Make sure byte fields are changed from network to host byte order
+        UINT16_NTOH(pHdr->panId);
+        UINT16_NTOH(pHdr->destAddr);
+        UINT16_NTOH(pHdr->srcAddr);
+        #ifdef SECURITY_CCM
+        UINT32_NTOH(pHdr->frameCounter);
+        #endif
+
+        rxi.ackRequest = !!(pHdr->fcf0 & BASIC_RF_FCF_ACK_BM_L);
+
+        // Read the source address
+        rxi.srcAddr= pHdr->srcAddr;
+
+        // Read the packet payload
+        rxi.pPayload = rxMpdu + BASIC_RF_HDR_SIZE;
+
+        // Read the FCS to get the RSSI and CRC
+        pStatusWord= rxi.pPayload+rxi.length;
+        #ifdef SECURITY_CCM
+        pStatusWord+= BASIC_RF_LEN_MIC;
+        #endif
+        rxi.rssi = pStatusWord[0];
+
+        // Notify the application about the received data packet if the CRC is OK
+        // Throw packet if the previous packet had the same sequence number
+        if( (pStatusWord[1] & BASIC_RF_CRC_OK_BM) && (rxi.seqNumber != pHdr->seqNumber) ) {
+            // If security is used check also that authentication passed
+            #ifdef SECURITY_CCM
+            if( authStatus==SUCCESS ) {
+                if ( (pHdr->fcf0 & BASIC_RF_FCF_BM_L) ==
+                    (BASIC_RF_FCF_NOACK_L | BASIC_RF_SEC_ENABLED_FCF_BM_L)) {
+                        rxi.isReady = TRUE;
+                }
+            }
+            #else
+            if ( ((pHdr->fcf0 & (BASIC_RF_FCF_BM_L)) == BASIC_RF_FCF_NOACK_L) ) {
+                rxi.isReady = TRUE;
+            }              
+            #endif
+        }
+        rxi.seqNumber = pHdr->seqNumber;
+    }
+  
+    // Enable RX frame done interrupt again
+    halIntOff();
+    halRfEnableRxInterrupt();
+}
+.fi
+.SS "\fBuint8\fP basicRfSendPacket (\fBuint16\fPdestAddr, \fBuint8\fP *pPayload, \fBuint8\fPlength)"
+.PP
+Definition at line 414 of file basic_rf.c.
+.PP
+.nf
+{
+    uint8 mpduLength;
+    uint8 status;
+
+    // Turn on receiver if its not on
+    if(!txState.receiveOn) {
+        halRfReceiveOn();
+    }
+
+    // Check packet length
+    length = min(length, BASIC_RF_MAX_PAYLOAD_SIZE);
+
+    // Wait until the transceiver is idle
+    halRfWaitTransceiverReady();
+
+    // Turn off RX frame done interrupt to avoid interference on the SPI interface
+    halRfDisableRxInterrupt();
+
+    mpduLength = basicRfBuildMpdu(destAddr, pPayload, length);
+
+    #ifdef SECURITY_CCM
+    halRfWriteTxBufSecure(txMpdu, mpduLength, length, BASIC_RF_LEN_AUTH, BASIC_RF_SECURITY_M);
+    txState.frameCounter++;     // Increment frame counter field
+    #else
+    halRfWriteTxBuf(txMpdu, mpduLength);
+    #endif
+
+    // Turn on RX frame done interrupt for ACK reception
+    halRfEnableRxInterrupt();
+
+    // Send frame with CCA. return FAILED if not successful
+    if(halRfTransmit() != SUCCESS) {
+        status = FAILED;
+    }
+
+    // Wait for the acknowledge to be received, if any
+    if (pConfig->ackRequest) {
+        txState.ackReceived = FALSE;
+
+        // We'll enter RX automatically, so just wait until we can be sure that the ack reception should have finished
+        // The timeout consists of a 12-symbol turnaround time, the ack packet duration, and a small margin
+        halMcuWaitUs((12 * BASIC_RF_SYMBOL_DURATION) + (BASIC_RF_ACK_DURATION) + (2 * BASIC_RF_SYMBOL_DURATION) + 10);
+
+        // If an acknowledgment has been received (by RxFrmDoneIsr), the ackReceived flag should be set
+        status = txState.ackReceived ? SUCCESS : FAILED;
+
+    } else {
+        status = SUCCESS;
+    }
+
+    // Turn off the receiver if it should not continue to be enabled
+    if (!txState.receiveOn) {
+        halRfReceiveOff();
+    }
+
+    if(status == SUCCESS) {
+        txState.txSeqNumber++;
+    }
+
+#ifdef SECURITY_CCM
+    halRfIncNonceTx();          // Increment nonce value
+#endif
+
+    return status;
+
+}
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "\fBbasicRfCfg_t\fP* \fBpConfig\fP\fC [static]\fP"
+.PP
+Definition at line 131 of file basic_rf.c.
+.SS "\fBbasicRfRxInfo_t\fP \fBrxi\fP = { 0xFF }\fC [static]\fP"
+.PP
+Definition at line 128 of file basic_rf.c.
+.SS "\fBuint8\fP \fBrxMpdu\fP[128]\fC [static]\fP"
+.PP
+Definition at line 133 of file basic_rf.c.
+.SS "\fBuint8\fP \fBtxMpdu\fP[BASIC_RF_MAX_PAYLOAD_SIZE+BASIC_RF_PACKET_OVERHEAD_SIZE+1]\fC [static]\fP"
+.PP
+Definition at line 132 of file basic_rf.c.
+.SS "\fBbasicRfTxState_t\fP \fBtxState\fP = { 0x00 }\fC [static]\fP"
+.PP
+Definition at line 129 of file basic_rf.c.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

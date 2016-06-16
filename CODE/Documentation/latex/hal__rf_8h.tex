@@ -1,0 +1,821 @@
+\hypertarget{hal__rf_8h}{
+\section{hal\_\-rf.h File Reference}
+\label{hal__rf_8h}\index{hal\_\-rf.h@{hal\_\-rf.h}}
+}
+{\ttfamily \#include $<$hal\_\-types.h$>$}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{hal__rf_8h_a16d5a34ca088bddc859aba2cb79e3f2c}{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC1100}~0x00
+\item 
+\#define \hyperlink{hal__rf_8h_a50d8e199337d7a6e12ba713577c7be4f}{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC1110}~0x01
+\item 
+\#define \hyperlink{hal__rf_8h_a3d94a29c507774be269d584d0638b325}{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC1111}~0x11
+\item 
+\#define \hyperlink{hal__rf_8h_ae2c59a66a84dc2f38ce53de503a48a0a}{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2420}~0x02
+\item 
+\#define \hyperlink{hal__rf_8h_a80f65062db332ad28e060c5c57bd7c07}{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2500}~0x80
+\item 
+\#define \hyperlink{hal__rf_8h_ad4f06ececb1d59f91c8242975194984a}{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2510}~0x81
+\item 
+\#define \hyperlink{hal__rf_8h_a1179ac20a89932f5315aebdce4d052d7}{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2511}~0x91
+\item 
+\#define \hyperlink{hal__rf_8h_ab2fb803bd01c65c1e3f5b33154c8360f}{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2550}~0x82
+\item 
+\#define \hyperlink{hal__rf_8h_a5488046d9faaa627cb70b0ecddf6ba70}{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2520}~0x84
+\item 
+\#define \hyperlink{hal__rf_8h_a93d5364403feca09fe8363a115973936}{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2430}~0x85
+\item 
+\#define \hyperlink{hal__rf_8h_aa7ccb797ab63859d5dd74423488e8fee}{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2431}~0x89
+\item 
+\#define \hyperlink{hal__rf_8h_adc25eefe37b74a82de2a849c33f3de98}{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2530}~0xA5
+\item 
+\#define \hyperlink{hal__rf_8h_a8bc206cb9f202af78355c75953bfeb47}{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2531}~0xB5
+\item 
+\#define \hyperlink{hal__rf_8h_a54a722e8725056b56526e48cee7275f9}{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2540}~0x8D
+\item 
+\#define \hyperlink{hal__rf_8h_a7b9191ae1eac098fc92b14a3cce09db6}{HAL\_\-RF\_\-GAIN\_\-LOW}~0
+\item 
+\#define \hyperlink{hal__rf_8h_a86c61454e492bbb2ddb53db8130f1b50}{HAL\_\-RF\_\-GAIN\_\-HIGH}~1
+\item 
+\#define \hyperlink{hal__rf_8h_aa113b8d2f73b3bfbeeda47091a1bf203}{MIN\_\-CHANNEL}~11
+\item 
+\#define \hyperlink{hal__rf_8h_a53550b02192e90e64ea2ecce606fc361}{MAX\_\-CHANNEL}~26
+\item 
+\#define \hyperlink{hal__rf_8h_af0cdcc439e5e6efd8219edd0250c08f8}{CHANNEL\_\-SPACING}~5
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{hal__rf_8h_a3a3c78717a30105882a011973c1ab54b}{halRfInit} (void)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{hal__rf_8h_af7c9848a53bf4726dd22fe27dd0818c5}{halRfSetTxPower} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} power)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{hal__rf_8h_a58498e7b18acfedc38b011f95f2c1fa1}{halRfTransmit} (void)
+\item 
+void \hyperlink{hal__rf_8h_a29e872cea848394758b13f24df885d63}{halRfSetGain} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} gainMode)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{hal__rf_8h_a322c5011f58a161af047d857b6b5967c}{halRfGetChipId} (void)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{hal__rf_8h_a6f48f5e30a113fdcd876fef360f1569e}{halRfGetChipVer} (void)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{hal__rf_8h_aa606a379904a5cda2bb6731a7d3440d2}{halRfGetRandomByte} (void)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{hal__rf_8h_a4704f87be83afaa7487891a8527bf2c4}{halRfGetRssiOffset} (void)
+\item 
+void \hyperlink{hal__rf_8h_a4371f402044d251326d6288928b0bdd0}{halRfWriteTxBuf} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$pData, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} length)
+\item 
+void \hyperlink{hal__rf_8h_a1e4b35a07e3bb5a6875bed1c6878f8e8}{halRfReadRxBuf} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$pData, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} length)
+\item 
+void \hyperlink{hal__rf_8h_ae8a0ea8b57301765996561e4b703f6e7}{halRfWaitTransceiverReady} (void)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{hal__rf_8h_aafef2af65e6e5fb7973fa096baa3a932}{halRfReadMemory} (\hyperlink{hal__types_8h_a05f6b0ae8f6a6e135b0e290c25fe0e4e}{uint16} addr, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$pData, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} length)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{hal__rf_8h_a1254b5ac04c82180f4b93349f9c6e691}{halRfWriteMemory} (\hyperlink{hal__types_8h_a05f6b0ae8f6a6e135b0e290c25fe0e4e}{uint16} addr, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$pData, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} length)
+\item 
+void \hyperlink{hal__rf_8h_adb9b5c0c3f8c5d464a488929b75284c6}{halRfReceiveOn} (void)
+\item 
+void \hyperlink{hal__rf_8h_ab2ebc515c36341d1b932d90b716e39d4}{halRfReceiveOff} (void)
+\item 
+void \hyperlink{hal__rf_8h_a0e9016638b26539914831b98db749967}{halRfDisableRxInterrupt} (void)
+\item 
+void \hyperlink{hal__rf_8h_a9bcdf2f2fbe6e04668d69adfcc0741ad}{halRfEnableRxInterrupt} (void)
+\item 
+void \hyperlink{hal__rf_8h_a19617166d101f77cbb38cc0f0860b733}{halRfRxInterruptConfig} (\hyperlink{hal__types_8h_ac1e04699e2051474d0bd1c9d3f35b5e3}{ISR\_\-FUNC\_\-PTR} \hyperlink{hal__rf_8c_ae02b550dfa00d8e5473b1c8d417523f3}{pfISR})
+\item 
+void \hyperlink{hal__rf_8h_ae4b044c4167743fdbcd044ab7cb3688e}{halRfSetChannel} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} channel)
+\item 
+void \hyperlink{hal__rf_8h_a60f4374927f82223729323f43c306e39}{halRfSetShortAddr} (\hyperlink{hal__types_8h_a05f6b0ae8f6a6e135b0e290c25fe0e4e}{uint16} shortAddr)
+\item 
+void \hyperlink{hal__rf_8h_a0e0c4f20453213a674ca6c2c257d9aee}{halRfSetPanId} (\hyperlink{hal__types_8h_a05f6b0ae8f6a6e135b0e290c25fe0e4e}{uint16} PanId)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{hal__rf_8h_af0cdcc439e5e6efd8219edd0250c08f8}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!CHANNEL\_\-SPACING@{CHANNEL\_\-SPACING}}
+\index{CHANNEL\_\-SPACING@{CHANNEL\_\-SPACING}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{CHANNEL\_\-SPACING}]{\setlength{\rightskip}{0pt plus 5cm}\#define CHANNEL\_\-SPACING~5}}
+\label{hal__rf_8h_af0cdcc439e5e6efd8219edd0250c08f8}
+
+
+Definition at line 50 of file hal\_\-rf.h.
+
+\hypertarget{hal__rf_8h_a16d5a34ca088bddc859aba2cb79e3f2c}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!HAL\_\-RF\_\-CHIP\_\-ID\_\-CC1100@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC1100}}
+\index{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC1100@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC1100}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC1100}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-RF\_\-CHIP\_\-ID\_\-CC1100~0x00}}
+\label{hal__rf_8h_a16d5a34ca088bddc859aba2cb79e3f2c}
+
+
+Definition at line 28 of file hal\_\-rf.h.
+
+\hypertarget{hal__rf_8h_a50d8e199337d7a6e12ba713577c7be4f}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!HAL\_\-RF\_\-CHIP\_\-ID\_\-CC1110@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC1110}}
+\index{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC1110@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC1110}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC1110}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-RF\_\-CHIP\_\-ID\_\-CC1110~0x01}}
+\label{hal__rf_8h_a50d8e199337d7a6e12ba713577c7be4f}
+
+
+Definition at line 29 of file hal\_\-rf.h.
+
+\hypertarget{hal__rf_8h_a3d94a29c507774be269d584d0638b325}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!HAL\_\-RF\_\-CHIP\_\-ID\_\-CC1111@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC1111}}
+\index{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC1111@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC1111}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC1111}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-RF\_\-CHIP\_\-ID\_\-CC1111~0x11}}
+\label{hal__rf_8h_a3d94a29c507774be269d584d0638b325}
+
+
+Definition at line 30 of file hal\_\-rf.h.
+
+\hypertarget{hal__rf_8h_ae2c59a66a84dc2f38ce53de503a48a0a}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2420@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2420}}
+\index{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2420@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2420}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2420}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2420~0x02}}
+\label{hal__rf_8h_ae2c59a66a84dc2f38ce53de503a48a0a}
+
+
+Definition at line 31 of file hal\_\-rf.h.
+
+\hypertarget{hal__rf_8h_a93d5364403feca09fe8363a115973936}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2430@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2430}}
+\index{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2430@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2430}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2430}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2430~0x85}}
+\label{hal__rf_8h_a93d5364403feca09fe8363a115973936}
+
+
+Definition at line 37 of file hal\_\-rf.h.
+
+\hypertarget{hal__rf_8h_aa7ccb797ab63859d5dd74423488e8fee}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2431@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2431}}
+\index{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2431@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2431}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2431}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2431~0x89}}
+\label{hal__rf_8h_aa7ccb797ab63859d5dd74423488e8fee}
+
+
+Definition at line 38 of file hal\_\-rf.h.
+
+\hypertarget{hal__rf_8h_a80f65062db332ad28e060c5c57bd7c07}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2500@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2500}}
+\index{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2500@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2500}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2500}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2500~0x80}}
+\label{hal__rf_8h_a80f65062db332ad28e060c5c57bd7c07}
+
+
+Definition at line 32 of file hal\_\-rf.h.
+
+\hypertarget{hal__rf_8h_ad4f06ececb1d59f91c8242975194984a}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2510@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2510}}
+\index{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2510@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2510}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2510}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2510~0x81}}
+\label{hal__rf_8h_ad4f06ececb1d59f91c8242975194984a}
+
+
+Definition at line 33 of file hal\_\-rf.h.
+
+\hypertarget{hal__rf_8h_a1179ac20a89932f5315aebdce4d052d7}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2511@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2511}}
+\index{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2511@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2511}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2511}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2511~0x91}}
+\label{hal__rf_8h_a1179ac20a89932f5315aebdce4d052d7}
+
+
+Definition at line 34 of file hal\_\-rf.h.
+
+\hypertarget{hal__rf_8h_a5488046d9faaa627cb70b0ecddf6ba70}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2520@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2520}}
+\index{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2520@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2520}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2520}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2520~0x84}}
+\label{hal__rf_8h_a5488046d9faaa627cb70b0ecddf6ba70}
+
+
+Definition at line 36 of file hal\_\-rf.h.
+
+\hypertarget{hal__rf_8h_adc25eefe37b74a82de2a849c33f3de98}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2530@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2530}}
+\index{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2530@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2530}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2530}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2530~0xA5}}
+\label{hal__rf_8h_adc25eefe37b74a82de2a849c33f3de98}
+
+
+Definition at line 39 of file hal\_\-rf.h.
+
+\hypertarget{hal__rf_8h_a8bc206cb9f202af78355c75953bfeb47}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2531@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2531}}
+\index{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2531@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2531}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2531}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2531~0xB5}}
+\label{hal__rf_8h_a8bc206cb9f202af78355c75953bfeb47}
+
+
+Definition at line 40 of file hal\_\-rf.h.
+
+\hypertarget{hal__rf_8h_a54a722e8725056b56526e48cee7275f9}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2540@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2540}}
+\index{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2540@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2540}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2540}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2540~0x8D}}
+\label{hal__rf_8h_a54a722e8725056b56526e48cee7275f9}
+
+
+Definition at line 41 of file hal\_\-rf.h.
+
+\hypertarget{hal__rf_8h_ab2fb803bd01c65c1e3f5b33154c8360f}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2550@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2550}}
+\index{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2550@{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2550}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2550}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-RF\_\-CHIP\_\-ID\_\-CC2550~0x82}}
+\label{hal__rf_8h_ab2fb803bd01c65c1e3f5b33154c8360f}
+
+
+Definition at line 35 of file hal\_\-rf.h.
+
+\hypertarget{hal__rf_8h_a86c61454e492bbb2ddb53db8130f1b50}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!HAL\_\-RF\_\-GAIN\_\-HIGH@{HAL\_\-RF\_\-GAIN\_\-HIGH}}
+\index{HAL\_\-RF\_\-GAIN\_\-HIGH@{HAL\_\-RF\_\-GAIN\_\-HIGH}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{HAL\_\-RF\_\-GAIN\_\-HIGH}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-RF\_\-GAIN\_\-HIGH~1}}
+\label{hal__rf_8h_a86c61454e492bbb2ddb53db8130f1b50}
+
+
+Definition at line 45 of file hal\_\-rf.h.
+
+\hypertarget{hal__rf_8h_a7b9191ae1eac098fc92b14a3cce09db6}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!HAL\_\-RF\_\-GAIN\_\-LOW@{HAL\_\-RF\_\-GAIN\_\-LOW}}
+\index{HAL\_\-RF\_\-GAIN\_\-LOW@{HAL\_\-RF\_\-GAIN\_\-LOW}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{HAL\_\-RF\_\-GAIN\_\-LOW}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-RF\_\-GAIN\_\-LOW~0}}
+\label{hal__rf_8h_a7b9191ae1eac098fc92b14a3cce09db6}
+
+
+Definition at line 44 of file hal\_\-rf.h.
+
+\hypertarget{hal__rf_8h_a53550b02192e90e64ea2ecce606fc361}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!MAX\_\-CHANNEL@{MAX\_\-CHANNEL}}
+\index{MAX\_\-CHANNEL@{MAX\_\-CHANNEL}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{MAX\_\-CHANNEL}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-CHANNEL~26}}
+\label{hal__rf_8h_a53550b02192e90e64ea2ecce606fc361}
+
+
+Definition at line 49 of file hal\_\-rf.h.
+
+\hypertarget{hal__rf_8h_aa113b8d2f73b3bfbeeda47091a1bf203}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!MIN\_\-CHANNEL@{MIN\_\-CHANNEL}}
+\index{MIN\_\-CHANNEL@{MIN\_\-CHANNEL}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{MIN\_\-CHANNEL}]{\setlength{\rightskip}{0pt plus 5cm}\#define MIN\_\-CHANNEL~11}}
+\label{hal__rf_8h_aa113b8d2f73b3bfbeeda47091a1bf203}
+
+
+Definition at line 48 of file hal\_\-rf.h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{hal__rf_8h_a0e9016638b26539914831b98db749967}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!halRfDisableRxInterrupt@{halRfDisableRxInterrupt}}
+\index{halRfDisableRxInterrupt@{halRfDisableRxInterrupt}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{halRfDisableRxInterrupt}]{\setlength{\rightskip}{0pt plus 5cm}void halRfDisableRxInterrupt (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__rf_8h_a0e9016638b26539914831b98db749967}
+
+
+Definition at line 646 of file hal\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+  // disable RX_FIFOP interrupt
+  RFIM &= ~BV(5);
+  // disable general RF interrupts
+  IEN2 &= ~BV(0);
+}
+\end{DoxyCode}
+\hypertarget{hal__rf_8h_a9bcdf2f2fbe6e04668d69adfcc0741ad}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!halRfEnableRxInterrupt@{halRfEnableRxInterrupt}}
+\index{halRfEnableRxInterrupt@{halRfEnableRxInterrupt}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{halRfEnableRxInterrupt}]{\setlength{\rightskip}{0pt plus 5cm}void halRfEnableRxInterrupt (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__rf_8h_a9bcdf2f2fbe6e04668d69adfcc0741ad}
+
+
+Definition at line 664 of file hal\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+  // enable RX_FIFOP interrupt
+  RFIM |= BV(5);
+  // enable general RF interrupts
+  IEN2 |= BV(0);
+}
+\end{DoxyCode}
+\hypertarget{hal__rf_8h_a322c5011f58a161af047d857b6b5967c}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!halRfGetChipId@{halRfGetChipId}}
+\index{halRfGetChipId@{halRfGetChipId}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{halRfGetChipId}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} halRfGetChipId (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__rf_8h_a322c5011f58a161af047d857b6b5967c}
+
+
+Definition at line 269 of file hal\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    return CHIPID;
+}
+\end{DoxyCode}
+\hypertarget{hal__rf_8h_a6f48f5e30a113fdcd876fef360f1569e}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!halRfGetChipVer@{halRfGetChipVer}}
+\index{halRfGetChipVer@{halRfGetChipVer}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{halRfGetChipVer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} halRfGetChipVer (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__rf_8h_a6f48f5e30a113fdcd876fef360f1569e}
+
+
+Definition at line 284 of file hal\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    return CHVER;
+}
+\end{DoxyCode}
+\hypertarget{hal__rf_8h_aa606a379904a5cda2bb6731a7d3440d2}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!halRfGetRandomByte@{halRfGetRandomByte}}
+\index{halRfGetRandomByte@{halRfGetRandomByte}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{halRfGetRandomByte}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} halRfGetRandomByte (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__rf_8h_aa606a379904a5cda2bb6731a7d3440d2}
+
+
+Definition at line 315 of file hal\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    // Clock the random generator
+    ADCCON1 |= 0x04;
+
+    return RNDH;
+
+}
+\end{DoxyCode}
+\hypertarget{hal__rf_8h_a4704f87be83afaa7487891a8527bf2c4}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!halRfGetRssiOffset@{halRfGetRssiOffset}}
+\index{halRfGetRssiOffset@{halRfGetRssiOffset}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{halRfGetRssiOffset}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} halRfGetRssiOffset (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__rf_8h_a4704f87be83afaa7487891a8527bf2c4}
+
+
+Definition at line 334 of file hal\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+  return rssiOffset;
+}
+\end{DoxyCode}
+\hypertarget{hal__rf_8h_a3a3c78717a30105882a011973c1ab54b}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!halRfInit@{halRfInit}}
+\index{halRfInit@{halRfInit}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{halRfInit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} halRfInit (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__rf_8h_a3a3c78717a30105882a011973c1ab54b}
+
+
+Definition at line 212 of file hal\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    uint8 i;
+
+    // turning on power to analog part of radio and waiting for voltage regulator
+      .
+    RFPWR = 0x04;
+    while( RFPWR & 0x10 );
+
+    // Setting for AUTO CRC and AUTOACK
+    MDMCTRL0L |= (AUTO_CRC | AUTO_ACK);
+
+    // Turning on AUTO_TX2RX
+    FSMTC1 = ((FSMTC1 & (~AUTO_TX2RX_OFF & ~RX2RX_TIME_OFF))  | ACCEPT_ACKPKT);
+
+    // Turning off abortRxOnSrxon.
+    FSMTC1 &= ~0x20;
+
+    // Set FIFOP threshold to maximum
+    IOCFG0 = 0x7F;
+    // tuning adjustments for optimal radio performance; details available in dat
+      asheet */
+    RXCTRL0H = 0x32;
+    RXCTRL0L = 0xF5;
+
+    // Turning on receiver to get output from IF-ADC
+    ISRXON();
+    halMcuWaitUs(1);
+
+    // Enable random generator
+    ADCCON1 &= ~0x0C;
+
+    for(i = 0 ; i < 32 ; i++)
+    {
+        RNDH = ADCTSTH;
+        // Clock random generator
+        ADCCON1 |= 0x04;
+    }
+    ISRFOFF();
+
+    // Enable CC2591 with High Gain Mode
+    halPaLnaInit();
+
+    halRfEnableRxInterrupt();
+
+    return SUCCESS;
+}
+\end{DoxyCode}
+\hypertarget{hal__rf_8h_aafef2af65e6e5fb7973fa096baa3a932}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!halRfReadMemory@{halRfReadMemory}}
+\index{halRfReadMemory@{halRfReadMemory}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{halRfReadMemory}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} halRfReadMemory (
+\begin{DoxyParamCaption}
+\item[{{\bf uint16}}]{addr, }
+\item[{{\bf uint8} $\ast$}]{pData, }
+\item[{{\bf uint8}}]{length}
+\end{DoxyParamCaption}
+)}}
+\label{hal__rf_8h_aafef2af65e6e5fb7973fa096baa3a932}
+
+
+Definition at line 558 of file hal\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    return 0;
+}
+\end{DoxyCode}
+\hypertarget{hal__rf_8h_a1e4b35a07e3bb5a6875bed1c6878f8e8}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!halRfReadRxBuf@{halRfReadRxBuf}}
+\index{halRfReadRxBuf@{halRfReadRxBuf}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{halRfReadRxBuf}]{\setlength{\rightskip}{0pt plus 5cm}void halRfReadRxBuf (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8} $\ast$}]{pData, }
+\item[{{\bf uint8}}]{length}
+\end{DoxyParamCaption}
+)}}
+\label{hal__rf_8h_a1e4b35a07e3bb5a6875bed1c6878f8e8}
+
+
+Definition at line 538 of file hal\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    while (length>0) {
+        *pData++= RFD;
+        length--;
+    }
+}
+\end{DoxyCode}
+\hypertarget{hal__rf_8h_ab2ebc515c36341d1b932d90b716e39d4}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!halRfReceiveOff@{halRfReceiveOff}}
+\index{halRfReceiveOff@{halRfReceiveOff}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{halRfReceiveOff}]{\setlength{\rightskip}{0pt plus 5cm}void halRfReceiveOff (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__rf_8h_ab2ebc515c36341d1b932d90b716e39d4}
+
+
+Definition at line 630 of file hal\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    ISRFOFF();
+    FLUSH_RX_FIFO();
+}
+\end{DoxyCode}
+\hypertarget{hal__rf_8h_adb9b5c0c3f8c5d464a488929b75284c6}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!halRfReceiveOn@{halRfReceiveOn}}
+\index{halRfReceiveOn@{halRfReceiveOn}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{halRfReceiveOn}]{\setlength{\rightskip}{0pt plus 5cm}void halRfReceiveOn (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__rf_8h_adb9b5c0c3f8c5d464a488929b75284c6}
+
+
+Definition at line 615 of file hal\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    FLUSH_RX_FIFO();
+    ISRXON();
+}
+\end{DoxyCode}
+\hypertarget{hal__rf_8h_a19617166d101f77cbb38cc0f0860b733}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!halRfRxInterruptConfig@{halRfRxInterruptConfig}}
+\index{halRfRxInterruptConfig@{halRfRxInterruptConfig}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{halRfRxInterruptConfig}]{\setlength{\rightskip}{0pt plus 5cm}void halRfRxInterruptConfig (
+\begin{DoxyParamCaption}
+\item[{{\bf ISR\_\-FUNC\_\-PTR}}]{pfISR}
+\end{DoxyParamCaption}
+)}}
+\label{hal__rf_8h_a19617166d101f77cbb38cc0f0860b733}
+
+
+Definition at line 682 of file hal\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    uint8 x;
+    HAL_INT_LOCK(x);
+    pfISR= pf;
+    HAL_INT_UNLOCK(x);
+}
+\end{DoxyCode}
+\hypertarget{hal__rf_8h_ae4b044c4167743fdbcd044ab7cb3688e}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!halRfSetChannel@{halRfSetChannel}}
+\index{halRfSetChannel@{halRfSetChannel}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{halRfSetChannel}]{\setlength{\rightskip}{0pt plus 5cm}void halRfSetChannel (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8}}]{channel}
+\end{DoxyParamCaption}
+)}}
+\label{hal__rf_8h_ae4b044c4167743fdbcd044ab7cb3688e}
+
+
+Definition at line 349 of file hal\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    uint16 freqMHz;
+
+    freqMHz= 2405 + ((channel - MIN_CHANNEL) * CHANNEL_SPACING); // Calculate fre
+      quency
+    freqMHz -= (uint32)2048;              // Subtract; datasheet sect 14.16
+
+    FSCTRLL = LO_UINT16(freqMHz);
+    FSCTRLH &= ~0x03;
+    FSCTRLH |= (HI_UINT16(freqMHz) & 0x03);
+}
+\end{DoxyCode}
+\hypertarget{hal__rf_8h_a29e872cea848394758b13f24df885d63}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!halRfSetGain@{halRfSetGain}}
+\index{halRfSetGain@{halRfSetGain}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{halRfSetGain}]{\setlength{\rightskip}{0pt plus 5cm}void halRfSetGain (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8}}]{gainMode}
+\end{DoxyParamCaption}
+)}}
+\label{hal__rf_8h_a29e872cea848394758b13f24df885d63}
+
+
+Definition at line 470 of file hal\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    if (gainMode==HAL_RF_GAIN_LOW) {
+        HAL_PA_LNA_RX_LGM();
+        rssiOffset = RSSI_OFFSET_LNA_LOWGAIN;
+    } else {
+        HAL_PA_LNA_RX_HGM();
+        rssiOffset = RSSI_OFFSET_LNA_HIGHGAIN;
+    }
+}
+\end{DoxyCode}
+\hypertarget{hal__rf_8h_a0e0c4f20453213a674ca6c2c257d9aee}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!halRfSetPanId@{halRfSetPanId}}
+\index{halRfSetPanId@{halRfSetPanId}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{halRfSetPanId}]{\setlength{\rightskip}{0pt plus 5cm}void halRfSetPanId (
+\begin{DoxyParamCaption}
+\item[{{\bf uint16}}]{PanId}
+\end{DoxyParamCaption}
+)}}
+\label{hal__rf_8h_a0e0c4f20453213a674ca6c2c257d9aee}
+
+
+Definition at line 387 of file hal\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    PANIDL= LO_UINT16(panId);
+    PANIDH= HI_UINT16(panId);
+}
+\end{DoxyCode}
+\hypertarget{hal__rf_8h_a60f4374927f82223729323f43c306e39}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!halRfSetShortAddr@{halRfSetShortAddr}}
+\index{halRfSetShortAddr@{halRfSetShortAddr}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{halRfSetShortAddr}]{\setlength{\rightskip}{0pt plus 5cm}void halRfSetShortAddr (
+\begin{DoxyParamCaption}
+\item[{{\bf uint16}}]{shortAddr}
+\end{DoxyParamCaption}
+)}}
+\label{hal__rf_8h_a60f4374927f82223729323f43c306e39}
+
+
+Definition at line 371 of file hal\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    SHORTADDRL= LO_UINT16(shortAddr);
+    SHORTADDRH= HI_UINT16(shortAddr);
+}
+\end{DoxyCode}
+\hypertarget{hal__rf_8h_af7c9848a53bf4726dd22fe27dd0818c5}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!halRfSetTxPower@{halRfSetTxPower}}
+\index{halRfSetTxPower@{halRfSetTxPower}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{halRfSetTxPower}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} halRfSetTxPower (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8}}]{power}
+\end{DoxyParamCaption}
+)}}
+\label{hal__rf_8h_af7c9848a53bf4726dd22fe27dd0818c5}
+
+
+Definition at line 404 of file hal\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    uint8 v;
+
+    switch(power)
+    {
+#if INCLUDE_PA==2591
+    case HAL_RF_TXPOWER_0_DBM:
+        v = CC2430_TXPOWER_0_DBM;
+        break;
+    case HAL_RF_TXPOWER_13_DBM:
+        v = CC2430_TXPOWER_13_DBM;
+        break;
+    case HAL_RF_TXPOWER_15_DBM:
+        v = CC2430_TXPOWER_15_DBM;
+        break;
+    case HAL_RF_TXPOWER_18_DBM:
+        v = CC2430_TXPOWER_18_DBM;
+        break;
+    case HAL_RF_TXPOWER_19_DBM:
+        v = CC2430_TXPOWER_18_DBM;
+        break;
+#elif INCLUDE_PA==2590
+    case HAL_RF_TXPOWER_MIN_13_DBM:
+        v = CC2430_TXPOWER_MIN_13_DBM;
+        break;
+    case HAL_RF_TXPOWER_MIN_3_DBM:
+        v = CC2430_TXPOWER_MIN_3_DBM;
+        break;
+    case HAL_RF_TXPOWER_5_DBM:
+        v = CC2430_TXPOWER_5_DBM;
+        break;
+    case HAL_RF_TXPOWER_10_DBM:
+        v = CC2430_TXPOWER_10_DBM;
+        break;
+    case HAL_RF_TXPOWER_11_DBM:
+        v = CC2430_TXPOWER_11_DBM;
+        break;
+#else
+    case HAL_RF_TXPOWER_0_DBM:
+        v = CC2430_TXPOWER_0_DBM;
+        break;
+    case HAL_RF_TXPOWER_MIN_4_DBM:
+        v = CC2430_TXPOWER_MIN_4_DBM;
+        break;
+#endif
+    default:
+        return FAILED;
+    }
+
+    // Set TX power
+    TXCTRLL = v;
+
+    return SUCCESS;
+}
+\end{DoxyCode}
+\hypertarget{hal__rf_8h_a58498e7b18acfedc38b011f95f2c1fa1}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!halRfTransmit@{halRfTransmit}}
+\index{halRfTransmit@{halRfTransmit}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{halRfTransmit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} halRfTransmit (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__rf_8h_a58498e7b18acfedc38b011f95f2c1fa1}
+
+
+Definition at line 589 of file hal\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    uint8 status;
+
+    ISTXON(); // Sending
+
+    // Waiting for transmission to finish
+    while(!(RFIF & IRQ_TXDONE) );
+
+    RFIF = ~IRQ_TXDONE;
+    status= SUCCESS;
+
+    return status;
+}
+\end{DoxyCode}
+\hypertarget{hal__rf_8h_ae8a0ea8b57301765996561e4b703f6e7}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!halRfWaitTransceiverReady@{halRfWaitTransceiverReady}}
+\index{halRfWaitTransceiverReady@{halRfWaitTransceiverReady}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{halRfWaitTransceiverReady}]{\setlength{\rightskip}{0pt plus 5cm}void halRfWaitTransceiverReady (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__rf_8h_ae8a0ea8b57301765996561e4b703f6e7}
+
+
+Definition at line 700 of file hal\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    while (RFSTATUS & (BV(1) | BV(4) ));
+}
+\end{DoxyCode}
+\hypertarget{hal__rf_8h_a1254b5ac04c82180f4b93349f9c6e691}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!halRfWriteMemory@{halRfWriteMemory}}
+\index{halRfWriteMemory@{halRfWriteMemory}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{halRfWriteMemory}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} halRfWriteMemory (
+\begin{DoxyParamCaption}
+\item[{{\bf uint16}}]{addr, }
+\item[{{\bf uint8} $\ast$}]{pData, }
+\item[{{\bf uint8}}]{length}
+\end{DoxyParamCaption}
+)}}
+\label{hal__rf_8h_a1254b5ac04c82180f4b93349f9c6e691}
+
+
+Definition at line 575 of file hal\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    return 0;
+}
+\end{DoxyCode}
+\hypertarget{hal__rf_8h_a4371f402044d251326d6288928b0bdd0}{
+\index{hal\_\-rf.h@{hal\_\-rf.h}!halRfWriteTxBuf@{halRfWriteTxBuf}}
+\index{halRfWriteTxBuf@{halRfWriteTxBuf}!hal_rf.h@{hal\_\-rf.h}}
+\subsubsection[{halRfWriteTxBuf}]{\setlength{\rightskip}{0pt plus 5cm}void halRfWriteTxBuf (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8} $\ast$}]{pData, }
+\item[{{\bf uint8}}]{length}
+\end{DoxyParamCaption}
+)}}
+\label{hal__rf_8h_a4371f402044d251326d6288928b0bdd0}
+
+
+Definition at line 491 of file hal\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    uint8 i;
+
+    ISFLUSHTX();          // Making sure that the TX FIFO is empty.
+
+    RFIF = ~IRQ_TXDONE;   // Clear TX done interrupt
+
+    // Insert data
+    for(i=0;i<length;i++){
+        RFD = pData[i];
+    }
+
+}
+\end{DoxyCode}

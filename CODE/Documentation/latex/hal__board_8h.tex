@@ -1,0 +1,622 @@
+\hypertarget{hal__board_8h}{
+\section{hal\_\-board.h File Reference}
+\label{hal__board_8h}\index{hal\_\-board.h@{hal\_\-board.h}}
+}
+{\ttfamily \#include \char`\"{}ioCC2430.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}ioCC2431.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-cc8051.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-defs.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-mcu.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{hal__board_8h_a02581754b212d533d96cde56c8145c9b}{BOARD\_\-NAME}~\char`\"{}SRF04EB\char`\"{}
+\item 
+\#define \hyperlink{hal__board_8h_a4c4ae9a4146ce8d6a5debc90300d9abd}{NUM\_\-LEDS}~2
+\item 
+\#define \hyperlink{hal__board_8h_a45add6b39f5b0c0137de978b90e26b5d}{NUM\_\-BUTTONS}~1
+\item 
+\#define \hyperlink{hal__board_8h_a92c8c5cce529edeffa9bdd65cdd82dc8}{NUM\_\-JSTKS}~1
+\item 
+\#define \hyperlink{hal__board_8h_a103d35f985ec321828356877c4edfa35}{NUM\_\-POTS}~2
+\item 
+\#define \hyperlink{hal__board_8h_a5c5159dbec8143fcab679e33c2b914c6}{BSP\_\-CONFIG\_\-CLOCK\_\-MHZ}~32
+\item 
+\#define \hyperlink{hal__board_8h_af899204de23ab38dc89ae75a599f6e38}{HAL\_\-BOARD\_\-IO\_\-LED\_\-1\_\-PORT}~1
+\item 
+\#define \hyperlink{hal__board_8h_acb772c51ee771e272096c92fdedae7ec}{HAL\_\-BOARD\_\-IO\_\-LED\_\-1\_\-PIN}~0
+\item 
+\#define \hyperlink{hal__board_8h_aeb6aaafce7bc69cfcec1aa9b89716244}{HAL\_\-BOARD\_\-IO\_\-LED\_\-3\_\-PORT}~1
+\item 
+\#define \hyperlink{hal__board_8h_add8740abd9783263f40795515590e6cf}{HAL\_\-BOARD\_\-IO\_\-LED\_\-3\_\-PIN}~1
+\item 
+\#define \hyperlink{hal__board_8h_a1d6b445eabe949fcbee4961095af1a5c}{HAL\_\-BOARD\_\-IO\_\-BTN\_\-1\_\-PORT}~0
+\item 
+\#define \hyperlink{hal__board_8h_a683fcad4a40e15dd7e5717a3f39120a5}{HAL\_\-BOARD\_\-IO\_\-BTN\_\-1\_\-PIN}~1
+\item 
+\#define \hyperlink{hal__board_8h_a21c111f78e5bb689a9a72297cf6d1c7c}{SPI\_\-SIMO}~0x08
+\item 
+\#define \hyperlink{hal__board_8h_ae4ce0fb686a150e8ecec8279abce31cd}{SPI\_\-SOMI}~0x04
+\item 
+\#define \hyperlink{hal__board_8h_ad783a1e2a4012720a4f685af2ddb9c39}{SPI\_\-UCLK}~0x20
+\item 
+\#define \hyperlink{hal__board_8h_a1a68a64c8196904d31d5c04b969704ed}{MMC\_\-CS\_\-PORT}~0
+\item 
+\#define \hyperlink{hal__board_8h_aaeb7204afc7f4f6d59ee5751e3ed909e}{MMC\_\-CS\_\-PIN}~4
+\item 
+\#define \hyperlink{hal__board_8h_a6039626df28b7d892463b1ebcf8fca6a}{MMC\_\-CD\_\-PORT}~0
+\item 
+\#define \hyperlink{hal__board_8h_a23cc2c8b2c0d8459686908e03ad9f96d}{MMC\_\-CD\_\-PIN}~0
+\item 
+\#define \hyperlink{hal__board_8h_a3f7233f98c6f4abb0cdea809c39bcf68}{MMC\_\-CD}~0x01
+\item 
+\#define \hyperlink{hal__board_8h_a128f82619e317166803f11531574a9db}{KDATA}~P2\_\-1
+\item 
+\#define \hyperlink{hal__board_8h_ad513f7d2ba1d9386b6c963cd1f60e596}{KPORT}~2
+\item 
+\#define \hyperlink{hal__board_8h_ab26c3021f313c38ab5c1dba06b4c0199}{KCLOCK\_\-PIN}~2
+\item 
+\#define \hyperlink{hal__board_8h_acdf64a42b8754919a5963c142ab87eb7}{KDATA\_\-PIN}~1
+\item 
+\#define \hyperlink{hal__board_8h_ab6b224028ee993b43049cd45010ec00f}{CS\_\-LOW}()~MCU\_\-IO\_\-OUTPUT(MMC\_\-CS\_\-PORT,MMC\_\-CS\_\-PIN,0)
+\item 
+\#define \hyperlink{hal__board_8h_af67a5c0216de0cfadf059fa4cf05d65d}{CS\_\-HIGH}()~while(!halSPITXDONE); MCU\_\-IO\_\-OUTPUT(MMC\_\-CS\_\-PORT,MMC\_\-CS\_\-PIN,1)
+\item 
+\#define \hyperlink{hal__board_8h_a019a3bbe5fcaeee8f30ea83abc386f0c}{HAL\_\-DEBOUNCE}(expr)~\{ int i; for (i=0; i$<$500; i++) \{ if (!(expr)) i = 0; \} \}
+\item 
+\#define \hyperlink{hal__board_8h_a6598b3f18312b940ece8e59b74b5c960}{HAL\_\-LED\_\-SET\_\-1}()
+\item 
+\#define \hyperlink{hal__board_8h_a28ff96fd12e3f763f46c9e0c3cb97b27}{HAL\_\-LED\_\-SET\_\-3}()
+\item 
+\#define \hyperlink{hal__board_8h_aaad80d1dc8c0afd6cd3d8ed8afdf3830}{HAL\_\-LED\_\-CLR\_\-1}()
+\item 
+\#define \hyperlink{hal__board_8h_ad29db14c37caf542da057599159e0853}{HAL\_\-LED\_\-CLR\_\-3}()
+\item 
+\#define \hyperlink{hal__board_8h_af70b29b241850a5c133c1646bb4a6033}{HAL\_\-LED\_\-TGL\_\-1}()
+\item 
+\#define \hyperlink{hal__board_8h_a6a8f0f20520c288cdc0a233aab82920a}{HAL\_\-LED\_\-TGL\_\-3}()
+\item 
+\#define \hyperlink{hal__board_8h_ac6af693a20ece5eaad122841c52067ce}{HAL\_\-BUTTON\_\-1\_\-PUSHED}()
+\item 
+\#define \hyperlink{hal__board_8h_a362eb7915f0ae8b4c202859edcda9a45}{HAL\_\-RTS\_\-SET}()
+\item 
+\#define \hyperlink{hal__board_8h_ad2040964fa2e5a90b17565f127165443}{HAL\_\-RTS\_\-CLR}()
+\item 
+\#define \hyperlink{hal__board_8h_afed1a0b47528d085d1053f1522e12dea}{HAL\_\-RTS\_\-DIR\_\-OUT}()
+\item 
+\#define \hyperlink{hal__board_8h_a8705b351c18a733d8510549396aa35c7}{CLKSPD}~( CLKCON \& 0x01 )
+\item 
+\#define \hyperlink{hal__board_8h_a4a098ae2be22c066d183da1f7a8d9962}{TICKSPD}~((CLKCON \& 0x38) $>$$>$ 3)
+\item 
+\#define \hyperlink{hal__board_8h_aaa9775eb1487443460cf65348d4cb5aa}{XOSC\_\-STABLE}~(SLEEP \& 0x40)
+\item 
+\#define \hyperlink{hal__board_8h_ad6fa6393a8a8fb8be456a96f4c4cb557}{HIGH\_\-FREQUENCY\_\-RC\_\-OSC\_\-STABLE}~(SLEEP \& 0x20)
+\item 
+\#define \hyperlink{hal__board_8h_aaf412680abfd5687e6e6d6a43198c30d}{HAL\_\-PROCESS}()
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{hal__board_8h_a425cd40e398a6b6b463868daaeb4c998}{halBoardInit} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{hal__board_8h_a02581754b212d533d96cde56c8145c9b}{
+\index{hal\_\-board.h@{hal\_\-board.h}!BOARD\_\-NAME@{BOARD\_\-NAME}}
+\index{BOARD\_\-NAME@{BOARD\_\-NAME}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{BOARD\_\-NAME}]{\setlength{\rightskip}{0pt plus 5cm}\#define BOARD\_\-NAME~\char`\"{}SRF04EB\char`\"{}}}
+\label{hal__board_8h_a02581754b212d533d96cde56c8145c9b}
+
+
+Definition at line 25 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_a5c5159dbec8143fcab679e33c2b914c6}{
+\index{hal\_\-board.h@{hal\_\-board.h}!BSP\_\-CONFIG\_\-CLOCK\_\-MHZ@{BSP\_\-CONFIG\_\-CLOCK\_\-MHZ}}
+\index{BSP\_\-CONFIG\_\-CLOCK\_\-MHZ@{BSP\_\-CONFIG\_\-CLOCK\_\-MHZ}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{BSP\_\-CONFIG\_\-CLOCK\_\-MHZ}]{\setlength{\rightskip}{0pt plus 5cm}\#define BSP\_\-CONFIG\_\-CLOCK\_\-MHZ~32}}
+\label{hal__board_8h_a5c5159dbec8143fcab679e33c2b914c6}
+
+
+Definition at line 32 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_a8705b351c18a733d8510549396aa35c7}{
+\index{hal\_\-board.h@{hal\_\-board.h}!CLKSPD@{CLKSPD}}
+\index{CLKSPD@{CLKSPD}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{CLKSPD}]{\setlength{\rightskip}{0pt plus 5cm}\#define CLKSPD~( CLKCON \& 0x01 )}}
+\label{hal__board_8h_a8705b351c18a733d8510549396aa35c7}
+
+
+Definition at line 109 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_af67a5c0216de0cfadf059fa4cf05d65d}{
+\index{hal\_\-board.h@{hal\_\-board.h}!CS\_\-HIGH@{CS\_\-HIGH}}
+\index{CS\_\-HIGH@{CS\_\-HIGH}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{CS\_\-HIGH}]{\setlength{\rightskip}{0pt plus 5cm}\#define CS\_\-HIGH(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~while(!halSPITXDONE); MCU\_\-IO\_\-OUTPUT(MMC\_\-CS\_\-PORT,MMC\_\-CS\_\-PIN,1)}}
+\label{hal__board_8h_af67a5c0216de0cfadf059fa4cf05d65d}
+
+
+Definition at line 70 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_ab6b224028ee993b43049cd45010ec00f}{
+\index{hal\_\-board.h@{hal\_\-board.h}!CS\_\-LOW@{CS\_\-LOW}}
+\index{CS\_\-LOW@{CS\_\-LOW}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{CS\_\-LOW}]{\setlength{\rightskip}{0pt plus 5cm}\#define CS\_\-LOW(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~MCU\_\-IO\_\-OUTPUT(MMC\_\-CS\_\-PORT,MMC\_\-CS\_\-PIN,0)}}
+\label{hal__board_8h_ab6b224028ee993b43049cd45010ec00f}
+
+
+Definition at line 69 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_a683fcad4a40e15dd7e5717a3f39120a5}{
+\index{hal\_\-board.h@{hal\_\-board.h}!HAL\_\-BOARD\_\-IO\_\-BTN\_\-1\_\-PIN@{HAL\_\-BOARD\_\-IO\_\-BTN\_\-1\_\-PIN}}
+\index{HAL\_\-BOARD\_\-IO\_\-BTN\_\-1\_\-PIN@{HAL\_\-BOARD\_\-IO\_\-BTN\_\-1\_\-PIN}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{HAL\_\-BOARD\_\-IO\_\-BTN\_\-1\_\-PIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-BOARD\_\-IO\_\-BTN\_\-1\_\-PIN~1}}
+\label{hal__board_8h_a683fcad4a40e15dd7e5717a3f39120a5}
+
+
+Definition at line 45 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_a1d6b445eabe949fcbee4961095af1a5c}{
+\index{hal\_\-board.h@{hal\_\-board.h}!HAL\_\-BOARD\_\-IO\_\-BTN\_\-1\_\-PORT@{HAL\_\-BOARD\_\-IO\_\-BTN\_\-1\_\-PORT}}
+\index{HAL\_\-BOARD\_\-IO\_\-BTN\_\-1\_\-PORT@{HAL\_\-BOARD\_\-IO\_\-BTN\_\-1\_\-PORT}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{HAL\_\-BOARD\_\-IO\_\-BTN\_\-1\_\-PORT}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-BOARD\_\-IO\_\-BTN\_\-1\_\-PORT~0}}
+\label{hal__board_8h_a1d6b445eabe949fcbee4961095af1a5c}
+
+
+Definition at line 44 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_acb772c51ee771e272096c92fdedae7ec}{
+\index{hal\_\-board.h@{hal\_\-board.h}!HAL\_\-BOARD\_\-IO\_\-LED\_\-1\_\-PIN@{HAL\_\-BOARD\_\-IO\_\-LED\_\-1\_\-PIN}}
+\index{HAL\_\-BOARD\_\-IO\_\-LED\_\-1\_\-PIN@{HAL\_\-BOARD\_\-IO\_\-LED\_\-1\_\-PIN}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{HAL\_\-BOARD\_\-IO\_\-LED\_\-1\_\-PIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-BOARD\_\-IO\_\-LED\_\-1\_\-PIN~0}}
+\label{hal__board_8h_acb772c51ee771e272096c92fdedae7ec}
+
+
+Definition at line 37 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_af899204de23ab38dc89ae75a599f6e38}{
+\index{hal\_\-board.h@{hal\_\-board.h}!HAL\_\-BOARD\_\-IO\_\-LED\_\-1\_\-PORT@{HAL\_\-BOARD\_\-IO\_\-LED\_\-1\_\-PORT}}
+\index{HAL\_\-BOARD\_\-IO\_\-LED\_\-1\_\-PORT@{HAL\_\-BOARD\_\-IO\_\-LED\_\-1\_\-PORT}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{HAL\_\-BOARD\_\-IO\_\-LED\_\-1\_\-PORT}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-BOARD\_\-IO\_\-LED\_\-1\_\-PORT~1}}
+\label{hal__board_8h_af899204de23ab38dc89ae75a599f6e38}
+
+
+Definition at line 36 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_add8740abd9783263f40795515590e6cf}{
+\index{hal\_\-board.h@{hal\_\-board.h}!HAL\_\-BOARD\_\-IO\_\-LED\_\-3\_\-PIN@{HAL\_\-BOARD\_\-IO\_\-LED\_\-3\_\-PIN}}
+\index{HAL\_\-BOARD\_\-IO\_\-LED\_\-3\_\-PIN@{HAL\_\-BOARD\_\-IO\_\-LED\_\-3\_\-PIN}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{HAL\_\-BOARD\_\-IO\_\-LED\_\-3\_\-PIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-BOARD\_\-IO\_\-LED\_\-3\_\-PIN~1}}
+\label{hal__board_8h_add8740abd9783263f40795515590e6cf}
+
+
+Definition at line 39 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_aeb6aaafce7bc69cfcec1aa9b89716244}{
+\index{hal\_\-board.h@{hal\_\-board.h}!HAL\_\-BOARD\_\-IO\_\-LED\_\-3\_\-PORT@{HAL\_\-BOARD\_\-IO\_\-LED\_\-3\_\-PORT}}
+\index{HAL\_\-BOARD\_\-IO\_\-LED\_\-3\_\-PORT@{HAL\_\-BOARD\_\-IO\_\-LED\_\-3\_\-PORT}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{HAL\_\-BOARD\_\-IO\_\-LED\_\-3\_\-PORT}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-BOARD\_\-IO\_\-LED\_\-3\_\-PORT~1}}
+\label{hal__board_8h_aeb6aaafce7bc69cfcec1aa9b89716244}
+
+
+Definition at line 38 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_ac6af693a20ece5eaad122841c52067ce}{
+\index{hal\_\-board.h@{hal\_\-board.h}!HAL\_\-BUTTON\_\-1\_\-PUSHED@{HAL\_\-BUTTON\_\-1\_\-PUSHED}}
+\index{HAL\_\-BUTTON\_\-1\_\-PUSHED@{HAL\_\-BUTTON\_\-1\_\-PUSHED}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{HAL\_\-BUTTON\_\-1\_\-PUSHED}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-BUTTON\_\-1\_\-PUSHED(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__board_8h_ac6af693a20ece5eaad122841c52067ce}
+{\bfseries Value:}
+\begin{DoxyCode}
+(!MCU_IO_GET(HAL_BOARD_IO_BTN_1_PORT, \
+    HAL_BOARD_IO_BTN_1_PIN))
+\end{DoxyCode}
+
+
+Definition at line 97 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_a019a3bbe5fcaeee8f30ea83abc386f0c}{
+\index{hal\_\-board.h@{hal\_\-board.h}!HAL\_\-DEBOUNCE@{HAL\_\-DEBOUNCE}}
+\index{HAL\_\-DEBOUNCE@{HAL\_\-DEBOUNCE}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{HAL\_\-DEBOUNCE}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-DEBOUNCE(
+\begin{DoxyParamCaption}
+\item[{}]{expr}
+\end{DoxyParamCaption}
+)~\{ int i; for (i=0; i$<$500; i++) \{ if (!(expr)) i = 0; \} \}}}
+\label{hal__board_8h_a019a3bbe5fcaeee8f30ea83abc386f0c}
+
+
+Definition at line 73 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_aaad80d1dc8c0afd6cd3d8ed8afdf3830}{
+\index{hal\_\-board.h@{hal\_\-board.h}!HAL\_\-LED\_\-CLR\_\-1@{HAL\_\-LED\_\-CLR\_\-1}}
+\index{HAL\_\-LED\_\-CLR\_\-1@{HAL\_\-LED\_\-CLR\_\-1}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{HAL\_\-LED\_\-CLR\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-LED\_\-CLR\_\-1(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__board_8h_aaad80d1dc8c0afd6cd3d8ed8afdf3830}
+{\bfseries Value:}
+\begin{DoxyCode}
+MCU_IO_SET_HIGH(HAL_BOARD_IO_LED_1_PORT, \
+    HAL_BOARD_IO_LED_1_PIN)
+\end{DoxyCode}
+
+
+Definition at line 85 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_ad29db14c37caf542da057599159e0853}{
+\index{hal\_\-board.h@{hal\_\-board.h}!HAL\_\-LED\_\-CLR\_\-3@{HAL\_\-LED\_\-CLR\_\-3}}
+\index{HAL\_\-LED\_\-CLR\_\-3@{HAL\_\-LED\_\-CLR\_\-3}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{HAL\_\-LED\_\-CLR\_\-3}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-LED\_\-CLR\_\-3(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__board_8h_ad29db14c37caf542da057599159e0853}
+{\bfseries Value:}
+\begin{DoxyCode}
+MCU_IO_SET_HIGH(HAL_BOARD_IO_LED_3_PORT, \
+    HAL_BOARD_IO_LED_3_PIN)
+\end{DoxyCode}
+
+
+Definition at line 87 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_a6598b3f18312b940ece8e59b74b5c960}{
+\index{hal\_\-board.h@{hal\_\-board.h}!HAL\_\-LED\_\-SET\_\-1@{HAL\_\-LED\_\-SET\_\-1}}
+\index{HAL\_\-LED\_\-SET\_\-1@{HAL\_\-LED\_\-SET\_\-1}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{HAL\_\-LED\_\-SET\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-LED\_\-SET\_\-1(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__board_8h_a6598b3f18312b940ece8e59b74b5c960}
+{\bfseries Value:}
+\begin{DoxyCode}
+MCU_IO_SET_LOW(HAL_BOARD_IO_LED_1_PORT, \
+    HAL_BOARD_IO_LED_1_PIN)
+\end{DoxyCode}
+
+
+Definition at line 80 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_a28ff96fd12e3f763f46c9e0c3cb97b27}{
+\index{hal\_\-board.h@{hal\_\-board.h}!HAL\_\-LED\_\-SET\_\-3@{HAL\_\-LED\_\-SET\_\-3}}
+\index{HAL\_\-LED\_\-SET\_\-3@{HAL\_\-LED\_\-SET\_\-3}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{HAL\_\-LED\_\-SET\_\-3}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-LED\_\-SET\_\-3(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__board_8h_a28ff96fd12e3f763f46c9e0c3cb97b27}
+{\bfseries Value:}
+\begin{DoxyCode}
+MCU_IO_SET_LOW(HAL_BOARD_IO_LED_3_PORT, \
+    HAL_BOARD_IO_LED_3_PIN)
+\end{DoxyCode}
+
+
+Definition at line 82 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_af70b29b241850a5c133c1646bb4a6033}{
+\index{hal\_\-board.h@{hal\_\-board.h}!HAL\_\-LED\_\-TGL\_\-1@{HAL\_\-LED\_\-TGL\_\-1}}
+\index{HAL\_\-LED\_\-TGL\_\-1@{HAL\_\-LED\_\-TGL\_\-1}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{HAL\_\-LED\_\-TGL\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-LED\_\-TGL\_\-1(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__board_8h_af70b29b241850a5c133c1646bb4a6033}
+{\bfseries Value:}
+\begin{DoxyCode}
+MCU_IO_TGL(HAL_BOARD_IO_LED_1_PORT, \
+    HAL_BOARD_IO_LED_1_PIN)
+\end{DoxyCode}
+
+
+Definition at line 90 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_a6a8f0f20520c288cdc0a233aab82920a}{
+\index{hal\_\-board.h@{hal\_\-board.h}!HAL\_\-LED\_\-TGL\_\-3@{HAL\_\-LED\_\-TGL\_\-3}}
+\index{HAL\_\-LED\_\-TGL\_\-3@{HAL\_\-LED\_\-TGL\_\-3}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{HAL\_\-LED\_\-TGL\_\-3}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-LED\_\-TGL\_\-3(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__board_8h_a6a8f0f20520c288cdc0a233aab82920a}
+{\bfseries Value:}
+\begin{DoxyCode}
+MCU_IO_TGL(HAL_BOARD_IO_LED_3_PORT, \
+    HAL_BOARD_IO_LED_3_PIN)
+\end{DoxyCode}
+
+
+Definition at line 92 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_aaf412680abfd5687e6e6d6a43198c30d}{
+\index{hal\_\-board.h@{hal\_\-board.h}!HAL\_\-PROCESS@{HAL\_\-PROCESS}}
+\index{HAL\_\-PROCESS@{HAL\_\-PROCESS}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{HAL\_\-PROCESS}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-PROCESS(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__board_8h_aaf412680abfd5687e6e6d6a43198c30d}
+
+
+Definition at line 123 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_ad2040964fa2e5a90b17565f127165443}{
+\index{hal\_\-board.h@{hal\_\-board.h}!HAL\_\-RTS\_\-CLR@{HAL\_\-RTS\_\-CLR}}
+\index{HAL\_\-RTS\_\-CLR@{HAL\_\-RTS\_\-CLR}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{HAL\_\-RTS\_\-CLR}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-RTS\_\-CLR(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__board_8h_ad2040964fa2e5a90b17565f127165443}
+{\bfseries Value:}
+\begin{DoxyCode}
+MCU_IO_SET_LOW(HAL_BOARD_IO_UART_RTS_PORT, \
+    HAL_BOARD_IO_UART_RTS_PIN)
+\end{DoxyCode}
+
+
+Definition at line 103 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_afed1a0b47528d085d1053f1522e12dea}{
+\index{hal\_\-board.h@{hal\_\-board.h}!HAL\_\-RTS\_\-DIR\_\-OUT@{HAL\_\-RTS\_\-DIR\_\-OUT}}
+\index{HAL\_\-RTS\_\-DIR\_\-OUT@{HAL\_\-RTS\_\-DIR\_\-OUT}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{HAL\_\-RTS\_\-DIR\_\-OUT}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-RTS\_\-DIR\_\-OUT(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__board_8h_afed1a0b47528d085d1053f1522e12dea}
+{\bfseries Value:}
+\begin{DoxyCode}
+MCU_IO_OUTPUT(HAL_BOARD_IO_UART_RTS_PORT, \
+    HAL_BOARD_IO_UART_RTS_PIN, 1)
+\end{DoxyCode}
+
+
+Definition at line 105 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_a362eb7915f0ae8b4c202859edcda9a45}{
+\index{hal\_\-board.h@{hal\_\-board.h}!HAL\_\-RTS\_\-SET@{HAL\_\-RTS\_\-SET}}
+\index{HAL\_\-RTS\_\-SET@{HAL\_\-RTS\_\-SET}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{HAL\_\-RTS\_\-SET}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-RTS\_\-SET(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__board_8h_a362eb7915f0ae8b4c202859edcda9a45}
+{\bfseries Value:}
+\begin{DoxyCode}
+MCU_IO_SET_HIGH(HAL_BOARD_IO_UART_RTS_PORT, \
+    HAL_BOARD_IO_UART_RTS_PIN)
+\end{DoxyCode}
+
+
+Definition at line 101 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_ad6fa6393a8a8fb8be456a96f4c4cb557}{
+\index{hal\_\-board.h@{hal\_\-board.h}!HIGH\_\-FREQUENCY\_\-RC\_\-OSC\_\-STABLE@{HIGH\_\-FREQUENCY\_\-RC\_\-OSC\_\-STABLE}}
+\index{HIGH\_\-FREQUENCY\_\-RC\_\-OSC\_\-STABLE@{HIGH\_\-FREQUENCY\_\-RC\_\-OSC\_\-STABLE}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{HIGH\_\-FREQUENCY\_\-RC\_\-OSC\_\-STABLE}]{\setlength{\rightskip}{0pt plus 5cm}\#define HIGH\_\-FREQUENCY\_\-RC\_\-OSC\_\-STABLE~(SLEEP \& 0x20)}}
+\label{hal__board_8h_ad6fa6393a8a8fb8be456a96f4c4cb557}
+
+
+Definition at line 119 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_ab26c3021f313c38ab5c1dba06b4c0199}{
+\index{hal\_\-board.h@{hal\_\-board.h}!KCLOCK\_\-PIN@{KCLOCK\_\-PIN}}
+\index{KCLOCK\_\-PIN@{KCLOCK\_\-PIN}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{KCLOCK\_\-PIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define KCLOCK\_\-PIN~2}}
+\label{hal__board_8h_ab26c3021f313c38ab5c1dba06b4c0199}
+
+
+Definition at line 64 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_a128f82619e317166803f11531574a9db}{
+\index{hal\_\-board.h@{hal\_\-board.h}!KDATA@{KDATA}}
+\index{KDATA@{KDATA}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{KDATA}]{\setlength{\rightskip}{0pt plus 5cm}\#define KDATA~P2\_\-1}}
+\label{hal__board_8h_a128f82619e317166803f11531574a9db}
+
+
+Definition at line 62 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_acdf64a42b8754919a5963c142ab87eb7}{
+\index{hal\_\-board.h@{hal\_\-board.h}!KDATA\_\-PIN@{KDATA\_\-PIN}}
+\index{KDATA\_\-PIN@{KDATA\_\-PIN}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{KDATA\_\-PIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define KDATA\_\-PIN~1}}
+\label{hal__board_8h_acdf64a42b8754919a5963c142ab87eb7}
+
+
+Definition at line 65 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_ad513f7d2ba1d9386b6c963cd1f60e596}{
+\index{hal\_\-board.h@{hal\_\-board.h}!KPORT@{KPORT}}
+\index{KPORT@{KPORT}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{KPORT}]{\setlength{\rightskip}{0pt plus 5cm}\#define KPORT~2}}
+\label{hal__board_8h_ad513f7d2ba1d9386b6c963cd1f60e596}
+
+
+Definition at line 63 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_a3f7233f98c6f4abb0cdea809c39bcf68}{
+\index{hal\_\-board.h@{hal\_\-board.h}!MMC\_\-CD@{MMC\_\-CD}}
+\index{MMC\_\-CD@{MMC\_\-CD}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{MMC\_\-CD}]{\setlength{\rightskip}{0pt plus 5cm}\#define MMC\_\-CD~0x01}}
+\label{hal__board_8h_a3f7233f98c6f4abb0cdea809c39bcf68}
+
+
+Definition at line 59 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_a23cc2c8b2c0d8459686908e03ad9f96d}{
+\index{hal\_\-board.h@{hal\_\-board.h}!MMC\_\-CD\_\-PIN@{MMC\_\-CD\_\-PIN}}
+\index{MMC\_\-CD\_\-PIN@{MMC\_\-CD\_\-PIN}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{MMC\_\-CD\_\-PIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define MMC\_\-CD\_\-PIN~0}}
+\label{hal__board_8h_a23cc2c8b2c0d8459686908e03ad9f96d}
+
+
+Definition at line 58 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_a6039626df28b7d892463b1ebcf8fca6a}{
+\index{hal\_\-board.h@{hal\_\-board.h}!MMC\_\-CD\_\-PORT@{MMC\_\-CD\_\-PORT}}
+\index{MMC\_\-CD\_\-PORT@{MMC\_\-CD\_\-PORT}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{MMC\_\-CD\_\-PORT}]{\setlength{\rightskip}{0pt plus 5cm}\#define MMC\_\-CD\_\-PORT~0}}
+\label{hal__board_8h_a6039626df28b7d892463b1ebcf8fca6a}
+
+
+Definition at line 57 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_aaeb7204afc7f4f6d59ee5751e3ed909e}{
+\index{hal\_\-board.h@{hal\_\-board.h}!MMC\_\-CS\_\-PIN@{MMC\_\-CS\_\-PIN}}
+\index{MMC\_\-CS\_\-PIN@{MMC\_\-CS\_\-PIN}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{MMC\_\-CS\_\-PIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define MMC\_\-CS\_\-PIN~4}}
+\label{hal__board_8h_aaeb7204afc7f4f6d59ee5751e3ed909e}
+
+
+Definition at line 54 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_a1a68a64c8196904d31d5c04b969704ed}{
+\index{hal\_\-board.h@{hal\_\-board.h}!MMC\_\-CS\_\-PORT@{MMC\_\-CS\_\-PORT}}
+\index{MMC\_\-CS\_\-PORT@{MMC\_\-CS\_\-PORT}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{MMC\_\-CS\_\-PORT}]{\setlength{\rightskip}{0pt plus 5cm}\#define MMC\_\-CS\_\-PORT~0}}
+\label{hal__board_8h_a1a68a64c8196904d31d5c04b969704ed}
+
+
+Definition at line 53 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_a45add6b39f5b0c0137de978b90e26b5d}{
+\index{hal\_\-board.h@{hal\_\-board.h}!NUM\_\-BUTTONS@{NUM\_\-BUTTONS}}
+\index{NUM\_\-BUTTONS@{NUM\_\-BUTTONS}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{NUM\_\-BUTTONS}]{\setlength{\rightskip}{0pt plus 5cm}\#define NUM\_\-BUTTONS~1}}
+\label{hal__board_8h_a45add6b39f5b0c0137de978b90e26b5d}
+
+
+Definition at line 27 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_a92c8c5cce529edeffa9bdd65cdd82dc8}{
+\index{hal\_\-board.h@{hal\_\-board.h}!NUM\_\-JSTKS@{NUM\_\-JSTKS}}
+\index{NUM\_\-JSTKS@{NUM\_\-JSTKS}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{NUM\_\-JSTKS}]{\setlength{\rightskip}{0pt plus 5cm}\#define NUM\_\-JSTKS~1}}
+\label{hal__board_8h_a92c8c5cce529edeffa9bdd65cdd82dc8}
+
+
+Definition at line 28 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_a4c4ae9a4146ce8d6a5debc90300d9abd}{
+\index{hal\_\-board.h@{hal\_\-board.h}!NUM\_\-LEDS@{NUM\_\-LEDS}}
+\index{NUM\_\-LEDS@{NUM\_\-LEDS}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{NUM\_\-LEDS}]{\setlength{\rightskip}{0pt plus 5cm}\#define NUM\_\-LEDS~2}}
+\label{hal__board_8h_a4c4ae9a4146ce8d6a5debc90300d9abd}
+
+
+Definition at line 26 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_a103d35f985ec321828356877c4edfa35}{
+\index{hal\_\-board.h@{hal\_\-board.h}!NUM\_\-POTS@{NUM\_\-POTS}}
+\index{NUM\_\-POTS@{NUM\_\-POTS}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{NUM\_\-POTS}]{\setlength{\rightskip}{0pt plus 5cm}\#define NUM\_\-POTS~2}}
+\label{hal__board_8h_a103d35f985ec321828356877c4edfa35}
+
+
+Definition at line 29 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_a21c111f78e5bb689a9a72297cf6d1c7c}{
+\index{hal\_\-board.h@{hal\_\-board.h}!SPI\_\-SIMO@{SPI\_\-SIMO}}
+\index{SPI\_\-SIMO@{SPI\_\-SIMO}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{SPI\_\-SIMO}]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-SIMO~0x08}}
+\label{hal__board_8h_a21c111f78e5bb689a9a72297cf6d1c7c}
+
+
+Definition at line 48 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_ae4ce0fb686a150e8ecec8279abce31cd}{
+\index{hal\_\-board.h@{hal\_\-board.h}!SPI\_\-SOMI@{SPI\_\-SOMI}}
+\index{SPI\_\-SOMI@{SPI\_\-SOMI}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{SPI\_\-SOMI}]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-SOMI~0x04}}
+\label{hal__board_8h_ae4ce0fb686a150e8ecec8279abce31cd}
+
+
+Definition at line 49 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_ad783a1e2a4012720a4f685af2ddb9c39}{
+\index{hal\_\-board.h@{hal\_\-board.h}!SPI\_\-UCLK@{SPI\_\-UCLK}}
+\index{SPI\_\-UCLK@{SPI\_\-UCLK}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{SPI\_\-UCLK}]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-UCLK~0x20}}
+\label{hal__board_8h_ad783a1e2a4012720a4f685af2ddb9c39}
+
+
+Definition at line 50 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_a4a098ae2be22c066d183da1f7a8d9962}{
+\index{hal\_\-board.h@{hal\_\-board.h}!TICKSPD@{TICKSPD}}
+\index{TICKSPD@{TICKSPD}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{TICKSPD}]{\setlength{\rightskip}{0pt plus 5cm}\#define TICKSPD~((CLKCON \& 0x38) $>$$>$ 3)}}
+\label{hal__board_8h_a4a098ae2be22c066d183da1f7a8d9962}
+
+
+Definition at line 113 of file hal\_\-board.h.
+
+\hypertarget{hal__board_8h_aaa9775eb1487443460cf65348d4cb5aa}{
+\index{hal\_\-board.h@{hal\_\-board.h}!XOSC\_\-STABLE@{XOSC\_\-STABLE}}
+\index{XOSC\_\-STABLE@{XOSC\_\-STABLE}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{XOSC\_\-STABLE}]{\setlength{\rightskip}{0pt plus 5cm}\#define XOSC\_\-STABLE~(SLEEP \& 0x40)}}
+\label{hal__board_8h_aaa9775eb1487443460cf65348d4cb5aa}
+
+
+Definition at line 116 of file hal\_\-board.h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{hal__board_8h_a425cd40e398a6b6b463868daaeb4c998}{
+\index{hal\_\-board.h@{hal\_\-board.h}!halBoardInit@{halBoardInit}}
+\index{halBoardInit@{halBoardInit}!hal_board.h@{hal\_\-board.h}}
+\subsubsection[{halBoardInit}]{\setlength{\rightskip}{0pt plus 5cm}void halBoardInit (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__board_8h_a425cd40e398a6b6b463868daaeb4c998}
+
+
+Definition at line 16 of file hal\_\-board.c.
+
+
+\begin{DoxyCode}
+{
+    halMcuInit();
+
+    // LED
+    MCU_IO_OUTPUT(HAL_BOARD_IO_LED_1_PORT, HAL_BOARD_IO_LED_1_PIN, 0);
+    MCU_IO_OUTPUT(HAL_BOARD_IO_LED_3_PORT, HAL_BOARD_IO_LED_3_PIN, 0);
+
+    HAL_LED_CLR_1();
+    HAL_LED_CLR_3();
+
+    // Button
+   // MCU_IO_INPUT(0, 1, MCU_IO_TRISTATE);
+
+    halIntOn();
+}
+\end{DoxyCode}

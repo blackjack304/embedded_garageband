@@ -1,0 +1,388 @@
+.TH "uart.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+uart.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdbool.h>\fP
+.br
+\fC#include <stddef.h>\fP
+.br
+
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBRX_TX_BUFFER_SIZE\fP   50"
+.br
+.ti -1c
+.RI "#define \fBUART0_BAUD_RATE\fP   115200"
+.br
+.ti -1c
+.RI "#define \fBUART1_BAUD_RATE\fP   115200"
+.br
+.ti -1c
+.RI "#define \fBUART_FLOW_CONTROL\fP   UART_FLOW_CONTROL_OFF"
+.br
+.ti -1c
+.RI "#define \fBUART_PARITY_MODE\fP   UART_PARITY_NONE"
+.br
+.ti -1c
+.RI "#define \fBUART_STOP_BITS\fP   UART_1_STOP_BIT"
+.br
+.ti -1c
+.RI "#define \fBUART0_LOCATION\fP   UART_LOCATION_2"
+.br
+.ti -1c
+.RI "#define \fBUART1_LOCATION\fP   UART_LOCATION_2"
+.br
+.ti -1c
+.RI "#define \fBUART_CLOCK_MHZ\fP   32"
+.br
+.ti -1c
+.RI "#define \fBUART_IRQ_ENABLED\fP   1"
+.br
+.ti -1c
+.RI "#define \fBUART_IRQ_DISABLED\fP   0"
+.br
+.ti -1c
+.RI "#define \fBUART_IRQ_PENDING\fP   1"
+.br
+.ti -1c
+.RI "#define \fBUART_IRQ_IDLE\fP   0"
+.br
+.ti -1c
+.RI "#define \fBUART_FLOW_CONTROL_ON\fP   1"
+.br
+.ti -1c
+.RI "#define \fBUART_FLOW_CONTROL_OFF\fP   0"
+.br
+.ti -1c
+.RI "#define \fBUART_PARITY_NONE\fP   0"
+.br
+.ti -1c
+.RI "#define \fBUART_PARITY_EVEN\fP   1"
+.br
+.ti -1c
+.RI "#define \fBUART_PARITY_ODD\fP   2"
+.br
+.ti -1c
+.RI "#define \fBUART_1_STOP_BIT\fP   0"
+.br
+.ti -1c
+.RI "#define \fBUART_2_STOP_BITS\fP   1"
+.br
+.ti -1c
+.RI "#define \fBUART_BAUD_RATE\fP   9600"
+.br
+.ti -1c
+.RI "#define \fB__bsp_ISTATE_T__\fP   unsigned short"
+.br
+.ti -1c
+.RI "#define \fB__bsp_ENABLE_INTERRUPTS__\fP()   st( EA = 1; )"
+.br
+.ti -1c
+.RI "#define \fB__bsp_DISABLE_INTERRUPTS__\fP()   st( EA = 0; )"
+.br
+.ti -1c
+.RI "#define \fB__bsp_INTERRUPTS_ARE_ENABLED__\fP()   EA"
+.br
+.ti -1c
+.RI "#define \fB__bsp_GET_ISTATE__\fP()   EA"
+.br
+.ti -1c
+.RI "#define \fB__bsp_RESTORE_ISTATE__\fP(\fBx\fP)   st( EA = \fBx\fP; )"
+.br
+.ti -1c
+.RI "#define \fBBSP_ENTER_CRITICAL_SECTION\fP(\fBx\fP)   st( \fBx\fP = __bsp_GET_ISTATE__(); __bsp_DISABLE_INTERRUPTS__(); )"
+.br
+.ti -1c
+.RI "#define \fBBSP_EXIT_CRITICAL_SECTION\fP(\fBx\fP)   __bsp_RESTORE_ISTATE__(\fBx\fP)"
+.br
+.ti -1c
+.RI "#define \fBBSP_CRITICAL_STATEMENT\fP(\fBx\fP)"
+.br
+.ti -1c
+.RI "#define \fBst\fP(\fBx\fP)   do { \fBx\fP } while (__LINE__ == -1)"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef __bsp_ISTATE_T__ \fBbspIState_t\fP"
+.br
+.ti -1c
+.RI "typedef bool(* \fBuart_get_tx_data_type\fP )(unsigned char *)"
+.br
+.ti -1c
+.RI "typedef bool(* \fBuart_put_rx_data_type\fP )(unsigned char)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBuart_init\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBuart1_tx_message\fP (\fBuart_get_tx_data_type\fP handler)"
+.br
+.ti -1c
+.RI "bool \fBuart_rx_message\fP (\fBuart_put_rx_data_type\fP handler)"
+.br
+.ti -1c
+.RI "bool \fBuart0_tx_message\fP (\fBuart_get_tx_data_type\fP handler)"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define __bsp_DISABLE_INTERRUPTS__()   st( EA = 0; )"
+.PP
+Definition at line 104 of file uart.h.
+.SS "#define __bsp_ENABLE_INTERRUPTS__()   st( EA = 1; )"
+.PP
+Definition at line 103 of file uart.h.
+.SS "#define __bsp_GET_ISTATE__()   EA"
+.PP
+Definition at line 107 of file uart.h.
+.SS "#define __bsp_INTERRUPTS_ARE_ENABLED__()   EA"
+.PP
+Definition at line 105 of file uart.h.
+.SS "#define __bsp_ISTATE_T__   unsigned short"
+.PP
+Definition at line 101 of file uart.h.
+.SS "#define __bsp_RESTORE_ISTATE__(\fBx\fP)   st( EA = \fBx\fP; )"
+.PP
+Definition at line 108 of file uart.h.
+.SS "#define BSP_CRITICAL_STATEMENT(\fBx\fP)"\fBValue:\fP
+.PP
+.nf
+st( bspIState_t s;                    \
+                                            BSP_ENTER_CRITICAL_SECTION(s);    \
+                                            x;                                \
+                                            BSP_EXIT_CRITICAL_SECTION(s); )
+.fi
+.PP
+Definition at line 114 of file uart.h.
+.SS "#define BSP_ENTER_CRITICAL_SECTION(\fBx\fP)   st( \fBx\fP = __bsp_GET_ISTATE__(); __bsp_DISABLE_INTERRUPTS__(); )"
+.PP
+Definition at line 112 of file uart.h.
+.SS "#define BSP_EXIT_CRITICAL_SECTION(\fBx\fP)   __bsp_RESTORE_ISTATE__(\fBx\fP)"
+.PP
+Definition at line 113 of file uart.h.
+.SS "#define RX_TX_BUFFER_SIZE   50"
+.PP
+Definition at line 27 of file uart.h.
+.SS "#define st(\fBx\fP)   do { \fBx\fP } while (__LINE__ == -1)"
+.PP
+Definition at line 119 of file uart.h.
+.SS "#define UART0_BAUD_RATE   115200"
+.PP
+Definition at line 29 of file uart.h.
+.SS "#define UART0_LOCATION   UART_LOCATION_2"
+.PP
+Definition at line 48 of file uart.h.
+.SS "#define UART1_BAUD_RATE   115200"
+.PP
+Definition at line 30 of file uart.h.
+.SS "#define UART1_LOCATION   UART_LOCATION_2"
+.PP
+Definition at line 49 of file uart.h.
+.SS "#define UART_1_STOP_BIT   0"
+.PP
+Definition at line 82 of file uart.h.
+.SS "#define UART_2_STOP_BITS   1"
+.PP
+Definition at line 83 of file uart.h.
+.SS "#define UART_BAUD_RATE   9600"
+.PP
+Definition at line 88 of file uart.h.
+.SS "#define UART_CLOCK_MHZ   32"
+.PP
+Definition at line 63 of file uart.h.
+.SS "#define UART_FLOW_CONTROL   UART_FLOW_CONTROL_OFF"
+.PP
+Definition at line 31 of file uart.h.
+.SS "#define UART_FLOW_CONTROL_OFF   0"
+.PP
+Definition at line 74 of file uart.h.
+.SS "#define UART_FLOW_CONTROL_ON   1"
+.PP
+Definition at line 73 of file uart.h.
+.SS "#define UART_IRQ_DISABLED   0"
+.PP
+Definition at line 68 of file uart.h.
+.SS "#define UART_IRQ_ENABLED   1"
+.PP
+Definition at line 67 of file uart.h.
+.SS "#define UART_IRQ_IDLE   0"
+.PP
+Definition at line 70 of file uart.h.
+.SS "#define UART_IRQ_PENDING   1"
+.PP
+Definition at line 69 of file uart.h.
+.SS "#define UART_PARITY_EVEN   1"
+.PP
+Definition at line 78 of file uart.h.
+.SS "#define UART_PARITY_MODE   UART_PARITY_NONE"
+.PP
+Definition at line 32 of file uart.h.
+.SS "#define UART_PARITY_NONE   0"
+.PP
+Definition at line 77 of file uart.h.
+.SS "#define UART_PARITY_ODD   2"
+.PP
+Definition at line 79 of file uart.h.
+.SS "#define UART_STOP_BITS   UART_1_STOP_BIT"
+.PP
+Definition at line 33 of file uart.h.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef __bsp_ISTATE_T__ \fBbspIState_t\fP"
+.PP
+Definition at line 110 of file uart.h.
+.SS "typedef bool( * \fBuart_get_tx_data_type\fP)(unsigned char *)"
+.PP
+Definition at line 554 of file uart.h.
+.SS "typedef bool( * \fBuart_put_rx_data_type\fP)(unsigned char)"
+.PP
+Definition at line 562 of file uart.h.
+.SH "Function Documentation"
+.PP 
+.SS "bool uart0_tx_message (\fBuart_get_tx_data_type\fPhandler)"
+.PP
+Definition at line 382 of file uart.c.
+.PP
+.nf
+  {
+  bspIState_t  intState;
+  bool status = false; /* assume failure initially */
+
+  /* updates required, store interrupt state and disable interrupts */
+  BSP_ENTER_CRITICAL_SECTION(intState);
+
+  /* if no message is currently being sent and handler looks valid */
+  if( uart0_tx_handler == NULL && handler != NULL )
+    {
+    uart0_tx_handler = handler; /* install the handler */
+
+    /* once the handler has been setup, enable the interrupt.
+     * this will cause the message to begin transmission */
+    UART_IRQ_ENABLE( UART_NUMBER_0, UART0_LOCATION, TX );
+
+    status = true; /* indicate success */
+    }
+
+  BSP_EXIT_CRITICAL_SECTION(intState); /* restore interrupt state */
+
+  return status; /* indicate status */
+  }
+.fi
+.SS "bool uart1_tx_message (\fBuart_get_tx_data_type\fPhandler)"
+.PP
+Definition at line 251 of file uart.c.
+.PP
+.nf
+  {
+  bspIState_t  intState;
+  bool status = false; /* assume failure initially */
+
+  /* updates required, store interrupt state and disable interrupts */
+  BSP_ENTER_CRITICAL_SECTION(intState);
+
+  /* if no message is currently being sent and handler looks valid */
+  if( uart1_tx_handler == NULL && handler != NULL )
+    {
+    uart1_tx_handler = handler; /* install the handler */
+
+    /* once the handler has been setup, enable the interrupt.
+     * this will cause the message to begin transmission */
+    UART_IRQ_ENABLE( UART_NUMBER_1, UART1_LOCATION, TX );
+
+    status = true; /* indicate success */
+    }
+
+  BSP_EXIT_CRITICAL_SECTION(intState); /* restore interrupt state */
+
+  return status; /* indicate status */
+  }
+.fi
+.SS "void uart_init (void)"
+.PP
+Definition at line 194 of file uart.c.
+.PP
+.nf
+  {
+  volatile unsigned int i;
+
+  /* make sure the handler functions are cleared in case we are re-initialized */
+  uart1_tx_handler = NULL;
+  uart0_tx_handler = NULL;
+  uart_rx_handler = NULL;
+
+  /* initialize the uart interface for operations */
+  UART_INIT( UART_NUMBER_1,
+             UART_LOCATION_2,
+             UART_FLOW_CONTROL,    /* enable/disable flow control */
+             UART_PARITY_MODE,     /* enable/disable parity */
+             UART_STOP_BITS,       /* number of stop bits */
+             UART1_BAUD_RATE );     /* baud rate to use */
+
+  i = UART1_BAUD_RATE >> 5; /* delay approximately 1 bit time */
+  while( --i != 0 ) /* give the uart some time to initialize */
+      ; /* null statement */
+
+  /* set the interrupt flag so that a transmit interrupt will be pending
+   * that way when a message is sent and the irq is enabled, the interrupt
+   * will happen immediately to start the transmission */
+  UART_IRQ_FLAG_SET( UART_NUMBER_1, UART1_LOCATION, TX ); /* set the interrupt */
+
+  /* enable receive interrupts, they are always welcome. */
+  UART_IRQ_ENABLE( UART_NUMBER_1, UART1_LOCATION, RX );
+
+  /* initialize the uart interface for operations */
+  UART_INIT( UART_NUMBER_0,
+             UART_LOCATION_2,
+             UART_FLOW_CONTROL,    /* enable/disable flow control */
+             UART_PARITY_MODE,     /* enable/disable parity */
+             UART_STOP_BITS,       /* number of stop bits */
+             UART0_BAUD_RATE );     /* baud rate to use */
+
+  UART_IRQ_FLAG_SET( UART_NUMBER_0, UART0_LOCATION, TX ); /* set the interrupt */
+
+  UART_IRQ_DISABLE(UART_NUMBER_0,UART_LOCATION_2,RX);
+
+  return;
+  }
+.fi
+.SS "bool uart_rx_message (\fBuart_put_rx_data_type\fPhandler)"
+.PP
+Definition at line 289 of file uart.c.
+.PP
+.nf
+  {
+  bspIState_t intState;
+  bool status = false;  /* assume failure initially */
+
+  /* updates required, store interrupt state and disable interrupts */
+  BSP_ENTER_CRITICAL_SECTION(intState);
+
+  /* if no message is being received and the handler looks valid */
+  if( uart_rx_handler == NULL && handler != NULL )
+    {
+    uart_rx_handler = handler; /* install the handler */
+
+    status = true; /* indicate success */
+    }
+
+  BSP_EXIT_CRITICAL_SECTION(intState); /* restore interrupt state */
+
+  return status; /* indicate status */
+  }
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

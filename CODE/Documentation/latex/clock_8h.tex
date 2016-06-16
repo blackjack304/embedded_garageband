@@ -1,0 +1,407 @@
+\hypertarget{clock_8h}{
+\section{clock.h File Reference}
+\label{clock_8h}\index{clock.h@{clock.h}}
+}
+{\ttfamily \#include \char`\"{}hal\_\-types.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{clock_8h_abafdec51e2e5171851189241ee0b8704}{CLOCK\_\-SRC\_\-XOSC}~0
+\item 
+\#define \hyperlink{clock_8h_a20b8f64b8e283d425b0b3620d357843c}{CLOCK\_\-SRC\_\-HFRC}~1
+\item 
+\#define \hyperlink{clock_8h_abdb6051f986a8d39b8e2ec870f7bb3fd}{CLOCK\_\-32K\_\-XTAL}~0
+\item 
+\#define \hyperlink{clock_8h_ae0a75bed0cabb283e21a284a47acd73e}{CLOCK\_\-32K\_\-RCOSC}~1
+\item 
+\#define \hyperlink{clock_8h_a17f58ae6bd6de30f9117b16bb9ebf48f}{CLKCON\_\-OSC32K\_\-BM}~0x80
+\item 
+\#define \hyperlink{clock_8h_aadba279b6030f70553cd426ffcab1d48}{CLKCON\_\-OSC\_\-BM}~0x40
+\item 
+\#define \hyperlink{clock_8h_a917c13d9228de7c67e3f0f47f4f0aaee}{CLKCON\_\-TICKSPD\_\-BM}~0x38
+\item 
+\#define \hyperlink{clock_8h_a665c00c5318ac647938f350effe7cd15}{CLKCON\_\-CLKSPD\_\-BM}~0x01
+\item 
+\#define \hyperlink{clock_8h_a98ea8cbab1d8fb2a492924132ca8a682}{TICKSPD\_\-DIV\_\-1}~(0x00 $<$$<$ 3)
+\item 
+\#define \hyperlink{clock_8h_a89a2bc9cec285556c695bc6c2ec47b1a}{TICKSPD\_\-DIV\_\-2}~(0x01 $<$$<$ 3)
+\item 
+\#define \hyperlink{clock_8h_ad6c02d99aed9404ddba5cca1b22aa698}{TICKSPD\_\-DIV\_\-4}~(0x02 $<$$<$ 3)
+\item 
+\#define \hyperlink{clock_8h_a9251752a96edef2093902a60470b95b8}{TICKSPD\_\-DIV\_\-8}~(0x03 $<$$<$ 3)
+\item 
+\#define \hyperlink{clock_8h_aedbf47f8652737c7ad6b7db25013338f}{TICKSPD\_\-DIV\_\-16}~(0x04 $<$$<$ 3)
+\item 
+\#define \hyperlink{clock_8h_ae824d0d8a0c834b057e9b53881b0aa53}{TICKSPD\_\-DIV\_\-32}~(0x05 $<$$<$ 3)
+\item 
+\#define \hyperlink{clock_8h_ab6781fe436cf5c052b8c6df56b488f13}{TICKSPD\_\-DIV\_\-64}~(0x06 $<$$<$ 3)
+\item 
+\#define \hyperlink{clock_8h_a53bb6600d6778ecef232554bd83d5385}{TICKSPD\_\-DIV\_\-128}~(0x07 $<$$<$ 3)
+\item 
+\#define \hyperlink{clock_8h_a94aa0a4aae3e815c4e8cbb76aada0b65}{SLEEP\_\-XOSC\_\-STB\_\-BM}~0x40
+\item 
+\#define \hyperlink{clock_8h_a57af39421560d166fc8a122aa4d3a554}{SLEEP\_\-HFRC\_\-STB\_\-BM}~0x20
+\item 
+\#define \hyperlink{clock_8h_af7dc5161b2f907cc6e39fa27278b993b}{SLEEP\_\-OSC\_\-PD\_\-BM}~0x04
+\item 
+\#define \hyperlink{clock_8h_acbeef67cab154d3ad496ed3cc0d199da}{CC2430\_\-IS\_\-HFRC\_\-STABLE}(\hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x})~(SLEEP \& SLEEP\_\-HFRC\_\-STB\_\-BM)
+\item 
+\#define \hyperlink{clock_8h_a32fddb82f512731e17aa4929b362ca8e}{CC2430\_\-IS\_\-XOSC\_\-STABLE}(\hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x})~(SLEEP \& SLEEP\_\-XOSC\_\-STB\_\-BM)
+\item 
+\#define \hyperlink{clock_8h_ac300d48c222df158263ad60a142254f4}{CC2430\_\-GET\_\-CLKSPD}(\hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x})~(CLKCON \& CLKCON\_\-CLKSPD\_\-BM)
+\item 
+\#define \hyperlink{clock_8h_add42dfce6b2c9681a3cad30198de1868}{CC2430\_\-GET\_\-TICKSPD}(\hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x})~((CLKCON \& CLKCON\_\-TICKSPD\_\-BM) $>$$>$ 3)
+\item 
+\#define \hyperlink{clock_8h_af26a3c5bee12f3f4551f03a9784fa036}{CC2430\_\-SET\_\-TICKSPD}(\hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x})
+\item 
+\#define \hyperlink{clock_8h_aa1ff41e49a0ef317cbafdd43ba94cc10}{CC2430\_\-SET\_\-CLKSPD}(\hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x})
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{clock_8h_a52eecef8b09d07f33df78985f795efb8}{clockSetMainSrc} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} source)
+\item 
+void \hyperlink{clock_8h_a6d6e12526c1f5c1eedeab49d1103a1fc}{clockSelect32k} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} source)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{clock_8h_ac300d48c222df158263ad60a142254f4}{
+\index{clock.h@{clock.h}!CC2430\_\-GET\_\-CLKSPD@{CC2430\_\-GET\_\-CLKSPD}}
+\index{CC2430\_\-GET\_\-CLKSPD@{CC2430\_\-GET\_\-CLKSPD}!clock.h@{clock.h}}
+\subsubsection[{CC2430\_\-GET\_\-CLKSPD}]{\setlength{\rightskip}{0pt plus 5cm}\#define CC2430\_\-GET\_\-CLKSPD(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)~(CLKCON \& CLKCON\_\-CLKSPD\_\-BM)}}
+\label{clock_8h_ac300d48c222df158263ad60a142254f4}
+
+
+Definition at line 72 of file clock.h.
+
+\hypertarget{clock_8h_add42dfce6b2c9681a3cad30198de1868}{
+\index{clock.h@{clock.h}!CC2430\_\-GET\_\-TICKSPD@{CC2430\_\-GET\_\-TICKSPD}}
+\index{CC2430\_\-GET\_\-TICKSPD@{CC2430\_\-GET\_\-TICKSPD}!clock.h@{clock.h}}
+\subsubsection[{CC2430\_\-GET\_\-TICKSPD}]{\setlength{\rightskip}{0pt plus 5cm}\#define CC2430\_\-GET\_\-TICKSPD(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)~((CLKCON \& CLKCON\_\-TICKSPD\_\-BM) $>$$>$ 3)}}
+\label{clock_8h_add42dfce6b2c9681a3cad30198de1868}
+
+
+Definition at line 76 of file clock.h.
+
+\hypertarget{clock_8h_acbeef67cab154d3ad496ed3cc0d199da}{
+\index{clock.h@{clock.h}!CC2430\_\-IS\_\-HFRC\_\-STABLE@{CC2430\_\-IS\_\-HFRC\_\-STABLE}}
+\index{CC2430\_\-IS\_\-HFRC\_\-STABLE@{CC2430\_\-IS\_\-HFRC\_\-STABLE}!clock.h@{clock.h}}
+\subsubsection[{CC2430\_\-IS\_\-HFRC\_\-STABLE}]{\setlength{\rightskip}{0pt plus 5cm}\#define CC2430\_\-IS\_\-HFRC\_\-STABLE(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)~(SLEEP \& SLEEP\_\-HFRC\_\-STB\_\-BM)}}
+\label{clock_8h_acbeef67cab154d3ad496ed3cc0d199da}
+
+
+Definition at line 66 of file clock.h.
+
+\hypertarget{clock_8h_a32fddb82f512731e17aa4929b362ca8e}{
+\index{clock.h@{clock.h}!CC2430\_\-IS\_\-XOSC\_\-STABLE@{CC2430\_\-IS\_\-XOSC\_\-STABLE}}
+\index{CC2430\_\-IS\_\-XOSC\_\-STABLE@{CC2430\_\-IS\_\-XOSC\_\-STABLE}!clock.h@{clock.h}}
+\subsubsection[{CC2430\_\-IS\_\-XOSC\_\-STABLE}]{\setlength{\rightskip}{0pt plus 5cm}\#define CC2430\_\-IS\_\-XOSC\_\-STABLE(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)~(SLEEP \& SLEEP\_\-XOSC\_\-STB\_\-BM)}}
+\label{clock_8h_a32fddb82f512731e17aa4929b362ca8e}
+
+
+Definition at line 69 of file clock.h.
+
+\hypertarget{clock_8h_aa1ff41e49a0ef317cbafdd43ba94cc10}{
+\index{clock.h@{clock.h}!CC2430\_\-SET\_\-CLKSPD@{CC2430\_\-SET\_\-CLKSPD}}
+\index{CC2430\_\-SET\_\-CLKSPD@{CC2430\_\-SET\_\-CLKSPD}!clock.h@{clock.h}}
+\subsubsection[{CC2430\_\-SET\_\-CLKSPD}]{\setlength{\rightskip}{0pt plus 5cm}\#define CC2430\_\-SET\_\-CLKSPD(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)}}
+\label{clock_8h_aa1ff41e49a0ef317cbafdd43ba94cc10}
+{\bfseries Value:}
+\begin{DoxyCode}
+st( CLKCON = (((x) & 0x07)         \
+                                                    | (CLKCON & 0xF8)); \
+                                                                         )
+\end{DoxyCode}
+
+
+Definition at line 84 of file clock.h.
+
+\hypertarget{clock_8h_af26a3c5bee12f3f4551f03a9784fa036}{
+\index{clock.h@{clock.h}!CC2430\_\-SET\_\-TICKSPD@{CC2430\_\-SET\_\-TICKSPD}}
+\index{CC2430\_\-SET\_\-TICKSPD@{CC2430\_\-SET\_\-TICKSPD}!clock.h@{clock.h}}
+\subsubsection[{CC2430\_\-SET\_\-TICKSPD}]{\setlength{\rightskip}{0pt plus 5cm}\#define CC2430\_\-SET\_\-TICKSPD(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)}}
+\label{clock_8h_af26a3c5bee12f3f4551f03a9784fa036}
+{\bfseries Value:}
+\begin{DoxyCode}
+st( CLKCON = ((((x) << 3) & 0x38)  \
+                                                    | (CLKCON & 0xC7)); \
+                )
+\end{DoxyCode}
+
+
+Definition at line 79 of file clock.h.
+
+\hypertarget{clock_8h_a665c00c5318ac647938f350effe7cd15}{
+\index{clock.h@{clock.h}!CLKCON\_\-CLKSPD\_\-BM@{CLKCON\_\-CLKSPD\_\-BM}}
+\index{CLKCON\_\-CLKSPD\_\-BM@{CLKCON\_\-CLKSPD\_\-BM}!clock.h@{clock.h}}
+\subsubsection[{CLKCON\_\-CLKSPD\_\-BM}]{\setlength{\rightskip}{0pt plus 5cm}\#define CLKCON\_\-CLKSPD\_\-BM~0x01}}
+\label{clock_8h_a665c00c5318ac647938f350effe7cd15}
+
+
+Definition at line 44 of file clock.h.
+
+\hypertarget{clock_8h_a17f58ae6bd6de30f9117b16bb9ebf48f}{
+\index{clock.h@{clock.h}!CLKCON\_\-OSC32K\_\-BM@{CLKCON\_\-OSC32K\_\-BM}}
+\index{CLKCON\_\-OSC32K\_\-BM@{CLKCON\_\-OSC32K\_\-BM}!clock.h@{clock.h}}
+\subsubsection[{CLKCON\_\-OSC32K\_\-BM}]{\setlength{\rightskip}{0pt plus 5cm}\#define CLKCON\_\-OSC32K\_\-BM~0x80}}
+\label{clock_8h_a17f58ae6bd6de30f9117b16bb9ebf48f}
+
+
+Definition at line 41 of file clock.h.
+
+\hypertarget{clock_8h_aadba279b6030f70553cd426ffcab1d48}{
+\index{clock.h@{clock.h}!CLKCON\_\-OSC\_\-BM@{CLKCON\_\-OSC\_\-BM}}
+\index{CLKCON\_\-OSC\_\-BM@{CLKCON\_\-OSC\_\-BM}!clock.h@{clock.h}}
+\subsubsection[{CLKCON\_\-OSC\_\-BM}]{\setlength{\rightskip}{0pt plus 5cm}\#define CLKCON\_\-OSC\_\-BM~0x40}}
+\label{clock_8h_aadba279b6030f70553cd426ffcab1d48}
+
+
+Definition at line 42 of file clock.h.
+
+\hypertarget{clock_8h_a917c13d9228de7c67e3f0f47f4f0aaee}{
+\index{clock.h@{clock.h}!CLKCON\_\-TICKSPD\_\-BM@{CLKCON\_\-TICKSPD\_\-BM}}
+\index{CLKCON\_\-TICKSPD\_\-BM@{CLKCON\_\-TICKSPD\_\-BM}!clock.h@{clock.h}}
+\subsubsection[{CLKCON\_\-TICKSPD\_\-BM}]{\setlength{\rightskip}{0pt plus 5cm}\#define CLKCON\_\-TICKSPD\_\-BM~0x38}}
+\label{clock_8h_a917c13d9228de7c67e3f0f47f4f0aaee}
+
+
+Definition at line 43 of file clock.h.
+
+\hypertarget{clock_8h_ae0a75bed0cabb283e21a284a47acd73e}{
+\index{clock.h@{clock.h}!CLOCK\_\-32K\_\-RCOSC@{CLOCK\_\-32K\_\-RCOSC}}
+\index{CLOCK\_\-32K\_\-RCOSC@{CLOCK\_\-32K\_\-RCOSC}!clock.h@{clock.h}}
+\subsubsection[{CLOCK\_\-32K\_\-RCOSC}]{\setlength{\rightskip}{0pt plus 5cm}\#define CLOCK\_\-32K\_\-RCOSC~1}}
+\label{clock_8h_ae0a75bed0cabb283e21a284a47acd73e}
+
+
+Definition at line 38 of file clock.h.
+
+\hypertarget{clock_8h_abdb6051f986a8d39b8e2ec870f7bb3fd}{
+\index{clock.h@{clock.h}!CLOCK\_\-32K\_\-XTAL@{CLOCK\_\-32K\_\-XTAL}}
+\index{CLOCK\_\-32K\_\-XTAL@{CLOCK\_\-32K\_\-XTAL}!clock.h@{clock.h}}
+\subsubsection[{CLOCK\_\-32K\_\-XTAL}]{\setlength{\rightskip}{0pt plus 5cm}\#define CLOCK\_\-32K\_\-XTAL~0}}
+\label{clock_8h_abdb6051f986a8d39b8e2ec870f7bb3fd}
+
+
+Definition at line 37 of file clock.h.
+
+\hypertarget{clock_8h_a20b8f64b8e283d425b0b3620d357843c}{
+\index{clock.h@{clock.h}!CLOCK\_\-SRC\_\-HFRC@{CLOCK\_\-SRC\_\-HFRC}}
+\index{CLOCK\_\-SRC\_\-HFRC@{CLOCK\_\-SRC\_\-HFRC}!clock.h@{clock.h}}
+\subsubsection[{CLOCK\_\-SRC\_\-HFRC}]{\setlength{\rightskip}{0pt plus 5cm}\#define CLOCK\_\-SRC\_\-HFRC~1}}
+\label{clock_8h_a20b8f64b8e283d425b0b3620d357843c}
+
+
+Definition at line 34 of file clock.h.
+
+\hypertarget{clock_8h_abafdec51e2e5171851189241ee0b8704}{
+\index{clock.h@{clock.h}!CLOCK\_\-SRC\_\-XOSC@{CLOCK\_\-SRC\_\-XOSC}}
+\index{CLOCK\_\-SRC\_\-XOSC@{CLOCK\_\-SRC\_\-XOSC}!clock.h@{clock.h}}
+\subsubsection[{CLOCK\_\-SRC\_\-XOSC}]{\setlength{\rightskip}{0pt plus 5cm}\#define CLOCK\_\-SRC\_\-XOSC~0}}
+\label{clock_8h_abafdec51e2e5171851189241ee0b8704}
+
+
+Definition at line 33 of file clock.h.
+
+\hypertarget{clock_8h_a57af39421560d166fc8a122aa4d3a554}{
+\index{clock.h@{clock.h}!SLEEP\_\-HFRC\_\-STB\_\-BM@{SLEEP\_\-HFRC\_\-STB\_\-BM}}
+\index{SLEEP\_\-HFRC\_\-STB\_\-BM@{SLEEP\_\-HFRC\_\-STB\_\-BM}!clock.h@{clock.h}}
+\subsubsection[{SLEEP\_\-HFRC\_\-STB\_\-BM}]{\setlength{\rightskip}{0pt plus 5cm}\#define SLEEP\_\-HFRC\_\-STB\_\-BM~0x20}}
+\label{clock_8h_a57af39421560d166fc8a122aa4d3a554}
+
+
+Definition at line 57 of file clock.h.
+
+\hypertarget{clock_8h_af7dc5161b2f907cc6e39fa27278b993b}{
+\index{clock.h@{clock.h}!SLEEP\_\-OSC\_\-PD\_\-BM@{SLEEP\_\-OSC\_\-PD\_\-BM}}
+\index{SLEEP\_\-OSC\_\-PD\_\-BM@{SLEEP\_\-OSC\_\-PD\_\-BM}!clock.h@{clock.h}}
+\subsubsection[{SLEEP\_\-OSC\_\-PD\_\-BM}]{\setlength{\rightskip}{0pt plus 5cm}\#define SLEEP\_\-OSC\_\-PD\_\-BM~0x04}}
+\label{clock_8h_af7dc5161b2f907cc6e39fa27278b993b}
+
+
+Definition at line 58 of file clock.h.
+
+\hypertarget{clock_8h_a94aa0a4aae3e815c4e8cbb76aada0b65}{
+\index{clock.h@{clock.h}!SLEEP\_\-XOSC\_\-STB\_\-BM@{SLEEP\_\-XOSC\_\-STB\_\-BM}}
+\index{SLEEP\_\-XOSC\_\-STB\_\-BM@{SLEEP\_\-XOSC\_\-STB\_\-BM}!clock.h@{clock.h}}
+\subsubsection[{SLEEP\_\-XOSC\_\-STB\_\-BM}]{\setlength{\rightskip}{0pt plus 5cm}\#define SLEEP\_\-XOSC\_\-STB\_\-BM~0x40}}
+\label{clock_8h_a94aa0a4aae3e815c4e8cbb76aada0b65}
+
+
+Definition at line 56 of file clock.h.
+
+\hypertarget{clock_8h_a98ea8cbab1d8fb2a492924132ca8a682}{
+\index{clock.h@{clock.h}!TICKSPD\_\-DIV\_\-1@{TICKSPD\_\-DIV\_\-1}}
+\index{TICKSPD\_\-DIV\_\-1@{TICKSPD\_\-DIV\_\-1}!clock.h@{clock.h}}
+\subsubsection[{TICKSPD\_\-DIV\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}\#define TICKSPD\_\-DIV\_\-1~(0x00 $<$$<$ 3)}}
+\label{clock_8h_a98ea8cbab1d8fb2a492924132ca8a682}
+
+
+Definition at line 46 of file clock.h.
+
+\hypertarget{clock_8h_a53bb6600d6778ecef232554bd83d5385}{
+\index{clock.h@{clock.h}!TICKSPD\_\-DIV\_\-128@{TICKSPD\_\-DIV\_\-128}}
+\index{TICKSPD\_\-DIV\_\-128@{TICKSPD\_\-DIV\_\-128}!clock.h@{clock.h}}
+\subsubsection[{TICKSPD\_\-DIV\_\-128}]{\setlength{\rightskip}{0pt plus 5cm}\#define TICKSPD\_\-DIV\_\-128~(0x07 $<$$<$ 3)}}
+\label{clock_8h_a53bb6600d6778ecef232554bd83d5385}
+
+
+Definition at line 53 of file clock.h.
+
+\hypertarget{clock_8h_aedbf47f8652737c7ad6b7db25013338f}{
+\index{clock.h@{clock.h}!TICKSPD\_\-DIV\_\-16@{TICKSPD\_\-DIV\_\-16}}
+\index{TICKSPD\_\-DIV\_\-16@{TICKSPD\_\-DIV\_\-16}!clock.h@{clock.h}}
+\subsubsection[{TICKSPD\_\-DIV\_\-16}]{\setlength{\rightskip}{0pt plus 5cm}\#define TICKSPD\_\-DIV\_\-16~(0x04 $<$$<$ 3)}}
+\label{clock_8h_aedbf47f8652737c7ad6b7db25013338f}
+
+
+Definition at line 50 of file clock.h.
+
+\hypertarget{clock_8h_a89a2bc9cec285556c695bc6c2ec47b1a}{
+\index{clock.h@{clock.h}!TICKSPD\_\-DIV\_\-2@{TICKSPD\_\-DIV\_\-2}}
+\index{TICKSPD\_\-DIV\_\-2@{TICKSPD\_\-DIV\_\-2}!clock.h@{clock.h}}
+\subsubsection[{TICKSPD\_\-DIV\_\-2}]{\setlength{\rightskip}{0pt plus 5cm}\#define TICKSPD\_\-DIV\_\-2~(0x01 $<$$<$ 3)}}
+\label{clock_8h_a89a2bc9cec285556c695bc6c2ec47b1a}
+
+
+Definition at line 47 of file clock.h.
+
+\hypertarget{clock_8h_ae824d0d8a0c834b057e9b53881b0aa53}{
+\index{clock.h@{clock.h}!TICKSPD\_\-DIV\_\-32@{TICKSPD\_\-DIV\_\-32}}
+\index{TICKSPD\_\-DIV\_\-32@{TICKSPD\_\-DIV\_\-32}!clock.h@{clock.h}}
+\subsubsection[{TICKSPD\_\-DIV\_\-32}]{\setlength{\rightskip}{0pt plus 5cm}\#define TICKSPD\_\-DIV\_\-32~(0x05 $<$$<$ 3)}}
+\label{clock_8h_ae824d0d8a0c834b057e9b53881b0aa53}
+
+
+Definition at line 51 of file clock.h.
+
+\hypertarget{clock_8h_ad6c02d99aed9404ddba5cca1b22aa698}{
+\index{clock.h@{clock.h}!TICKSPD\_\-DIV\_\-4@{TICKSPD\_\-DIV\_\-4}}
+\index{TICKSPD\_\-DIV\_\-4@{TICKSPD\_\-DIV\_\-4}!clock.h@{clock.h}}
+\subsubsection[{TICKSPD\_\-DIV\_\-4}]{\setlength{\rightskip}{0pt plus 5cm}\#define TICKSPD\_\-DIV\_\-4~(0x02 $<$$<$ 3)}}
+\label{clock_8h_ad6c02d99aed9404ddba5cca1b22aa698}
+
+
+Definition at line 48 of file clock.h.
+
+\hypertarget{clock_8h_ab6781fe436cf5c052b8c6df56b488f13}{
+\index{clock.h@{clock.h}!TICKSPD\_\-DIV\_\-64@{TICKSPD\_\-DIV\_\-64}}
+\index{TICKSPD\_\-DIV\_\-64@{TICKSPD\_\-DIV\_\-64}!clock.h@{clock.h}}
+\subsubsection[{TICKSPD\_\-DIV\_\-64}]{\setlength{\rightskip}{0pt plus 5cm}\#define TICKSPD\_\-DIV\_\-64~(0x06 $<$$<$ 3)}}
+\label{clock_8h_ab6781fe436cf5c052b8c6df56b488f13}
+
+
+Definition at line 52 of file clock.h.
+
+\hypertarget{clock_8h_a9251752a96edef2093902a60470b95b8}{
+\index{clock.h@{clock.h}!TICKSPD\_\-DIV\_\-8@{TICKSPD\_\-DIV\_\-8}}
+\index{TICKSPD\_\-DIV\_\-8@{TICKSPD\_\-DIV\_\-8}!clock.h@{clock.h}}
+\subsubsection[{TICKSPD\_\-DIV\_\-8}]{\setlength{\rightskip}{0pt plus 5cm}\#define TICKSPD\_\-DIV\_\-8~(0x03 $<$$<$ 3)}}
+\label{clock_8h_a9251752a96edef2093902a60470b95b8}
+
+
+Definition at line 49 of file clock.h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{clock_8h_a6d6e12526c1f5c1eedeab49d1103a1fc}{
+\index{clock.h@{clock.h}!clockSelect32k@{clockSelect32k}}
+\index{clockSelect32k@{clockSelect32k}!clock.h@{clock.h}}
+\subsubsection[{clockSelect32k}]{\setlength{\rightskip}{0pt plus 5cm}void clockSelect32k (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8}}]{source}
+\end{DoxyParamCaption}
+)}}
+\label{clock_8h_a6d6e12526c1f5c1eedeab49d1103a1fc}
+
+
+Definition at line 82 of file clock.c.
+
+
+\begin{DoxyCode}
+{
+    if (source == CLOCK_32K_XTAL)
+    {
+        CLKCON &= ~CLKCON_OSC32K_BM;
+    }
+    else if (source == CLOCK_32K_RCOSC)
+    {
+        CLKCON |= CLKCON_OSC32K_BM;
+    }
+}
+\end{DoxyCode}
+\hypertarget{clock_8h_a52eecef8b09d07f33df78985f795efb8}{
+\index{clock.h@{clock.h}!clockSetMainSrc@{clockSetMainSrc}}
+\index{clockSetMainSrc@{clockSetMainSrc}!clock.h@{clock.h}}
+\subsubsection[{clockSetMainSrc}]{\setlength{\rightskip}{0pt plus 5cm}void clockSetMainSrc (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8}}]{source}
+\end{DoxyParamCaption}
+)}}
+\label{clock_8h_a52eecef8b09d07f33df78985f795efb8}
+
+
+Definition at line 38 of file clock.c.
+
+
+\begin{DoxyCode}
+{
+    register uint8 osc32k_bm = CLKCON & CLKCON_OSC32K_BM;
+
+    // Source can have the following values:
+    // CLOCK_SRC_XOSC   0x00  High speed Crystal Oscillator (XOSC)
+    // CLOCK_SRC_HFRC   0x01  Low power RC Oscillator (HFRC)
+
+    if (source == CLOCK_SRC_HFRC)
+    {
+        SLEEP &= ~SLEEP_OSC_PD_BM;       // power up both oscillators
+        while (!CC2430_IS_HFRC_STABLE());// wait until the oscillator is stable
+
+        asm("NOP");
+        CLKCON = (osc32k_bm | CLKCON_OSC_BM | TICKSPD_DIV_1 | CLKCON_CLKSPD_BM);
+        while (CLKCON != (osc32k_bm | CLKCON_OSC_BM | TICKSPD_DIV_1 | 
+      CLKCON_CLKSPD_BM));
+
+        SLEEP |= SLEEP_OSC_PD_BM;        // power down the unused oscillator
+    }
+    else if (source == CLOCK_SRC_XOSC)
+    {
+        SLEEP &= ~SLEEP_OSC_PD_BM;       // power up both oscillators
+        while (!CC2430_IS_XOSC_STABLE());// wait until the XOSC is stable
+
+        asm("NOP");
+        halMcuWaitUs(64);
+        CLKCON = (osc32k_bm | TICKSPD_DIV_1);
+        while (CLKCON != (osc32k_bm | TICKSPD_DIV_1));
+
+        SLEEP |= SLEEP_OSC_PD_BM;        // power down the unused oscillator
+    }
+
+}
+\end{DoxyCode}

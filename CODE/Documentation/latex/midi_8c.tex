@@ -1,0 +1,248 @@
+\hypertarget{midi_8c}{
+\section{midi.c File Reference}
+\label{midi_8c}\index{midi.c@{midi.c}}
+}
+{\ttfamily \#include $<$ioCC2430.h$>$}\par
+{\ttfamily \#include \char`\"{}uart\_\-intfc.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-led.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-cc8051.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-mcu.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}midi.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{midi_8c_ae598598ff674f4da18f841434585fe81}{midiReset} ()
+\item 
+void \hyperlink{midi_8c_a87a71986698e0c26cccb83ba7cea86bd}{noteOn} (unsigned char channel, unsigned char note, unsigned char attack\_\-velocity)
+\item 
+void \hyperlink{midi_8c_a34a15c5c85d634ca47ff3e73b59b503e}{noteOff} (unsigned char channel, unsigned char note, unsigned char release\_\-velocity)
+\item 
+void \hyperlink{midi_8c_a2dedbd5599f48d023e8286c4b1f649a6}{talkMIDI} (unsigned char cmd, unsigned char data1, unsigned char data2)
+\item 
+void \hyperlink{midi_8c_ab607e93238bd9bc475fa4f57e79e0d3f}{midiVolSet} (unsigned char vol)
+\item 
+void \hyperlink{midi_8c_a57cb8c5ec57da5f17e35d6e418ca573b}{midiBankSet} (unsigned char bank)
+\item 
+void \hyperlink{midi_8c_a24b1b08288ead3bfead03fc0081ccbca}{midiPatchSet} (unsigned char instr)
+\item 
+void \hyperlink{midi_8c_a97cb05f98f7b79408b7dd29143edd3d2}{midiSilence} ()
+\item 
+void \hyperlink{midi_8c_a41296453cce652cf05088768d7f9fb3f}{midiChannelSet} (unsigned char chan)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{midi_8c_a57cb8c5ec57da5f17e35d6e418ca573b}{
+\index{midi.c@{midi.c}!midiBankSet@{midiBankSet}}
+\index{midiBankSet@{midiBankSet}!midi.c@{midi.c}}
+\subsubsection[{midiBankSet}]{\setlength{\rightskip}{0pt plus 5cm}void midiBankSet (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{bank}
+\end{DoxyParamCaption}
+)}}
+\label{midi_8c_a57cb8c5ec57da5f17e35d6e418ca573b}
+
+
+Definition at line 157 of file midi.c.
+
+
+\begin{DoxyCode}
+                                     {
+        talkMIDI(0xB0, 0, bank);
+}
+\end{DoxyCode}
+\hypertarget{midi_8c_a41296453cce652cf05088768d7f9fb3f}{
+\index{midi.c@{midi.c}!midiChannelSet@{midiChannelSet}}
+\index{midiChannelSet@{midiChannelSet}!midi.c@{midi.c}}
+\subsubsection[{midiChannelSet}]{\setlength{\rightskip}{0pt plus 5cm}void midiChannelSet (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{chan}
+\end{DoxyParamCaption}
+)}}
+\label{midi_8c_a41296453cce652cf05088768d7f9fb3f}
+
+
+Definition at line 203 of file midi.c.
+
+
+\begin{DoxyCode}
+                                        {
+        midiChannel = chan;
+}
+\end{DoxyCode}
+\hypertarget{midi_8c_a24b1b08288ead3bfead03fc0081ccbca}{
+\index{midi.c@{midi.c}!midiPatchSet@{midiPatchSet}}
+\index{midiPatchSet@{midiPatchSet}!midi.c@{midi.c}}
+\subsubsection[{midiPatchSet}]{\setlength{\rightskip}{0pt plus 5cm}void midiPatchSet (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{instr}
+\end{DoxyParamCaption}
+)}}
+\label{midi_8c_a24b1b08288ead3bfead03fc0081ccbca}
+
+
+Definition at line 173 of file midi.c.
+
+
+\begin{DoxyCode}
+                                       {
+        talkMIDI(0xC0, instr, 0);
+}
+\end{DoxyCode}
+\hypertarget{midi_8c_ae598598ff674f4da18f841434585fe81}{
+\index{midi.c@{midi.c}!midiReset@{midiReset}}
+\index{midiReset@{midiReset}!midi.c@{midi.c}}
+\subsubsection[{midiReset}]{\setlength{\rightskip}{0pt plus 5cm}void midiReset (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{midi_8c_ae598598ff674f4da18f841434585fe81}
+
+
+Definition at line 29 of file midi.c.
+
+
+\begin{DoxyCode}
+                 {
+
+        //MIDI_RESET = 1;
+        MCU_IO_OUTPUT(1,1,1);
+        //delay_millisec(100);
+        halMcuWaitMs(100);
+
+        MCU_IO_OUTPUT(1,1,0);
+        //MIDI_RESET = 0;
+        //delay_millisec(100);
+        halMcuWaitMs(100);
+        
+        //MIDI_RESET = 1;
+        MCU_IO_OUTPUT(1,1,1);
+        //delay_millisec(100);
+        halMcuWaitMs(200);
+}
+\end{DoxyCode}
+\hypertarget{midi_8c_a97cb05f98f7b79408b7dd29143edd3d2}{
+\index{midi.c@{midi.c}!midiSilence@{midiSilence}}
+\index{midiSilence@{midiSilence}!midi.c@{midi.c}}
+\subsubsection[{midiSilence}]{\setlength{\rightskip}{0pt plus 5cm}void midiSilence (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{midi_8c_a97cb05f98f7b79408b7dd29143edd3d2}
+
+
+Definition at line 188 of file midi.c.
+
+
+\begin{DoxyCode}
+                   {
+        talkMIDI(0xB0, 0x78, 0);
+}
+\end{DoxyCode}
+\hypertarget{midi_8c_ab607e93238bd9bc475fa4f57e79e0d3f}{
+\index{midi.c@{midi.c}!midiVolSet@{midiVolSet}}
+\index{midiVolSet@{midiVolSet}!midi.c@{midi.c}}
+\subsubsection[{midiVolSet}]{\setlength{\rightskip}{0pt plus 5cm}void midiVolSet (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{vol}
+\end{DoxyParamCaption}
+)}}
+\label{midi_8c_ab607e93238bd9bc475fa4f57e79e0d3f}
+
+
+Definition at line 141 of file midi.c.
+
+
+\begin{DoxyCode}
+                                   {
+        talkMIDI(0xB0, 0x07, vol);
+}
+\end{DoxyCode}
+\hypertarget{midi_8c_a34a15c5c85d634ca47ff3e73b59b503e}{
+\index{midi.c@{midi.c}!noteOff@{noteOff}}
+\index{noteOff@{noteOff}!midi.c@{midi.c}}
+\subsubsection[{noteOff}]{\setlength{\rightskip}{0pt plus 5cm}void noteOff (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{channel, }
+\item[{unsigned char}]{note, }
+\item[{unsigned char}]{release\_\-velocity}
+\end{DoxyParamCaption}
+)}}
+\label{midi_8c_a34a15c5c85d634ca47ff3e73b59b503e}
+
+
+Definition at line 85 of file midi.c.
+
+
+\begin{DoxyCode}
+                                                                                 
+             {
+        talkMIDI( (0x80 | channel), note, release_velocity);
+}
+\end{DoxyCode}
+\hypertarget{midi_8c_a87a71986698e0c26cccb83ba7cea86bd}{
+\index{midi.c@{midi.c}!noteOn@{noteOn}}
+\index{noteOn@{noteOn}!midi.c@{midi.c}}
+\subsubsection[{noteOn}]{\setlength{\rightskip}{0pt plus 5cm}void noteOn (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{channel, }
+\item[{unsigned char}]{note, }
+\item[{unsigned char}]{attack\_\-velocity}
+\end{DoxyParamCaption}
+)}}
+\label{midi_8c_a87a71986698e0c26cccb83ba7cea86bd}
+
+
+Definition at line 64 of file midi.c.
+
+
+\begin{DoxyCode}
+                                                                                 
+           {
+        talkMIDI( (0x90 | channel), note, attack_velocity);
+}
+\end{DoxyCode}
+\hypertarget{midi_8c_a2dedbd5599f48d023e8286c4b1f649a6}{
+\index{midi.c@{midi.c}!talkMIDI@{talkMIDI}}
+\index{talkMIDI@{talkMIDI}!midi.c@{midi.c}}
+\subsubsection[{talkMIDI}]{\setlength{\rightskip}{0pt plus 5cm}void talkMIDI (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{cmd, }
+\item[{unsigned char}]{data1, }
+\item[{unsigned char}]{data2}
+\end{DoxyParamCaption}
+)}}
+\label{midi_8c_a2dedbd5599f48d023e8286c4b1f649a6}
+
+
+Definition at line 105 of file midi.c.
+
+
+\begin{DoxyCode}
+                                                                           {
+
+        //bit_bang_tx(cmd);
+        //putchar (cmd);
+        tx0_send(&cmd, 1);
+        tx1_send(&cmd, 1);
+
+        //bit_bang_tx(data1);
+        //putchar (data1);
+        tx0_send(&data1, 1);
+        tx1_send(&data1, 1);
+        
+        //Some commands only have one data byte. All cmds less than 0xBn have 2 d
+      ata bytes
+        //(sort of: http://253.ccarh.org/handout/midiprotocol/)
+        //if( (cmd & 0xF0) <= 0xB0) {
+        if(cmd <= 0xB0) {
+                //bit_bang_tx(data2);
+                //putchar (data2);
+                tx0_send(&data2, 1);
+                tx1_send(&data2, 1);
+        }
+        tx1_send("\n\r", 2);
+}
+\end{DoxyCode}

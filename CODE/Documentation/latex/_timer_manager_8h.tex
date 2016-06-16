@@ -1,0 +1,322 @@
+\hypertarget{_timer_manager_8h}{
+\section{TimerManager.h File Reference}
+\label{_timer_manager_8h}\index{TimerManager.h@{TimerManager.h}}
+}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_timer_manager_8h_a79fd3eac646964332ed33ec7dd40f208}{MAX\_\-TIMERS}~4
+\item 
+\#define \hyperlink{_timer_manager_8h_a178539b13775c09952f086f301736823}{TimerId\_\-INVALID}~0xFFFF
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ \hyperlink{_timer_manager_8h_a1a4e55390bd2c255ef6741d4c8e504d2}{VoidFuncPtrType} )()
+\item 
+typedef unsigned int \hyperlink{_timer_manager_8h_ab6103af8c6ff5b7a7c9917ed82e06f72}{TimerId}
+\item 
+typedef void($\ast$ \hyperlink{_timer_manager_8h_a085441a021a08b6e4e8b1c79f527e235}{TimerExpiredCallback} )(\hyperlink{_timer_manager_8h_ab6103af8c6ff5b7a7c9917ed82e06f72}{TimerId})
+\item 
+typedef void($\ast$ \hyperlink{_timer_manager_8h_aea407d92b89a8a17452396e218643e81}{BeaconFrame\_\-TimerExpiredCallback} )(void)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{_timer_manager_8h_a11336a584cc006f34ca8285751c9c947}{TimerInterface\_\-Initialize} ()
+\item 
+\hyperlink{_timer_manager_8h_ab6103af8c6ff5b7a7c9917ed82e06f72}{TimerId} \hyperlink{_timer_manager_8h_a9256dd24cf05129edaa1d04c393a9670}{SetTimerReq} (\hyperlink{_timer_manager_8h_a085441a021a08b6e4e8b1c79f527e235}{TimerExpiredCallback} callbackPtr, unsigned int Period\_\-Sec)
+\item 
+bool \hyperlink{_timer_manager_8h_aeab1b3689be6d745c5d5d00463509acf}{CancelTimerReq} (\hyperlink{_timer_manager_8h_ab6103af8c6ff5b7a7c9917ed82e06f72}{TimerId} timerId)
+\item 
+bool \hyperlink{_timer_manager_8h_ae08656d11724a28201e82726cfa3218d}{Reschedule\_\-TimerReq} (\hyperlink{_timer_manager_8h_ab6103af8c6ff5b7a7c9917ed82e06f72}{TimerId} timerId, unsigned int Old\_\-Period\_\-Sec, unsigned int New\_\-Period\_\-Sec)
+\item 
+void \hyperlink{_timer_manager_8h_a6b7c846bc6100e4f9ace71467bcec906}{One\_\-Sec\_\-ISR} ()
+\item 
+unsigned int \hyperlink{_timer_manager_8h_abbf30d0f326d41a8161ab387723caefe}{Capture\_\-TimerReq} (\hyperlink{_timer_manager_8h_ab6103af8c6ff5b7a7c9917ed82e06f72}{TimerId} timerId)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{_timer_manager_8h_a79fd3eac646964332ed33ec7dd40f208}{
+\index{TimerManager.h@{TimerManager.h}!MAX\_\-TIMERS@{MAX\_\-TIMERS}}
+\index{MAX\_\-TIMERS@{MAX\_\-TIMERS}!TimerManager.h@{TimerManager.h}}
+\subsubsection[{MAX\_\-TIMERS}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-TIMERS~4}}
+\label{_timer_manager_8h_a79fd3eac646964332ed33ec7dd40f208}
+
+
+Definition at line 21 of file TimerManager.h.
+
+\hypertarget{_timer_manager_8h_a178539b13775c09952f086f301736823}{
+\index{TimerManager.h@{TimerManager.h}!TimerId\_\-INVALID@{TimerId\_\-INVALID}}
+\index{TimerId\_\-INVALID@{TimerId\_\-INVALID}!TimerManager.h@{TimerManager.h}}
+\subsubsection[{TimerId\_\-INVALID}]{\setlength{\rightskip}{0pt plus 5cm}\#define TimerId\_\-INVALID~0xFFFF}}
+\label{_timer_manager_8h_a178539b13775c09952f086f301736823}
+
+
+Definition at line 22 of file TimerManager.h.
+
+
+
+\subsection{Typedef Documentation}
+\hypertarget{_timer_manager_8h_aea407d92b89a8a17452396e218643e81}{
+\index{TimerManager.h@{TimerManager.h}!BeaconFrame\_\-TimerExpiredCallback@{BeaconFrame\_\-TimerExpiredCallback}}
+\index{BeaconFrame\_\-TimerExpiredCallback@{BeaconFrame\_\-TimerExpiredCallback}!TimerManager.h@{TimerManager.h}}
+\subsubsection[{BeaconFrame\_\-TimerExpiredCallback}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ {\bf BeaconFrame\_\-TimerExpiredCallback})(void)}}
+\label{_timer_manager_8h_aea407d92b89a8a17452396e218643e81}
+
+
+Definition at line 47 of file TimerManager.h.
+
+\hypertarget{_timer_manager_8h_a085441a021a08b6e4e8b1c79f527e235}{
+\index{TimerManager.h@{TimerManager.h}!TimerExpiredCallback@{TimerExpiredCallback}}
+\index{TimerExpiredCallback@{TimerExpiredCallback}!TimerManager.h@{TimerManager.h}}
+\subsubsection[{TimerExpiredCallback}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ {\bf TimerExpiredCallback})({\bf TimerId})}}
+\label{_timer_manager_8h_a085441a021a08b6e4e8b1c79f527e235}
+
+
+Definition at line 46 of file TimerManager.h.
+
+\hypertarget{_timer_manager_8h_ab6103af8c6ff5b7a7c9917ed82e06f72}{
+\index{TimerManager.h@{TimerManager.h}!TimerId@{TimerId}}
+\index{TimerId@{TimerId}!TimerManager.h@{TimerManager.h}}
+\subsubsection[{TimerId}]{\setlength{\rightskip}{0pt plus 5cm}typedef unsigned int {\bf TimerId}}}
+\label{_timer_manager_8h_ab6103af8c6ff5b7a7c9917ed82e06f72}
+
+
+Definition at line 45 of file TimerManager.h.
+
+\hypertarget{_timer_manager_8h_a1a4e55390bd2c255ef6741d4c8e504d2}{
+\index{TimerManager.h@{TimerManager.h}!VoidFuncPtrType@{VoidFuncPtrType}}
+\index{VoidFuncPtrType@{VoidFuncPtrType}!TimerManager.h@{TimerManager.h}}
+\subsubsection[{VoidFuncPtrType}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ {\bf VoidFuncPtrType})()}}
+\label{_timer_manager_8h_a1a4e55390bd2c255ef6741d4c8e504d2}
+
+
+Definition at line 34 of file TimerManager.h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{_timer_manager_8h_aeab1b3689be6d745c5d5d00463509acf}{
+\index{TimerManager.h@{TimerManager.h}!CancelTimerReq@{CancelTimerReq}}
+\index{CancelTimerReq@{CancelTimerReq}!TimerManager.h@{TimerManager.h}}
+\subsubsection[{CancelTimerReq}]{\setlength{\rightskip}{0pt plus 5cm}bool CancelTimerReq (
+\begin{DoxyParamCaption}
+\item[{{\bf TimerId}}]{timerId}
+\end{DoxyParamCaption}
+)}}
+\label{_timer_manager_8h_aeab1b3689be6d745c5d5d00463509acf}
+
+
+Definition at line 170 of file TimerManager.c.
+
+
+\begin{DoxyCode}
+{
+    unsigned int criticalSectionSave;
+    if( timerId == TimerId_INVALID || timerId > MAX_TIMERS || Timers[ timerId ].R
+      equired_Period_Sec == PERIOD_INVALID)
+    {
+        return false;
+    }
+    BSP_ENTER_CRITICAL_SECTION( criticalSectionSave );
+    Timers[ timerId ].Required_Period_Sec = PERIOD_INVALID;
+    Timers[ timerId ].Callback = 0;
+    BSP_EXIT_CRITICAL_SECTION( criticalSectionSave );
+    return true;
+}
+\end{DoxyCode}
+\hypertarget{_timer_manager_8h_abbf30d0f326d41a8161ab387723caefe}{
+\index{TimerManager.h@{TimerManager.h}!Capture\_\-TimerReq@{Capture\_\-TimerReq}}
+\index{Capture\_\-TimerReq@{Capture\_\-TimerReq}!TimerManager.h@{TimerManager.h}}
+\subsubsection[{Capture\_\-TimerReq}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Capture\_\-TimerReq (
+\begin{DoxyParamCaption}
+\item[{{\bf TimerId}}]{timerId}
+\end{DoxyParamCaption}
+)}}
+\label{_timer_manager_8h_abbf30d0f326d41a8161ab387723caefe}
+
+
+Definition at line 200 of file TimerManager.c.
+
+
+\begin{DoxyCode}
+{
+    //word16 criticalSectionSave;
+    unsigned int CapturValue;
+    //BSP_ENTER_CRITICAL_SECTION( criticalSectionSave );
+    CapturValue = Timers[ timerId ].Required_Period_Sec;
+    //BSP_EXIT_CRITICAL_SECTION( criticalSectionSave );
+    return CapturValue;
+}
+\end{DoxyCode}
+\hypertarget{_timer_manager_8h_a6b7c846bc6100e4f9ace71467bcec906}{
+\index{TimerManager.h@{TimerManager.h}!One\_\-Sec\_\-ISR@{One\_\-Sec\_\-ISR}}
+\index{One\_\-Sec\_\-ISR@{One\_\-Sec\_\-ISR}!TimerManager.h@{TimerManager.h}}
+\subsubsection[{One\_\-Sec\_\-ISR}]{\setlength{\rightskip}{0pt plus 5cm}void One\_\-Sec\_\-ISR (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{_timer_manager_8h_a6b7c846bc6100e4f9ace71467bcec906}
+
+
+Definition at line 266 of file TimerManager.c.
+
+
+\begin{DoxyCode}
+{
+  unsigned int criticalSectionSave;
+  
+     BSP_ENTER_CRITICAL_SECTION( criticalSectionSave );
+    //call all the expired timer callbacks
+    for( int i=0; i<MAX_TIMERS; i++ )
+    {
+      if( Timers[ i ].Required_Period_Sec != PERIOD_INVALID )
+      {
+        Timers[ i ].Required_Period_Sec--;
+        if( Timers[ i ].Required_Period_Sec == 0 )
+        {
+            if( Timers[ i ].Callback != 0 )
+            {
+                TimerExpiredCallback callback = *(Timers[ i ].Callback);
+                Timers[ i ].Required_Period_Sec = PERIOD_INVALID;
+                Timers[ i ].Callback = 0;
+                callback((TimerId)i );
+            }
+        }
+      }
+    }
+    BSP_EXIT_CRITICAL_SECTION( criticalSectionSave );
+}
+\end{DoxyCode}
+\hypertarget{_timer_manager_8h_ae08656d11724a28201e82726cfa3218d}{
+\index{TimerManager.h@{TimerManager.h}!Reschedule\_\-TimerReq@{Reschedule\_\-TimerReq}}
+\index{Reschedule\_\-TimerReq@{Reschedule\_\-TimerReq}!TimerManager.h@{TimerManager.h}}
+\subsubsection[{Reschedule\_\-TimerReq}]{\setlength{\rightskip}{0pt plus 5cm}bool Reschedule\_\-TimerReq (
+\begin{DoxyParamCaption}
+\item[{{\bf TimerId}}]{timerId, }
+\item[{unsigned int}]{Old\_\-Period\_\-Sec, }
+\item[{unsigned int}]{New\_\-Period\_\-Sec}
+\end{DoxyParamCaption}
+)}}
+\label{_timer_manager_8h_ae08656d11724a28201e82726cfa3218d}
+
+
+Definition at line 226 of file TimerManager.c.
+
+
+\begin{DoxyCode}
+{
+    unsigned int criticalSectionSave;
+    int elapsed_time;
+    
+    if( timerId == TimerId_INVALID || timerId > MAX_TIMERS || Timers[ timerId ].R
+      equired_Period_Sec == PERIOD_INVALID)
+    {
+        return false;
+    }
+    
+    
+    elapsed_time = Old_Period_Sec - Timers[ timerId ].Required_Period_Sec; //Time
+      r is already running. Calculate how much time is elapsed
+    
+    BSP_ENTER_CRITICAL_SECTION( criticalSectionSave );
+    if(elapsed_time >= New_Period_Sec)
+      Timers[ timerId ].Required_Period_Sec = 1; //Already got the desired delay,
+       Call ISR immediately in the next iteration.
+    else 
+      Timers[ timerId ].Required_Period_Sec = New_Period_Sec - elapsed_time;  //c
+      ompensate for already elapsed time delay
+    BSP_EXIT_CRITICAL_SECTION( criticalSectionSave );
+    
+    return true;
+}
+\end{DoxyCode}
+\hypertarget{_timer_manager_8h_a9256dd24cf05129edaa1d04c393a9670}{
+\index{TimerManager.h@{TimerManager.h}!SetTimerReq@{SetTimerReq}}
+\index{SetTimerReq@{SetTimerReq}!TimerManager.h@{TimerManager.h}}
+\subsubsection[{SetTimerReq}]{\setlength{\rightskip}{0pt plus 5cm}{\bf TimerId} SetTimerReq (
+\begin{DoxyParamCaption}
+\item[{{\bf TimerExpiredCallback}}]{callbackPtr, }
+\item[{unsigned int}]{Period\_\-Sec}
+\end{DoxyParamCaption}
+)}}
+\label{_timer_manager_8h_a9256dd24cf05129edaa1d04c393a9670}
+
+
+Definition at line 130 of file TimerManager.c.
+
+
+\begin{DoxyCode}
+{
+    int criticalSectionSave;
+    //find the 1st available timer
+    unsigned int foundID = TimerId_INVALID;
+    for( unsigned int i=0; i<MAX_TIMERS; i++ )
+    {
+        if( Timers[ i ].Required_Period_Sec == PERIOD_INVALID && foundID == 
+      TimerId_INVALID)
+        {
+            foundID = i;
+            break;
+        }
+    }
+    BSP_ENTER_CRITICAL_SECTION( criticalSectionSave );
+
+    //set callback and time
+    Timers[ foundID ].Required_Period_Sec = Period_Sec;
+    Timers[ foundID ].Callback = callbackPtr;
+    BSP_EXIT_CRITICAL_SECTION( criticalSectionSave );
+
+    return (TimerId)foundID;
+}
+\end{DoxyCode}
+\hypertarget{_timer_manager_8h_a11336a584cc006f34ca8285751c9c947}{
+\index{TimerManager.h@{TimerManager.h}!TimerInterface\_\-Initialize@{TimerInterface\_\-Initialize}}
+\index{TimerInterface\_\-Initialize@{TimerInterface\_\-Initialize}!TimerManager.h@{TimerManager.h}}
+\subsubsection[{TimerInterface\_\-Initialize}]{\setlength{\rightskip}{0pt plus 5cm}bool TimerInterface\_\-Initialize (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{_timer_manager_8h_a11336a584cc006f34ca8285751c9c947}
+
+
+Definition at line 83 of file TimerManager.c.
+
+
+\begin{DoxyCode}
+{
+    for( int i=0; i<MAX_TIMERS; i++ )
+    {
+        Timers[ i ].Required_Period_Sec = PERIOD_INVALID;
+    }
+    
+    T1CCTL0 = 0;    /* Make sure interrupts are disabled */
+    T1CCTL1 = 0;    /* Make sure interrupts are disabled */
+    T1CCTL2 = 0;    /* Make sure interrupts are disabled */
+    T1CTL   = 0;
+    
+    // clear interrupt pending flag, disable interrupt
+    T1IE  =  0; // IEN1.T1EN = 0
+    
+    CLKCON &= ~TICKSPD_DIV_1;
+    CLKCON |= TICKSPD_DIV_1;
+    
+    // Set prescaler divider value to 128
+    T1CTL |= 0x0C;
+    
+    T1CC0L =  240;     // Reset counter value
+    T1CC0H =  0;     // Reset counter value
+    
+    T1IE  =  1; // IEN1.T1EN = 0
+    OVFIM = 1;
+    
+    // Start timer in up/down mode
+    T1CTL |= 0x02; // T1CTL.MODE = 01  
+    
+    return true;
+}
+\end{DoxyCode}

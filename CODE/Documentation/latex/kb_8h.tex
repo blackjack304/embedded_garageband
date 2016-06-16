@@ -1,0 +1,254 @@
+\hypertarget{kb_8h}{
+\section{kb.h File Reference}
+\label{kb_8h}\index{kb.h@{kb.h}}
+}
+{\ttfamily \#include \char`\"{}hal\_\-types.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-defs.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{kb_8h_a6c080a79672a9b6426584f08f08e4115}{ISC00}~0
+\item 
+\#define \hyperlink{kb_8h_a6ee546ebb2448084c92137e9a6d3ad92}{ISC01}~1
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{kb_8h_ac19e870c3ea785bd1c4dd30921e2b7e2}{init\_\-kb} (void)
+\item 
+void \hyperlink{kb_8h_a2f45e955e880c44060d9c1430909471d}{decode} (unsigned char sc)
+\item 
+void \hyperlink{kb_8h_a7ffe2034bd511bdc6b713f200b332c71}{put\_\-kbbuff} (unsigned char c)
+\item 
+char \hyperlink{kb_8h_adae01683b54a13ace30d964858bfbb77}{kb\_\-getchar} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{kb_8h_a6c080a79672a9b6426584f08f08e4115}{
+\index{kb.h@{kb.h}!ISC00@{ISC00}}
+\index{ISC00@{ISC00}!kb.h@{kb.h}}
+\subsubsection[{ISC00}]{\setlength{\rightskip}{0pt plus 5cm}\#define ISC00~0}}
+\label{kb_8h_a6c080a79672a9b6426584f08f08e4115}
+
+
+Definition at line 18 of file kb.h.
+
+\hypertarget{kb_8h_a6ee546ebb2448084c92137e9a6d3ad92}{
+\index{kb.h@{kb.h}!ISC01@{ISC01}}
+\index{ISC01@{ISC01}!kb.h@{kb.h}}
+\subsubsection[{ISC01}]{\setlength{\rightskip}{0pt plus 5cm}\#define ISC01~1}}
+\label{kb_8h_a6ee546ebb2448084c92137e9a6d3ad92}
+
+
+Definition at line 19 of file kb.h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{kb_8h_a2f45e955e880c44060d9c1430909471d}{
+\index{kb.h@{kb.h}!decode@{decode}}
+\index{decode@{decode}!kb.h@{kb.h}}
+\subsubsection[{decode}]{\setlength{\rightskip}{0pt plus 5cm}void decode (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{sc}
+\end{DoxyParamCaption}
+)}}
+\label{kb_8h_a2f45e955e880c44060d9c1430909471d}
+
+
+Definition at line 140 of file kb.c.
+
+
+\begin{DoxyCode}
+{
+  unsigned char i;
+  if (!is_up)// Last data received was the up-key identifier
+  {
+    switch (sc)
+    {
+    case 0xF0 :// The up-key identifier
+      is_up = 1;
+      spec = 0;
+      break;
+    case 0x12 :// Left SHIFT
+      shift = 1;
+      break;
+    case 0x59 :// Right SHIFT
+      shift = 1;
+      break;
+    case 0x05 :// F1
+      /*if(mode == 0)
+      mode = 1;// Enter scan code mode
+      if(mode == 2)
+      mode = 3;// Leave scan code mode*/
+      break;
+    case 0xE0 :
+      //print_line("in E0");
+      spec = 1;
+      /*for(i = 0; special[i][0]!=sc && special[i][0]; i++);
+      if (special[i][0] == sc) {
+      put_kbbuff(special[i][1]);
+    }
+      */
+      break;
+
+    default:
+      if(mode == 0 || mode == 3)// If ASCII mode
+      {
+        if(!shift)// If shift not pressed,
+        { // do a table look-up
+
+          if (spec)
+          {for(i = 0; special[i][0]!=sc && special[i][0]; i++);
+          if (special[i][0] == sc) {
+            put_kbbuff(special[i][1]);
+          }
+
+          }
+          else
+          {
+            for(i = 0; unshifted[i][0]!=sc && unshifted[i][0]; i++);
+            if (unshifted[i][0] == sc) {
+              put_kbbuff(unshifted[i][1]);
+            }
+          }
+        } else {// If shift pressed
+          for(i = 0; shifted[i][0]!=sc && shifted[i][0]; i++);
+          if (shifted[i][0] == sc) {
+            put_kbbuff(shifted[i][1]);
+          }
+        }
+      } else{ // Scan code mode
+        put_kbbuff(' ');
+        put_kbbuff(' ');
+      }
+      break;
+    }
+  }
+  else {
+    is_up = 0;// Two 0xF0 in a row not allowed
+    switch (sc)
+    {
+    case 0x12 :// Left SHIFT
+      shift = 0;
+      break;
+    case 0x59 :// Right SHIFT
+      shift = 0;
+      break;
+    case 0x05 :// F1
+      /*if(mode == 1)
+      mode = 2;
+      if(mode == 3)
+      mode = 0;*/
+      break;
+    case 0x06 :// F2
+      break;
+    case 0xE0 :
+      spec = 0;
+      break;
+
+    }
+  }
+}
+\end{DoxyCode}
+\hypertarget{kb_8h_ac19e870c3ea785bd1c4dd30921e2b7e2}{
+\index{kb.h@{kb.h}!init\_\-kb@{init\_\-kb}}
+\index{init\_\-kb@{init\_\-kb}!kb.h@{kb.h}}
+\subsubsection[{init\_\-kb}]{\setlength{\rightskip}{0pt plus 5cm}void init\_\-kb (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{kb_8h_ac19e870c3ea785bd1c4dd30921e2b7e2}
+
+
+Definition at line 49 of file kb.c.
+
+
+\begin{DoxyCode}
+{
+  data_ready=FALSE;
+  is_up=0;
+  spec=0;
+  shift=0;
+  mode=0;
+
+  inpt = kb_buffer;// Initialize buffer
+  outpt = kb_buffer;
+  buffcnt = 0;
+  edge = 0;
+  bitcount = 11;
+
+  halLedSet(3);
+
+  MCU_IO_OUTPUT(KPORT, KDATA_PIN, 0);
+  MCU_IO_OUTPUT(1, 0, 0);
+
+  MCU_IO_INPUT(1, 0, MCU_IO_TRISTATE);
+  MCU_IO_INPUT(KPORT, KCLOCK_PIN, MCU_IO_TRISTATE);
+
+  P1IF = 0;
+  PICTL |= 0x02;  //IT0 = 1;                            // Ext INT0 falling edge 
+      triggered
+  IEN2 |= 0x10;         //IEN2.P2IE = 1;
+  P1IEN = 0x01;
+
+  bitcount = 11;
+}
+\end{DoxyCode}
+\hypertarget{kb_8h_adae01683b54a13ace30d964858bfbb77}{
+\index{kb.h@{kb.h}!kb\_\-getchar@{kb\_\-getchar}}
+\index{kb\_\-getchar@{kb\_\-getchar}!kb.h@{kb.h}}
+\subsubsection[{kb\_\-getchar}]{\setlength{\rightskip}{0pt plus 5cm}char kb\_\-getchar (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{kb_8h_adae01683b54a13ace30d964858bfbb77}
+
+
+Definition at line 268 of file kb.c.
+
+
+\begin{DoxyCode}
+{
+  char byte;
+  while(buffcnt == 0);// Wait for data
+  byte = *outpt;// Get byte
+  outpt++; // Increment pointer
+  if (outpt >= kb_buffer + BUFF_SIZE)// Pointer wrapping
+    outpt = kb_buffer;
+  buffcnt--; // Decrement buffer count
+  data_ready=FALSE;
+  return byte;
+}
+\end{DoxyCode}
+\hypertarget{kb_8h_a7ffe2034bd511bdc6b713f200b332c71}{
+\index{kb.h@{kb.h}!put\_\-kbbuff@{put\_\-kbbuff}}
+\index{put\_\-kbbuff@{put\_\-kbbuff}!kb.h@{kb.h}}
+\subsubsection[{put\_\-kbbuff}]{\setlength{\rightskip}{0pt plus 5cm}void put\_\-kbbuff (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{c}
+\end{DoxyParamCaption}
+)}}
+\label{kb_8h_a7ffe2034bd511bdc6b713f200b332c71}
+
+
+Definition at line 243 of file kb.c.
+
+
+\begin{DoxyCode}
+{
+  if (buffcnt<BUFF_SIZE && start_read == TRUE)// If buffer not full
+  {
+    *inpt = c;// Put character into buffer
+    inpt++; // Increment pointer
+    buffcnt++;
+    data_ready=TRUE;
+    if (inpt >= kb_buffer + BUFF_SIZE)// Pointer wrapping
+      inpt = kb_buffer;
+    //pc_kbd_scan();            // call scanning routine
+  }
+}
+\end{DoxyCode}

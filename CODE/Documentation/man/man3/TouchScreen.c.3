@@ -1,0 +1,255 @@
+.TH "TouchScreen.c" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TouchScreen.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <ioCC2430.h>\fP
+.br
+\fC#include 'TouchScreen.h'\fP
+.br
+\fC#include 'adc.h'\fP
+.br
+\fC#include 'uart_intfc.h'\fP
+.br
+\fC#include 'hal_led.h'\fP
+.br
+\fC#include 'hal_cc8051.h'\fP
+.br
+\fC#include 'hal_mcu.h'\fP
+.br
+\fC#include 'key_map.h'\fP
+.br
+\fC#include 'App_RF.h'\fP
+.br
+\fC#include <stdio.h>\fP
+.br
+\fC#include <string.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBTouchScreen\fP (void)"
+.br
+.ti -1c
+.RI "void \fBInitialize_TouchScreen\fP (void)"
+.br
+.ti -1c
+.RI "void \fBwaitForTouch\fP (void)"
+.br
+.ti -1c
+.RI "unsigned int \fBgetSamples\fP (unsigned int chan)"
+.br
+.ti -1c
+.RI "void \fBreadXY\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetXDrive\fP (void)"
+.br
+.ti -1c
+.RI "void \fBsetYDrive\fP (void)"
+.br
+.ti -1c
+.RI "void \fBclearDrives\fP (void)"
+.br
+.ti -1c
+.RI "void \fBsetTouchDrives\fP (void)"
+.br
+.ti -1c
+.RI "void \fBsendData\fP (unsigned int xCoord, unsigned int yCoord)"
+.br
+.ti -1c
+.RI "void \fBgetTsXY\fP (unsigned int *xCoord, unsigned int *yCoord)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "char \fBstr_buf\fP [20]"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void clearDrives (void)"
+.PP
+Definition at line 185 of file TouchScreen.c.
+.PP
+.nf
+{
+    MCU_IO_INPUT(0,XN_C,MCU_IO_TRISTATE);
+    MCU_IO_INPUT(0,YN_C,MCU_IO_TRISTATE);
+    MCU_IO_INPUT(0,XP_C,MCU_IO_TRISTATE);
+    MCU_IO_INPUT(0,YP_C,MCU_IO_TRISTATE);
+}
+.fi
+.SS "unsigned int getSamples (unsigned intchan)"
+.PP
+Definition at line 102 of file TouchScreen.c.
+.PP
+.nf
+{
+        unsigned char loop;
+        unsigned int avg = 0;                     // Clear average variable
+        for (loop=0;loop<NUMSAMPLES;loop++) {     // Loop
+        avg = avg + adcSampleSingle(ADC_REF_AVDD,ADC_12_BIT,chan);              // Accumulate samples
+        }
+        avg = avg >> SAMPLESHIFT;                 // Calculate average
+        return avg;                               // Return average
+}
+.fi
+.SS "void getTsXY (unsigned int *xCoord, unsigned int *yCoord)"
+.PP
+Definition at line 260 of file TouchScreen.c.
+.PP
+.nf
+                                                         {
+        
+        Initialize_TouchScreen();               // Initialize device
+        readXY();                               // Get X,Y coordinates
+        *xCoord = x;
+        *yCoord = y;
+}
+.fi
+.SS "void Initialize_TouchScreen (void)"
+.PP
+Definition at line 64 of file TouchScreen.c.
+.PP
+.nf
+{
+        clearDrives();                        // Clear outputs
+        PICTL |= 1;                             // Y+drive high to low transition int
+}
+.fi
+.SS "void readXY ()"
+.PP
+Definition at line 123 of file TouchScreen.c.
+.PP
+.nf
+{
+        // Find X Coordinate
+        setXDrive();                              // Set X wires to drives
+        x = getSamples(CHAN_YP);          // Sample Y+ to get X coordinate
+        
+        // Find Y Coordinate
+        setYDrive();                              // Set Y wires to drives
+        y = getSamples(CHAN_XP);          // Sample X+ to get Y coordinate
+        
+        // Setup pins to check if screen is still touched
+        setTouchDrives();                         // See if screen still touched
+        
+        clearDrives();                            // Clear drive wires
+}
+.fi
+.SS "void sendData (unsigned intxCoord, unsigned intyCoord)"
+.PP
+Definition at line 227 of file TouchScreen.c.
+.PP
+.nf
+                                                        {
+  //static   char byte[5];
+
+//    xCoord -= 1100;
+//    yCoord -= 700;
+        unsigned char keyNote = 0;
+
+    if((signed int)xCoord < 0)  xCoord = 0;
+    if((signed int)yCoord < 0)  yCoord = 0;
+
+
+    sprintf(str_buf, 'X: %d, Y:%d\n\r',xCoord, yCoord);
+    tx1_send(str_buf,strlen(str_buf));
+        
+        keyNote = piano_key_match(xCoord, yCoord);
+        //keyNote = drum_key_match(xCoord, yCoord);
+        tx1_send(&keyNote, 1);
+        RF_Send(&keyNote, 1);
+
+}
+.fi
+.SS "void setTouchDrives (void)"
+.PP
+Definition at line 204 of file TouchScreen.c.
+.PP
+.nf
+{
+        clearDrives();
+        MCU_IO_OUTPUT(0,YP_C,1);
+        MCU_IO_INPUT(0,YP_C,MCU_IO_PULLUP);
+        MCU_IO_OUTPUT(0,XN_C,0);
+        halMcuWaitMs(1);                                 // Wait for pin to settle
+}
+.fi
+.SS "void setXDrive (void)"
+.PP
+Definition at line 149 of file TouchScreen.c.
+.PP
+.nf
+{
+        clearDrives();
+        MCU_IO_OUTPUT(0, XP_C, 1);
+        MCU_IO_OUTPUT(0, XN_C, 0);
+        halMcuWaitMs(1);                                 // Delay to allow settling
+}
+.fi
+.SS "void setYDrive (void)"
+.PP
+Definition at line 167 of file TouchScreen.c.
+.PP
+.nf
+{
+        clearDrives();
+        MCU_IO_OUTPUT(0,YP_C,1);
+        MCU_IO_OUTPUT(0,YN_C,0);
+        halMcuWaitMs(1);                                 // Delay to allow settling
+}
+.fi
+.SS "void TouchScreen (void)"
+.PP
+Definition at line 37 of file TouchScreen.c.
+.PP
+.nf
+{
+        Initialize_TouchScreen();               // Initialize device
+        waitForTouch();                         // Wait for touch on screen
+        touched = 1;                            // Screen is touched
+        while(1)
+        {                                       // Loop while screen is touched
+                readXY();                             // Get X,Y coordinates index 0
+        
+                // Take 2 values and see the difference between them.
+                // If value is greater than 5 steps, discard packet.
+                // This code is designed to take a majority vote of 2 packets.
+                if(x > 1100 && x < 4600 && y > 700 && y < 5300)
+                                sendData(x,y);                // Send data to host
+        }
+}
+.fi
+.SS "void waitForTouch (void)"
+.PP
+Definition at line 80 of file TouchScreen.c.
+.PP
+.nf
+{
+        setTouchDrives();
+        if((P0 & YP)) {                       // Y+ high?
+        P0IFG = 0;                             // Clear interrupt flags
+        PICTL |= 1;
+        while(P0IFG == 0);  //__bis_SR_register(LPM4_bits + GIE);     // Wait for interrupt
+        }
+        halLedToggle(1);
+        clearDrives();                            // Clear drive wires
+}
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "char \fBstr_buf\fP[20]"
+.PP
+Definition at line 26 of file TouchScreen.c.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

@@ -1,0 +1,637 @@
+\hypertarget{_main__mod2_8c}{
+\section{Main\_\-mod2.c File Reference}
+\label{_main__mod2_8c}\index{Main\_\-mod2.c@{Main\_\-mod2.c}}
+}
+{\ttfamily \#include $<$hal\_\-led.h$>$}\par
+{\ttfamily \#include $<$hal\_\-assert.h$>$}\par
+{\ttfamily \#include $<$hal\_\-board.h$>$}\par
+{\ttfamily \#include $<$hal\_\-int.h$>$}\par
+{\ttfamily \#include \char`\"{}hal\_\-mcu.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-rf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}basic\_\-rf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}uart\_\-intfc.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}TouchScreen.h\char`\"{}}\par
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include \char`\"{}hal\_\-spi.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}TimerManager.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Drum.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}midi.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}graphics\_\-lcd.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}key\_\-map.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}App\_\-RF.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}utilMisc.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}user\_\-interface.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_main__mod2_8c_a4226cc28acbf377dbc90e6d0259d3fc4}{SZ\_\-RFBUF}~50
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505b}{rfStat} \{ \par
+\hyperlink{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505ba63191191b20548b1cc5a7adf22414acd}{rfHello} =  1, 
+\hyperlink{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505ba77c223eeed046ac77b411c16badf7f59}{rfVPiano}, 
+\hyperlink{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505baa969ce5b5bfa123cbcc02e6174491b74}{rfVDrum}, 
+\hyperlink{_main__mod1_8c_a6ed27acaa528a9926a3ee523edb7505ba1ae80667f1b838b1dc7e10d851206715}{rfVGuitar}, 
+\par
+\hyperlink{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505ba63191191b20548b1cc5a7adf22414acd}{rfHello} =  1, 
+\hyperlink{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505ba77c223eeed046ac77b411c16badf7f59}{rfVPiano}, 
+\hyperlink{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505baa969ce5b5bfa123cbcc02e6174491b74}{rfVDrum}, 
+\hyperlink{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505ba1ae80667f1b838b1dc7e10d851206715}{rfVGuitar}, 
+\par
+\hyperlink{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505baf8d6409149396ae7e6edee292ebfa60b}{rfRPiano}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_main__mod2_8c_a0ddc5ec41d72be0a577da9f82152f77c}{midiTest} (void)
+\item 
+void \hyperlink{_main__mod2_8c_a230977120e39e5b64af4502b495533fa}{playRfNotes} ()
+\item 
+void \hyperlink{_main__mod2_8c_a884ab220267d40f07fcdfde65805a1f8}{playRfNotesSD} ()
+\item 
+void \hyperlink{_main__mod2_8c_a6288eba0f8e8ad3ab1544ad731eb7667}{main} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \hyperlink{_main__mod2_8c_a52b070368ee39becb95d95fedc34a5a5}{rfBuf} \mbox{[}SZ\_\-RFBUF\mbox{]} = \{0\}
+\item 
+unsigned char \hyperlink{_main__mod2_8c_ae269b27f32ba70ecee2551473da902fc}{Check\_\-Flag} = 1
+\item 
+char \hyperlink{_main__mod2_8c_a9c1bfa051ef218e219dae51dfaa6ea75}{drum\_\-piano\_\-guitar}
+\item 
+char \hyperlink{_main__mod2_8c_a15e189c43037f0b1364086309b42a99a}{real\_\-virtual}
+\item 
+char \hyperlink{_main__mod2_8c_ae2d8435ed70fc68737fa1ec6fb21fa38}{drum\_\-piano\_\-guitar\_\-rv}
+\item 
+char \hyperlink{_main__mod2_8c_a339a95bfc67f3ce8062b86582a984e8c}{piano\_\-type}
+\item 
+char \hyperlink{_main__mod2_8c_ae96f797c3021d80e823477a2a5823468}{guitar\_\-type}
+\item 
+char \hyperlink{_main__mod2_8c_abacd8829622e595858de29cd5ce8a177}{audio\_\-termination}
+\item 
+char \hyperlink{_main__mod2_8c_a8c8d8330d90702dc1a1f89d21ceaff24}{record\_\-notes}
+\item 
+char \hyperlink{_main__mod2_8c_aa97277e160e8a2af06ccc2118f9c2561}{play\_\-recorded\_\-notes}
+\item 
+char \hyperlink{_main__mod2_8c_a20d100825cf8f0af825f3f872ad5d8b3}{track}
+\item 
+char \hyperlink{_main__mod2_8c_a9516f43e955bb88191ae2edf180ae94b}{playback}
+\item 
+unsigned char \hyperlink{_main__mod2_8c_a92ee4eef648b038d4e121cf8163e41a0}{endPacket} \mbox{[}3\mbox{]} = \{0xFF, 0xFF, 0xFF\}
+\item 
+unsigned char \hyperlink{_main__mod2_8c_ab0baa674e1ad14e8b9e33d399c37310d}{Record\_\-0} \mbox{[}$\,$\mbox{]} = \char`\"{}Record\_\-0\char`\"{}
+\item 
+unsigned char \hyperlink{_main__mod2_8c_a94092d3eec70fcee33d245018fe20472}{Record\_\-1} \mbox{[}$\,$\mbox{]} = \char`\"{}Record\_\-1\char`\"{}
+\item 
+unsigned char \hyperlink{_main__mod2_8c_aa36c879095d24d85fa640b5972e7fdf5}{Record\_\-2} \mbox{[}$\,$\mbox{]} = \char`\"{}Record\_\-2\char`\"{}
+\item 
+unsigned char \hyperlink{_main__mod2_8c_abba3661c0b728f513f7d0458ecf65072}{Record\_\-3} \mbox{[}$\,$\mbox{]} = \char`\"{}Record\_\-3\char`\"{}
+\item 
+unsigned char \hyperlink{_main__mod2_8c_a113feee8d30f79a9edc577e69243357d}{Play\_\-0} \mbox{[}$\,$\mbox{]} = \char`\"{}Play\_\-0\char`\"{}
+\item 
+unsigned char \hyperlink{_main__mod2_8c_a381a639a2b37d86d707573e7cdbed3df}{Play\_\-1} \mbox{[}$\,$\mbox{]} = \char`\"{}Play\_\-1\char`\"{}
+\item 
+unsigned char \hyperlink{_main__mod2_8c_ae35cfb55db26d636dd42f6f3f8772845}{Play\_\-2} \mbox{[}$\,$\mbox{]} = \char`\"{}Play\_\-2\char`\"{}
+\item 
+unsigned char \hyperlink{_main__mod2_8c_a1a2ed82d2316f569273480a350db48e3}{Play\_\-3} \mbox{[}$\,$\mbox{]} = \char`\"{}Play\_\-3\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{_main__mod2_8c_a4226cc28acbf377dbc90e6d0259d3fc4}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!SZ\_\-RFBUF@{SZ\_\-RFBUF}}
+\index{SZ\_\-RFBUF@{SZ\_\-RFBUF}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{SZ\_\-RFBUF}]{\setlength{\rightskip}{0pt plus 5cm}\#define SZ\_\-RFBUF~50}}
+\label{_main__mod2_8c_a4226cc28acbf377dbc90e6d0259d3fc4}
+
+
+Definition at line 35 of file Main\_\-mod2.c.
+
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505b}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!rfStat@{rfStat}}
+\index{rfStat@{rfStat}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{rfStat}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf rfStat}}}
+\label{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505b}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{rfHello@{rfHello}!Main\_\-mod2.c@{Main\_\-mod2.c}}\index{Main\_\-mod2.c@{Main\_\-mod2.c}!rfHello@{rfHello}}\item[{\em 
+\hypertarget{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505ba63191191b20548b1cc5a7adf22414acd}{
+rfHello}
+\label{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505ba63191191b20548b1cc5a7adf22414acd}
+}]\index{rfVPiano@{rfVPiano}!Main\_\-mod2.c@{Main\_\-mod2.c}}\index{Main\_\-mod2.c@{Main\_\-mod2.c}!rfVPiano@{rfVPiano}}\item[{\em 
+\hypertarget{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505ba77c223eeed046ac77b411c16badf7f59}{
+rfVPiano}
+\label{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505ba77c223eeed046ac77b411c16badf7f59}
+}]\index{rfVDrum@{rfVDrum}!Main\_\-mod2.c@{Main\_\-mod2.c}}\index{Main\_\-mod2.c@{Main\_\-mod2.c}!rfVDrum@{rfVDrum}}\item[{\em 
+\hypertarget{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505baa969ce5b5bfa123cbcc02e6174491b74}{
+rfVDrum}
+\label{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505baa969ce5b5bfa123cbcc02e6174491b74}
+}]\index{rfVGuitar@{rfVGuitar}!Main\_\-mod2.c@{Main\_\-mod2.c}}\index{Main\_\-mod2.c@{Main\_\-mod2.c}!rfVGuitar@{rfVGuitar}}\item[{\em 
+\hypertarget{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505ba1ae80667f1b838b1dc7e10d851206715}{
+rfVGuitar}
+\label{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505ba1ae80667f1b838b1dc7e10d851206715}
+}]\index{rfHello@{rfHello}!Main\_\-mod2.c@{Main\_\-mod2.c}}\index{Main\_\-mod2.c@{Main\_\-mod2.c}!rfHello@{rfHello}}\item[{\em 
+\hypertarget{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505ba63191191b20548b1cc5a7adf22414acd}{
+rfHello}
+\label{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505ba63191191b20548b1cc5a7adf22414acd}
+}]\index{rfVPiano@{rfVPiano}!Main\_\-mod2.c@{Main\_\-mod2.c}}\index{Main\_\-mod2.c@{Main\_\-mod2.c}!rfVPiano@{rfVPiano}}\item[{\em 
+\hypertarget{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505ba77c223eeed046ac77b411c16badf7f59}{
+rfVPiano}
+\label{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505ba77c223eeed046ac77b411c16badf7f59}
+}]\index{rfVDrum@{rfVDrum}!Main\_\-mod2.c@{Main\_\-mod2.c}}\index{Main\_\-mod2.c@{Main\_\-mod2.c}!rfVDrum@{rfVDrum}}\item[{\em 
+\hypertarget{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505baa969ce5b5bfa123cbcc02e6174491b74}{
+rfVDrum}
+\label{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505baa969ce5b5bfa123cbcc02e6174491b74}
+}]\index{rfVGuitar@{rfVGuitar}!Main\_\-mod2.c@{Main\_\-mod2.c}}\index{Main\_\-mod2.c@{Main\_\-mod2.c}!rfVGuitar@{rfVGuitar}}\item[{\em 
+\hypertarget{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505ba1ae80667f1b838b1dc7e10d851206715}{
+rfVGuitar}
+\label{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505ba1ae80667f1b838b1dc7e10d851206715}
+}]\index{rfRPiano@{rfRPiano}!Main\_\-mod2.c@{Main\_\-mod2.c}}\index{Main\_\-mod2.c@{Main\_\-mod2.c}!rfRPiano@{rfRPiano}}\item[{\em 
+\hypertarget{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505baf8d6409149396ae7e6edee292ebfa60b}{
+rfRPiano}
+\label{_main__mod2_8c_a6ed27acaa528a9926a3ee523edb7505baf8d6409149396ae7e6edee292ebfa60b}
+}]\end{description}
+\end{Desc}
+
+
+
+Definition at line 37 of file Main\_\-mod2.c.
+
+
+\begin{DoxyCode}
+            {
+        rfHello = 1,
+        rfVPiano,
+        rfVDrum,
+        rfVGuitar,
+        rfRPiano
+};
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\hypertarget{_main__mod2_8c_a6288eba0f8e8ad3ab1544ad731eb7667}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!main@{main}}
+\index{main@{main}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}void main (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{_main__mod2_8c_a6288eba0f8e8ad3ab1544ad731eb7667}
+
+
+Definition at line 85 of file Main\_\-mod2.c.
+
+
+\begin{DoxyCode}
+{       
+        unsigned char cmd = 0;
+        char keyNote = 0;
+        //char printBuf[50] = {0};
+        
+        // Initalise board peripherals
+  halBoardInit();
+  uart_intfc_init();
+  TimerInterface_Initialize();
+        Init_AppRF();
+        halMcuWaitMs(1000);
+
+  printf_pc("Init done (M2)\n\r");      
+        halMcuWaitMs(1000);
+        
+        RF_puts("HELLO");
+        RF_gets_blk(rfBuf);
+        //printf_pc(rfBuf);
+        
+        while(1) {
+                bzero(rfBuf, SZ_RFBUF);
+                start_my_menu();
+                
+                if (record_notes == TRUE) {
+                        switch (track) {
+                                case 0: RF_puts_SD(Record_0, 8); break;
+                                case 1: RF_puts_SD(Record_1, 8); break;
+                                case 2: RF_puts_SD(Record_2, 8); break;
+                                case 3: RF_puts_SD(Record_3, 8); break;
+                                default: break;
+                        }
+                }
+                
+                if (play_recorded_notes == TRUE) {
+                        printf_pc("\n\rWill play recorded notes\n\r");  
+                        midiReset();
+                        switch (playback) {
+                                case 0: RF_puts_SD(Play_0, 6); break;
+                                case 1: RF_puts_SD(Play_1, 6); break;
+                                case 2: RF_puts_SD(Play_2, 6); break;
+                                case 3: RF_puts_SD(Play_3, 6); break;
+                                default: break;
+                        }
+                        playRfNotesSD();
+                }
+                else {
+                        switch (drum_piano_guitar_rv) {
+                                case DRUM_REAL_INSTRUMENT:
+                                        midiInit();
+                                        DrumSet();
+                                        RF_puts_SD(endPacket, 3);
+                                        break;
+                                        
+                                case PIANO_REAL_INSTRUMENT:
+                                        //printf_pc("PIANO_REAL_INSTRUMENT\n\r");
+      
+                                        midiInit();
+                                        while(1) {
+                                                cmd = getchar_pc();
+                                                if (cmd == 27) {
+                                                        RF_puts_SD(endPacket, 3);
+      
+                                                        break;
+                                                }
+                                                else {
+                                                        keyNote = ps2_key_match(c
+      md);
+                                                        tx1_send(&keyNote, 1);
+                                                        if (keyNote != 0) {
+                                                                noteOn(0, keyNote
+      , 0x7F);
+                                                        }
+                                                }
+                                        }
+                                        break;
+                                        
+                                case DRUM_VIRTUAL_INSTRUMENT:
+                                        //printf_pc("DRUM_VIRTUAL_INSTRUMENT\n\r"
+      );
+                                        midiInit();
+                                        RF_puts("VDRUM");
+                                        RF_gets_blk(rfBuf);
+                                        printf_pc(rfBuf);
+                                        playRfNotes();
+                                        RF_puts_SD(endPacket, 3);
+                                        break;
+                                        
+                                case PIANO_VIRTUAL_INSTRUMENT:
+                                        //printf_pc("PIANO_VIRTUAL_INSTRUMENT\n\r
+      ");
+                                        midiInit();
+                                        RF_puts("VPIANO");
+                                        RF_gets_blk(rfBuf);
+                                        printf_pc(rfBuf);
+                                        playRfNotes();
+                                        RF_puts_SD(endPacket, 3);
+                                        break;
+                                        
+                                case GUITAR_VIRTUAL_INSTRUMENT:
+                                        //printf_pc("GUITAR_VIRTUAL_INSTRUMENT\n\
+      r");
+                                        midiInit();
+                                        RF_puts("VGUITAR");
+                                        RF_gets_blk(rfBuf);
+                                        printf_pc(rfBuf);
+                                        playRfNotes();
+                                        RF_puts_SD(endPacket, 3);
+                                        break;
+                                        
+                                default:
+                                        printf_pc("default\n\r");
+                                        break;
+                        }
+                }
+        }
+        
+//
+//      //DrumSet();
+//      
+//      while (1) {
+//              while (!RF_Peek());
+//              rfLen = RF_Receive(&keyNote);   
+//              noteOn(0, keyNote, 0x3D);
+//              tx1_send(&keyNote, 1);
+//      }
+}
+\end{DoxyCode}
+\hypertarget{_main__mod2_8c_a0ddc5ec41d72be0a577da9f82152f77c}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!midiTest@{midiTest}}
+\index{midiTest@{midiTest}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{midiTest}]{\setlength{\rightskip}{0pt plus 5cm}void midiTest (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{_main__mod2_8c_a0ddc5ec41d72be0a577da9f82152f77c}
+
+
+Definition at line 265 of file Main\_\-mod2.c.
+
+
+\begin{DoxyCode}
+                {
+        
+        midiReset();
+        midiVolSet(120);
+        //midiBankSet(DRUMS1);
+        //midiPatchSet(5);
+        midiBankSet(MELODY);
+        midiPatchSet(PIANO_ELG);
+        halMcuWaitMs(100);
+
+//  midiReset();
+//      midiVolSet(120); //set channel volume to near max (127)
+//      midiBankSet(MELODY); //0x79 = melodious instruments
+//      midiPatchSet(118);
+//      noteOn(0, 51, 0x3D);
+//      halMcuWaitMs(500);
+        
+        
+//      for (i=0; i<50; i++) {
+//              noteOn(0, i+30, 0x48);
+//              halMcuWaitMs(100);
+//              //noteOff(0, i+30, 0x48);
+//              halMcuWaitMs(100);
+//
+//      }
+//      for (i=50; i>=0; i--) {
+//              noteOn(0, i+30, 0x48);
+//              halMcuWaitMs(100);
+//              //noteOff(0, i+30, 0x48);
+//              halMcuWaitMs(100);
+//      }
+        
+        //tx1_send("Done\n\r", 6);
+        while (1);
+}
+\end{DoxyCode}
+\hypertarget{_main__mod2_8c_a230977120e39e5b64af4502b495533fa}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!playRfNotes@{playRfNotes}}
+\index{playRfNotes@{playRfNotes}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{playRfNotes}]{\setlength{\rightskip}{0pt plus 5cm}void playRfNotes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{_main__mod2_8c_a230977120e39e5b64af4502b495533fa}
+
+
+Definition at line 206 of file Main\_\-mod2.c.
+
+
+\begin{DoxyCode}
+                   {
+        
+        char cmd = 0;
+        
+        while (1) {
+                cmd = getchar_pc_nb();
+                if (cmd == 27) {
+                        RF_puts("STOP");
+                        break;
+                }
+                else {
+                        if (RF_gets_nblk(rfBuf) != 0) {
+                                noteOn(rfBuf[0], rfBuf[1], rfBuf[2]);
+                        }
+                }
+        }
+}
+\end{DoxyCode}
+\hypertarget{_main__mod2_8c_a884ab220267d40f07fcdfde65805a1f8}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!playRfNotesSD@{playRfNotesSD}}
+\index{playRfNotesSD@{playRfNotesSD}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{playRfNotesSD}]{\setlength{\rightskip}{0pt plus 5cm}void playRfNotesSD (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{_main__mod2_8c_a884ab220267d40f07fcdfde65805a1f8}
+
+
+Definition at line 234 of file Main\_\-mod2.c.
+
+
+\begin{DoxyCode}
+                     {
+        
+        char cmd = 0;
+        
+        while (1) {
+                cmd = getchar_pc_nb();
+                if (cmd == 27) {
+                        break;
+                }
+                else {
+                        if (RF_gets_nblk(rfBuf) != 0) {
+                                tx1_send(rfBuf, 3);
+                                talkMIDI(rfBuf[0], rfBuf[1], rfBuf[2]);
+                                if (rfBuf[0] == 0xFF && rfBuf[1] == 0xFF && 
+      rfBuf[2] == 0xFF) {
+                                        break;
+                                }
+                        }
+                }
+        }//while (1)
+}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\hypertarget{_main__mod2_8c_abacd8829622e595858de29cd5ce8a177}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!audio\_\-termination@{audio\_\-termination}}
+\index{audio\_\-termination@{audio\_\-termination}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{audio\_\-termination}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf audio\_\-termination}}}
+\label{_main__mod2_8c_abacd8829622e595858de29cd5ce8a177}
+
+
+Definition at line 24 of file user\_\-interface.c.
+
+\hypertarget{_main__mod2_8c_ae269b27f32ba70ecee2551473da902fc}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!Check\_\-Flag@{Check\_\-Flag}}
+\index{Check\_\-Flag@{Check\_\-Flag}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{Check\_\-Flag}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char {\bf Check\_\-Flag} = 1}}
+\label{_main__mod2_8c_ae269b27f32ba70ecee2551473da902fc}
+
+
+Definition at line 46 of file Main\_\-mod2.c.
+
+\hypertarget{_main__mod2_8c_a9c1bfa051ef218e219dae51dfaa6ea75}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!drum\_\-piano\_\-guitar@{drum\_\-piano\_\-guitar}}
+\index{drum\_\-piano\_\-guitar@{drum\_\-piano\_\-guitar}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{drum\_\-piano\_\-guitar}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf drum\_\-piano\_\-guitar}}}
+\label{_main__mod2_8c_a9c1bfa051ef218e219dae51dfaa6ea75}
+
+
+Definition at line 19 of file user\_\-interface.c.
+
+\hypertarget{_main__mod2_8c_ae2d8435ed70fc68737fa1ec6fb21fa38}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!drum\_\-piano\_\-guitar\_\-rv@{drum\_\-piano\_\-guitar\_\-rv}}
+\index{drum\_\-piano\_\-guitar\_\-rv@{drum\_\-piano\_\-guitar\_\-rv}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{drum\_\-piano\_\-guitar\_\-rv}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf drum\_\-piano\_\-guitar\_\-rv}}}
+\label{_main__mod2_8c_ae2d8435ed70fc68737fa1ec6fb21fa38}
+
+
+Definition at line 21 of file user\_\-interface.c.
+
+\hypertarget{_main__mod2_8c_a92ee4eef648b038d4e121cf8163e41a0}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!endPacket@{endPacket}}
+\index{endPacket@{endPacket}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{endPacket}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char {\bf endPacket}\mbox{[}3\mbox{]} = \{0xFF, 0xFF, 0xFF\}}}
+\label{_main__mod2_8c_a92ee4eef648b038d4e121cf8163e41a0}
+
+
+Definition at line 59 of file Main\_\-mod2.c.
+
+\hypertarget{_main__mod2_8c_ae96f797c3021d80e823477a2a5823468}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!guitar\_\-type@{guitar\_\-type}}
+\index{guitar\_\-type@{guitar\_\-type}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{guitar\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf guitar\_\-type}}}
+\label{_main__mod2_8c_ae96f797c3021d80e823477a2a5823468}
+
+
+Definition at line 23 of file user\_\-interface.c.
+
+\hypertarget{_main__mod2_8c_a339a95bfc67f3ce8062b86582a984e8c}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!piano\_\-type@{piano\_\-type}}
+\index{piano\_\-type@{piano\_\-type}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{piano\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf piano\_\-type}}}
+\label{_main__mod2_8c_a339a95bfc67f3ce8062b86582a984e8c}
+
+
+Definition at line 22 of file user\_\-interface.c.
+
+\hypertarget{_main__mod2_8c_a113feee8d30f79a9edc577e69243357d}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!Play\_\-0@{Play\_\-0}}
+\index{Play\_\-0@{Play\_\-0}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{Play\_\-0}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char {\bf Play\_\-0}\mbox{[}$\,$\mbox{]} = \char`\"{}Play\_\-0\char`\"{}}}
+\label{_main__mod2_8c_a113feee8d30f79a9edc577e69243357d}
+
+
+Definition at line 64 of file Main\_\-mod2.c.
+
+\hypertarget{_main__mod2_8c_a381a639a2b37d86d707573e7cdbed3df}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!Play\_\-1@{Play\_\-1}}
+\index{Play\_\-1@{Play\_\-1}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{Play\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char {\bf Play\_\-1}\mbox{[}$\,$\mbox{]} = \char`\"{}Play\_\-1\char`\"{}}}
+\label{_main__mod2_8c_a381a639a2b37d86d707573e7cdbed3df}
+
+
+Definition at line 65 of file Main\_\-mod2.c.
+
+\hypertarget{_main__mod2_8c_ae35cfb55db26d636dd42f6f3f8772845}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!Play\_\-2@{Play\_\-2}}
+\index{Play\_\-2@{Play\_\-2}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{Play\_\-2}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char {\bf Play\_\-2}\mbox{[}$\,$\mbox{]} = \char`\"{}Play\_\-2\char`\"{}}}
+\label{_main__mod2_8c_ae35cfb55db26d636dd42f6f3f8772845}
+
+
+Definition at line 66 of file Main\_\-mod2.c.
+
+\hypertarget{_main__mod2_8c_a1a2ed82d2316f569273480a350db48e3}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!Play\_\-3@{Play\_\-3}}
+\index{Play\_\-3@{Play\_\-3}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{Play\_\-3}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char {\bf Play\_\-3}\mbox{[}$\,$\mbox{]} = \char`\"{}Play\_\-3\char`\"{}}}
+\label{_main__mod2_8c_a1a2ed82d2316f569273480a350db48e3}
+
+
+Definition at line 67 of file Main\_\-mod2.c.
+
+\hypertarget{_main__mod2_8c_aa97277e160e8a2af06ccc2118f9c2561}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!play\_\-recorded\_\-notes@{play\_\-recorded\_\-notes}}
+\index{play\_\-recorded\_\-notes@{play\_\-recorded\_\-notes}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{play\_\-recorded\_\-notes}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf play\_\-recorded\_\-notes}}}
+\label{_main__mod2_8c_aa97277e160e8a2af06ccc2118f9c2561}
+
+
+Definition at line 26 of file user\_\-interface.c.
+
+\hypertarget{_main__mod2_8c_a9516f43e955bb88191ae2edf180ae94b}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!playback@{playback}}
+\index{playback@{playback}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{playback}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf playback}}}
+\label{_main__mod2_8c_a9516f43e955bb88191ae2edf180ae94b}
+
+
+Definition at line 28 of file user\_\-interface.c.
+
+\hypertarget{_main__mod2_8c_a15e189c43037f0b1364086309b42a99a}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!real\_\-virtual@{real\_\-virtual}}
+\index{real\_\-virtual@{real\_\-virtual}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{real\_\-virtual}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf real\_\-virtual}}}
+\label{_main__mod2_8c_a15e189c43037f0b1364086309b42a99a}
+
+
+Definition at line 20 of file user\_\-interface.c.
+
+\hypertarget{_main__mod2_8c_ab0baa674e1ad14e8b9e33d399c37310d}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!Record\_\-0@{Record\_\-0}}
+\index{Record\_\-0@{Record\_\-0}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{Record\_\-0}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char {\bf Record\_\-0}\mbox{[}$\,$\mbox{]} = \char`\"{}Record\_\-0\char`\"{}}}
+\label{_main__mod2_8c_ab0baa674e1ad14e8b9e33d399c37310d}
+
+
+Definition at line 60 of file Main\_\-mod2.c.
+
+\hypertarget{_main__mod2_8c_a94092d3eec70fcee33d245018fe20472}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!Record\_\-1@{Record\_\-1}}
+\index{Record\_\-1@{Record\_\-1}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{Record\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char {\bf Record\_\-1}\mbox{[}$\,$\mbox{]} = \char`\"{}Record\_\-1\char`\"{}}}
+\label{_main__mod2_8c_a94092d3eec70fcee33d245018fe20472}
+
+
+Definition at line 61 of file Main\_\-mod2.c.
+
+\hypertarget{_main__mod2_8c_aa36c879095d24d85fa640b5972e7fdf5}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!Record\_\-2@{Record\_\-2}}
+\index{Record\_\-2@{Record\_\-2}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{Record\_\-2}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char {\bf Record\_\-2}\mbox{[}$\,$\mbox{]} = \char`\"{}Record\_\-2\char`\"{}}}
+\label{_main__mod2_8c_aa36c879095d24d85fa640b5972e7fdf5}
+
+
+Definition at line 62 of file Main\_\-mod2.c.
+
+\hypertarget{_main__mod2_8c_abba3661c0b728f513f7d0458ecf65072}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!Record\_\-3@{Record\_\-3}}
+\index{Record\_\-3@{Record\_\-3}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{Record\_\-3}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char {\bf Record\_\-3}\mbox{[}$\,$\mbox{]} = \char`\"{}Record\_\-3\char`\"{}}}
+\label{_main__mod2_8c_abba3661c0b728f513f7d0458ecf65072}
+
+
+Definition at line 63 of file Main\_\-mod2.c.
+
+\hypertarget{_main__mod2_8c_a8c8d8330d90702dc1a1f89d21ceaff24}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!record\_\-notes@{record\_\-notes}}
+\index{record\_\-notes@{record\_\-notes}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{record\_\-notes}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf record\_\-notes}}}
+\label{_main__mod2_8c_a8c8d8330d90702dc1a1f89d21ceaff24}
+
+
+Definition at line 25 of file user\_\-interface.c.
+
+\hypertarget{_main__mod2_8c_a52b070368ee39becb95d95fedc34a5a5}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!rfBuf@{rfBuf}}
+\index{rfBuf@{rfBuf}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{rfBuf}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char {\bf rfBuf}\mbox{[}SZ\_\-RFBUF\mbox{]} = \{0\}}}
+\label{_main__mod2_8c_a52b070368ee39becb95d95fedc34a5a5}
+
+
+Definition at line 45 of file Main\_\-mod2.c.
+
+\hypertarget{_main__mod2_8c_a20d100825cf8f0af825f3f872ad5d8b3}{
+\index{Main\_\-mod2.c@{Main\_\-mod2.c}!track@{track}}
+\index{track@{track}!Main_mod2.c@{Main\_\-mod2.c}}
+\subsubsection[{track}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf track}}}
+\label{_main__mod2_8c_a20d100825cf8f0af825f3f872ad5d8b3}
+
+
+Definition at line 27 of file user\_\-interface.c.
+

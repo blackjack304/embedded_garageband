@@ -1,0 +1,360 @@
+.TH "hal_board.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+hal_board.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'ioCC2430.h'\fP
+.br
+\fC#include 'ioCC2431.h'\fP
+.br
+\fC#include 'hal_cc8051.h'\fP
+.br
+\fC#include 'hal_defs.h'\fP
+.br
+\fC#include 'hal_mcu.h'\fP
+.br
+
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBBOARD_NAME\fP   'SRF04EB'"
+.br
+.ti -1c
+.RI "#define \fBNUM_LEDS\fP   2"
+.br
+.ti -1c
+.RI "#define \fBNUM_BUTTONS\fP   1"
+.br
+.ti -1c
+.RI "#define \fBNUM_JSTKS\fP   1"
+.br
+.ti -1c
+.RI "#define \fBNUM_POTS\fP   2"
+.br
+.ti -1c
+.RI "#define \fBBSP_CONFIG_CLOCK_MHZ\fP   32"
+.br
+.ti -1c
+.RI "#define \fBHAL_BOARD_IO_LED_1_PORT\fP   1"
+.br
+.ti -1c
+.RI "#define \fBHAL_BOARD_IO_LED_1_PIN\fP   0"
+.br
+.ti -1c
+.RI "#define \fBHAL_BOARD_IO_LED_3_PORT\fP   1"
+.br
+.ti -1c
+.RI "#define \fBHAL_BOARD_IO_LED_3_PIN\fP   1"
+.br
+.ti -1c
+.RI "#define \fBHAL_BOARD_IO_BTN_1_PORT\fP   0"
+.br
+.ti -1c
+.RI "#define \fBHAL_BOARD_IO_BTN_1_PIN\fP   1"
+.br
+.ti -1c
+.RI "#define \fBSPI_SIMO\fP   0x08"
+.br
+.ti -1c
+.RI "#define \fBSPI_SOMI\fP   0x04"
+.br
+.ti -1c
+.RI "#define \fBSPI_UCLK\fP   0x20"
+.br
+.ti -1c
+.RI "#define \fBMMC_CS_PORT\fP   0"
+.br
+.ti -1c
+.RI "#define \fBMMC_CS_PIN\fP   4"
+.br
+.ti -1c
+.RI "#define \fBMMC_CD_PORT\fP   0"
+.br
+.ti -1c
+.RI "#define \fBMMC_CD_PIN\fP   0"
+.br
+.ti -1c
+.RI "#define \fBMMC_CD\fP   0x01"
+.br
+.ti -1c
+.RI "#define \fBKDATA\fP   P2_1"
+.br
+.ti -1c
+.RI "#define \fBKPORT\fP   2"
+.br
+.ti -1c
+.RI "#define \fBKCLOCK_PIN\fP   2"
+.br
+.ti -1c
+.RI "#define \fBKDATA_PIN\fP   1"
+.br
+.ti -1c
+.RI "#define \fBCS_LOW\fP()   MCU_IO_OUTPUT(MMC_CS_PORT,MMC_CS_PIN,0)"
+.br
+.ti -1c
+.RI "#define \fBCS_HIGH\fP()   while(!halSPITXDONE); MCU_IO_OUTPUT(MMC_CS_PORT,MMC_CS_PIN,1)"
+.br
+.ti -1c
+.RI "#define \fBHAL_DEBOUNCE\fP(expr)   { int i; for (i=0; i<500; i++) { if (!(expr)) i = 0; } }"
+.br
+.ti -1c
+.RI "#define \fBHAL_LED_SET_1\fP()"
+.br
+.ti -1c
+.RI "#define \fBHAL_LED_SET_3\fP()"
+.br
+.ti -1c
+.RI "#define \fBHAL_LED_CLR_1\fP()"
+.br
+.ti -1c
+.RI "#define \fBHAL_LED_CLR_3\fP()"
+.br
+.ti -1c
+.RI "#define \fBHAL_LED_TGL_1\fP()"
+.br
+.ti -1c
+.RI "#define \fBHAL_LED_TGL_3\fP()"
+.br
+.ti -1c
+.RI "#define \fBHAL_BUTTON_1_PUSHED\fP()"
+.br
+.ti -1c
+.RI "#define \fBHAL_RTS_SET\fP()"
+.br
+.ti -1c
+.RI "#define \fBHAL_RTS_CLR\fP()"
+.br
+.ti -1c
+.RI "#define \fBHAL_RTS_DIR_OUT\fP()"
+.br
+.ti -1c
+.RI "#define \fBCLKSPD\fP   ( CLKCON & 0x01 )"
+.br
+.ti -1c
+.RI "#define \fBTICKSPD\fP   ((CLKCON & 0x38) >> 3)"
+.br
+.ti -1c
+.RI "#define \fBXOSC_STABLE\fP   (SLEEP & 0x40)"
+.br
+.ti -1c
+.RI "#define \fBHIGH_FREQUENCY_RC_OSC_STABLE\fP   (SLEEP & 0x20)"
+.br
+.ti -1c
+.RI "#define \fBHAL_PROCESS\fP()"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBhalBoardInit\fP (void)"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define BOARD_NAME   'SRF04EB'"
+.PP
+Definition at line 25 of file hal_board.h.
+.SS "#define BSP_CONFIG_CLOCK_MHZ   32"
+.PP
+Definition at line 32 of file hal_board.h.
+.SS "#define CLKSPD   ( CLKCON & 0x01 )"
+.PP
+Definition at line 109 of file hal_board.h.
+.SS "#define CS_HIGH()   while(!halSPITXDONE); MCU_IO_OUTPUT(MMC_CS_PORT,MMC_CS_PIN,1)"
+.PP
+Definition at line 70 of file hal_board.h.
+.SS "#define CS_LOW()   MCU_IO_OUTPUT(MMC_CS_PORT,MMC_CS_PIN,0)"
+.PP
+Definition at line 69 of file hal_board.h.
+.SS "#define HAL_BOARD_IO_BTN_1_PIN   1"
+.PP
+Definition at line 45 of file hal_board.h.
+.SS "#define HAL_BOARD_IO_BTN_1_PORT   0"
+.PP
+Definition at line 44 of file hal_board.h.
+.SS "#define HAL_BOARD_IO_LED_1_PIN   0"
+.PP
+Definition at line 37 of file hal_board.h.
+.SS "#define HAL_BOARD_IO_LED_1_PORT   1"
+.PP
+Definition at line 36 of file hal_board.h.
+.SS "#define HAL_BOARD_IO_LED_3_PIN   1"
+.PP
+Definition at line 39 of file hal_board.h.
+.SS "#define HAL_BOARD_IO_LED_3_PORT   1"
+.PP
+Definition at line 38 of file hal_board.h.
+.SS "#define HAL_BUTTON_1_PUSHED()"\fBValue:\fP
+.PP
+.nf
+(!MCU_IO_GET(HAL_BOARD_IO_BTN_1_PORT, \
+    HAL_BOARD_IO_BTN_1_PIN))
+.fi
+.PP
+Definition at line 97 of file hal_board.h.
+.SS "#define HAL_DEBOUNCE(expr)   { int i; for (i=0; i<500; i++) { if (!(expr)) i = 0; } }"
+.PP
+Definition at line 73 of file hal_board.h.
+.SS "#define HAL_LED_CLR_1()"\fBValue:\fP
+.PP
+.nf
+MCU_IO_SET_HIGH(HAL_BOARD_IO_LED_1_PORT, \
+    HAL_BOARD_IO_LED_1_PIN)
+.fi
+.PP
+Definition at line 85 of file hal_board.h.
+.SS "#define HAL_LED_CLR_3()"\fBValue:\fP
+.PP
+.nf
+MCU_IO_SET_HIGH(HAL_BOARD_IO_LED_3_PORT, \
+    HAL_BOARD_IO_LED_3_PIN)
+.fi
+.PP
+Definition at line 87 of file hal_board.h.
+.SS "#define HAL_LED_SET_1()"\fBValue:\fP
+.PP
+.nf
+MCU_IO_SET_LOW(HAL_BOARD_IO_LED_1_PORT, \
+    HAL_BOARD_IO_LED_1_PIN)
+.fi
+.PP
+Definition at line 80 of file hal_board.h.
+.SS "#define HAL_LED_SET_3()"\fBValue:\fP
+.PP
+.nf
+MCU_IO_SET_LOW(HAL_BOARD_IO_LED_3_PORT, \
+    HAL_BOARD_IO_LED_3_PIN)
+.fi
+.PP
+Definition at line 82 of file hal_board.h.
+.SS "#define HAL_LED_TGL_1()"\fBValue:\fP
+.PP
+.nf
+MCU_IO_TGL(HAL_BOARD_IO_LED_1_PORT, \
+    HAL_BOARD_IO_LED_1_PIN)
+.fi
+.PP
+Definition at line 90 of file hal_board.h.
+.SS "#define HAL_LED_TGL_3()"\fBValue:\fP
+.PP
+.nf
+MCU_IO_TGL(HAL_BOARD_IO_LED_3_PORT, \
+    HAL_BOARD_IO_LED_3_PIN)
+.fi
+.PP
+Definition at line 92 of file hal_board.h.
+.SS "#define HAL_PROCESS()"
+.PP
+Definition at line 123 of file hal_board.h.
+.SS "#define HAL_RTS_CLR()"\fBValue:\fP
+.PP
+.nf
+MCU_IO_SET_LOW(HAL_BOARD_IO_UART_RTS_PORT, \
+    HAL_BOARD_IO_UART_RTS_PIN)
+.fi
+.PP
+Definition at line 103 of file hal_board.h.
+.SS "#define HAL_RTS_DIR_OUT()"\fBValue:\fP
+.PP
+.nf
+MCU_IO_OUTPUT(HAL_BOARD_IO_UART_RTS_PORT, \
+    HAL_BOARD_IO_UART_RTS_PIN, 1)
+.fi
+.PP
+Definition at line 105 of file hal_board.h.
+.SS "#define HAL_RTS_SET()"\fBValue:\fP
+.PP
+.nf
+MCU_IO_SET_HIGH(HAL_BOARD_IO_UART_RTS_PORT, \
+    HAL_BOARD_IO_UART_RTS_PIN)
+.fi
+.PP
+Definition at line 101 of file hal_board.h.
+.SS "#define HIGH_FREQUENCY_RC_OSC_STABLE   (SLEEP & 0x20)"
+.PP
+Definition at line 119 of file hal_board.h.
+.SS "#define KCLOCK_PIN   2"
+.PP
+Definition at line 64 of file hal_board.h.
+.SS "#define KDATA   P2_1"
+.PP
+Definition at line 62 of file hal_board.h.
+.SS "#define KDATA_PIN   1"
+.PP
+Definition at line 65 of file hal_board.h.
+.SS "#define KPORT   2"
+.PP
+Definition at line 63 of file hal_board.h.
+.SS "#define MMC_CD   0x01"
+.PP
+Definition at line 59 of file hal_board.h.
+.SS "#define MMC_CD_PIN   0"
+.PP
+Definition at line 58 of file hal_board.h.
+.SS "#define MMC_CD_PORT   0"
+.PP
+Definition at line 57 of file hal_board.h.
+.SS "#define MMC_CS_PIN   4"
+.PP
+Definition at line 54 of file hal_board.h.
+.SS "#define MMC_CS_PORT   0"
+.PP
+Definition at line 53 of file hal_board.h.
+.SS "#define NUM_BUTTONS   1"
+.PP
+Definition at line 27 of file hal_board.h.
+.SS "#define NUM_JSTKS   1"
+.PP
+Definition at line 28 of file hal_board.h.
+.SS "#define NUM_LEDS   2"
+.PP
+Definition at line 26 of file hal_board.h.
+.SS "#define NUM_POTS   2"
+.PP
+Definition at line 29 of file hal_board.h.
+.SS "#define SPI_SIMO   0x08"
+.PP
+Definition at line 48 of file hal_board.h.
+.SS "#define SPI_SOMI   0x04"
+.PP
+Definition at line 49 of file hal_board.h.
+.SS "#define SPI_UCLK   0x20"
+.PP
+Definition at line 50 of file hal_board.h.
+.SS "#define TICKSPD   ((CLKCON & 0x38) >> 3)"
+.PP
+Definition at line 113 of file hal_board.h.
+.SS "#define XOSC_STABLE   (SLEEP & 0x40)"
+.PP
+Definition at line 116 of file hal_board.h.
+.SH "Function Documentation"
+.PP 
+.SS "void halBoardInit (void)"
+.PP
+Definition at line 16 of file hal_board.c.
+.PP
+.nf
+{
+    halMcuInit();
+
+    // LED
+    MCU_IO_OUTPUT(HAL_BOARD_IO_LED_1_PORT, HAL_BOARD_IO_LED_1_PIN, 0);
+    MCU_IO_OUTPUT(HAL_BOARD_IO_LED_3_PORT, HAL_BOARD_IO_LED_3_PIN, 0);
+
+    HAL_LED_CLR_1();
+    HAL_LED_CLR_3();
+
+    // Button
+   // MCU_IO_INPUT(0, 1, MCU_IO_TRISTATE);
+
+    halIntOn();
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

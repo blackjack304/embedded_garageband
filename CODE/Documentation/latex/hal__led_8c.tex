@@ -1,0 +1,85 @@
+\hypertarget{hal__led_8c}{
+\section{hal\_\-led.c File Reference}
+\label{hal__led_8c}\index{hal\_\-led.c@{hal\_\-led.c}}
+}
+{\ttfamily \#include \char`\"{}hal\_\-types.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-led.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-board.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{hal__led_8c_a298739934ab84d53f7e8a32ea97ebaea}{halLedSet} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} id)
+\item 
+void \hyperlink{hal__led_8c_a31ac3cc9b6aa18d761ef446c907476e9}{halLedClear} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} id)
+\item 
+void \hyperlink{hal__led_8c_a4f6b5ca6a57c4e3d1fe51b4ad4d751e7}{halLedToggle} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} id)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{hal__led_8c_a31ac3cc9b6aa18d761ef446c907476e9}{
+\index{hal\_\-led.c@{hal\_\-led.c}!halLedClear@{halLedClear}}
+\index{halLedClear@{halLedClear}!hal_led.c@{hal\_\-led.c}}
+\subsubsection[{halLedClear}]{\setlength{\rightskip}{0pt plus 5cm}void halLedClear (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8}}]{id}
+\end{DoxyParamCaption}
+)}}
+\label{hal__led_8c_a31ac3cc9b6aa18d761ef446c907476e9}
+
+
+Definition at line 40 of file hal\_\-led.c.
+
+
+\begin{DoxyCode}
+{
+    if (id==1)
+        HAL_LED_CLR_1();
+    if (id==3)
+        HAL_LED_CLR_3();
+}
+\end{DoxyCode}
+\hypertarget{hal__led_8c_a298739934ab84d53f7e8a32ea97ebaea}{
+\index{hal\_\-led.c@{hal\_\-led.c}!halLedSet@{halLedSet}}
+\index{halLedSet@{halLedSet}!hal_led.c@{hal\_\-led.c}}
+\subsubsection[{halLedSet}]{\setlength{\rightskip}{0pt plus 5cm}void halLedSet (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8}}]{id}
+\end{DoxyParamCaption}
+)}}
+\label{hal__led_8c_a298739934ab84d53f7e8a32ea97ebaea}
+
+
+Definition at line 23 of file hal\_\-led.c.
+
+
+\begin{DoxyCode}
+{
+    if (id==1)
+        HAL_LED_SET_1();
+    if (id==3)
+        HAL_LED_SET_3();
+}
+\end{DoxyCode}
+\hypertarget{hal__led_8c_a4f6b5ca6a57c4e3d1fe51b4ad4d751e7}{
+\index{hal\_\-led.c@{hal\_\-led.c}!halLedToggle@{halLedToggle}}
+\index{halLedToggle@{halLedToggle}!hal_led.c@{hal\_\-led.c}}
+\subsubsection[{halLedToggle}]{\setlength{\rightskip}{0pt plus 5cm}void halLedToggle (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8}}]{id}
+\end{DoxyParamCaption}
+)}}
+\label{hal__led_8c_a4f6b5ca6a57c4e3d1fe51b4ad4d751e7}
+
+
+Definition at line 57 of file hal\_\-led.c.
+
+
+\begin{DoxyCode}
+{
+    if (id==1)
+        HAL_LED_TGL_1();
+    if (id==3)
+        HAL_LED_TGL_3();
+}
+\end{DoxyCode}

@@ -1,0 +1,342 @@
+.TH "graphics_lcd.c" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+graphics_lcd.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <ioCC2430.h>\fP
+.br
+\fC#include 'uart_intfc.h'\fP
+.br
+\fC#include 'hal_led.h'\fP
+.br
+\fC#include 'hal_cc8051.h'\fP
+.br
+\fC#include 'hal_mcu.h'\fP
+.br
+\fC#include 'graphics_lcd.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBclear_screen_lcd\fP (void)"
+.br
+.ti -1c
+.RI "void \fBpixel\fP (char S_R, char \fBx\fP, char \fBy\fP)"
+.br
+.ti -1c
+.RI "void \fBline\fP (char S_R, char x1, char y1, char x2, char y2)"
+.br
+.ti -1c
+.RI "void \fBcircle\fP (char S_R, int \fBx\fP, int \fBy\fP, int r)"
+.br
+.ti -1c
+.RI "void \fBset_text_position\fP (char \fBx\fP, char \fBy\fP)"
+.br
+.ti -1c
+.RI "void \fBdraw_piano\fP ()"
+.br
+.ti -1c
+.RI "void \fBdraw_drums\fP ()"
+.br
+.ti -1c
+.RI "void \fBdraw_guitar\fP (void)"
+.br
+.ti -1c
+.RI "void \fBsmall_delay\fP (int \fBx\fP)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void circle (charS_R, intx, inty, intr)"
+.PP
+Definition at line 127 of file graphics_lcd.c.
+.PP
+.nf
+{
+        char c1 = 0x7c;
+        char c2 = 0x03;
+        
+        tx0_send(&c1, 1);
+        tx0_send(&c2, 1);
+        
+        tx0_send(&x, 1);
+        tx0_send(&y, 1);
+        tx0_send(&r, 1);
+        tx0_send(&S_R, 1);
+}
+.fi
+.SS "void clear_screen_lcd (void)"
+.PP
+Definition at line 31 of file graphics_lcd.c.
+.PP
+.nf
+{
+        char c1 = 0x7c;
+        char c2 = 0x00;
+        
+        tx0_send(&c1, 1);
+        tx0_send(&c2, 1);
+        
+        tx1_send(&c1, 1);
+        tx1_send(&c2, 1);
+}
+.fi
+.SS "void draw_drums (void)"
+.PP
+EA = 0; 
+.PP
+Definition at line 289 of file graphics_lcd.c.
+.PP
+.nf
+{
+        
+        circle(1,17,17,17);
+        small_delay(700);
+        set_text_position(17,17);
+        small_delay(700);
+        tx0_send('1', 1);
+        small_delay(700);
+
+        circle(1,41,45,16);
+        small_delay(700);
+        set_text_position(41,45);
+        small_delay(700);
+        tx0_send('2', 1);
+        small_delay(700);
+
+        circle(1,64,17,17);
+        small_delay(700);
+        set_text_position(64,17);
+        small_delay(700);
+        tx0_send('3', 1);
+        small_delay(700);
+
+        circle(1,86,45,16);
+        small_delay(700);
+        set_text_position(86,45);
+        small_delay(700);
+        tx0_send('4', 1);
+        small_delay(700);
+
+        circle(1,109,17,17);
+        small_delay(700);
+
+        circle(1,109,17,13);
+        small_delay(700);
+
+        circle(1,109,17,9);
+        small_delay(700);
+
+        circle(1,109,17,5);
+        small_delay(700);
+        
+        //EA = 1;
+}
+.fi
+.SS "void draw_guitar (void)"
+.PP
+Definition at line 348 of file graphics_lcd.c.
+.PP
+.nf
+{
+        small_delay(700);
+        line(1,0,7,127,7);
+        line(1,0,8,127,8);
+        line(1,0,9,127,9);
+        
+        small_delay(700);
+        line(1,0,18,127,18);
+        line(1,0,19,127,19);
+        
+        small_delay(700);
+        line(1,0,28,127,28);
+        line(1,0,29,127,29);
+        
+        small_delay(700);
+        line(1,0,39,127,39);
+        
+        small_delay(700);
+        line(1,0,48,127,48);
+        
+        small_delay(700);
+        line(1,0,57,127,57);
+        
+        small_delay(700);
+}
+.fi
+.SS "void draw_piano (void)"
+.PP
+Definition at line 185 of file graphics_lcd.c.
+.PP
+.nf
+{
+        unsigned char ix=0;
+        unsigned char jx=0;
+        char c1 = 0x7c;
+        char c2 = 0x02;
+        char c3 = 0x7f;
+
+        line(1,0,0,0,63);
+        small_delay(300);
+        line(1,0,63,127,63);
+        small_delay(300);
+        line(1,127,0,127,63);
+        small_delay(300);
+
+        pixel(1,1,0);
+        small_delay(300);
+
+        pixel(1,2,1);
+        small_delay(300);
+
+        for(ix=0;ix<127;ix++)
+        {
+                line(1,ix,23,ix,63);
+                switch(ix)
+                {
+                        case 7: ix=20; break;
+                        case 28: ix=41; break;
+                        case 49: ix=62; break;
+                        case 70: ix=83; break;
+                        case 91: ix=104; break;
+                        case 112: ix=200; break;
+                        default: break;
+                }
+                small_delay(300);
+        }
+
+        ix=0;
+
+        for(ix=14;ix<127;ix = ix + 21)
+        {
+                line(1,ix,2,ix,63);
+                small_delay(300);
+        }
+
+        ix=5;
+        jx=12;
+
+        while(ix<128)
+        {
+                line(1,ix,0,jx,0);
+                small_delay(700);
+                pixel(1,ix-1,1);
+                small_delay(700);
+                pixel(1,jx+1,1);
+
+                if(ix<115)
+                {
+                        small_delay(700);
+                        line(1,ix-2,2,ix-2,22);
+                }
+
+                switch(ix)
+                {
+                        case 5: ix=16; jx=23; break;
+                        case 16: ix=27; jx=33; break;
+                        case 27: ix=37; jx=43; break;
+                        case 37: ix=47; jx=54; break;
+                        case 47: ix=58; jx=65; break;
+                        case 58: ix=69; jx=75; break;
+                        case 69: ix=79; jx=85; break;
+                        case 79: ix=89; jx=96; break;
+                        case 89: ix=100; jx=107; break;
+                        case 100: ix=111; jx=118; break;
+                        case 111: ix=122; jx=125; break;
+                        case 122: ix=200; jx=0; break;
+                        default: break;
+                }
+                small_delay(700);
+        }
+
+        tx0_send(&c1, 1);
+        tx0_send(&c2, 1);
+        tx0_send(&c3, 1);
+        
+//    putchar(0x7C);
+//    putchar(0x02);
+//    putchar(0x7F);
+        
+        //EA=1;
+
+}
+.fi
+.SS "void line (charS_R, charx1, chary1, charx2, chary2)"
+.PP
+Definition at line 93 of file graphics_lcd.c.
+.PP
+.nf
+{
+        char c1 = 0x7c;
+        char c2 = 0x0c;
+        
+        tx0_send(&c1, 1);
+        tx0_send(&c2, 1);
+        
+        tx0_send(&x1, 1);
+        tx0_send(&y1, 1);
+        tx0_send(&x2, 1);
+        tx0_send(&y2, 1);
+        tx0_send(&S_R, 1);
+}
+.fi
+.SS "void pixel (charS_R, charx, chary)"
+.PP
+Definition at line 59 of file graphics_lcd.c.
+.PP
+.nf
+{
+        char c1 = 0x7c;
+        char c2 = 0x10;
+        
+        tx0_send(&c1, 1);
+        tx0_send(&c2, 1);
+        
+        tx0_send(&x, 1);
+        tx0_send(&y, 1);
+        tx0_send(&S_R, 1);
+}
+.fi
+.SS "void set_text_position (charx, chary)"
+.PP
+Definition at line 156 of file graphics_lcd.c.
+.PP
+.nf
+{
+        char c1 = 0x7c;
+        char c2 = 0x18;
+        char c3 = 0x19;
+        
+        tx0_send(&c1, 1);
+        tx0_send(&c2, 1);
+        tx0_send(&x, 1);
+        
+        tx0_send(&c1, 1);
+        tx0_send(&c3, 1);
+        tx0_send(&y, 1);
+        
+        //  putchar(0x7c); putchar(0x18); putchar(x);
+        //  putchar(0x7c); putchar(0x19); putchar(y);
+}
+.fi
+.SS "void small_delay (intx)"
+.PP
+Definition at line 385 of file graphics_lcd.c.
+.PP
+.nf
+{
+        int i = 0;
+        
+        for(i=0; i<64; i++) {
+                halMcuWaitUs(x);
+        }
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

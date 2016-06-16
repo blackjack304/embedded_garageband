@@ -1,0 +1,623 @@
+\hypertarget{uart_8h}{
+\section{uart.h File Reference}
+\label{uart_8h}\index{uart.h@{uart.h}}
+}
+{\ttfamily \#include $<$stdbool.h$>$}\par
+{\ttfamily \#include $<$stddef.h$>$}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{uart_8h_aeeae310a557480086aa3c56a950e8b64}{RX\_\-TX\_\-BUFFER\_\-SIZE}~50
+\item 
+\#define \hyperlink{uart_8h_ade8f2cab3a291c17f2c82046c7dd50b0}{UART0\_\-BAUD\_\-RATE}~115200
+\item 
+\#define \hyperlink{uart_8h_a9715f79cf910e2d5d89d0bd4eba81831}{UART1\_\-BAUD\_\-RATE}~115200
+\item 
+\#define \hyperlink{uart_8h_a1db1457c1ec401a81da0c7d2dae88607}{UART\_\-FLOW\_\-CONTROL}~UART\_\-FLOW\_\-CONTROL\_\-OFF
+\item 
+\#define \hyperlink{uart_8h_a82edc7fac3f5bbdd56b34f890885bb7b}{UART\_\-PARITY\_\-MODE}~UART\_\-PARITY\_\-NONE
+\item 
+\#define \hyperlink{uart_8h_a5a50a502408c7bea025124b526ca381c}{UART\_\-STOP\_\-BITS}~UART\_\-1\_\-STOP\_\-BIT
+\item 
+\#define \hyperlink{uart_8h_a6f8fd3cc4d1199f6fe96c08c9fc46704}{UART0\_\-LOCATION}~UART\_\-LOCATION\_\-2
+\item 
+\#define \hyperlink{uart_8h_a1d0b3d97829ca45b38aae56795aa8bab}{UART1\_\-LOCATION}~UART\_\-LOCATION\_\-2
+\item 
+\#define \hyperlink{uart_8h_adbc4b84dcbedfc1b1764aa35557e7a2f}{UART\_\-CLOCK\_\-MHZ}~32
+\item 
+\#define \hyperlink{uart_8h_a4ad74858f2e276de15c5eee5573db1e7}{UART\_\-IRQ\_\-ENABLED}~1
+\item 
+\#define \hyperlink{uart_8h_ace96581ef56b424cf488cdf975427d42}{UART\_\-IRQ\_\-DISABLED}~0
+\item 
+\#define \hyperlink{uart_8h_a0aa1ca7de235808e5333c555a150f567}{UART\_\-IRQ\_\-PENDING}~1
+\item 
+\#define \hyperlink{uart_8h_a47ea05a3f0cc9f9eff7f60bb9834f842}{UART\_\-IRQ\_\-IDLE}~0
+\item 
+\#define \hyperlink{uart_8h_a783f1232fc69d8e6fd7357d1a548829c}{UART\_\-FLOW\_\-CONTROL\_\-ON}~1
+\item 
+\#define \hyperlink{uart_8h_a27a3e1a0b8089fb67e7d1aca05bc8238}{UART\_\-FLOW\_\-CONTROL\_\-OFF}~0
+\item 
+\#define \hyperlink{uart_8h_a270dea6e1a92dd83fe58802450bdd60c}{UART\_\-PARITY\_\-NONE}~0
+\item 
+\#define \hyperlink{uart_8h_a063b14ac42ef9e8f4246c17a586b14eb}{UART\_\-PARITY\_\-EVEN}~1
+\item 
+\#define \hyperlink{uart_8h_a229615e64964f68f7a856ea6ffea359e}{UART\_\-PARITY\_\-ODD}~2
+\item 
+\#define \hyperlink{uart_8h_ac4990a089c55023de7a3d52d24ad754d}{UART\_\-1\_\-STOP\_\-BIT}~0
+\item 
+\#define \hyperlink{uart_8h_aecf65d18944359398a7a62c7b70aaab8}{UART\_\-2\_\-STOP\_\-BITS}~1
+\item 
+\#define \hyperlink{uart_8h_a615aed21aa6825462b7c17b0c238ffe2}{UART\_\-BAUD\_\-RATE}~9600
+\item 
+\#define \hyperlink{uart_8h_adc795169be24d2504ad2242be35cb85c}{\_\-\_\-bsp\_\-ISTATE\_\-T\_\-\_\-}~unsigned short
+\item 
+\#define \hyperlink{uart_8h_af44924e630aeca49a965c204ed740dd5}{\_\-\_\-bsp\_\-ENABLE\_\-INTERRUPTS\_\-\_\-}()~st( EA = 1; )
+\item 
+\#define \hyperlink{uart_8h_ac753ce83b5536ef449e0a90255c193ee}{\_\-\_\-bsp\_\-DISABLE\_\-INTERRUPTS\_\-\_\-}()~st( EA = 0; )
+\item 
+\#define \hyperlink{uart_8h_a4daaf2b7363a2d28de5e569a3fe11bd9}{\_\-\_\-bsp\_\-INTERRUPTS\_\-ARE\_\-ENABLED\_\-\_\-}()~EA
+\item 
+\#define \hyperlink{uart_8h_a1fa0308d7ad00543939c0898d88d641c}{\_\-\_\-bsp\_\-GET\_\-ISTATE\_\-\_\-}()~EA
+\item 
+\#define \hyperlink{uart_8h_aa8bdfbcb9f7994f5e9649f0fb2281fa4}{\_\-\_\-bsp\_\-RESTORE\_\-ISTATE\_\-\_\-}(\hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x})~st( EA = \hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x}; )
+\item 
+\#define \hyperlink{uart_8h_a4d19917ceac9ef0f757b861e802d22ad}{BSP\_\-ENTER\_\-CRITICAL\_\-SECTION}(\hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x})~st( \hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x} = \_\-\_\-bsp\_\-GET\_\-ISTATE\_\-\_\-(); \_\-\_\-bsp\_\-DISABLE\_\-INTERRUPTS\_\-\_\-(); )
+\item 
+\#define \hyperlink{uart_8h_abd6fc0d94f04f101b14219891a771465}{BSP\_\-EXIT\_\-CRITICAL\_\-SECTION}(\hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x})~\_\-\_\-bsp\_\-RESTORE\_\-ISTATE\_\-\_\-(\hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x})
+\item 
+\#define \hyperlink{uart_8h_af2a42700803cd5bf6844980aed5da0e1}{BSP\_\-CRITICAL\_\-STATEMENT}(\hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x})
+\item 
+\#define \hyperlink{uart_8h_a2e8173b720a3eed301262ae808ee976d}{st}(\hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x})~do \{ \hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x} \} while (\_\-\_\-LINE\_\-\_\- == -\/1)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \_\-\_\-bsp\_\-ISTATE\_\-T\_\-\_\- \hyperlink{uart_8h_ad45ed2a3e324170701c79dca25f0bbc9}{bspIState\_\-t}
+\item 
+typedef bool($\ast$ \hyperlink{uart_8h_af0b772b8349008406113fb7035df62f8}{uart\_\-get\_\-tx\_\-data\_\-type} )(unsigned char $\ast$)
+\item 
+typedef bool($\ast$ \hyperlink{uart_8h_a28157fc7a173fc91dc387b37d46ddfc2}{uart\_\-put\_\-rx\_\-data\_\-type} )(unsigned char)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{uart_8h_a0c0ca72359ddf28dcd15900dfba19343}{uart\_\-init} (void)
+\item 
+bool \hyperlink{uart_8h_ac21e32f744f91b62d39dc91d9b9a498c}{uart1\_\-tx\_\-message} (\hyperlink{uart_8h_af0b772b8349008406113fb7035df62f8}{uart\_\-get\_\-tx\_\-data\_\-type} handler)
+\item 
+bool \hyperlink{uart_8h_a3a82624c239e46cd58090fef851d8a44}{uart\_\-rx\_\-message} (\hyperlink{uart_8h_a28157fc7a173fc91dc387b37d46ddfc2}{uart\_\-put\_\-rx\_\-data\_\-type} handler)
+\item 
+bool \hyperlink{uart_8h_a445848debe88e89b5d22dea2f6a18ca1}{uart0\_\-tx\_\-message} (\hyperlink{uart_8h_af0b772b8349008406113fb7035df62f8}{uart\_\-get\_\-tx\_\-data\_\-type} handler)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{uart_8h_ac753ce83b5536ef449e0a90255c193ee}{
+\index{uart.h@{uart.h}!\_\-\_\-bsp\_\-DISABLE\_\-INTERRUPTS\_\-\_\-@{\_\-\_\-bsp\_\-DISABLE\_\-INTERRUPTS\_\-\_\-}}
+\index{\_\-\_\-bsp\_\-DISABLE\_\-INTERRUPTS\_\-\_\-@{\_\-\_\-bsp\_\-DISABLE\_\-INTERRUPTS\_\-\_\-}!uart.h@{uart.h}}
+\subsubsection[{\_\-\_\-bsp\_\-DISABLE\_\-INTERRUPTS\_\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-\_\-bsp\_\-DISABLE\_\-INTERRUPTS\_\-\_\-(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~st( EA = 0; )}}
+\label{uart_8h_ac753ce83b5536ef449e0a90255c193ee}
+
+
+Definition at line 104 of file uart.h.
+
+\hypertarget{uart_8h_af44924e630aeca49a965c204ed740dd5}{
+\index{uart.h@{uart.h}!\_\-\_\-bsp\_\-ENABLE\_\-INTERRUPTS\_\-\_\-@{\_\-\_\-bsp\_\-ENABLE\_\-INTERRUPTS\_\-\_\-}}
+\index{\_\-\_\-bsp\_\-ENABLE\_\-INTERRUPTS\_\-\_\-@{\_\-\_\-bsp\_\-ENABLE\_\-INTERRUPTS\_\-\_\-}!uart.h@{uart.h}}
+\subsubsection[{\_\-\_\-bsp\_\-ENABLE\_\-INTERRUPTS\_\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-\_\-bsp\_\-ENABLE\_\-INTERRUPTS\_\-\_\-(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~st( EA = 1; )}}
+\label{uart_8h_af44924e630aeca49a965c204ed740dd5}
+
+
+Definition at line 103 of file uart.h.
+
+\hypertarget{uart_8h_a1fa0308d7ad00543939c0898d88d641c}{
+\index{uart.h@{uart.h}!\_\-\_\-bsp\_\-GET\_\-ISTATE\_\-\_\-@{\_\-\_\-bsp\_\-GET\_\-ISTATE\_\-\_\-}}
+\index{\_\-\_\-bsp\_\-GET\_\-ISTATE\_\-\_\-@{\_\-\_\-bsp\_\-GET\_\-ISTATE\_\-\_\-}!uart.h@{uart.h}}
+\subsubsection[{\_\-\_\-bsp\_\-GET\_\-ISTATE\_\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-\_\-bsp\_\-GET\_\-ISTATE\_\-\_\-(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~EA}}
+\label{uart_8h_a1fa0308d7ad00543939c0898d88d641c}
+
+
+Definition at line 107 of file uart.h.
+
+\hypertarget{uart_8h_a4daaf2b7363a2d28de5e569a3fe11bd9}{
+\index{uart.h@{uart.h}!\_\-\_\-bsp\_\-INTERRUPTS\_\-ARE\_\-ENABLED\_\-\_\-@{\_\-\_\-bsp\_\-INTERRUPTS\_\-ARE\_\-ENABLED\_\-\_\-}}
+\index{\_\-\_\-bsp\_\-INTERRUPTS\_\-ARE\_\-ENABLED\_\-\_\-@{\_\-\_\-bsp\_\-INTERRUPTS\_\-ARE\_\-ENABLED\_\-\_\-}!uart.h@{uart.h}}
+\subsubsection[{\_\-\_\-bsp\_\-INTERRUPTS\_\-ARE\_\-ENABLED\_\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-\_\-bsp\_\-INTERRUPTS\_\-ARE\_\-ENABLED\_\-\_\-(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~EA}}
+\label{uart_8h_a4daaf2b7363a2d28de5e569a3fe11bd9}
+
+
+Definition at line 105 of file uart.h.
+
+\hypertarget{uart_8h_adc795169be24d2504ad2242be35cb85c}{
+\index{uart.h@{uart.h}!\_\-\_\-bsp\_\-ISTATE\_\-T\_\-\_\-@{\_\-\_\-bsp\_\-ISTATE\_\-T\_\-\_\-}}
+\index{\_\-\_\-bsp\_\-ISTATE\_\-T\_\-\_\-@{\_\-\_\-bsp\_\-ISTATE\_\-T\_\-\_\-}!uart.h@{uart.h}}
+\subsubsection[{\_\-\_\-bsp\_\-ISTATE\_\-T\_\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-\_\-bsp\_\-ISTATE\_\-T\_\-\_\-~unsigned short}}
+\label{uart_8h_adc795169be24d2504ad2242be35cb85c}
+
+
+Definition at line 101 of file uart.h.
+
+\hypertarget{uart_8h_aa8bdfbcb9f7994f5e9649f0fb2281fa4}{
+\index{uart.h@{uart.h}!\_\-\_\-bsp\_\-RESTORE\_\-ISTATE\_\-\_\-@{\_\-\_\-bsp\_\-RESTORE\_\-ISTATE\_\-\_\-}}
+\index{\_\-\_\-bsp\_\-RESTORE\_\-ISTATE\_\-\_\-@{\_\-\_\-bsp\_\-RESTORE\_\-ISTATE\_\-\_\-}!uart.h@{uart.h}}
+\subsubsection[{\_\-\_\-bsp\_\-RESTORE\_\-ISTATE\_\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-\_\-bsp\_\-RESTORE\_\-ISTATE\_\-\_\-(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)~st( EA = {\bf x}; )}}
+\label{uart_8h_aa8bdfbcb9f7994f5e9649f0fb2281fa4}
+
+
+Definition at line 108 of file uart.h.
+
+\hypertarget{uart_8h_af2a42700803cd5bf6844980aed5da0e1}{
+\index{uart.h@{uart.h}!BSP\_\-CRITICAL\_\-STATEMENT@{BSP\_\-CRITICAL\_\-STATEMENT}}
+\index{BSP\_\-CRITICAL\_\-STATEMENT@{BSP\_\-CRITICAL\_\-STATEMENT}!uart.h@{uart.h}}
+\subsubsection[{BSP\_\-CRITICAL\_\-STATEMENT}]{\setlength{\rightskip}{0pt plus 5cm}\#define BSP\_\-CRITICAL\_\-STATEMENT(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)}}
+\label{uart_8h_af2a42700803cd5bf6844980aed5da0e1}
+{\bfseries Value:}
+\begin{DoxyCode}
+st( bspIState_t s;                    \
+                                            BSP_ENTER_CRITICAL_SECTION(s);    \
+                                            x;                                \
+                                            BSP_EXIT_CRITICAL_SECTION(s); )
+\end{DoxyCode}
+
+
+Definition at line 114 of file uart.h.
+
+\hypertarget{uart_8h_a4d19917ceac9ef0f757b861e802d22ad}{
+\index{uart.h@{uart.h}!BSP\_\-ENTER\_\-CRITICAL\_\-SECTION@{BSP\_\-ENTER\_\-CRITICAL\_\-SECTION}}
+\index{BSP\_\-ENTER\_\-CRITICAL\_\-SECTION@{BSP\_\-ENTER\_\-CRITICAL\_\-SECTION}!uart.h@{uart.h}}
+\subsubsection[{BSP\_\-ENTER\_\-CRITICAL\_\-SECTION}]{\setlength{\rightskip}{0pt plus 5cm}\#define BSP\_\-ENTER\_\-CRITICAL\_\-SECTION(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)~st( {\bf x} = \_\-\_\-bsp\_\-GET\_\-ISTATE\_\-\_\-(); \_\-\_\-bsp\_\-DISABLE\_\-INTERRUPTS\_\-\_\-(); )}}
+\label{uart_8h_a4d19917ceac9ef0f757b861e802d22ad}
+
+
+Definition at line 112 of file uart.h.
+
+\hypertarget{uart_8h_abd6fc0d94f04f101b14219891a771465}{
+\index{uart.h@{uart.h}!BSP\_\-EXIT\_\-CRITICAL\_\-SECTION@{BSP\_\-EXIT\_\-CRITICAL\_\-SECTION}}
+\index{BSP\_\-EXIT\_\-CRITICAL\_\-SECTION@{BSP\_\-EXIT\_\-CRITICAL\_\-SECTION}!uart.h@{uart.h}}
+\subsubsection[{BSP\_\-EXIT\_\-CRITICAL\_\-SECTION}]{\setlength{\rightskip}{0pt plus 5cm}\#define BSP\_\-EXIT\_\-CRITICAL\_\-SECTION(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)~\_\-\_\-bsp\_\-RESTORE\_\-ISTATE\_\-\_\-({\bf x})}}
+\label{uart_8h_abd6fc0d94f04f101b14219891a771465}
+
+
+Definition at line 113 of file uart.h.
+
+\hypertarget{uart_8h_aeeae310a557480086aa3c56a950e8b64}{
+\index{uart.h@{uart.h}!RX\_\-TX\_\-BUFFER\_\-SIZE@{RX\_\-TX\_\-BUFFER\_\-SIZE}}
+\index{RX\_\-TX\_\-BUFFER\_\-SIZE@{RX\_\-TX\_\-BUFFER\_\-SIZE}!uart.h@{uart.h}}
+\subsubsection[{RX\_\-TX\_\-BUFFER\_\-SIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define RX\_\-TX\_\-BUFFER\_\-SIZE~50}}
+\label{uart_8h_aeeae310a557480086aa3c56a950e8b64}
+
+
+Definition at line 27 of file uart.h.
+
+\hypertarget{uart_8h_a2e8173b720a3eed301262ae808ee976d}{
+\index{uart.h@{uart.h}!st@{st}}
+\index{st@{st}!uart.h@{uart.h}}
+\subsubsection[{st}]{\setlength{\rightskip}{0pt plus 5cm}\#define st(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)~do \{ {\bf x} \} while (\_\-\_\-LINE\_\-\_\- == -\/1)}}
+\label{uart_8h_a2e8173b720a3eed301262ae808ee976d}
+
+
+Definition at line 119 of file uart.h.
+
+\hypertarget{uart_8h_ade8f2cab3a291c17f2c82046c7dd50b0}{
+\index{uart.h@{uart.h}!UART0\_\-BAUD\_\-RATE@{UART0\_\-BAUD\_\-RATE}}
+\index{UART0\_\-BAUD\_\-RATE@{UART0\_\-BAUD\_\-RATE}!uart.h@{uart.h}}
+\subsubsection[{UART0\_\-BAUD\_\-RATE}]{\setlength{\rightskip}{0pt plus 5cm}\#define UART0\_\-BAUD\_\-RATE~115200}}
+\label{uart_8h_ade8f2cab3a291c17f2c82046c7dd50b0}
+
+
+Definition at line 29 of file uart.h.
+
+\hypertarget{uart_8h_a6f8fd3cc4d1199f6fe96c08c9fc46704}{
+\index{uart.h@{uart.h}!UART0\_\-LOCATION@{UART0\_\-LOCATION}}
+\index{UART0\_\-LOCATION@{UART0\_\-LOCATION}!uart.h@{uart.h}}
+\subsubsection[{UART0\_\-LOCATION}]{\setlength{\rightskip}{0pt plus 5cm}\#define UART0\_\-LOCATION~UART\_\-LOCATION\_\-2}}
+\label{uart_8h_a6f8fd3cc4d1199f6fe96c08c9fc46704}
+
+
+Definition at line 48 of file uart.h.
+
+\hypertarget{uart_8h_a9715f79cf910e2d5d89d0bd4eba81831}{
+\index{uart.h@{uart.h}!UART1\_\-BAUD\_\-RATE@{UART1\_\-BAUD\_\-RATE}}
+\index{UART1\_\-BAUD\_\-RATE@{UART1\_\-BAUD\_\-RATE}!uart.h@{uart.h}}
+\subsubsection[{UART1\_\-BAUD\_\-RATE}]{\setlength{\rightskip}{0pt plus 5cm}\#define UART1\_\-BAUD\_\-RATE~115200}}
+\label{uart_8h_a9715f79cf910e2d5d89d0bd4eba81831}
+
+
+Definition at line 30 of file uart.h.
+
+\hypertarget{uart_8h_a1d0b3d97829ca45b38aae56795aa8bab}{
+\index{uart.h@{uart.h}!UART1\_\-LOCATION@{UART1\_\-LOCATION}}
+\index{UART1\_\-LOCATION@{UART1\_\-LOCATION}!uart.h@{uart.h}}
+\subsubsection[{UART1\_\-LOCATION}]{\setlength{\rightskip}{0pt plus 5cm}\#define UART1\_\-LOCATION~UART\_\-LOCATION\_\-2}}
+\label{uart_8h_a1d0b3d97829ca45b38aae56795aa8bab}
+
+
+Definition at line 49 of file uart.h.
+
+\hypertarget{uart_8h_ac4990a089c55023de7a3d52d24ad754d}{
+\index{uart.h@{uart.h}!UART\_\-1\_\-STOP\_\-BIT@{UART\_\-1\_\-STOP\_\-BIT}}
+\index{UART\_\-1\_\-STOP\_\-BIT@{UART\_\-1\_\-STOP\_\-BIT}!uart.h@{uart.h}}
+\subsubsection[{UART\_\-1\_\-STOP\_\-BIT}]{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-1\_\-STOP\_\-BIT~0}}
+\label{uart_8h_ac4990a089c55023de7a3d52d24ad754d}
+
+
+Definition at line 82 of file uart.h.
+
+\hypertarget{uart_8h_aecf65d18944359398a7a62c7b70aaab8}{
+\index{uart.h@{uart.h}!UART\_\-2\_\-STOP\_\-BITS@{UART\_\-2\_\-STOP\_\-BITS}}
+\index{UART\_\-2\_\-STOP\_\-BITS@{UART\_\-2\_\-STOP\_\-BITS}!uart.h@{uart.h}}
+\subsubsection[{UART\_\-2\_\-STOP\_\-BITS}]{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-2\_\-STOP\_\-BITS~1}}
+\label{uart_8h_aecf65d18944359398a7a62c7b70aaab8}
+
+
+Definition at line 83 of file uart.h.
+
+\hypertarget{uart_8h_a615aed21aa6825462b7c17b0c238ffe2}{
+\index{uart.h@{uart.h}!UART\_\-BAUD\_\-RATE@{UART\_\-BAUD\_\-RATE}}
+\index{UART\_\-BAUD\_\-RATE@{UART\_\-BAUD\_\-RATE}!uart.h@{uart.h}}
+\subsubsection[{UART\_\-BAUD\_\-RATE}]{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-BAUD\_\-RATE~9600}}
+\label{uart_8h_a615aed21aa6825462b7c17b0c238ffe2}
+
+
+Definition at line 88 of file uart.h.
+
+\hypertarget{uart_8h_adbc4b84dcbedfc1b1764aa35557e7a2f}{
+\index{uart.h@{uart.h}!UART\_\-CLOCK\_\-MHZ@{UART\_\-CLOCK\_\-MHZ}}
+\index{UART\_\-CLOCK\_\-MHZ@{UART\_\-CLOCK\_\-MHZ}!uart.h@{uart.h}}
+\subsubsection[{UART\_\-CLOCK\_\-MHZ}]{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-CLOCK\_\-MHZ~32}}
+\label{uart_8h_adbc4b84dcbedfc1b1764aa35557e7a2f}
+
+
+Definition at line 63 of file uart.h.
+
+\hypertarget{uart_8h_a1db1457c1ec401a81da0c7d2dae88607}{
+\index{uart.h@{uart.h}!UART\_\-FLOW\_\-CONTROL@{UART\_\-FLOW\_\-CONTROL}}
+\index{UART\_\-FLOW\_\-CONTROL@{UART\_\-FLOW\_\-CONTROL}!uart.h@{uart.h}}
+\subsubsection[{UART\_\-FLOW\_\-CONTROL}]{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-FLOW\_\-CONTROL~UART\_\-FLOW\_\-CONTROL\_\-OFF}}
+\label{uart_8h_a1db1457c1ec401a81da0c7d2dae88607}
+
+
+Definition at line 31 of file uart.h.
+
+\hypertarget{uart_8h_a27a3e1a0b8089fb67e7d1aca05bc8238}{
+\index{uart.h@{uart.h}!UART\_\-FLOW\_\-CONTROL\_\-OFF@{UART\_\-FLOW\_\-CONTROL\_\-OFF}}
+\index{UART\_\-FLOW\_\-CONTROL\_\-OFF@{UART\_\-FLOW\_\-CONTROL\_\-OFF}!uart.h@{uart.h}}
+\subsubsection[{UART\_\-FLOW\_\-CONTROL\_\-OFF}]{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-FLOW\_\-CONTROL\_\-OFF~0}}
+\label{uart_8h_a27a3e1a0b8089fb67e7d1aca05bc8238}
+
+
+Definition at line 74 of file uart.h.
+
+\hypertarget{uart_8h_a783f1232fc69d8e6fd7357d1a548829c}{
+\index{uart.h@{uart.h}!UART\_\-FLOW\_\-CONTROL\_\-ON@{UART\_\-FLOW\_\-CONTROL\_\-ON}}
+\index{UART\_\-FLOW\_\-CONTROL\_\-ON@{UART\_\-FLOW\_\-CONTROL\_\-ON}!uart.h@{uart.h}}
+\subsubsection[{UART\_\-FLOW\_\-CONTROL\_\-ON}]{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-FLOW\_\-CONTROL\_\-ON~1}}
+\label{uart_8h_a783f1232fc69d8e6fd7357d1a548829c}
+
+
+Definition at line 73 of file uart.h.
+
+\hypertarget{uart_8h_ace96581ef56b424cf488cdf975427d42}{
+\index{uart.h@{uart.h}!UART\_\-IRQ\_\-DISABLED@{UART\_\-IRQ\_\-DISABLED}}
+\index{UART\_\-IRQ\_\-DISABLED@{UART\_\-IRQ\_\-DISABLED}!uart.h@{uart.h}}
+\subsubsection[{UART\_\-IRQ\_\-DISABLED}]{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-IRQ\_\-DISABLED~0}}
+\label{uart_8h_ace96581ef56b424cf488cdf975427d42}
+
+
+Definition at line 68 of file uart.h.
+
+\hypertarget{uart_8h_a4ad74858f2e276de15c5eee5573db1e7}{
+\index{uart.h@{uart.h}!UART\_\-IRQ\_\-ENABLED@{UART\_\-IRQ\_\-ENABLED}}
+\index{UART\_\-IRQ\_\-ENABLED@{UART\_\-IRQ\_\-ENABLED}!uart.h@{uart.h}}
+\subsubsection[{UART\_\-IRQ\_\-ENABLED}]{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-IRQ\_\-ENABLED~1}}
+\label{uart_8h_a4ad74858f2e276de15c5eee5573db1e7}
+
+
+Definition at line 67 of file uart.h.
+
+\hypertarget{uart_8h_a47ea05a3f0cc9f9eff7f60bb9834f842}{
+\index{uart.h@{uart.h}!UART\_\-IRQ\_\-IDLE@{UART\_\-IRQ\_\-IDLE}}
+\index{UART\_\-IRQ\_\-IDLE@{UART\_\-IRQ\_\-IDLE}!uart.h@{uart.h}}
+\subsubsection[{UART\_\-IRQ\_\-IDLE}]{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-IRQ\_\-IDLE~0}}
+\label{uart_8h_a47ea05a3f0cc9f9eff7f60bb9834f842}
+
+
+Definition at line 70 of file uart.h.
+
+\hypertarget{uart_8h_a0aa1ca7de235808e5333c555a150f567}{
+\index{uart.h@{uart.h}!UART\_\-IRQ\_\-PENDING@{UART\_\-IRQ\_\-PENDING}}
+\index{UART\_\-IRQ\_\-PENDING@{UART\_\-IRQ\_\-PENDING}!uart.h@{uart.h}}
+\subsubsection[{UART\_\-IRQ\_\-PENDING}]{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-IRQ\_\-PENDING~1}}
+\label{uart_8h_a0aa1ca7de235808e5333c555a150f567}
+
+
+Definition at line 69 of file uart.h.
+
+\hypertarget{uart_8h_a063b14ac42ef9e8f4246c17a586b14eb}{
+\index{uart.h@{uart.h}!UART\_\-PARITY\_\-EVEN@{UART\_\-PARITY\_\-EVEN}}
+\index{UART\_\-PARITY\_\-EVEN@{UART\_\-PARITY\_\-EVEN}!uart.h@{uart.h}}
+\subsubsection[{UART\_\-PARITY\_\-EVEN}]{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-PARITY\_\-EVEN~1}}
+\label{uart_8h_a063b14ac42ef9e8f4246c17a586b14eb}
+
+
+Definition at line 78 of file uart.h.
+
+\hypertarget{uart_8h_a82edc7fac3f5bbdd56b34f890885bb7b}{
+\index{uart.h@{uart.h}!UART\_\-PARITY\_\-MODE@{UART\_\-PARITY\_\-MODE}}
+\index{UART\_\-PARITY\_\-MODE@{UART\_\-PARITY\_\-MODE}!uart.h@{uart.h}}
+\subsubsection[{UART\_\-PARITY\_\-MODE}]{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-PARITY\_\-MODE~UART\_\-PARITY\_\-NONE}}
+\label{uart_8h_a82edc7fac3f5bbdd56b34f890885bb7b}
+
+
+Definition at line 32 of file uart.h.
+
+\hypertarget{uart_8h_a270dea6e1a92dd83fe58802450bdd60c}{
+\index{uart.h@{uart.h}!UART\_\-PARITY\_\-NONE@{UART\_\-PARITY\_\-NONE}}
+\index{UART\_\-PARITY\_\-NONE@{UART\_\-PARITY\_\-NONE}!uart.h@{uart.h}}
+\subsubsection[{UART\_\-PARITY\_\-NONE}]{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-PARITY\_\-NONE~0}}
+\label{uart_8h_a270dea6e1a92dd83fe58802450bdd60c}
+
+
+Definition at line 77 of file uart.h.
+
+\hypertarget{uart_8h_a229615e64964f68f7a856ea6ffea359e}{
+\index{uart.h@{uart.h}!UART\_\-PARITY\_\-ODD@{UART\_\-PARITY\_\-ODD}}
+\index{UART\_\-PARITY\_\-ODD@{UART\_\-PARITY\_\-ODD}!uart.h@{uart.h}}
+\subsubsection[{UART\_\-PARITY\_\-ODD}]{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-PARITY\_\-ODD~2}}
+\label{uart_8h_a229615e64964f68f7a856ea6ffea359e}
+
+
+Definition at line 79 of file uart.h.
+
+\hypertarget{uart_8h_a5a50a502408c7bea025124b526ca381c}{
+\index{uart.h@{uart.h}!UART\_\-STOP\_\-BITS@{UART\_\-STOP\_\-BITS}}
+\index{UART\_\-STOP\_\-BITS@{UART\_\-STOP\_\-BITS}!uart.h@{uart.h}}
+\subsubsection[{UART\_\-STOP\_\-BITS}]{\setlength{\rightskip}{0pt plus 5cm}\#define UART\_\-STOP\_\-BITS~UART\_\-1\_\-STOP\_\-BIT}}
+\label{uart_8h_a5a50a502408c7bea025124b526ca381c}
+
+
+Definition at line 33 of file uart.h.
+
+
+
+\subsection{Typedef Documentation}
+\hypertarget{uart_8h_ad45ed2a3e324170701c79dca25f0bbc9}{
+\index{uart.h@{uart.h}!bspIState\_\-t@{bspIState\_\-t}}
+\index{bspIState\_\-t@{bspIState\_\-t}!uart.h@{uart.h}}
+\subsubsection[{bspIState\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef \_\-\_\-bsp\_\-ISTATE\_\-T\_\-\_\- {\bf bspIState\_\-t}}}
+\label{uart_8h_ad45ed2a3e324170701c79dca25f0bbc9}
+
+
+Definition at line 110 of file uart.h.
+
+\hypertarget{uart_8h_af0b772b8349008406113fb7035df62f8}{
+\index{uart.h@{uart.h}!uart\_\-get\_\-tx\_\-data\_\-type@{uart\_\-get\_\-tx\_\-data\_\-type}}
+\index{uart\_\-get\_\-tx\_\-data\_\-type@{uart\_\-get\_\-tx\_\-data\_\-type}!uart.h@{uart.h}}
+\subsubsection[{uart\_\-get\_\-tx\_\-data\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}typedef bool( $\ast$ {\bf uart\_\-get\_\-tx\_\-data\_\-type})(unsigned char $\ast$)}}
+\label{uart_8h_af0b772b8349008406113fb7035df62f8}
+
+
+Definition at line 554 of file uart.h.
+
+\hypertarget{uart_8h_a28157fc7a173fc91dc387b37d46ddfc2}{
+\index{uart.h@{uart.h}!uart\_\-put\_\-rx\_\-data\_\-type@{uart\_\-put\_\-rx\_\-data\_\-type}}
+\index{uart\_\-put\_\-rx\_\-data\_\-type@{uart\_\-put\_\-rx\_\-data\_\-type}!uart.h@{uart.h}}
+\subsubsection[{uart\_\-put\_\-rx\_\-data\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}typedef bool( $\ast$ {\bf uart\_\-put\_\-rx\_\-data\_\-type})(unsigned char)}}
+\label{uart_8h_a28157fc7a173fc91dc387b37d46ddfc2}
+
+
+Definition at line 562 of file uart.h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{uart_8h_a445848debe88e89b5d22dea2f6a18ca1}{
+\index{uart.h@{uart.h}!uart0\_\-tx\_\-message@{uart0\_\-tx\_\-message}}
+\index{uart0\_\-tx\_\-message@{uart0\_\-tx\_\-message}!uart.h@{uart.h}}
+\subsubsection[{uart0\_\-tx\_\-message}]{\setlength{\rightskip}{0pt plus 5cm}bool uart0\_\-tx\_\-message (
+\begin{DoxyParamCaption}
+\item[{{\bf uart\_\-get\_\-tx\_\-data\_\-type}}]{handler}
+\end{DoxyParamCaption}
+)}}
+\label{uart_8h_a445848debe88e89b5d22dea2f6a18ca1}
+
+
+Definition at line 382 of file uart.c.
+
+
+\begin{DoxyCode}
+  {
+  bspIState_t  intState;
+  bool status = false; /* assume failure initially */
+
+  /* updates required, store interrupt state and disable interrupts */
+  BSP_ENTER_CRITICAL_SECTION(intState);
+
+  /* if no message is currently being sent and handler looks valid */
+  if( uart0_tx_handler == NULL && handler != NULL )
+    {
+    uart0_tx_handler = handler; /* install the handler */
+
+    /* once the handler has been setup, enable the interrupt.
+     * this will cause the message to begin transmission */
+    UART_IRQ_ENABLE( UART_NUMBER_0, UART0_LOCATION, TX );
+
+    status = true; /* indicate success */
+    }
+
+  BSP_EXIT_CRITICAL_SECTION(intState); /* restore interrupt state */
+
+  return status; /* indicate status */
+  }
+\end{DoxyCode}
+\hypertarget{uart_8h_ac21e32f744f91b62d39dc91d9b9a498c}{
+\index{uart.h@{uart.h}!uart1\_\-tx\_\-message@{uart1\_\-tx\_\-message}}
+\index{uart1\_\-tx\_\-message@{uart1\_\-tx\_\-message}!uart.h@{uart.h}}
+\subsubsection[{uart1\_\-tx\_\-message}]{\setlength{\rightskip}{0pt plus 5cm}bool uart1\_\-tx\_\-message (
+\begin{DoxyParamCaption}
+\item[{{\bf uart\_\-get\_\-tx\_\-data\_\-type}}]{handler}
+\end{DoxyParamCaption}
+)}}
+\label{uart_8h_ac21e32f744f91b62d39dc91d9b9a498c}
+
+
+Definition at line 251 of file uart.c.
+
+
+\begin{DoxyCode}
+  {
+  bspIState_t  intState;
+  bool status = false; /* assume failure initially */
+
+  /* updates required, store interrupt state and disable interrupts */
+  BSP_ENTER_CRITICAL_SECTION(intState);
+
+  /* if no message is currently being sent and handler looks valid */
+  if( uart1_tx_handler == NULL && handler != NULL )
+    {
+    uart1_tx_handler = handler; /* install the handler */
+
+    /* once the handler has been setup, enable the interrupt.
+     * this will cause the message to begin transmission */
+    UART_IRQ_ENABLE( UART_NUMBER_1, UART1_LOCATION, TX );
+
+    status = true; /* indicate success */
+    }
+
+  BSP_EXIT_CRITICAL_SECTION(intState); /* restore interrupt state */
+
+  return status; /* indicate status */
+  }
+\end{DoxyCode}
+\hypertarget{uart_8h_a0c0ca72359ddf28dcd15900dfba19343}{
+\index{uart.h@{uart.h}!uart\_\-init@{uart\_\-init}}
+\index{uart\_\-init@{uart\_\-init}!uart.h@{uart.h}}
+\subsubsection[{uart\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void uart\_\-init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{uart_8h_a0c0ca72359ddf28dcd15900dfba19343}
+
+
+Definition at line 194 of file uart.c.
+
+
+\begin{DoxyCode}
+  {
+  volatile unsigned int i;
+
+  /* make sure the handler functions are cleared in case we are re-initialized */
+      
+  uart1_tx_handler = NULL;
+  uart0_tx_handler = NULL;
+  uart_rx_handler = NULL;
+
+  /* initialize the uart interface for operations */
+  UART_INIT( UART_NUMBER_1,
+             UART_LOCATION_2,
+             UART_FLOW_CONTROL,    /* enable/disable flow control */
+             UART_PARITY_MODE,     /* enable/disable parity */
+             UART_STOP_BITS,       /* number of stop bits */
+             UART1_BAUD_RATE );     /* baud rate to use */
+
+  i = UART1_BAUD_RATE >> 5; /* delay approximately 1 bit time */
+  while( --i != 0 ) /* give the uart some time to initialize */
+      ; /* null statement */
+
+  /* set the interrupt flag so that a transmit interrupt will be pending
+   * that way when a message is sent and the irq is enabled, the interrupt
+   * will happen immediately to start the transmission */
+  UART_IRQ_FLAG_SET( UART_NUMBER_1, UART1_LOCATION, TX ); /* set the interrupt */
+      
+
+  /* enable receive interrupts, they are always welcome. */
+  UART_IRQ_ENABLE( UART_NUMBER_1, UART1_LOCATION, RX );
+
+  /* initialize the uart interface for operations */
+  UART_INIT( UART_NUMBER_0,
+             UART_LOCATION_2,
+             UART_FLOW_CONTROL,    /* enable/disable flow control */
+             UART_PARITY_MODE,     /* enable/disable parity */
+             UART_STOP_BITS,       /* number of stop bits */
+             UART0_BAUD_RATE );     /* baud rate to use */
+
+  UART_IRQ_FLAG_SET( UART_NUMBER_0, UART0_LOCATION, TX ); /* set the interrupt */
+      
+
+  UART_IRQ_DISABLE(UART_NUMBER_0,UART_LOCATION_2,RX);
+
+  return;
+  }
+\end{DoxyCode}
+\hypertarget{uart_8h_a3a82624c239e46cd58090fef851d8a44}{
+\index{uart.h@{uart.h}!uart\_\-rx\_\-message@{uart\_\-rx\_\-message}}
+\index{uart\_\-rx\_\-message@{uart\_\-rx\_\-message}!uart.h@{uart.h}}
+\subsubsection[{uart\_\-rx\_\-message}]{\setlength{\rightskip}{0pt plus 5cm}bool uart\_\-rx\_\-message (
+\begin{DoxyParamCaption}
+\item[{{\bf uart\_\-put\_\-rx\_\-data\_\-type}}]{handler}
+\end{DoxyParamCaption}
+)}}
+\label{uart_8h_a3a82624c239e46cd58090fef851d8a44}
+
+
+Definition at line 289 of file uart.c.
+
+
+\begin{DoxyCode}
+  {
+  bspIState_t intState;
+  bool status = false;  /* assume failure initially */
+
+  /* updates required, store interrupt state and disable interrupts */
+  BSP_ENTER_CRITICAL_SECTION(intState);
+
+  /* if no message is being received and the handler looks valid */
+  if( uart_rx_handler == NULL && handler != NULL )
+    {
+    uart_rx_handler = handler; /* install the handler */
+
+    status = true; /* indicate success */
+    }
+
+  BSP_EXIT_CRITICAL_SECTION(intState); /* restore interrupt state */
+
+  return status; /* indicate status */
+  }
+\end{DoxyCode}

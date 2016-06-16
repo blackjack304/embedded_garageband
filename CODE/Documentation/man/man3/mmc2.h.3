@@ -1,0 +1,473 @@
+.TH "mmc2.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mmc2.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBFAT_TESTING_ONLY\fP"
+.br
+.ti -1c
+.RI "#define \fBSD_CS_ASSERT\fP   CS_LOW();"
+.br
+.ti -1c
+.RI "#define \fBSD_CS_DEASSERT\fP   CS_HIGH();"
+.br
+.ti -1c
+.RI "#define \fBGO_IDLE_STATE\fP   0"
+.br
+.ti -1c
+.RI "#define \fBSEND_OP_COND\fP   1"
+.br
+.ti -1c
+.RI "#define \fBSEND_IF_COND\fP   8"
+.br
+.ti -1c
+.RI "#define \fBSEND_CSD\fP   9"
+.br
+.ti -1c
+.RI "#define \fBSTOP_TRANSMISSION\fP   12"
+.br
+.ti -1c
+.RI "#define \fBSEND_STATUS\fP   13"
+.br
+.ti -1c
+.RI "#define \fBSET_BLOCK_LEN\fP   16"
+.br
+.ti -1c
+.RI "#define \fBREAD_SINGLE_BLOCK\fP   17"
+.br
+.ti -1c
+.RI "#define \fBREAD_MULTIPLE_BLOCKS\fP   18"
+.br
+.ti -1c
+.RI "#define \fBWRITE_SINGLE_BLOCK\fP   24"
+.br
+.ti -1c
+.RI "#define \fBWRITE_MULTIPLE_BLOCKS\fP   25"
+.br
+.ti -1c
+.RI "#define \fBERASE_BLOCK_START_ADDR\fP   32"
+.br
+.ti -1c
+.RI "#define \fBERASE_BLOCK_END_ADDR\fP   33"
+.br
+.ti -1c
+.RI "#define \fBERASE_SELECTED_BLOCKS\fP   38"
+.br
+.ti -1c
+.RI "#define \fBSD_SEND_OP_COND\fP   41"
+.br
+.ti -1c
+.RI "#define \fBAPP_CMD\fP   55"
+.br
+.ti -1c
+.RI "#define \fBREAD_OCR\fP   58"
+.br
+.ti -1c
+.RI "#define \fBCRC_ON_OFF\fP   59"
+.br
+.ti -1c
+.RI "#define \fBON\fP   1"
+.br
+.ti -1c
+.RI "#define \fBOFF\fP   0"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "unsigned char \fBSD_init\fP (void)"
+.br
+.ti -1c
+.RI "unsigned char \fBSD_sendCommand\fP (unsigned char cmd, unsigned long arg)"
+.br
+.ti -1c
+.RI "unsigned char \fBSD_readSingleBlock\fP (unsigned long \fBstartBlock\fP)"
+.br
+.ti -1c
+.RI "unsigned char \fBSD_writeSingleBlock\fP (unsigned long \fBstartBlock\fP)"
+.br
+.ti -1c
+.RI "unsigned char \fBSD_readMultipleBlock\fP (unsigned long \fBstartBlock\fP, unsigned long \fBtotalBlocks\fP)"
+.br
+.ti -1c
+.RI "unsigned char \fBSD_writeMultipleBlock\fP (unsigned long \fBstartBlock\fP, unsigned long \fBtotalBlocks\fP)"
+.br
+.ti -1c
+.RI "unsigned char \fBSD_erase\fP (unsigned long \fBstartBlock\fP, unsigned long \fBtotalBlocks\fP)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "volatile unsigned long \fBstartBlock\fP"
+.br
+.ti -1c
+.RI "volatile unsigned long \fBtotalBlocks\fP"
+.br
+.ti -1c
+.RI "volatile unsigned char \fBSDHC_flag\fP"
+.br
+.ti -1c
+.RI "volatile unsigned char \fBcardType\fP"
+.br
+.ti -1c
+.RI "unsigned char \fBsd_buffer\fP [512]"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define APP_CMD   55"
+.PP
+Definition at line 57 of file mmc2.h.
+.SS "#define CRC_ON_OFF   59"
+.PP
+Definition at line 59 of file mmc2.h.
+.SS "#define ERASE_BLOCK_END_ADDR   33"
+.PP
+Definition at line 54 of file mmc2.h.
+.SS "#define ERASE_BLOCK_START_ADDR   32"
+.PP
+Definition at line 53 of file mmc2.h.
+.SS "#define ERASE_SELECTED_BLOCKS   38"
+.PP
+Definition at line 55 of file mmc2.h.
+.SS "#define FAT_TESTING_ONLY"
+.PP
+Definition at line 31 of file mmc2.h.
+.SS "#define GO_IDLE_STATE   0"
+.PP
+Definition at line 42 of file mmc2.h.
+.SS "#define OFF   0"
+.PP
+Definition at line 63 of file mmc2.h.
+.SS "#define ON   1"
+.PP
+Definition at line 62 of file mmc2.h.
+.SS "#define READ_MULTIPLE_BLOCKS   18"
+.PP
+Definition at line 50 of file mmc2.h.
+.SS "#define READ_OCR   58"
+.PP
+Definition at line 58 of file mmc2.h.
+.SS "#define READ_SINGLE_BLOCK   17"
+.PP
+Definition at line 49 of file mmc2.h.
+.SS "#define SD_CS_ASSERT   CS_LOW();"
+.PP
+Definition at line 34 of file mmc2.h.
+.SS "#define SD_CS_DEASSERT   CS_HIGH();"
+.PP
+Definition at line 35 of file mmc2.h.
+.SS "#define SD_SEND_OP_COND   41"
+.PP
+Definition at line 56 of file mmc2.h.
+.SS "#define SEND_CSD   9"
+.PP
+Definition at line 45 of file mmc2.h.
+.SS "#define SEND_IF_COND   8"
+.PP
+Definition at line 44 of file mmc2.h.
+.SS "#define SEND_OP_COND   1"
+.PP
+Definition at line 43 of file mmc2.h.
+.SS "#define SEND_STATUS   13"
+.PP
+Definition at line 47 of file mmc2.h.
+.SS "#define SET_BLOCK_LEN   16"
+.PP
+Definition at line 48 of file mmc2.h.
+.SS "#define STOP_TRANSMISSION   12"
+.PP
+Definition at line 46 of file mmc2.h.
+.SS "#define WRITE_MULTIPLE_BLOCKS   25"
+.PP
+Definition at line 52 of file mmc2.h.
+.SS "#define WRITE_SINGLE_BLOCK   24"
+.PP
+Definition at line 51 of file mmc2.h.
+.SH "Function Documentation"
+.PP 
+.SS "unsigned char SD_erase (unsigned longstartBlock, unsigned longtotalBlocks)"
+.PP
+Definition at line 195 of file mmc2.c.
+.PP
+.nf
+{
+  unsigned char response;
+  
+  response = SD_sendCommand(ERASE_BLOCK_START_ADDR, startBlock); //send starting block address
+  if(response != 0x00) //check for SD status: 0x00 - OK (No flags set)
+    return response;
+  
+  response = SD_sendCommand(ERASE_BLOCK_END_ADDR,(startBlock + totalBlocks - 1)); //send end block address
+  if(response != 0x00)
+    return response;
+  
+  response = SD_sendCommand(ERASE_SELECTED_BLOCKS, 0); //erase all selected blocks
+  if(response != 0x00)
+    return response;
+  
+  return 0; //normal return
+}
+.fi
+.SS "unsigned char SD_init (void)"
+.PP
+Definition at line 37 of file mmc2.c.
+.PP
+.nf
+{
+  unsigned char i, response, SD_version;
+  unsigned int retry=0 ;
+  
+    // Chip Select
+  MCU_IO_OUTPUT(MMC_CS_PORT,MMC_CS_PIN,1);  //MMC_CS_PxDIR |= MMC_CS;
+  
+  // Init SPI Module
+  halSPISetup();
+  
+  for(i=0;i<10;i++)
+    SPI_transmit(0xff);   //80 clock pulses spent before sending the first command
+  
+  SD_CS_ASSERT;
+  do
+  {
+    
+    response = SD_sendCommand(GO_IDLE_STATE, 0); //send 'reset & go idle' command
+    retry++;
+    if(retry>0x20) 
+      return 1;   //time out, card not detected
+    
+  } while(response != 0x01);
+  
+  SD_CS_DEASSERT;
+  SPI_transmit (0xff);
+  SPI_transmit (0xff);
+  
+  retry = 0;
+  
+  SD_version = 2; //default set to SD compliance with ver2.x; 
+  //this may change after checking the next command
+  do
+  {
+    response = SD_sendCommand(SEND_IF_COND,0x000001AA); //Check power supply status, mendatory for SDHC card
+    retry++;
+    if(retry>0xfe) 
+    {
+      //TX_NEWLINE;
+      SD_version = 1;
+      cardType = 1;
+      break;
+    } //time out
+    
+  }while(response != 0x01);
+  
+  retry = 0;
+  
+  do
+  {
+    response = SD_sendCommand(APP_CMD,0); //CMD55, must be sent before sending any ACMD command
+    response = SD_sendCommand(SD_SEND_OP_COND,0x40000000); //ACMD41
+    
+    retry++;
+    if(retry>0xfe) 
+    {
+      //TX_NEWLINE;
+      return 2;  //time out, card initialization failed
+    } 
+    
+  }while(response != 0x00);
+  
+  
+  retry = 0;
+  SDHC_flag = 0;
+  
+  if (SD_version == 2)
+  { 
+    do
+    {
+      response = SD_sendCommand(READ_OCR,0);
+      retry++;
+      if(retry>0xfe) 
+      {
+        //TX_NEWLINE;
+        cardType = 0;
+        break;
+      } //time out
+      
+    }while(response != 0x00);
+    
+    if(SDHC_flag == 1) cardType = 2;
+    else cardType = 3;
+  }
+  
+  //SD_sendCommand(CRC_ON_OFF, OFF); //disable CRC; deafault - CRC disabled in SPI mode
+  SD_sendCommand(SET_BLOCK_LEN, 512); //set block size to 512; default size is 512
+  
+  
+  return 0; //successful return
+}
+.fi
+.SS "unsigned char SD_readMultipleBlock (unsigned longstartBlock, unsigned longtotalBlocks)"
+.SS "unsigned char SD_readSingleBlock (unsigned longstartBlock)"
+.PP
+Definition at line 220 of file mmc2.c.
+.PP
+.nf
+{
+  unsigned char response;
+  unsigned int i, retry=0;
+  
+  response = SD_sendCommand(READ_SINGLE_BLOCK, startBlock); //read a Block command
+  
+  if(response != 0x00) return response; //check for SD status: 0x00 - OK (No flags set)
+  
+  SD_CS_ASSERT;
+  
+  retry = 0;
+  while(SPI_transmit(0xFF) != 0xfe) //wait for start block token 0xfe (0x11111110)
+    if(retry++ > 0xfffe){SD_CS_DEASSERT; return 1;} //return if time-out
+  
+  for(i=0; i<512; i++) //read 512 bytes
+    sd_buffer[i] = SPI_transmit(0xFF);
+  
+  SPI_transmit(0xFF); //receive incoming CRC (16-bit), CRC is ignored here
+  SPI_transmit(0xFF);
+  
+  SPI_transmit(0xFF); //extra 8 clock pulses
+  SD_CS_DEASSERT;
+  
+  return 0;
+}
+.fi
+.SS "unsigned char SD_sendCommand (unsigned charcmd, unsigned longarg)"
+.PP
+Definition at line 136 of file mmc2.c.
+.PP
+.nf
+{
+  unsigned char response, retry=0, status;
+  
+  //SD card accepts byte address while SDHC accepts block address in multiples of 512
+  //so, if it's SD card we need to convert block address into corresponding byte address by 
+  //multipying it with 512. which is equivalent to shifting it left 9 times
+  //following 'if' loop does that
+  
+  if(SDHC_flag == 0)            
+    if(cmd == READ_SINGLE_BLOCK     ||
+       cmd == READ_MULTIPLE_BLOCKS  ||
+         cmd == WRITE_SINGLE_BLOCK    ||
+           cmd == WRITE_MULTIPLE_BLOCKS ||
+             cmd == ERASE_BLOCK_START_ADDR|| 
+               cmd == ERASE_BLOCK_END_ADDR ) 
+    {
+      arg = arg << 9;
+    }      
+  
+  SD_CS_ASSERT;
+  
+  SPI_transmit(cmd | 0x40); //send command, first two bits always '01'
+  SPI_transmit(arg>>24);
+  SPI_transmit(arg>>16);
+  SPI_transmit(arg>>8);
+  SPI_transmit(arg);
+  
+  if(cmd == SEND_IF_COND)        //it is compulsory to send correct CRC for CMD8 (CRC=0x87) & CMD0 (CRC=0x95)
+    SPI_transmit(0x87);    //for remaining commands, CRC is ignored in SPI mode
+  else 
+    SPI_transmit(0x95); 
+  
+  while((response = SPI_transmit(0xFF)) == 0xff) //wait response
+    if(retry++ > 0xfe) break; //time out error
+  
+  if(response == 0x00 && cmd == 58)  //checking response of CMD58
+  {
+    status = SPI_transmit(0xFF) & 0x40;     //first byte of the OCR register (bit 31:24)
+    if(status == 0x40) SDHC_flag = 1;  //we need it to verify SDHC card
+    else SDHC_flag = 0;
+    
+    SPI_transmit(0xFF); //remaining 3 bytes of the OCR register are ignored here
+    SPI_transmit(0xFF); //one can use these bytes to check power supply limits of SD
+    SPI_transmit(0xFF); 
+  }
+  
+  SPI_transmit(0xFF); //extra 8 CLK
+  SD_CS_DEASSERT;
+  
+  return response; //return state
+}
+.fi
+.SS "unsigned char SD_writeMultipleBlock (unsigned longstartBlock, unsigned longtotalBlocks)"
+.SS "unsigned char SD_writeSingleBlock (unsigned longstartBlock)"
+.PP
+Definition at line 253 of file mmc2.c.
+.PP
+.nf
+{
+  unsigned char response;
+  unsigned int i, retry=0;
+  
+  response = SD_sendCommand(WRITE_SINGLE_BLOCK, startBlock); //write a Block command
+  
+  if(response != 0x00) return response; //check for SD status: 0x00 - OK (No flags set)
+  
+  SD_CS_ASSERT;
+  
+  SPI_transmit(0xfe);     //Send start block token 0xfe (0x11111110)
+  
+  for(i=0; i<512; i++)    //send 512 bytes data
+    SPI_transmit(sd_buffer[i]);
+  
+  SPI_transmit(0xff);     //transmit dummy CRC (16-bit), CRC is ignored here
+  SPI_transmit(0xff);
+  
+  response = SPI_transmit(0xFF);
+  
+  if( (response & 0x1f) != 0x05) //response= 0xXXX0AAA1 ; AAA='010' - data accepted
+  {                              //AAA='101'-data rejected due to CRC error
+    SD_CS_DEASSERT;              //AAA='110'-data rejected due to write error
+    return response;
+  }
+  
+  while(!SPI_transmit(0xFF)) //wait for SD card to complete writing and get idle
+    if(retry++ > 0xfffe){SD_CS_DEASSERT; return 1;}
+  
+  SD_CS_DEASSERT;
+  SPI_transmit(0xff);   //just spend 8 clock cycle delay before reasserting the CS line
+  SD_CS_ASSERT;         //re-asserting the CS line to verify if card is still busy
+  
+  while(!SPI_transmit(0xFF)) //wait for SD card to complete writing and get idle
+    if(retry++ > 0xfffe){SD_CS_DEASSERT; return 1;}
+  SD_CS_DEASSERT;
+  
+  return 0;
+}
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "volatile unsigned char \fBcardType\fP"
+.PP
+Definition at line 66 of file mmc2.h.
+.SS "unsigned char \fBsd_buffer\fP[512]"
+.PP
+Definition at line 31 of file Main_mod3.c.
+.SS "volatile unsigned char \fBSDHC_flag\fP"
+.PP
+Definition at line 66 of file mmc2.h.
+.SS "volatile unsigned long \fBstartBlock\fP"
+.PP
+Definition at line 65 of file mmc2.h.
+.SS "volatile unsigned long \fBtotalBlocks\fP"
+.PP
+Definition at line 65 of file mmc2.h.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

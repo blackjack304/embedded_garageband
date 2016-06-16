@@ -1,0 +1,663 @@
+\hypertarget{hal__digio_8c}{
+\section{hal\_\-digio.c File Reference}
+\label{hal__digio_8c}\index{hal\_\-digio.c@{hal\_\-digio.c}}
+}
+{\ttfamily \#include \char`\"{}hal\_\-types.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-defs.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-board.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-int.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-digio.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-assert.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{hal__digio_8c_aad9b40df60468250cb0d4c8cd20fb76c}{PICTL\_\-PADSC\_\-BM}~0x40
+\item 
+\#define \hyperlink{hal__digio_8c_a8595faf7cf3ded7cad7060acc6b926f8}{PICTL\_\-P2IEN\_\-BM}~0x20
+\item 
+\#define \hyperlink{hal__digio_8c_aeb4ac49a6098084a559b588d5b8aae82}{PICTL\_\-P0IENH\_\-BM}~0x10
+\item 
+\#define \hyperlink{hal__digio_8c_a29c0947fc7d02cdfaa7a998952162bb0}{PICTL\_\-P0IENL\_\-BM}~0x08
+\item 
+\#define \hyperlink{hal__digio_8c_a676ef9648b7e70017ed07e130f4f7d8a}{PICTL\_\-P2ICON\_\-BM}~0x04
+\item 
+\#define \hyperlink{hal__digio_8c_ab41702024c6251ec89cc86086f15b90d}{PICTL\_\-P1ICON\_\-BM}~0x02
+\item 
+\#define \hyperlink{hal__digio_8c_abfb7acfc5e0df672bf786af850e23015}{PICTL\_\-P0ICON\_\-BM}~0x01
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{hal__digio_8c_a257cf6314deb7c40caccff1cab93a546}{halDigioConfig} (const \hyperlink{structdigio_config}{digioConfig} $\ast$p)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{hal__digio_8c_a00be5f8f643ea18c5243770e3a08f045}{halDigioSet} (const \hyperlink{structdigio_config}{digioConfig} $\ast$p)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{hal__digio_8c_af97b4d079eb5c61f533c9ce567b57075}{halDigioClear} (const \hyperlink{structdigio_config}{digioConfig} $\ast$p)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{hal__digio_8c_a2dafdaa69c5e90dab35f5802a3d8e32f}{halDigioToggle} (const \hyperlink{structdigio_config}{digioConfig} $\ast$p)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{hal__digio_8c_a93543475c0884b1992cbe1f3bea2abd8}{halDigioGet} (const \hyperlink{structdigio_config}{digioConfig} $\ast$p)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{hal__digio_8c_a2abd80df69d6fcc9e18e47b878ce1f8d}{halDigioIntConnect} (const \hyperlink{structdigio_config}{digioConfig} $\ast$p, \hyperlink{hal__types_8h_ac1e04699e2051474d0bd1c9d3f35b5e3}{ISR\_\-FUNC\_\-PTR} func)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{hal__digio_8c_ae7ca246de44b4159ceb6abe821b94739}{halDigioIntEnable} (const \hyperlink{structdigio_config}{digioConfig} $\ast$p)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{hal__digio_8c_a1cada35f41e640b0e2af85b4ef6afaef}{halDigioIntDisable} (const \hyperlink{structdigio_config}{digioConfig} $\ast$p)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{hal__digio_8c_ad7d5f980e040f198eec7a8a8d291c708}{halDigioIntClear} (const \hyperlink{structdigio_config}{digioConfig} $\ast$p)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{hal__digio_8c_adf8019defec99f13fd6fdbdcaebbeeea}{halDigioIntSetEdge} (const \hyperlink{structdigio_config}{digioConfig} $\ast$p, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{kb_8c_a70c81d2e3b2a5c11a9a809ea4f019299}{edge})
+\item 
+\hyperlink{hal__digio_8c_aca02366611435e1d7a323cbe6a35c76c}{HAL\_\-ISR\_\-FUNCTION} (port0\_\-ISR, P0INT\_\-VECTOR)
+\item 
+\hyperlink{hal__digio_8c_a71e7f51035827c5a405a2f04ed268009}{HAL\_\-ISR\_\-FUNCTION} (port1\_\-ISR, P1INT\_\-VECTOR)
+\item 
+\hyperlink{hal__digio_8c_aff0491a3b49cba811a597edf0a5cb163}{HAL\_\-ISR\_\-FUNCTION} (port2\_\-ISR, P2INT\_\-VECTOR)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{hal__types_8h_ac1e04699e2051474d0bd1c9d3f35b5e3}{ISR\_\-FUNC\_\-PTR} \hyperlink{hal__digio_8c_a827e8d891b3b490f1796ffad5823ef3e}{port0\_\-isr\_\-tbl} \mbox{[}8\mbox{]} = \{0\}
+\item 
+static \hyperlink{hal__types_8h_ac1e04699e2051474d0bd1c9d3f35b5e3}{ISR\_\-FUNC\_\-PTR} \hyperlink{hal__digio_8c_ab331943b5a68a14666b4f3d10157c332}{port1\_\-isr\_\-tbl} \mbox{[}8\mbox{]} = \{0\}
+\item 
+static \hyperlink{hal__types_8h_ac1e04699e2051474d0bd1c9d3f35b5e3}{ISR\_\-FUNC\_\-PTR} \hyperlink{hal__digio_8c_a8ee15197bf88829f582d84db417db040}{port2\_\-isr\_\-tbl} \mbox{[}5\mbox{]} = \{0\}
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{hal__digio_8c_abfb7acfc5e0df672bf786af850e23015}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!PICTL\_\-P0ICON\_\-BM@{PICTL\_\-P0ICON\_\-BM}}
+\index{PICTL\_\-P0ICON\_\-BM@{PICTL\_\-P0ICON\_\-BM}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{PICTL\_\-P0ICON\_\-BM}]{\setlength{\rightskip}{0pt plus 5cm}\#define PICTL\_\-P0ICON\_\-BM~0x01}}
+\label{hal__digio_8c_abfb7acfc5e0df672bf786af850e23015}
+
+
+Definition at line 40 of file hal\_\-digio.c.
+
+\hypertarget{hal__digio_8c_aeb4ac49a6098084a559b588d5b8aae82}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!PICTL\_\-P0IENH\_\-BM@{PICTL\_\-P0IENH\_\-BM}}
+\index{PICTL\_\-P0IENH\_\-BM@{PICTL\_\-P0IENH\_\-BM}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{PICTL\_\-P0IENH\_\-BM}]{\setlength{\rightskip}{0pt plus 5cm}\#define PICTL\_\-P0IENH\_\-BM~0x10}}
+\label{hal__digio_8c_aeb4ac49a6098084a559b588d5b8aae82}
+
+
+Definition at line 36 of file hal\_\-digio.c.
+
+\hypertarget{hal__digio_8c_a29c0947fc7d02cdfaa7a998952162bb0}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!PICTL\_\-P0IENL\_\-BM@{PICTL\_\-P0IENL\_\-BM}}
+\index{PICTL\_\-P0IENL\_\-BM@{PICTL\_\-P0IENL\_\-BM}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{PICTL\_\-P0IENL\_\-BM}]{\setlength{\rightskip}{0pt plus 5cm}\#define PICTL\_\-P0IENL\_\-BM~0x08}}
+\label{hal__digio_8c_a29c0947fc7d02cdfaa7a998952162bb0}
+
+
+Definition at line 37 of file hal\_\-digio.c.
+
+\hypertarget{hal__digio_8c_ab41702024c6251ec89cc86086f15b90d}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!PICTL\_\-P1ICON\_\-BM@{PICTL\_\-P1ICON\_\-BM}}
+\index{PICTL\_\-P1ICON\_\-BM@{PICTL\_\-P1ICON\_\-BM}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{PICTL\_\-P1ICON\_\-BM}]{\setlength{\rightskip}{0pt plus 5cm}\#define PICTL\_\-P1ICON\_\-BM~0x02}}
+\label{hal__digio_8c_ab41702024c6251ec89cc86086f15b90d}
+
+
+Definition at line 39 of file hal\_\-digio.c.
+
+\hypertarget{hal__digio_8c_a676ef9648b7e70017ed07e130f4f7d8a}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!PICTL\_\-P2ICON\_\-BM@{PICTL\_\-P2ICON\_\-BM}}
+\index{PICTL\_\-P2ICON\_\-BM@{PICTL\_\-P2ICON\_\-BM}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{PICTL\_\-P2ICON\_\-BM}]{\setlength{\rightskip}{0pt plus 5cm}\#define PICTL\_\-P2ICON\_\-BM~0x04}}
+\label{hal__digio_8c_a676ef9648b7e70017ed07e130f4f7d8a}
+
+
+Definition at line 38 of file hal\_\-digio.c.
+
+\hypertarget{hal__digio_8c_a8595faf7cf3ded7cad7060acc6b926f8}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!PICTL\_\-P2IEN\_\-BM@{PICTL\_\-P2IEN\_\-BM}}
+\index{PICTL\_\-P2IEN\_\-BM@{PICTL\_\-P2IEN\_\-BM}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{PICTL\_\-P2IEN\_\-BM}]{\setlength{\rightskip}{0pt plus 5cm}\#define PICTL\_\-P2IEN\_\-BM~0x20}}
+\label{hal__digio_8c_a8595faf7cf3ded7cad7060acc6b926f8}
+
+
+Definition at line 35 of file hal\_\-digio.c.
+
+\hypertarget{hal__digio_8c_aad9b40df60468250cb0d4c8cd20fb76c}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!PICTL\_\-PADSC\_\-BM@{PICTL\_\-PADSC\_\-BM}}
+\index{PICTL\_\-PADSC\_\-BM@{PICTL\_\-PADSC\_\-BM}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{PICTL\_\-PADSC\_\-BM}]{\setlength{\rightskip}{0pt plus 5cm}\#define PICTL\_\-PADSC\_\-BM~0x40}}
+\label{hal__digio_8c_aad9b40df60468250cb0d4c8cd20fb76c}
+
+
+Definition at line 34 of file hal\_\-digio.c.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{hal__digio_8c_aca02366611435e1d7a323cbe6a35c76c}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!HAL\_\-ISR\_\-FUNCTION@{HAL\_\-ISR\_\-FUNCTION}}
+\index{HAL\_\-ISR\_\-FUNCTION@{HAL\_\-ISR\_\-FUNCTION}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{HAL\_\-ISR\_\-FUNCTION}]{\setlength{\rightskip}{0pt plus 5cm}HAL\_\-ISR\_\-FUNCTION (
+\begin{DoxyParamCaption}
+\item[{port0\_\-ISR}]{, }
+\item[{P0INT\_\-VECTOR}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__digio_8c_aca02366611435e1d7a323cbe6a35c76c}
+
+
+Definition at line 415 of file hal\_\-digio.c.
+
+
+\begin{DoxyCode}
+{
+    register uint8 i;
+    P0IF = 0;
+    if (P0IFG)
+    {
+        for (i = 0; i < 8; i++)
+        {
+            register const uint8 pinmask = 1 << i;
+            if (P0IFG & pinmask) {
+                if (port0_isr_tbl[i] != 0) {
+                (*port0_isr_tbl[i])();
+                }
+                P0IFG &= ~pinmask;
+            }
+        }
+        //__low_power_mode_off_on_exit();
+    }
+}
+\end{DoxyCode}
+\hypertarget{hal__digio_8c_a71e7f51035827c5a405a2f04ed268009}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!HAL\_\-ISR\_\-FUNCTION@{HAL\_\-ISR\_\-FUNCTION}}
+\index{HAL\_\-ISR\_\-FUNCTION@{HAL\_\-ISR\_\-FUNCTION}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{HAL\_\-ISR\_\-FUNCTION}]{\setlength{\rightskip}{0pt plus 5cm}HAL\_\-ISR\_\-FUNCTION (
+\begin{DoxyParamCaption}
+\item[{port1\_\-ISR}]{, }
+\item[{P1INT\_\-VECTOR}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__digio_8c_a71e7f51035827c5a405a2f04ed268009}
+
+
+Definition at line 444 of file hal\_\-digio.c.
+
+
+\begin{DoxyCode}
+{
+    register uint8 i;
+    P1IF = 0;
+    if (P1IFG)
+    {
+        for (i = 0; i < 8; i++)
+        {
+            register const uint8 pinmask = 1 << i;
+            if (P1IFG & pinmask) {
+                if (port1_isr_tbl[i] != 0) {
+                    (*port1_isr_tbl[i])();
+                }
+                P1IFG &= ~pinmask;
+            }
+        }
+        //__low_power_mode_off_on_exit();
+    }
+}
+\end{DoxyCode}
+\hypertarget{hal__digio_8c_aff0491a3b49cba811a597edf0a5cb163}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!HAL\_\-ISR\_\-FUNCTION@{HAL\_\-ISR\_\-FUNCTION}}
+\index{HAL\_\-ISR\_\-FUNCTION@{HAL\_\-ISR\_\-FUNCTION}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{HAL\_\-ISR\_\-FUNCTION}]{\setlength{\rightskip}{0pt plus 5cm}HAL\_\-ISR\_\-FUNCTION (
+\begin{DoxyParamCaption}
+\item[{port2\_\-ISR}]{, }
+\item[{P2INT\_\-VECTOR}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__digio_8c_aff0491a3b49cba811a597edf0a5cb163}
+
+
+Definition at line 473 of file hal\_\-digio.c.
+
+
+\begin{DoxyCode}
+{
+    register uint8 i;
+    P2IF = 0;
+    if (P2IFG)
+    {
+        for (i = 0; i < 5; i++)
+        {
+            register const uint8 pinmask = 1 << i;
+            if (P2IFG & pinmask) {
+                if (port2_isr_tbl[i] != 0) {
+                    (*port2_isr_tbl[i])();
+                }
+                P2IFG &= ~pinmask;
+            }
+        }
+        //__low_power_mode_off_on_exit();
+    }
+}
+\end{DoxyCode}
+\hypertarget{hal__digio_8c_af97b4d079eb5c61f533c9ce567b57075}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!halDigioClear@{halDigioClear}}
+\index{halDigioClear@{halDigioClear}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{halDigioClear}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} halDigioClear (
+\begin{DoxyParamCaption}
+\item[{const {\bf digioConfig} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{hal__digio_8c_af97b4d079eb5c61f533c9ce567b57075}
+
+
+Definition at line 169 of file hal\_\-digio.c.
+
+
+\begin{DoxyCode}
+{
+   if (p->dir == HAL_DIGIO_OUTPUT)
+    {
+        switch (p->port)
+        {
+        case 0: P0 &= ~p->pin_bm; break;
+        case 1: P1 &= ~p->pin_bm; break;
+        case 2: P2 &= ~p->pin_bm; break;
+        default: return(HAL_DIGIO_ERROR);
+        }
+        return(HAL_DIGIO_OK);
+    }
+    return(HAL_DIGIO_ERROR);
+}
+\end{DoxyCode}
+\hypertarget{hal__digio_8c_a257cf6314deb7c40caccff1cab93a546}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!halDigioConfig@{halDigioConfig}}
+\index{halDigioConfig@{halDigioConfig}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{halDigioConfig}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} halDigioConfig (
+\begin{DoxyParamCaption}
+\item[{const {\bf digioConfig} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{hal__digio_8c_a257cf6314deb7c40caccff1cab93a546}
+
+
+Definition at line 59 of file hal\_\-digio.c.
+
+
+\begin{DoxyCode}
+{
+  //  register volatile uint8* dir;
+    register const uint8 bitmask = p->pin_bm;
+
+    // Sanity check
+    if ((bitmask == 0) || (bitmask != (uint8)BV(p->pin)))
+    {
+        return(HAL_DIGIO_ERROR);
+    }
+
+    switch(p->port)
+    {
+    case 0: P0SEL &= ~bitmask; 
+            if (p->dir == HAL_DIGIO_OUTPUT)
+            {
+                if (p->initval == 1)
+                {
+                  P0 |= bitmask;  
+                }
+                else
+                {
+                  P0 &= ~bitmask;
+                }
+                P0DIR |= bitmask;
+             }
+             else // input
+             {
+                P0DIR &= ~bitmask;
+             }
+            break;
+     case 1: P1SEL &= ~bitmask; 
+            if (p->dir == HAL_DIGIO_OUTPUT)
+            {
+                if (p->initval == 1)
+                {
+                  P1 |= bitmask;  
+                }
+                else
+                {
+                  P1 &= ~bitmask;
+                }
+                P1DIR |= bitmask;
+             }
+             else // input
+             {
+                P1DIR &= ~bitmask;
+             }
+            break;
+     case 2: P2SEL &= ~bitmask; 
+            if (p->dir == HAL_DIGIO_OUTPUT)
+            {
+                if (p->initval == 1)
+                {
+                  P2 |= bitmask;  
+                }
+                else
+                {
+                  P2 &= ~bitmask;
+                }
+                P2DIR |= bitmask;
+             }
+             else // input
+             {
+                P2DIR &= ~bitmask;
+             }
+            break;
+    //case 1: P1SEL &= ~bitmask; out = &P1OUT; dir = &P1DIR; break;
+    //case 2: P2SEL &= ~bitmask; out = &P2OUT; dir = &P2DIR; break;
+    default: return(HAL_DIGIO_ERROR);
+    }
+    return(HAL_DIGIO_OK);
+}
+\end{DoxyCode}
+\hypertarget{hal__digio_8c_a93543475c0884b1992cbe1f3bea2abd8}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!halDigioGet@{halDigioGet}}
+\index{halDigioGet@{halDigioGet}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{halDigioGet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} halDigioGet (
+\begin{DoxyParamCaption}
+\item[{const {\bf digioConfig} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{hal__digio_8c_a93543475c0884b1992cbe1f3bea2abd8}
+
+
+Definition at line 221 of file hal\_\-digio.c.
+
+
+\begin{DoxyCode}
+{
+    if (p->dir == HAL_DIGIO_INPUT)
+    {
+        switch (p->port)
+        {
+        case 0: return (P0 & p->pin_bm ? 1 : 0);
+        case 1: return (P1 & p->pin_bm ? 1 : 0);
+        case 2: return (P2 & p->pin_bm ? 1 : 0);
+        default: break;
+        }
+    }
+    return(HAL_DIGIO_ERROR);
+}
+\end{DoxyCode}
+\hypertarget{hal__digio_8c_ad7d5f980e040f198eec7a8a8d291c708}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!halDigioIntClear@{halDigioIntClear}}
+\index{halDigioIntClear@{halDigioIntClear}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{halDigioIntClear}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} halDigioIntClear (
+\begin{DoxyParamCaption}
+\item[{const {\bf digioConfig} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{hal__digio_8c_ad7d5f980e040f198eec7a8a8d291c708}
+
+
+Definition at line 344 of file hal\_\-digio.c.
+
+
+\begin{DoxyCode}
+{
+    switch (p->port)
+    {
+    case 0: P0IFG &= ~p->pin_bm; break;
+    case 1: P1IFG &= ~p->pin_bm; break;
+    case 2: P2IFG &= ~p->pin_bm; break;
+    default: return(HAL_DIGIO_ERROR);
+    }
+    return(HAL_DIGIO_OK);
+}
+\end{DoxyCode}
+\hypertarget{hal__digio_8c_a2abd80df69d6fcc9e18e47b878ce1f8d}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!halDigioIntConnect@{halDigioIntConnect}}
+\index{halDigioIntConnect@{halDigioIntConnect}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{halDigioIntConnect}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} halDigioIntConnect (
+\begin{DoxyParamCaption}
+\item[{const {\bf digioConfig} $\ast$}]{p, }
+\item[{{\bf ISR\_\-FUNC\_\-PTR}}]{func}
+\end{DoxyParamCaption}
+)}}
+\label{hal__digio_8c_a2abd80df69d6fcc9e18e47b878ce1f8d}
+
+
+Definition at line 247 of file hal\_\-digio.c.
+
+
+\begin{DoxyCode}
+{
+  istate_t key;
+    HAL_INT_LOCK(key);
+    switch (p->port)
+    {
+    case 0: port0_isr_tbl[p->pin] = func; break;
+    case 1: port1_isr_tbl[p->pin] = func; break;
+    case 2: port2_isr_tbl[p->pin] = func; break;
+    default: HAL_INT_UNLOCK(key); return(HAL_DIGIO_ERROR);
+    }
+    halDigioIntClear(p);
+    HAL_INT_UNLOCK(key);
+    return(HAL_DIGIO_OK);
+}
+\end{DoxyCode}
+\hypertarget{hal__digio_8c_a1cada35f41e640b0e2af85b4ef6afaef}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!halDigioIntDisable@{halDigioIntDisable}}
+\index{halDigioIntDisable@{halDigioIntDisable}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{halDigioIntDisable}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} halDigioIntDisable (
+\begin{DoxyParamCaption}
+\item[{const {\bf digioConfig} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{hal__digio_8c_a1cada35f41e640b0e2af85b4ef6afaef}
+
+
+Definition at line 310 of file hal\_\-digio.c.
+
+
+\begin{DoxyCode}
+{
+   switch (p->port)
+    {
+    case 0: 
+      if (p->pin  < 4) {
+        PICTL &= ~PICTL_P0IENL_BM; // clear P0IENL
+      }
+      else {
+        PICTL &= ~PICTL_P0IENH_BM;    // clear P0IENH
+      }
+            break;
+    case 1:
+      P1IEN &= ~p->pin_bm;
+      break;
+    case 2:
+      PICTL &= ~PICTL_P2IEN_BM; // Clear P2IEN
+      break;
+    default: 
+      return(HAL_DIGIO_ERROR);
+    }
+    return(HAL_DIGIO_OK);
+}
+\end{DoxyCode}
+\hypertarget{hal__digio_8c_ae7ca246de44b4159ceb6abe821b94739}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!halDigioIntEnable@{halDigioIntEnable}}
+\index{halDigioIntEnable@{halDigioIntEnable}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{halDigioIntEnable}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} halDigioIntEnable (
+\begin{DoxyParamCaption}
+\item[{const {\bf digioConfig} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{hal__digio_8c_ae7ca246de44b4159ceb6abe821b94739}
+
+
+Definition at line 273 of file hal\_\-digio.c.
+
+
+\begin{DoxyCode}
+{
+     switch (p->port)
+    {
+    case 0: 
+      P0IE = 1;    // set P0IE bit
+      if (p->pin < 4) {
+        PICTL |= PICTL_P0IENL_BM; // set P0IENL
+      }
+      else {
+        PICTL |= PICTL_P0IENH_BM; // set P0IENH
+      }
+            break;
+    case 1:
+      IEN2 |= 0x10;    // set P1IE bit
+      P1IEN |= p->pin_bm;
+      break;
+    case 2:
+      IEN2 |= 0x02;
+      PICTL |= PICTL_P2IEN_BM; // Set P2IEN
+      break;
+    default: 
+      return(HAL_DIGIO_ERROR);
+    }
+    return(HAL_DIGIO_OK);
+}
+\end{DoxyCode}
+\hypertarget{hal__digio_8c_adf8019defec99f13fd6fdbdcaebbeeea}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!halDigioIntSetEdge@{halDigioIntSetEdge}}
+\index{halDigioIntSetEdge@{halDigioIntSetEdge}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{halDigioIntSetEdge}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} halDigioIntSetEdge (
+\begin{DoxyParamCaption}
+\item[{const {\bf digioConfig} $\ast$}]{p, }
+\item[{{\bf uint8}}]{edge}
+\end{DoxyParamCaption}
+)}}
+\label{hal__digio_8c_adf8019defec99f13fd6fdbdcaebbeeea}
+
+
+Definition at line 369 of file hal\_\-digio.c.
+
+
+\begin{DoxyCode}
+{
+  switch(edge)
+    {
+    case HAL_DIGIO_INT_FALLING_EDGE:
+        switch(p->port)
+        {
+        case 0: PICTL |= PICTL_P0ICON_BM; // set P0ICON high
+                break;
+        case 1: PICTL |= PICTL_P1ICON_BM; // set P1ICON high
+                break;
+        case 2: PICTL |= PICTL_P2ICON_BM; // set P2ICON high
+                break;
+        default: return(HAL_DIGIO_ERROR);
+        }
+        break;
+
+    case HAL_DIGIO_INT_RISING_EDGE:
+        switch(p->port)
+        {
+        case 0: PICTL &= ~PICTL_P0ICON_BM; // set P0ICON low
+                break;
+        case 1: PICTL &= ~PICTL_P1ICON_BM; // set P0ICON low
+                break;
+        case 2: PICTL &= ~PICTL_P2ICON_BM; // set P0ICON low
+                break;
+        default: return(HAL_DIGIO_ERROR);
+        }
+        break;
+
+    default:
+        return(HAL_DIGIO_ERROR);
+    }
+    return(HAL_DIGIO_OK);
+}
+\end{DoxyCode}
+\hypertarget{hal__digio_8c_a00be5f8f643ea18c5243770e3a08f045}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!halDigioSet@{halDigioSet}}
+\index{halDigioSet@{halDigioSet}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{halDigioSet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} halDigioSet (
+\begin{DoxyParamCaption}
+\item[{const {\bf digioConfig} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{hal__digio_8c_a00be5f8f643ea18c5243770e3a08f045}
+
+
+Definition at line 143 of file hal\_\-digio.c.
+
+
+\begin{DoxyCode}
+{
+   if (p->dir == HAL_DIGIO_OUTPUT)
+    {
+        switch (p->port)
+        {
+        case 0: P0 |= p->pin_bm; break;
+        case 1: P1 |= p->pin_bm; break;
+        case 2: P2 |= p->pin_bm; break;
+        default: return(HAL_DIGIO_ERROR);
+        }
+        return(HAL_DIGIO_OK);
+    }
+    return(HAL_DIGIO_ERROR);
+}
+\end{DoxyCode}
+\hypertarget{hal__digio_8c_a2dafdaa69c5e90dab35f5802a3d8e32f}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!halDigioToggle@{halDigioToggle}}
+\index{halDigioToggle@{halDigioToggle}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{halDigioToggle}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} halDigioToggle (
+\begin{DoxyParamCaption}
+\item[{const {\bf digioConfig} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{hal__digio_8c_a2dafdaa69c5e90dab35f5802a3d8e32f}
+
+
+Definition at line 195 of file hal\_\-digio.c.
+
+
+\begin{DoxyCode}
+{
+  if (p->dir == HAL_DIGIO_OUTPUT)
+    {
+        switch (p->port)
+        {
+        case 0: P0 ^= p->pin_bm; break;
+        case 1: P1 ^= p->pin_bm; break;
+        case 2: P2 ^= p->pin_bm; break;
+        default: return(HAL_DIGIO_ERROR);
+        }
+        return(HAL_DIGIO_OK);
+    }
+    return(HAL_DIGIO_ERROR);
+}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\hypertarget{hal__digio_8c_a827e8d891b3b490f1796ffad5823ef3e}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!port0\_\-isr\_\-tbl@{port0\_\-isr\_\-tbl}}
+\index{port0\_\-isr\_\-tbl@{port0\_\-isr\_\-tbl}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{port0\_\-isr\_\-tbl}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ISR\_\-FUNC\_\-PTR} {\bf port0\_\-isr\_\-tbl}\mbox{[}8\mbox{]} = \{0\}\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{hal__digio_8c_a827e8d891b3b490f1796ffad5823ef3e}
+
+
+Definition at line 28 of file hal\_\-digio.c.
+
+\hypertarget{hal__digio_8c_ab331943b5a68a14666b4f3d10157c332}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!port1\_\-isr\_\-tbl@{port1\_\-isr\_\-tbl}}
+\index{port1\_\-isr\_\-tbl@{port1\_\-isr\_\-tbl}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{port1\_\-isr\_\-tbl}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ISR\_\-FUNC\_\-PTR} {\bf port1\_\-isr\_\-tbl}\mbox{[}8\mbox{]} = \{0\}\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{hal__digio_8c_ab331943b5a68a14666b4f3d10157c332}
+
+
+Definition at line 29 of file hal\_\-digio.c.
+
+\hypertarget{hal__digio_8c_a8ee15197bf88829f582d84db417db040}{
+\index{hal\_\-digio.c@{hal\_\-digio.c}!port2\_\-isr\_\-tbl@{port2\_\-isr\_\-tbl}}
+\index{port2\_\-isr\_\-tbl@{port2\_\-isr\_\-tbl}!hal_digio.c@{hal\_\-digio.c}}
+\subsubsection[{port2\_\-isr\_\-tbl}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ISR\_\-FUNC\_\-PTR} {\bf port2\_\-isr\_\-tbl}\mbox{[}5\mbox{]} = \{0\}\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{hal__digio_8c_a8ee15197bf88829f582d84db417db040}
+
+
+Definition at line 30 of file hal\_\-digio.c.
+

@@ -1,0 +1,530 @@
+\hypertarget{hal__cc8051_8h}{
+\section{hal\_\-cc8051.h File Reference}
+\label{hal__cc8051_8h}\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}}
+}
+{\ttfamily \#include $<$hal\_\-types.h$>$}\par
+{\ttfamily \#include $<$hal\_\-defs.h$>$}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{hal__cc8051_8h_ad4d43f8748b542bce39e18790f845ecc}{BIT0}~0x01
+\item 
+\#define \hyperlink{hal__cc8051_8h_a601923eba46784638244c1ebf2622a2a}{BIT1}~0x02
+\item 
+\#define \hyperlink{hal__cc8051_8h_a9c9560bccccb00174801c728f1ed1399}{BIT2}~0x04
+\item 
+\#define \hyperlink{hal__cc8051_8h_a8e44574a8a8becc885b05f3bc367ef6a}{BIT3}~0x08
+\item 
+\#define \hyperlink{hal__cc8051_8h_aa731e0b6cf75f4e637ee88959315f5e4}{BIT4}~0x10
+\item 
+\#define \hyperlink{hal__cc8051_8h_ae692bc3df48028ceb1ddc2534a993bb8}{BIT5}~0x20
+\item 
+\#define \hyperlink{hal__cc8051_8h_acc2d074401e2b6322ee8f03476c24677}{BIT6}~0x40
+\item 
+\#define \hyperlink{hal__cc8051_8h_aa6b8f3261ae9e2e1043380c192f7b5f0}{BIT7}~0x80
+\item 
+\#define \hyperlink{hal__cc8051_8h_a075838b76bf86d975e633ead7f5cbc1f}{MCU\_\-IO\_\-TRISTATE}~1
+\item 
+\#define \hyperlink{hal__cc8051_8h_a8902c165b04aa083766b7a6e7101e980}{MCU\_\-IO\_\-PULLUP}~2
+\item 
+\#define \hyperlink{hal__cc8051_8h_a59897c37ca014e424543aa695753cc8c}{MCU\_\-IO\_\-PULLDOWN}~3
+\item 
+\#define \hyperlink{hal__cc8051_8h_af5955c88f669fff1177090496715aabc}{MCU\_\-IO\_\-PERIPHERAL}(port, pin)~MCU\_\-IO\_\-PERIPHERAL\_\-PREP(port, pin)
+\item 
+\#define \hyperlink{hal__cc8051_8h_a11f5876b315381dc174500bbfa6330a6}{MCU\_\-IO\_\-INPUT}(port, pin, func)~MCU\_\-IO\_\-INPUT\_\-PREP(port, pin, func)
+\item 
+\#define \hyperlink{hal__cc8051_8h_a116af97d27ecf005977027d74b2b1e21}{MCU\_\-IO\_\-OUTPUT}(port, pin, val)~MCU\_\-IO\_\-OUTPUT\_\-PREP(port, pin, val)
+\item 
+\#define \hyperlink{hal__cc8051_8h_ac99f03dec8fe9a5b9f39190bdc14b0cc}{MCU\_\-IO\_\-SET}(port, pin, val)~MCU\_\-IO\_\-SET\_\-PREP(port, pin, val)
+\item 
+\#define \hyperlink{hal__cc8051_8h_ac403a0741f52e77e632a236b27b88a2c}{MCU\_\-IO\_\-SET\_\-HIGH}(port, pin)~MCU\_\-IO\_\-SET\_\-HIGH\_\-PREP(port, pin)
+\item 
+\#define \hyperlink{hal__cc8051_8h_a14800745a6dc9effbf9c3e957ff5a1eb}{MCU\_\-IO\_\-SET\_\-LOW}(port, pin)~MCU\_\-IO\_\-SET\_\-LOW\_\-PREP(port, pin)
+\item 
+\#define \hyperlink{hal__cc8051_8h_a3342ea17678ba76c5fffa672e9178cd8}{MCU\_\-IO\_\-TGL}(port, pin)~MCU\_\-IO\_\-TGL\_\-PREP(port, pin)
+\item 
+\#define \hyperlink{hal__cc8051_8h_af33e48199489d6d74f1e8be955069a5f}{MCU\_\-IO\_\-GET}(port, pin)~MCU\_\-IO\_\-GET\_\-PREP(port, pin)
+\item 
+\#define \hyperlink{hal__cc8051_8h_a100147210a6b84edaf15e7131da86e6b}{MCU\_\-IO\_\-DIR\_\-INPUT}(port, pin)~MCU\_\-IO\_\-DIR\_\-INPUT\_\-PREP(port, pin)
+\item 
+\#define \hyperlink{hal__cc8051_8h_a1f02403632a3867857041b0facad8e7d}{MCU\_\-IO\_\-DIR\_\-OUTPUT}(port, pin)~MCU\_\-IO\_\-DIR\_\-OUTPUT\_\-PREP(port, pin)
+\item 
+\#define \hyperlink{hal__cc8051_8h_a4c6c1e5ee3393ecfd461cd647e922448}{MCU\_\-IO\_\-PERIPHERAL\_\-PREP}(port, pin)~st( P\#\#port\#\#SEL $|$= BM(pin); )
+\item 
+\#define \hyperlink{hal__cc8051_8h_a491b9511c0e4e247db543bff3009d960}{MCU\_\-IO\_\-INPUT\_\-PREP}(port, pin, func)
+\item 
+\#define \hyperlink{hal__cc8051_8h_a25247f861c554f320ee4090f2e18fece}{MCU\_\-IO\_\-OUTPUT\_\-PREP}(port, pin, val)
+\item 
+\#define \hyperlink{hal__cc8051_8h_a4803fac50ea6f8f4e84a2d03cbc64351}{MCU\_\-IO\_\-SET\_\-HIGH\_\-PREP}(port, pin)~st( P\#\#port\#\#\_\-\#\#pin\#\# = 1; )
+\item 
+\#define \hyperlink{hal__cc8051_8h_acfc1f145594115c51df32c6bb33ffcbf}{MCU\_\-IO\_\-SET\_\-LOW\_\-PREP}(port, pin)~st( P\#\#port\#\#\_\-\#\#pin\#\# = 0; )
+\item 
+\#define \hyperlink{hal__cc8051_8h_a2436793672134c7aaadb11c1dd6bcaa2}{MCU\_\-IO\_\-SET\_\-PREP}(port, pin, val)~st( P\#\#port\#\#\_\-\#\#pin\#\# = val; )
+\item 
+\#define \hyperlink{hal__cc8051_8h_afef484e4175f10c542bd95241e9be81c}{MCU\_\-IO\_\-TGL\_\-PREP}(port, pin)~st( P\#\#port\#\#\_\-\#\#pin\#\# $^\wedge$= 1; )
+\item 
+\#define \hyperlink{hal__cc8051_8h_aecf9a3ed46f2048d55cbba688cbcff1d}{MCU\_\-IO\_\-GET\_\-PREP}(port, pin)~(P\#\#port\#\# \& BM(pin))
+\item 
+\#define \hyperlink{hal__cc8051_8h_ae31cc94cfa1681fa2641a46ae7810f74}{MCU\_\-IO\_\-DIR\_\-INPUT\_\-PREP}(port, pin)~st( P\#\#port\#\#DIR \&= $\sim$BM(pin); )
+\item 
+\#define \hyperlink{hal__cc8051_8h_a4a97a854790b8ac3992b8f5eaeb32c36}{MCU\_\-IO\_\-DIR\_\-OUTPUT\_\-PREP}(port, pin)~st( P\#\#port\#\#DIR $|$= BM(pin); )
+\item 
+\#define \hyperlink{hal__cc8051_8h_abad96e4b217802c4c0b812ab58d4715b}{IO\_\-DIR\_\-PORT\_\-PIN}(port, pin, dir)
+\item 
+\#define \hyperlink{hal__cc8051_8h_a403ee2e0e7a2d3755c42efe4e636d2a6}{IO\_\-IN}~0
+\item 
+\#define \hyperlink{hal__cc8051_8h_ab0b0680e1e8f4396ccbc336a5e07c6bf}{IO\_\-OUT}~1
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{hal__cc8051_8h_ad4d43f8748b542bce39e18790f845ecc}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!BIT0@{BIT0}}
+\index{BIT0@{BIT0}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{BIT0}]{\setlength{\rightskip}{0pt plus 5cm}\#define BIT0~0x01}}
+\label{hal__cc8051_8h_ad4d43f8748b542bce39e18790f845ecc}
+
+
+Definition at line 20 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_a601923eba46784638244c1ebf2622a2a}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!BIT1@{BIT1}}
+\index{BIT1@{BIT1}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{BIT1}]{\setlength{\rightskip}{0pt plus 5cm}\#define BIT1~0x02}}
+\label{hal__cc8051_8h_a601923eba46784638244c1ebf2622a2a}
+
+
+Definition at line 21 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_a9c9560bccccb00174801c728f1ed1399}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!BIT2@{BIT2}}
+\index{BIT2@{BIT2}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{BIT2}]{\setlength{\rightskip}{0pt plus 5cm}\#define BIT2~0x04}}
+\label{hal__cc8051_8h_a9c9560bccccb00174801c728f1ed1399}
+
+
+Definition at line 22 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_a8e44574a8a8becc885b05f3bc367ef6a}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!BIT3@{BIT3}}
+\index{BIT3@{BIT3}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{BIT3}]{\setlength{\rightskip}{0pt plus 5cm}\#define BIT3~0x08}}
+\label{hal__cc8051_8h_a8e44574a8a8becc885b05f3bc367ef6a}
+
+
+Definition at line 23 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_aa731e0b6cf75f4e637ee88959315f5e4}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!BIT4@{BIT4}}
+\index{BIT4@{BIT4}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{BIT4}]{\setlength{\rightskip}{0pt plus 5cm}\#define BIT4~0x10}}
+\label{hal__cc8051_8h_aa731e0b6cf75f4e637ee88959315f5e4}
+
+
+Definition at line 24 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_ae692bc3df48028ceb1ddc2534a993bb8}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!BIT5@{BIT5}}
+\index{BIT5@{BIT5}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{BIT5}]{\setlength{\rightskip}{0pt plus 5cm}\#define BIT5~0x20}}
+\label{hal__cc8051_8h_ae692bc3df48028ceb1ddc2534a993bb8}
+
+
+Definition at line 25 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_acc2d074401e2b6322ee8f03476c24677}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!BIT6@{BIT6}}
+\index{BIT6@{BIT6}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{BIT6}]{\setlength{\rightskip}{0pt plus 5cm}\#define BIT6~0x40}}
+\label{hal__cc8051_8h_acc2d074401e2b6322ee8f03476c24677}
+
+
+Definition at line 26 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_aa6b8f3261ae9e2e1043380c192f7b5f0}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!BIT7@{BIT7}}
+\index{BIT7@{BIT7}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{BIT7}]{\setlength{\rightskip}{0pt plus 5cm}\#define BIT7~0x80}}
+\label{hal__cc8051_8h_aa6b8f3261ae9e2e1043380c192f7b5f0}
+
+
+Definition at line 27 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_abad96e4b217802c4c0b812ab58d4715b}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!IO\_\-DIR\_\-PORT\_\-PIN@{IO\_\-DIR\_\-PORT\_\-PIN}}
+\index{IO\_\-DIR\_\-PORT\_\-PIN@{IO\_\-DIR\_\-PORT\_\-PIN}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{IO\_\-DIR\_\-PORT\_\-PIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define IO\_\-DIR\_\-PORT\_\-PIN(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin, }
+\item[{}]{dir}
+\end{DoxyParamCaption}
+)}}
+\label{hal__cc8051_8h_abad96e4b217802c4c0b812ab58d4715b}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                                  \
+      if (dir == IO_OUT)                 \
+         P##port##DIR |= (0x01<<(pin));  \
+      else                               \
+         P##port##DIR &= ~(0x01<<(pin)); \
+   }while(0)
+\end{DoxyCode}
+
+
+Definition at line 90 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_a403ee2e0e7a2d3755c42efe4e636d2a6}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!IO\_\-IN@{IO\_\-IN}}
+\index{IO\_\-IN@{IO\_\-IN}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{IO\_\-IN}]{\setlength{\rightskip}{0pt plus 5cm}\#define IO\_\-IN~0}}
+\label{hal__cc8051_8h_a403ee2e0e7a2d3755c42efe4e636d2a6}
+
+
+Definition at line 99 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_ab0b0680e1e8f4396ccbc336a5e07c6bf}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!IO\_\-OUT@{IO\_\-OUT}}
+\index{IO\_\-OUT@{IO\_\-OUT}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{IO\_\-OUT}]{\setlength{\rightskip}{0pt plus 5cm}\#define IO\_\-OUT~1}}
+\label{hal__cc8051_8h_ab0b0680e1e8f4396ccbc336a5e07c6bf}
+
+
+Definition at line 100 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_a100147210a6b84edaf15e7131da86e6b}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-DIR\_\-INPUT@{MCU\_\-IO\_\-DIR\_\-INPUT}}
+\index{MCU\_\-IO\_\-DIR\_\-INPUT@{MCU\_\-IO\_\-DIR\_\-INPUT}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-DIR\_\-INPUT}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-DIR\_\-INPUT(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin}
+\end{DoxyParamCaption}
+)~MCU\_\-IO\_\-DIR\_\-INPUT\_\-PREP(port, pin)}}
+\label{hal__cc8051_8h_a100147210a6b84edaf15e7131da86e6b}
+
+
+Definition at line 51 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_ae31cc94cfa1681fa2641a46ae7810f74}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-DIR\_\-INPUT\_\-PREP@{MCU\_\-IO\_\-DIR\_\-INPUT\_\-PREP}}
+\index{MCU\_\-IO\_\-DIR\_\-INPUT\_\-PREP@{MCU\_\-IO\_\-DIR\_\-INPUT\_\-PREP}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-DIR\_\-INPUT\_\-PREP}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-DIR\_\-INPUT\_\-PREP(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin}
+\end{DoxyParamCaption}
+)~st( P\#\#port\#\#DIR \&= $\sim$BM(pin); )}}
+\label{hal__cc8051_8h_ae31cc94cfa1681fa2641a46ae7810f74}
+
+
+Definition at line 86 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_a1f02403632a3867857041b0facad8e7d}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-DIR\_\-OUTPUT@{MCU\_\-IO\_\-DIR\_\-OUTPUT}}
+\index{MCU\_\-IO\_\-DIR\_\-OUTPUT@{MCU\_\-IO\_\-DIR\_\-OUTPUT}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-DIR\_\-OUTPUT}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-DIR\_\-OUTPUT(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin}
+\end{DoxyParamCaption}
+)~MCU\_\-IO\_\-DIR\_\-OUTPUT\_\-PREP(port, pin)}}
+\label{hal__cc8051_8h_a1f02403632a3867857041b0facad8e7d}
+
+
+Definition at line 52 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_a4a97a854790b8ac3992b8f5eaeb32c36}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-DIR\_\-OUTPUT\_\-PREP@{MCU\_\-IO\_\-DIR\_\-OUTPUT\_\-PREP}}
+\index{MCU\_\-IO\_\-DIR\_\-OUTPUT\_\-PREP@{MCU\_\-IO\_\-DIR\_\-OUTPUT\_\-PREP}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-DIR\_\-OUTPUT\_\-PREP}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-DIR\_\-OUTPUT\_\-PREP(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin}
+\end{DoxyParamCaption}
+)~st( P\#\#port\#\#DIR $|$= BM(pin); )}}
+\label{hal__cc8051_8h_a4a97a854790b8ac3992b8f5eaeb32c36}
+
+
+Definition at line 87 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_af33e48199489d6d74f1e8be955069a5f}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-GET@{MCU\_\-IO\_\-GET}}
+\index{MCU\_\-IO\_\-GET@{MCU\_\-IO\_\-GET}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-GET}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-GET(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin}
+\end{DoxyParamCaption}
+)~MCU\_\-IO\_\-GET\_\-PREP(port, pin)}}
+\label{hal__cc8051_8h_af33e48199489d6d74f1e8be955069a5f}
+
+
+Definition at line 49 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_aecf9a3ed46f2048d55cbba688cbcff1d}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-GET\_\-PREP@{MCU\_\-IO\_\-GET\_\-PREP}}
+\index{MCU\_\-IO\_\-GET\_\-PREP@{MCU\_\-IO\_\-GET\_\-PREP}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-GET\_\-PREP}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-GET\_\-PREP(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin}
+\end{DoxyParamCaption}
+)~(P\#\#port\#\# \& BM(pin))}}
+\label{hal__cc8051_8h_aecf9a3ed46f2048d55cbba688cbcff1d}
+
+
+Definition at line 84 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_a11f5876b315381dc174500bbfa6330a6}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-INPUT@{MCU\_\-IO\_\-INPUT}}
+\index{MCU\_\-IO\_\-INPUT@{MCU\_\-IO\_\-INPUT}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-INPUT}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-INPUT(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin, }
+\item[{}]{func}
+\end{DoxyParamCaption}
+)~MCU\_\-IO\_\-INPUT\_\-PREP(port, pin, func)}}
+\label{hal__cc8051_8h_a11f5876b315381dc174500bbfa6330a6}
+
+
+Definition at line 43 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_a491b9511c0e4e247db543bff3009d960}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-INPUT\_\-PREP@{MCU\_\-IO\_\-INPUT\_\-PREP}}
+\index{MCU\_\-IO\_\-INPUT\_\-PREP@{MCU\_\-IO\_\-INPUT\_\-PREP}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-INPUT\_\-PREP}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-INPUT\_\-PREP(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin, }
+\item[{}]{func}
+\end{DoxyParamCaption}
+)}}
+\label{hal__cc8051_8h_a491b9511c0e4e247db543bff3009d960}
+{\bfseries Value:}
+\begin{DoxyCode}
+st( P##port##SEL &= ~BM(pin); \
+                                                P##port##DIR &= ~BM(pin); \
+                                                switch (func) { \
+                                                case MCU_IO_PULLUP: \
+                                                    P##port##INP &= ~BM(pin); \
+                                                    P2INP &= ~BM(port + 5); \
+                                                    break; \
+                                                case MCU_IO_PULLDOWN: \
+                                                    P##port##INP &= ~BM(pin); \
+                                                    P2INP |= BM(port + 5); \
+                                                    break; \
+                                                default: \
+                                                    P##port##INP |= BM(pin); \
+                                                    break; } )
+\end{DoxyCode}
+
+
+Definition at line 60 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_a116af97d27ecf005977027d74b2b1e21}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-OUTPUT@{MCU\_\-IO\_\-OUTPUT}}
+\index{MCU\_\-IO\_\-OUTPUT@{MCU\_\-IO\_\-OUTPUT}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-OUTPUT}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-OUTPUT(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin, }
+\item[{}]{val}
+\end{DoxyParamCaption}
+)~MCU\_\-IO\_\-OUTPUT\_\-PREP(port, pin, val)}}
+\label{hal__cc8051_8h_a116af97d27ecf005977027d74b2b1e21}
+
+
+Definition at line 44 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_a25247f861c554f320ee4090f2e18fece}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-OUTPUT\_\-PREP@{MCU\_\-IO\_\-OUTPUT\_\-PREP}}
+\index{MCU\_\-IO\_\-OUTPUT\_\-PREP@{MCU\_\-IO\_\-OUTPUT\_\-PREP}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-OUTPUT\_\-PREP}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-OUTPUT\_\-PREP(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin, }
+\item[{}]{val}
+\end{DoxyParamCaption}
+)}}
+\label{hal__cc8051_8h_a25247f861c554f320ee4090f2e18fece}
+{\bfseries Value:}
+\begin{DoxyCode}
+st( P##port##SEL &= ~BM(pin); \
+                                                P##port##_##pin## = val; \
+                                                P##port##DIR |= BM(pin); )
+\end{DoxyCode}
+
+
+Definition at line 75 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_af5955c88f669fff1177090496715aabc}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-PERIPHERAL@{MCU\_\-IO\_\-PERIPHERAL}}
+\index{MCU\_\-IO\_\-PERIPHERAL@{MCU\_\-IO\_\-PERIPHERAL}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-PERIPHERAL}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-PERIPHERAL(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin}
+\end{DoxyParamCaption}
+)~MCU\_\-IO\_\-PERIPHERAL\_\-PREP(port, pin)}}
+\label{hal__cc8051_8h_af5955c88f669fff1177090496715aabc}
+
+
+Definition at line 42 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_a4c6c1e5ee3393ecfd461cd647e922448}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-PERIPHERAL\_\-PREP@{MCU\_\-IO\_\-PERIPHERAL\_\-PREP}}
+\index{MCU\_\-IO\_\-PERIPHERAL\_\-PREP@{MCU\_\-IO\_\-PERIPHERAL\_\-PREP}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-PERIPHERAL\_\-PREP}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-PERIPHERAL\_\-PREP(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin}
+\end{DoxyParamCaption}
+)~st( P\#\#port\#\#SEL $|$= BM(pin); )}}
+\label{hal__cc8051_8h_a4c6c1e5ee3393ecfd461cd647e922448}
+
+
+Definition at line 58 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_a59897c37ca014e424543aa695753cc8c}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-PULLDOWN@{MCU\_\-IO\_\-PULLDOWN}}
+\index{MCU\_\-IO\_\-PULLDOWN@{MCU\_\-IO\_\-PULLDOWN}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-PULLDOWN}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-PULLDOWN~3}}
+\label{hal__cc8051_8h_a59897c37ca014e424543aa695753cc8c}
+
+
+Definition at line 36 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_a8902c165b04aa083766b7a6e7101e980}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-PULLUP@{MCU\_\-IO\_\-PULLUP}}
+\index{MCU\_\-IO\_\-PULLUP@{MCU\_\-IO\_\-PULLUP}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-PULLUP}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-PULLUP~2}}
+\label{hal__cc8051_8h_a8902c165b04aa083766b7a6e7101e980}
+
+
+Definition at line 35 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_ac99f03dec8fe9a5b9f39190bdc14b0cc}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-SET@{MCU\_\-IO\_\-SET}}
+\index{MCU\_\-IO\_\-SET@{MCU\_\-IO\_\-SET}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-SET}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-SET(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin, }
+\item[{}]{val}
+\end{DoxyParamCaption}
+)~MCU\_\-IO\_\-SET\_\-PREP(port, pin, val)}}
+\label{hal__cc8051_8h_ac99f03dec8fe9a5b9f39190bdc14b0cc}
+
+
+Definition at line 45 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_ac403a0741f52e77e632a236b27b88a2c}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-SET\_\-HIGH@{MCU\_\-IO\_\-SET\_\-HIGH}}
+\index{MCU\_\-IO\_\-SET\_\-HIGH@{MCU\_\-IO\_\-SET\_\-HIGH}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-SET\_\-HIGH}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-SET\_\-HIGH(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin}
+\end{DoxyParamCaption}
+)~MCU\_\-IO\_\-SET\_\-HIGH\_\-PREP(port, pin)}}
+\label{hal__cc8051_8h_ac403a0741f52e77e632a236b27b88a2c}
+
+
+Definition at line 46 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_a4803fac50ea6f8f4e84a2d03cbc64351}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-SET\_\-HIGH\_\-PREP@{MCU\_\-IO\_\-SET\_\-HIGH\_\-PREP}}
+\index{MCU\_\-IO\_\-SET\_\-HIGH\_\-PREP@{MCU\_\-IO\_\-SET\_\-HIGH\_\-PREP}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-SET\_\-HIGH\_\-PREP}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-SET\_\-HIGH\_\-PREP(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin}
+\end{DoxyParamCaption}
+)~st( P\#\#port\#\#\_\-\#\#pin\#\# = 1; )}}
+\label{hal__cc8051_8h_a4803fac50ea6f8f4e84a2d03cbc64351}
+
+
+Definition at line 79 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_a14800745a6dc9effbf9c3e957ff5a1eb}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-SET\_\-LOW@{MCU\_\-IO\_\-SET\_\-LOW}}
+\index{MCU\_\-IO\_\-SET\_\-LOW@{MCU\_\-IO\_\-SET\_\-LOW}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-SET\_\-LOW}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-SET\_\-LOW(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin}
+\end{DoxyParamCaption}
+)~MCU\_\-IO\_\-SET\_\-LOW\_\-PREP(port, pin)}}
+\label{hal__cc8051_8h_a14800745a6dc9effbf9c3e957ff5a1eb}
+
+
+Definition at line 47 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_acfc1f145594115c51df32c6bb33ffcbf}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-SET\_\-LOW\_\-PREP@{MCU\_\-IO\_\-SET\_\-LOW\_\-PREP}}
+\index{MCU\_\-IO\_\-SET\_\-LOW\_\-PREP@{MCU\_\-IO\_\-SET\_\-LOW\_\-PREP}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-SET\_\-LOW\_\-PREP}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-SET\_\-LOW\_\-PREP(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin}
+\end{DoxyParamCaption}
+)~st( P\#\#port\#\#\_\-\#\#pin\#\# = 0; )}}
+\label{hal__cc8051_8h_acfc1f145594115c51df32c6bb33ffcbf}
+
+
+Definition at line 80 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_a2436793672134c7aaadb11c1dd6bcaa2}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-SET\_\-PREP@{MCU\_\-IO\_\-SET\_\-PREP}}
+\index{MCU\_\-IO\_\-SET\_\-PREP@{MCU\_\-IO\_\-SET\_\-PREP}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-SET\_\-PREP}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-SET\_\-PREP(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin, }
+\item[{}]{val}
+\end{DoxyParamCaption}
+)~st( P\#\#port\#\#\_\-\#\#pin\#\# = val; )}}
+\label{hal__cc8051_8h_a2436793672134c7aaadb11c1dd6bcaa2}
+
+
+Definition at line 82 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_a3342ea17678ba76c5fffa672e9178cd8}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-TGL@{MCU\_\-IO\_\-TGL}}
+\index{MCU\_\-IO\_\-TGL@{MCU\_\-IO\_\-TGL}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-TGL}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-TGL(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin}
+\end{DoxyParamCaption}
+)~MCU\_\-IO\_\-TGL\_\-PREP(port, pin)}}
+\label{hal__cc8051_8h_a3342ea17678ba76c5fffa672e9178cd8}
+
+
+Definition at line 48 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_afef484e4175f10c542bd95241e9be81c}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-TGL\_\-PREP@{MCU\_\-IO\_\-TGL\_\-PREP}}
+\index{MCU\_\-IO\_\-TGL\_\-PREP@{MCU\_\-IO\_\-TGL\_\-PREP}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-TGL\_\-PREP}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-TGL\_\-PREP(
+\begin{DoxyParamCaption}
+\item[{}]{port, }
+\item[{}]{pin}
+\end{DoxyParamCaption}
+)~st( P\#\#port\#\#\_\-\#\#pin\#\# $^\wedge$= 1; )}}
+\label{hal__cc8051_8h_afef484e4175f10c542bd95241e9be81c}
+
+
+Definition at line 83 of file hal\_\-cc8051.h.
+
+\hypertarget{hal__cc8051_8h_a075838b76bf86d975e633ead7f5cbc1f}{
+\index{hal\_\-cc8051.h@{hal\_\-cc8051.h}!MCU\_\-IO\_\-TRISTATE@{MCU\_\-IO\_\-TRISTATE}}
+\index{MCU\_\-IO\_\-TRISTATE@{MCU\_\-IO\_\-TRISTATE}!hal_cc8051.h@{hal\_\-cc8051.h}}
+\subsubsection[{MCU\_\-IO\_\-TRISTATE}]{\setlength{\rightskip}{0pt plus 5cm}\#define MCU\_\-IO\_\-TRISTATE~1}}
+\label{hal__cc8051_8h_a075838b76bf86d975e633ead7f5cbc1f}
+
+
+Definition at line 34 of file hal\_\-cc8051.h.
+

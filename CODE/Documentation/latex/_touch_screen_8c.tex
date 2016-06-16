@@ -1,0 +1,349 @@
+\hypertarget{_touch_screen_8c}{
+\section{TouchScreen.c File Reference}
+\label{_touch_screen_8c}\index{TouchScreen.c@{TouchScreen.c}}
+}
+{\ttfamily \#include $<$ioCC2430.h$>$}\par
+{\ttfamily \#include \char`\"{}TouchScreen.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}adc.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}uart\_\-intfc.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-led.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-cc8051.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-mcu.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}key\_\-map.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}App\_\-RF.h\char`\"{}}\par
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_touch_screen_8c_aaa46a21b2b9d9cc2587276053ea5dbaa}{TouchScreen} (void)
+\item 
+void \hyperlink{_touch_screen_8c_af71fccaa8767fdccf6292ae1b1858d36}{Initialize\_\-TouchScreen} (void)
+\item 
+void \hyperlink{_touch_screen_8c_acb3cf096d11fc96bf647dcf1d95f50bb}{waitForTouch} (void)
+\item 
+unsigned int \hyperlink{_touch_screen_8c_a095fda662eed21e11148cdeebd25edca}{getSamples} (unsigned int chan)
+\item 
+void \hyperlink{_touch_screen_8c_a87e664c8dc800108ce211df7aa821d15}{readXY} ()
+\item 
+void \hyperlink{_touch_screen_8c_a154a121aeefce7e73e82c4b5e2859931}{setXDrive} (void)
+\item 
+void \hyperlink{_touch_screen_8c_a1eb81641044c586f62115d49b7d94abe}{setYDrive} (void)
+\item 
+void \hyperlink{_touch_screen_8c_ab7ccc6216782cf98e6d81b58d759f84c}{clearDrives} (void)
+\item 
+void \hyperlink{_touch_screen_8c_a794656c9d811e77faff3f39cce66a8a7}{setTouchDrives} (void)
+\item 
+void \hyperlink{_touch_screen_8c_a5d28ed9059c09eb30c958840ea455058}{sendData} (unsigned int xCoord, unsigned int yCoord)
+\item 
+void \hyperlink{_touch_screen_8c_a6dc1ff8fd02f312c5717264c21db88fe}{getTsXY} (unsigned int $\ast$xCoord, unsigned int $\ast$yCoord)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{_touch_screen_8c_a0621a59e68745970bedd6df6d3d8fa93}{str\_\-buf} \mbox{[}20\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{_touch_screen_8c_ab7ccc6216782cf98e6d81b58d759f84c}{
+\index{TouchScreen.c@{TouchScreen.c}!clearDrives@{clearDrives}}
+\index{clearDrives@{clearDrives}!TouchScreen.c@{TouchScreen.c}}
+\subsubsection[{clearDrives}]{\setlength{\rightskip}{0pt plus 5cm}void clearDrives (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{_touch_screen_8c_ab7ccc6216782cf98e6d81b58d759f84c}
+
+
+Definition at line 185 of file TouchScreen.c.
+
+
+\begin{DoxyCode}
+{
+    MCU_IO_INPUT(0,XN_C,MCU_IO_TRISTATE);
+    MCU_IO_INPUT(0,YN_C,MCU_IO_TRISTATE);
+    MCU_IO_INPUT(0,XP_C,MCU_IO_TRISTATE);
+    MCU_IO_INPUT(0,YP_C,MCU_IO_TRISTATE);
+}
+\end{DoxyCode}
+\hypertarget{_touch_screen_8c_a095fda662eed21e11148cdeebd25edca}{
+\index{TouchScreen.c@{TouchScreen.c}!getSamples@{getSamples}}
+\index{getSamples@{getSamples}!TouchScreen.c@{TouchScreen.c}}
+\subsubsection[{getSamples}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int getSamples (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{chan}
+\end{DoxyParamCaption}
+)}}
+\label{_touch_screen_8c_a095fda662eed21e11148cdeebd25edca}
+
+
+Definition at line 102 of file TouchScreen.c.
+
+
+\begin{DoxyCode}
+{
+        unsigned char loop;
+        unsigned int avg = 0;                     // Clear average variable
+        for (loop=0;loop<NUMSAMPLES;loop++) {     // Loop
+        avg = avg + adcSampleSingle(ADC_REF_AVDD,ADC_12_BIT,chan);              /
+      / Accumulate samples
+        }
+        avg = avg >> SAMPLESHIFT;                 // Calculate average
+        return avg;                               // Return average
+}
+\end{DoxyCode}
+\hypertarget{_touch_screen_8c_a6dc1ff8fd02f312c5717264c21db88fe}{
+\index{TouchScreen.c@{TouchScreen.c}!getTsXY@{getTsXY}}
+\index{getTsXY@{getTsXY}!TouchScreen.c@{TouchScreen.c}}
+\subsubsection[{getTsXY}]{\setlength{\rightskip}{0pt plus 5cm}void getTsXY (
+\begin{DoxyParamCaption}
+\item[{unsigned int $\ast$}]{xCoord, }
+\item[{unsigned int $\ast$}]{yCoord}
+\end{DoxyParamCaption}
+)}}
+\label{_touch_screen_8c_a6dc1ff8fd02f312c5717264c21db88fe}
+
+
+Definition at line 260 of file TouchScreen.c.
+
+
+\begin{DoxyCode}
+                                                         {
+        
+        Initialize_TouchScreen();               // Initialize device
+        readXY();                               // Get X,Y coordinates
+        *xCoord = x;
+        *yCoord = y;
+}\end{DoxyCode}
+\hypertarget{_touch_screen_8c_af71fccaa8767fdccf6292ae1b1858d36}{
+\index{TouchScreen.c@{TouchScreen.c}!Initialize\_\-TouchScreen@{Initialize\_\-TouchScreen}}
+\index{Initialize\_\-TouchScreen@{Initialize\_\-TouchScreen}!TouchScreen.c@{TouchScreen.c}}
+\subsubsection[{Initialize\_\-TouchScreen}]{\setlength{\rightskip}{0pt plus 5cm}void Initialize\_\-TouchScreen (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{_touch_screen_8c_af71fccaa8767fdccf6292ae1b1858d36}
+
+
+Definition at line 64 of file TouchScreen.c.
+
+
+\begin{DoxyCode}
+{
+        clearDrives();                        // Clear outputs
+        PICTL |= 1;                             // Y+drive high to low transition
+       int
+}
+\end{DoxyCode}
+\hypertarget{_touch_screen_8c_a87e664c8dc800108ce211df7aa821d15}{
+\index{TouchScreen.c@{TouchScreen.c}!readXY@{readXY}}
+\index{readXY@{readXY}!TouchScreen.c@{TouchScreen.c}}
+\subsubsection[{readXY}]{\setlength{\rightskip}{0pt plus 5cm}void readXY (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{_touch_screen_8c_a87e664c8dc800108ce211df7aa821d15}
+
+
+Definition at line 123 of file TouchScreen.c.
+
+
+\begin{DoxyCode}
+{
+        // Find X Coordinate
+        setXDrive();                              // Set X wires to drives
+        x = getSamples(CHAN_YP);          // Sample Y+ to get X coordinate
+        
+        // Find Y Coordinate
+        setYDrive();                              // Set Y wires to drives
+        y = getSamples(CHAN_XP);          // Sample X+ to get Y coordinate
+        
+        // Setup pins to check if screen is still touched
+        setTouchDrives();                         // See if screen still touched
+        
+        clearDrives();                            // Clear drive wires
+}
+\end{DoxyCode}
+\hypertarget{_touch_screen_8c_a5d28ed9059c09eb30c958840ea455058}{
+\index{TouchScreen.c@{TouchScreen.c}!sendData@{sendData}}
+\index{sendData@{sendData}!TouchScreen.c@{TouchScreen.c}}
+\subsubsection[{sendData}]{\setlength{\rightskip}{0pt plus 5cm}void sendData (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{xCoord, }
+\item[{unsigned int}]{yCoord}
+\end{DoxyParamCaption}
+)}}
+\label{_touch_screen_8c_a5d28ed9059c09eb30c958840ea455058}
+
+
+Definition at line 227 of file TouchScreen.c.
+
+
+\begin{DoxyCode}
+                                                        {
+  //static   char byte[5];
+
+//    xCoord -= 1100;
+//    yCoord -= 700;
+        unsigned char keyNote = 0;
+
+    if((signed int)xCoord < 0)  xCoord = 0;
+    if((signed int)yCoord < 0)  yCoord = 0;
+
+
+    sprintf(str_buf, "X: %d, Y:%d\n\r",xCoord, yCoord);
+    tx1_send(str_buf,strlen(str_buf));
+        
+        keyNote = piano_key_match(xCoord, yCoord);
+        //keyNote = drum_key_match(xCoord, yCoord);
+        tx1_send(&keyNote, 1);
+        RF_Send(&keyNote, 1);
+
+}
+\end{DoxyCode}
+\hypertarget{_touch_screen_8c_a794656c9d811e77faff3f39cce66a8a7}{
+\index{TouchScreen.c@{TouchScreen.c}!setTouchDrives@{setTouchDrives}}
+\index{setTouchDrives@{setTouchDrives}!TouchScreen.c@{TouchScreen.c}}
+\subsubsection[{setTouchDrives}]{\setlength{\rightskip}{0pt plus 5cm}void setTouchDrives (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{_touch_screen_8c_a794656c9d811e77faff3f39cce66a8a7}
+
+
+Definition at line 204 of file TouchScreen.c.
+
+
+\begin{DoxyCode}
+{
+        clearDrives();
+        MCU_IO_OUTPUT(0,YP_C,1);
+        MCU_IO_INPUT(0,YP_C,MCU_IO_PULLUP);
+        MCU_IO_OUTPUT(0,XN_C,0);
+        halMcuWaitMs(1);                                 // Wait for pin to settl
+      e
+}
+\end{DoxyCode}
+\hypertarget{_touch_screen_8c_a154a121aeefce7e73e82c4b5e2859931}{
+\index{TouchScreen.c@{TouchScreen.c}!setXDrive@{setXDrive}}
+\index{setXDrive@{setXDrive}!TouchScreen.c@{TouchScreen.c}}
+\subsubsection[{setXDrive}]{\setlength{\rightskip}{0pt plus 5cm}void setXDrive (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{_touch_screen_8c_a154a121aeefce7e73e82c4b5e2859931}
+
+
+Definition at line 149 of file TouchScreen.c.
+
+
+\begin{DoxyCode}
+{
+        clearDrives();
+        MCU_IO_OUTPUT(0, XP_C, 1);
+        MCU_IO_OUTPUT(0, XN_C, 0);
+        halMcuWaitMs(1);                                 // Delay to allow settli
+      ng
+}
+\end{DoxyCode}
+\hypertarget{_touch_screen_8c_a1eb81641044c586f62115d49b7d94abe}{
+\index{TouchScreen.c@{TouchScreen.c}!setYDrive@{setYDrive}}
+\index{setYDrive@{setYDrive}!TouchScreen.c@{TouchScreen.c}}
+\subsubsection[{setYDrive}]{\setlength{\rightskip}{0pt plus 5cm}void setYDrive (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{_touch_screen_8c_a1eb81641044c586f62115d49b7d94abe}
+
+
+Definition at line 167 of file TouchScreen.c.
+
+
+\begin{DoxyCode}
+{
+        clearDrives();
+        MCU_IO_OUTPUT(0,YP_C,1);
+        MCU_IO_OUTPUT(0,YN_C,0);
+        halMcuWaitMs(1);                                 // Delay to allow settli
+      ng
+}
+\end{DoxyCode}
+\hypertarget{_touch_screen_8c_aaa46a21b2b9d9cc2587276053ea5dbaa}{
+\index{TouchScreen.c@{TouchScreen.c}!TouchScreen@{TouchScreen}}
+\index{TouchScreen@{TouchScreen}!TouchScreen.c@{TouchScreen.c}}
+\subsubsection[{TouchScreen}]{\setlength{\rightskip}{0pt plus 5cm}void TouchScreen (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{_touch_screen_8c_aaa46a21b2b9d9cc2587276053ea5dbaa}
+
+
+Definition at line 37 of file TouchScreen.c.
+
+
+\begin{DoxyCode}
+{
+        Initialize_TouchScreen();               // Initialize device
+        waitForTouch();                         // Wait for touch on screen
+        touched = 1;                            // Screen is touched
+        while(1)
+        {                                       // Loop while screen is touched
+                readXY();                             // Get X,Y coordinates inde
+      x 0
+        
+                // Take 2 values and see the difference between them.
+                // If value is greater than 5 steps, discard packet.
+                // This code is designed to take a majority vote of 2 packets.
+                if(x > 1100 && x < 4600 && y > 700 && y < 5300)
+                                sendData(x,y);                // Send data to hos
+      t
+        }
+}
+\end{DoxyCode}
+\hypertarget{_touch_screen_8c_acb3cf096d11fc96bf647dcf1d95f50bb}{
+\index{TouchScreen.c@{TouchScreen.c}!waitForTouch@{waitForTouch}}
+\index{waitForTouch@{waitForTouch}!TouchScreen.c@{TouchScreen.c}}
+\subsubsection[{waitForTouch}]{\setlength{\rightskip}{0pt plus 5cm}void waitForTouch (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{_touch_screen_8c_acb3cf096d11fc96bf647dcf1d95f50bb}
+
+
+Definition at line 80 of file TouchScreen.c.
+
+
+\begin{DoxyCode}
+{
+        setTouchDrives();
+        if((P0 & YP)) {                       // Y+ high?
+        P0IFG = 0;                             // Clear interrupt flags
+        PICTL |= 1;
+        while(P0IFG == 0);  //__bis_SR_register(LPM4_bits + GIE);     // Wait for
+       interrupt
+        }
+        halLedToggle(1);
+        clearDrives();                            // Clear drive wires
+}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\hypertarget{_touch_screen_8c_a0621a59e68745970bedd6df6d3d8fa93}{
+\index{TouchScreen.c@{TouchScreen.c}!str\_\-buf@{str\_\-buf}}
+\index{str\_\-buf@{str\_\-buf}!TouchScreen.c@{TouchScreen.c}}
+\subsubsection[{str\_\-buf}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf str\_\-buf}\mbox{[}20\mbox{]}}}
+\label{_touch_screen_8c_a0621a59e68745970bedd6df6d3d8fa93}
+
+
+Definition at line 26 of file TouchScreen.c.
+

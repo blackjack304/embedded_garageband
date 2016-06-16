@@ -1,0 +1,236 @@
+.TH "TimerManager.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TimerManager.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBMAX_TIMERS\fP   4"
+.br
+.ti -1c
+.RI "#define \fBTimerId_INVALID\fP   0xFFFF"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef void(* \fBVoidFuncPtrType\fP )()"
+.br
+.ti -1c
+.RI "typedef unsigned int \fBTimerId\fP"
+.br
+.ti -1c
+.RI "typedef void(* \fBTimerExpiredCallback\fP )(\fBTimerId\fP)"
+.br
+.ti -1c
+.RI "typedef void(* \fBBeaconFrame_TimerExpiredCallback\fP )(void)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBTimerInterface_Initialize\fP ()"
+.br
+.ti -1c
+.RI "\fBTimerId\fP \fBSetTimerReq\fP (\fBTimerExpiredCallback\fP callbackPtr, unsigned int Period_Sec)"
+.br
+.ti -1c
+.RI "bool \fBCancelTimerReq\fP (\fBTimerId\fP timerId)"
+.br
+.ti -1c
+.RI "bool \fBReschedule_TimerReq\fP (\fBTimerId\fP timerId, unsigned int Old_Period_Sec, unsigned int New_Period_Sec)"
+.br
+.ti -1c
+.RI "void \fBOne_Sec_ISR\fP ()"
+.br
+.ti -1c
+.RI "unsigned int \fBCapture_TimerReq\fP (\fBTimerId\fP timerId)"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define MAX_TIMERS   4"
+.PP
+Definition at line 21 of file TimerManager.h.
+.SS "#define TimerId_INVALID   0xFFFF"
+.PP
+Definition at line 22 of file TimerManager.h.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef void(* \fBBeaconFrame_TimerExpiredCallback\fP)(void)"
+.PP
+Definition at line 47 of file TimerManager.h.
+.SS "typedef void(* \fBTimerExpiredCallback\fP)(\fBTimerId\fP)"
+.PP
+Definition at line 46 of file TimerManager.h.
+.SS "typedef unsigned int \fBTimerId\fP"
+.PP
+Definition at line 45 of file TimerManager.h.
+.SS "typedef void(* \fBVoidFuncPtrType\fP)()"
+.PP
+Definition at line 34 of file TimerManager.h.
+.SH "Function Documentation"
+.PP 
+.SS "bool CancelTimerReq (\fBTimerId\fPtimerId)"
+.PP
+Definition at line 170 of file TimerManager.c.
+.PP
+.nf
+{
+    unsigned int criticalSectionSave;
+    if( timerId == TimerId_INVALID || timerId > MAX_TIMERS || Timers[ timerId ].Required_Period_Sec == PERIOD_INVALID)
+    {
+        return false;
+    }
+    BSP_ENTER_CRITICAL_SECTION( criticalSectionSave );
+    Timers[ timerId ].Required_Period_Sec = PERIOD_INVALID;
+    Timers[ timerId ].Callback = 0;
+    BSP_EXIT_CRITICAL_SECTION( criticalSectionSave );
+    return true;
+}
+.fi
+.SS "unsigned int Capture_TimerReq (\fBTimerId\fPtimerId)"
+.PP
+Definition at line 200 of file TimerManager.c.
+.PP
+.nf
+{
+    //word16 criticalSectionSave;
+    unsigned int CapturValue;
+    //BSP_ENTER_CRITICAL_SECTION( criticalSectionSave );
+    CapturValue = Timers[ timerId ].Required_Period_Sec;
+    //BSP_EXIT_CRITICAL_SECTION( criticalSectionSave );
+    return CapturValue;
+}
+.fi
+.SS "void One_Sec_ISR ()"
+.PP
+Definition at line 266 of file TimerManager.c.
+.PP
+.nf
+{
+  unsigned int criticalSectionSave;
+  
+     BSP_ENTER_CRITICAL_SECTION( criticalSectionSave );
+    //call all the expired timer callbacks
+    for( int i=0; i<MAX_TIMERS; i++ )
+    {
+      if( Timers[ i ].Required_Period_Sec != PERIOD_INVALID )
+      {
+        Timers[ i ].Required_Period_Sec--;
+        if( Timers[ i ].Required_Period_Sec == 0 )
+        {
+            if( Timers[ i ].Callback != 0 )
+            {
+                TimerExpiredCallback callback = *(Timers[ i ].Callback);
+                Timers[ i ].Required_Period_Sec = PERIOD_INVALID;
+                Timers[ i ].Callback = 0;
+                callback((TimerId)i );
+            }
+        }
+      }
+    }
+    BSP_EXIT_CRITICAL_SECTION( criticalSectionSave );
+}
+.fi
+.SS "bool Reschedule_TimerReq (\fBTimerId\fPtimerId, unsigned intOld_Period_Sec, unsigned intNew_Period_Sec)"
+.PP
+Definition at line 226 of file TimerManager.c.
+.PP
+.nf
+{
+    unsigned int criticalSectionSave;
+    int elapsed_time;
+    
+    if( timerId == TimerId_INVALID || timerId > MAX_TIMERS || Timers[ timerId ].Required_Period_Sec == PERIOD_INVALID)
+    {
+        return false;
+    }
+    
+    
+    elapsed_time = Old_Period_Sec - Timers[ timerId ].Required_Period_Sec; //Timer is already running. Calculate how much time is elapsed
+    
+    BSP_ENTER_CRITICAL_SECTION( criticalSectionSave );
+    if(elapsed_time >= New_Period_Sec)
+      Timers[ timerId ].Required_Period_Sec = 1; //Already got the desired delay, Call ISR immediately in the next iteration.
+    else 
+      Timers[ timerId ].Required_Period_Sec = New_Period_Sec - elapsed_time;  //compensate for already elapsed time delay
+    BSP_EXIT_CRITICAL_SECTION( criticalSectionSave );
+    
+    return true;
+}
+.fi
+.SS "\fBTimerId\fP SetTimerReq (\fBTimerExpiredCallback\fPcallbackPtr, unsigned intPeriod_Sec)"
+.PP
+Definition at line 130 of file TimerManager.c.
+.PP
+.nf
+{
+    int criticalSectionSave;
+    //find the 1st available timer
+    unsigned int foundID = TimerId_INVALID;
+    for( unsigned int i=0; i<MAX_TIMERS; i++ )
+    {
+        if( Timers[ i ].Required_Period_Sec == PERIOD_INVALID && foundID == TimerId_INVALID)
+        {
+            foundID = i;
+            break;
+        }
+    }
+    BSP_ENTER_CRITICAL_SECTION( criticalSectionSave );
+
+    //set callback and time
+    Timers[ foundID ].Required_Period_Sec = Period_Sec;
+    Timers[ foundID ].Callback = callbackPtr;
+    BSP_EXIT_CRITICAL_SECTION( criticalSectionSave );
+
+    return (TimerId)foundID;
+}
+.fi
+.SS "bool TimerInterface_Initialize ()"
+.PP
+Definition at line 83 of file TimerManager.c.
+.PP
+.nf
+{
+    for( int i=0; i<MAX_TIMERS; i++ )
+    {
+        Timers[ i ].Required_Period_Sec = PERIOD_INVALID;
+    }
+    
+    T1CCTL0 = 0;    /* Make sure interrupts are disabled */
+    T1CCTL1 = 0;    /* Make sure interrupts are disabled */
+    T1CCTL2 = 0;    /* Make sure interrupts are disabled */
+    T1CTL   = 0;
+    
+    // clear interrupt pending flag, disable interrupt
+    T1IE  =  0; // IEN1.T1EN = 0
+    
+    CLKCON &= ~TICKSPD_DIV_1;
+    CLKCON |= TICKSPD_DIV_1;
+    
+    // Set prescaler divider value to 128
+    T1CTL |= 0x0C;
+    
+    T1CC0L =  240;     // Reset counter value
+    T1CC0H =  0;     // Reset counter value
+    
+    T1IE  =  1; // IEN1.T1EN = 0
+    OVFIM = 1;
+    
+    // Start timer in up/down mode
+    T1CTL |= 0x02; // T1CTL.MODE = 01  
+    
+    return true;
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

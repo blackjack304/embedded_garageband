@@ -1,0 +1,180 @@
+.TH "hal_defs.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+hal_defs.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBTRUE\fP   1"
+.br
+.ti -1c
+.RI "#define \fBFALSE\fP   0"
+.br
+.ti -1c
+.RI "#define \fBNULL\fP   (void *)0"
+.br
+.ti -1c
+.RI "#define \fBSUCCESS\fP   0"
+.br
+.ti -1c
+.RI "#define \fBFAILED\fP   1"
+.br
+.ti -1c
+.RI "#define \fBBV\fP(n)   (1 << (n))"
+.br
+.ti -1c
+.RI "#define \fBBM\fP(n)   (1 << (n))"
+.br
+.ti -1c
+.RI "#define \fBBF\fP(\fBx\fP, b, s)   (((\fBx\fP) & (b)) >> (s))"
+.br
+.ti -1c
+.RI "#define \fBMIN\fP(n, m)   (((n) < (m)) ? (n) : (m))"
+.br
+.ti -1c
+.RI "#define \fBMAX\fP(n, m)   (((n) < (m)) ? (m) : (n))"
+.br
+.ti -1c
+.RI "#define \fBABS\fP(n)   (((n) < 0) ? -(n) : (n))"
+.br
+.ti -1c
+.RI "#define \fBBREAK_UINT32\fP(var, ByteNum)   (\fBuint8\fP)((\fBuint32\fP)(((var) >>((ByteNum) * 8)) & 0x00FF))"
+.br
+.ti -1c
+.RI "#define \fBBUILD_UINT32\fP(Byte0, Byte1, Byte2, Byte3)"
+.br
+.ti -1c
+.RI "#define \fBHI_UINT32\fP(a)   ((\fBuint16\fP) (((\fBuint32\fP)(a)) >> 16))"
+.br
+.ti -1c
+.RI "#define \fBLO_UINT32\fP(a)   ((\fBuint16\fP) ((\fBuint32\fP)(a)))"
+.br
+.ti -1c
+.RI "#define \fBBUILD_UINT16\fP(loByte, hiByte)   ((\fBuint16\fP)(((loByte) & 0x00FF) + (((hiByte) & 0x00FF) << 8)))"
+.br
+.ti -1c
+.RI "#define \fBHI_UINT16\fP(a)   (((\fBuint16\fP)(a) >> 8) & 0xFF)"
+.br
+.ti -1c
+.RI "#define \fBLO_UINT16\fP(a)   ((\fBuint16\fP)(a) & 0xFF)"
+.br
+.ti -1c
+.RI "#define \fBBUILD_UINT8\fP(hiByte, loByte)   ((\fBuint8\fP)(((loByte) & 0x0F) + (((hiByte) & 0x0F) << 4)))"
+.br
+.ti -1c
+.RI "#define \fBHI_UINT8\fP(a)   (((\fBuint8\fP)(a) >> 4) & 0x0F)"
+.br
+.ti -1c
+.RI "#define \fBLO_UINT8\fP(a)   ((\fBuint8\fP)(a) & 0x0F)"
+.br
+.ti -1c
+.RI "#define \fBUINT16_HTON\fP(\fBx\fP)"
+.br
+.ti -1c
+.RI "#define \fBUINT16_NTOH\fP(\fBx\fP)"
+.br
+.ti -1c
+.RI "#define \fBUINT32_HTON\fP(\fBx\fP)"
+.br
+.ti -1c
+.RI "#define \fBUINT32_NTOH\fP(\fBx\fP)"
+.br
+.ti -1c
+.RI "#define \fBst\fP(\fBx\fP)   do { \fBx\fP } while (__LINE__ == -1)"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define ABS(n)   (((n) < 0) ? -(n) : (n))"
+.PP
+Definition at line 80 of file hal_defs.h.
+.SS "#define BF(\fBx\fP, b, s)   (((\fBx\fP) & (b)) >> (s))"
+.PP
+Definition at line 68 of file hal_defs.h.
+.SS "#define BM(n)   (1 << (n))"
+.PP
+Definition at line 64 of file hal_defs.h.
+.SS "#define BREAK_UINT32(var, ByteNum)   (\fBuint8\fP)((\fBuint32\fP)(((var) >>((ByteNum) * 8)) & 0x00FF))"
+.PP
+Definition at line 85 of file hal_defs.h.
+.SS "#define BUILD_UINT16(loByte, hiByte)   ((\fBuint16\fP)(((loByte) & 0x00FF) + (((hiByte) & 0x00FF) << 8)))"
+.PP
+Definition at line 99 of file hal_defs.h.
+.SS "#define BUILD_UINT32(Byte0, Byte1, Byte2, Byte3)"\fBValue:\fP
+.PP
+.nf
+((uint32)((uint32)((Byte0) & 0x00FF) \
+        + ((uint32)((Byte1) & 0x00FF) << 8) \
+            + ((uint32)((Byte2) & 0x00FF) << 16) \
+                + ((uint32)((Byte3) & 0x00FF) << 24)))
+.fi
+.PP
+Definition at line 88 of file hal_defs.h.
+.SS "#define BUILD_UINT8(hiByte, loByte)   ((\fBuint8\fP)(((loByte) & 0x0F) + (((hiByte) & 0x0F) << 4)))"
+.PP
+Definition at line 107 of file hal_defs.h.
+.SS "#define BV(n)   (1 << (n))"
+.PP
+Definition at line 60 of file hal_defs.h.
+.SS "#define FAILED   1"
+.PP
+Definition at line 47 of file hal_defs.h.
+.SS "#define FALSE   0"
+.PP
+Definition at line 24 of file hal_defs.h.
+.SS "#define HI_UINT16(a)   (((\fBuint16\fP)(a) >> 8) & 0xFF)"
+.PP
+Definition at line 102 of file hal_defs.h.
+.SS "#define HI_UINT32(a)   ((\fBuint16\fP) (((\fBuint32\fP)(a)) >> 16))"
+.PP
+Definition at line 94 of file hal_defs.h.
+.SS "#define HI_UINT8(a)   (((\fBuint8\fP)(a) >> 4) & 0x0F)"
+.PP
+Definition at line 110 of file hal_defs.h.
+.SS "#define LO_UINT16(a)   ((\fBuint16\fP)(a) & 0xFF)"
+.PP
+Definition at line 103 of file hal_defs.h.
+.SS "#define LO_UINT32(a)   ((\fBuint16\fP) ((\fBuint32\fP)(a)))"
+.PP
+Definition at line 95 of file hal_defs.h.
+.SS "#define LO_UINT8(a)   ((\fBuint8\fP)(a) & 0x0F)"
+.PP
+Definition at line 111 of file hal_defs.h.
+.SS "#define MAX(n, m)   (((n) < (m)) ? (m) : (n))"
+.PP
+Definition at line 76 of file hal_defs.h.
+.SS "#define MIN(n, m)   (((n) < (m)) ? (n) : (m))"
+.PP
+Definition at line 72 of file hal_defs.h.
+.SS "#define NULL   (void *)0"
+.PP
+Definition at line 32 of file hal_defs.h.
+.SS "#define st(\fBx\fP)   do { \fBx\fP } while (__LINE__ == -1)"
+.PP
+Definition at line 154 of file hal_defs.h.
+.SS "#define SUCCESS   0"
+.PP
+Definition at line 40 of file hal_defs.h.
+.SS "#define TRUE   1"
+.PP
+Definition at line 16 of file hal_defs.h.
+.SS "#define UINT16_HTON(\fBx\fP)"
+.PP
+Definition at line 123 of file hal_defs.h.
+.SS "#define UINT16_NTOH(\fBx\fP)"
+.PP
+Definition at line 124 of file hal_defs.h.
+.SS "#define UINT32_HTON(\fBx\fP)"
+.PP
+Definition at line 126 of file hal_defs.h.
+.SS "#define UINT32_NTOH(\fBx\fP)"
+.PP
+Definition at line 127 of file hal_defs.h.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

@@ -1,0 +1,320 @@
+\hypertarget{_drum_8c}{
+\section{Drum.c File Reference}
+\label{_drum_8c}\index{Drum.c@{Drum.c}}
+}
+{\ttfamily \#include $<$hal\_\-led.h$>$}\par
+{\ttfamily \#include $<$hal\_\-assert.h$>$}\par
+{\ttfamily \#include $<$hal\_\-board.h$>$}\par
+{\ttfamily \#include $<$hal\_\-int.h$>$}\par
+{\ttfamily \#include \char`\"{}hal\_\-mcu.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}ioCC2430.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}uart\_\-intfc.h\char`\"{}}\par
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include \char`\"{}TimerManager.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}key\_\-map.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}App\_\-RF.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}TouchScreen.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Drum.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_drum_8c_ad6c36066a044ec8a39987ed452c5fb1d}{Drum\_\-ISR} (\hyperlink{_timer_manager_8h_ab6103af8c6ff5b7a7c9917ed82e06f72}{TimerId} timerId)
+\item 
+void \hyperlink{_drum_8c_adfc44485bfaad737798055f9a81622f0}{Intitialize\_\-Drumset} ()
+\item 
+void \hyperlink{_drum_8c_a4afdbc9f0ae8177e3f3283a1d3a6d605}{DrumSet} ()
+\item 
+\hyperlink{_drum_8c_aca02366611435e1d7a323cbe6a35c76c}{HAL\_\-ISR\_\-FUNCTION} (port0\_\-ISR, P0INT\_\-VECTOR)
+\item 
+void \hyperlink{_drum_8c_a0affae97623b45f539997ba626ca2036}{playVDrum} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_timer_manager_8h_ab6103af8c6ff5b7a7c9917ed82e06f72}{TimerId} \hyperlink{_drum_8c_afcad9ad6c478d0dd44c16ad9dd18bb84}{timerID\_\-DR} \mbox{[}6\mbox{]} = \{TimerId\_\-INVALID, TimerId\_\-INVALID, TimerId\_\-INVALID, TimerId\_\-INVALID, TimerId\_\-INVALID, TimerId\_\-INVALID\}
+\item 
+volatile unsigned int \hyperlink{_drum_8c_a4461b389914b76f9cbb499f4688df251}{Capture\_\-DR} \mbox{[}6\mbox{]} = \{0, 0, 0, 0, 0, 0\}
+\item 
+char \hyperlink{_drum_8c_a8d2e96d68259c8ce7177f45608e1e086}{tx1\_\-buf} \mbox{[}5\mbox{]}
+\item 
+volatile unsigned char \hyperlink{_drum_8c_a50f57c852203c206b9664fbffab5c615}{Print\_\-Flag} = 0
+\item 
+volatile unsigned char \hyperlink{_drum_8c_aef072950e9d5d32f9f2f1a760a07e5e9}{tmp\_\-port}
+\item 
+unsigned char \hyperlink{_drum_8c_a2a8bd459ce2719acbd69de5516c725a8}{inn}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{_drum_8c_ad6c36066a044ec8a39987ed452c5fb1d}{
+\index{Drum.c@{Drum.c}!Drum\_\-ISR@{Drum\_\-ISR}}
+\index{Drum\_\-ISR@{Drum\_\-ISR}!Drum.c@{Drum.c}}
+\subsubsection[{Drum\_\-ISR}]{\setlength{\rightskip}{0pt plus 5cm}void Drum\_\-ISR (
+\begin{DoxyParamCaption}
+\item[{{\bf TimerId}}]{timerId}
+\end{DoxyParamCaption}
+)}}
+\label{_drum_8c_ad6c36066a044ec8a39987ed452c5fb1d}
+
+
+Definition at line 136 of file Drum.c.
+
+
+\begin{DoxyCode}
+{
+  unsigned char i=0;
+  for(i=0; i<6; i++)
+  {
+    if( timerId == timerID_DR[i])
+    {
+      timerID_DR[i] = TimerId_INVALID;
+      Capture_DR[i] = 200 - Capture_DR[i];
+      tx1_buf[0] = 0x80;
+      tx1_buf[1] = i;
+      tx1_buf[2] = (unsigned char)(Capture_DR[i] & 0x00ff);
+      Print_Flag = 1;
+      break;
+    }
+  }
+}
+\end{DoxyCode}
+\hypertarget{_drum_8c_a4afdbc9f0ae8177e3f3283a1d3a6d605}{
+\index{Drum.c@{Drum.c}!DrumSet@{DrumSet}}
+\index{DrumSet@{DrumSet}!Drum.c@{Drum.c}}
+\subsubsection[{DrumSet}]{\setlength{\rightskip}{0pt plus 5cm}void DrumSet (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{_drum_8c_a4afdbc9f0ae8177e3f3283a1d3a6d605}
+
+
+Definition at line 96 of file Drum.c.
+
+
+\begin{DoxyCode}
+{
+  Intitialize_Drumset();
+  while(1)
+  {
+    if(P0 & 0x3F)
+    {
+      tmp_port = P0;
+      for(inn=0;inn<6;inn++)
+      {
+        if((tmp_port>>inn) & 0x01)
+           break;
+      }
+      if(inn<6 && timerID_DR[inn] == TimerId_INVALID)
+      {
+         timerID_DR[inn] = SetTimerReq(&Drum_ISR,200);
+         halLedToggle(1);
+         P0IFG &= ~(1<<inn);
+         Capture_DR[inn] = 0;
+      }
+    }
+
+    if(Print_Flag == 1)
+    {
+      tx1_send(tx1_buf,3);
+      Print_Flag = 0;
+    }
+  }
+}
+\end{DoxyCode}
+\hypertarget{_drum_8c_aca02366611435e1d7a323cbe6a35c76c}{
+\index{Drum.c@{Drum.c}!HAL\_\-ISR\_\-FUNCTION@{HAL\_\-ISR\_\-FUNCTION}}
+\index{HAL\_\-ISR\_\-FUNCTION@{HAL\_\-ISR\_\-FUNCTION}!Drum.c@{Drum.c}}
+\subsubsection[{HAL\_\-ISR\_\-FUNCTION}]{\setlength{\rightskip}{0pt plus 5cm}HAL\_\-ISR\_\-FUNCTION (
+\begin{DoxyParamCaption}
+\item[{port0\_\-ISR}]{, }
+\item[{P0INT\_\-VECTOR}]{}
+\end{DoxyParamCaption}
+)}}
+\label{_drum_8c_aca02366611435e1d7a323cbe6a35c76c}
+
+
+Definition at line 164 of file Drum.c.
+
+
+\begin{DoxyCode}
+{
+  static uint8 isr_count = 0;
+  static int criticalSectionSave;
+  unsigned char i = 0;
+
+
+  BSP_ENTER_CRITICAL_SECTION( criticalSectionSave );
+  for(i=0;i<6;i++)
+  {
+    if((P0IFG>>i) & 0x01)
+       break;
+  }
+
+  if(i<6 && timerID_DR[i] != TimerId_INVALID)
+  {
+    Capture_DR[i] = Capture_TimerReq(timerID_DR[i]);
+  }
+
+  P0IFG = 0;
+  isr_count++;
+  halLedToggle(3);
+  //halMcuWaitUs(500);
+  BSP_EXIT_CRITICAL_SECTION( criticalSectionSave );
+  P0IF = 0;
+}
+\end{DoxyCode}
+\hypertarget{_drum_8c_adfc44485bfaad737798055f9a81622f0}{
+\index{Drum.c@{Drum.c}!Intitialize\_\-Drumset@{Intitialize\_\-Drumset}}
+\index{Intitialize\_\-Drumset@{Intitialize\_\-Drumset}!Drum.c@{Drum.c}}
+\subsubsection[{Intitialize\_\-Drumset}]{\setlength{\rightskip}{0pt plus 5cm}void Intitialize\_\-Drumset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{_drum_8c_adfc44485bfaad737798055f9a81622f0}
+
+
+Definition at line 53 of file Drum.c.
+
+
+\begin{DoxyCode}
+{
+  P0SEL = 0;
+
+  MCU_IO_OUTPUT(DRUM_PORT, DR0_PIN, 1);
+  MCU_IO_OUTPUT(DRUM_PORT, DR1_PIN, 1);
+  MCU_IO_OUTPUT(DRUM_PORT, DR2_PIN, 1);
+  MCU_IO_OUTPUT(DRUM_PORT, DR3_PIN, 1);
+  MCU_IO_OUTPUT(DRUM_PORT, DR4_PIN, 1);
+  MCU_IO_OUTPUT(DRUM_PORT, DR5_PIN, 1);
+
+  MCU_IO_INPUT(DRUM_PORT, DR0_PIN, MCU_IO_PULLUP);
+  MCU_IO_INPUT(DRUM_PORT, DR1_PIN, MCU_IO_PULLUP);
+  MCU_IO_INPUT(DRUM_PORT, DR2_PIN, MCU_IO_PULLUP);
+  MCU_IO_INPUT(DRUM_PORT, DR3_PIN, MCU_IO_PULLUP);
+  MCU_IO_INPUT(DRUM_PORT, DR4_PIN, MCU_IO_PULLUP);
+  MCU_IO_INPUT(DRUM_PORT, DR5_PIN, MCU_IO_PULLUP);
+
+  MCU_IO_INPUT(DRUM_PORT, 6, MCU_IO_PULLDOWN);
+  MCU_IO_INPUT(DRUM_PORT, 7, MCU_IO_PULLDOWN);
+
+
+  PICTL |= 0x01;   //High to Low Edge
+  PICTL |= 0x18;    //Enable Interrupts P0ENH, P0ENL
+  P0IF = 0;
+  P0IFG = 0;
+  P0IE = 1;
+
+  halLedSet(1);
+  halLedSet(3);
+
+}
+\end{DoxyCode}
+\hypertarget{_drum_8c_a0affae97623b45f539997ba626ca2036}{
+\index{Drum.c@{Drum.c}!playVDrum@{playVDrum}}
+\index{playVDrum@{playVDrum}!Drum.c@{Drum.c}}
+\subsubsection[{playVDrum}]{\setlength{\rightskip}{0pt plus 5cm}void playVDrum (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{_drum_8c_a0affae97623b45f539997ba626ca2036}
+
+
+Definition at line 201 of file Drum.c.
+
+
+\begin{DoxyCode}
+                 {
+        
+        unsigned char usrExit[] = {0};
+        char keyNote = 0;
+        unsigned int xCoord = 0;
+        unsigned int yCoord = 0;
+        unsigned char sendBuf[3] = {0};
+        
+        while(1) {
+                //usrExit = getchar() nblocking in M2
+                //In this module do a non blocking recv and chk for STOPMAGIC
+                if (RF_gets_nblk(usrExit) != 0) {
+                        if (strncmp ((char *)usrExit, "STOP", 4) == 0) {
+                                break;
+                        }
+                }
+                else {
+                        getTsXY(&xCoord, &yCoord);
+                        keyNote = drum_key_match(xCoord, yCoord);
+                        halMcuWaitMs(30);
+                        if (keyNote) {
+                                //send the note over rf and serial
+                                sendBuf[0] = 0;                                 /
+      /Channel
+                                sendBuf[1] = keyNote;           //Note
+                                sendBuf[2] = 0x7f;                      //Attack 
+      Velocity //TODO: use pressure
+                                halMcuWaitMs(50);
+                                RF_Send(sendBuf, 3);
+                        }
+                }
+        }//while(1)
+}\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\hypertarget{_drum_8c_a4461b389914b76f9cbb499f4688df251}{
+\index{Drum.c@{Drum.c}!Capture\_\-DR@{Capture\_\-DR}}
+\index{Capture\_\-DR@{Capture\_\-DR}!Drum.c@{Drum.c}}
+\subsubsection[{Capture\_\-DR}]{\setlength{\rightskip}{0pt plus 5cm}volatile unsigned int {\bf Capture\_\-DR}\mbox{[}6\mbox{]} = \{0, 0, 0, 0, 0, 0\}}}
+\label{_drum_8c_a4461b389914b76f9cbb499f4688df251}
+
+
+Definition at line 34 of file Drum.c.
+
+\hypertarget{_drum_8c_a2a8bd459ce2719acbd69de5516c725a8}{
+\index{Drum.c@{Drum.c}!inn@{inn}}
+\index{inn@{inn}!Drum.c@{Drum.c}}
+\subsubsection[{inn}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char {\bf inn}}}
+\label{_drum_8c_a2a8bd459ce2719acbd69de5516c725a8}
+
+
+Definition at line 41 of file Drum.c.
+
+\hypertarget{_drum_8c_a50f57c852203c206b9664fbffab5c615}{
+\index{Drum.c@{Drum.c}!Print\_\-Flag@{Print\_\-Flag}}
+\index{Print\_\-Flag@{Print\_\-Flag}!Drum.c@{Drum.c}}
+\subsubsection[{Print\_\-Flag}]{\setlength{\rightskip}{0pt plus 5cm}volatile unsigned char {\bf Print\_\-Flag} = 0}}
+\label{_drum_8c_a50f57c852203c206b9664fbffab5c615}
+
+
+Definition at line 37 of file Drum.c.
+
+\hypertarget{_drum_8c_afcad9ad6c478d0dd44c16ad9dd18bb84}{
+\index{Drum.c@{Drum.c}!timerID\_\-DR@{timerID\_\-DR}}
+\index{timerID\_\-DR@{timerID\_\-DR}!Drum.c@{Drum.c}}
+\subsubsection[{timerID\_\-DR}]{\setlength{\rightskip}{0pt plus 5cm}{\bf TimerId} {\bf timerID\_\-DR}\mbox{[}6\mbox{]} = \{TimerId\_\-INVALID, TimerId\_\-INVALID, TimerId\_\-INVALID, TimerId\_\-INVALID, TimerId\_\-INVALID, TimerId\_\-INVALID\}}}
+\label{_drum_8c_afcad9ad6c478d0dd44c16ad9dd18bb84}
+
+
+Definition at line 32 of file Drum.c.
+
+\hypertarget{_drum_8c_aef072950e9d5d32f9f2f1a760a07e5e9}{
+\index{Drum.c@{Drum.c}!tmp\_\-port@{tmp\_\-port}}
+\index{tmp\_\-port@{tmp\_\-port}!Drum.c@{Drum.c}}
+\subsubsection[{tmp\_\-port}]{\setlength{\rightskip}{0pt plus 5cm}volatile unsigned char {\bf tmp\_\-port}}}
+\label{_drum_8c_aef072950e9d5d32f9f2f1a760a07e5e9}
+
+
+Definition at line 40 of file Drum.c.
+
+\hypertarget{_drum_8c_a8d2e96d68259c8ce7177f45608e1e086}{
+\index{Drum.c@{Drum.c}!tx1\_\-buf@{tx1\_\-buf}}
+\index{tx1\_\-buf@{tx1\_\-buf}!Drum.c@{Drum.c}}
+\subsubsection[{tx1\_\-buf}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf tx1\_\-buf}\mbox{[}5\mbox{]}}}
+\label{_drum_8c_a8d2e96d68259c8ce7177f45608e1e086}
+
+
+Definition at line 36 of file Drum.c.
+

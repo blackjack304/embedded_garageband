@@ -1,0 +1,52 @@
+.TH "hal_assert.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+hal_assert.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'hal_defs.h'\fP
+.br
+
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBHAL_ASSERT\fP(expr)   st( if (!( expr )) halAssertHandler(); )"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBhalAssertHandler\fP (void)"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define HAL_ASSERT(expr)   st( if (!( expr )) halAssertHandler(); )"
+.PP
+Definition at line 21 of file hal_assert.h.
+.SH "Function Documentation"
+.PP 
+.SS "void halAssertHandler (void)"
+.PP
+Definition at line 36 of file hal_assert.c.
+.PP
+.nf
+{
+    // execute code that handles asserts 
+    // blink all leds
+    while(TRUE){
+        halLedToggle(1);
+        halLedToggle(2);
+        halLedToggle(3);
+        halLedToggle(4);
+        halMcuWaitMs(50);
+    }
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

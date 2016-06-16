@@ -1,0 +1,258 @@
+.TH "hal_cc8051.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+hal_cc8051.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <hal_types.h>\fP
+.br
+\fC#include <hal_defs.h>\fP
+.br
+
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBBIT0\fP   0x01"
+.br
+.ti -1c
+.RI "#define \fBBIT1\fP   0x02"
+.br
+.ti -1c
+.RI "#define \fBBIT2\fP   0x04"
+.br
+.ti -1c
+.RI "#define \fBBIT3\fP   0x08"
+.br
+.ti -1c
+.RI "#define \fBBIT4\fP   0x10"
+.br
+.ti -1c
+.RI "#define \fBBIT5\fP   0x20"
+.br
+.ti -1c
+.RI "#define \fBBIT6\fP   0x40"
+.br
+.ti -1c
+.RI "#define \fBBIT7\fP   0x80"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_TRISTATE\fP   1"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_PULLUP\fP   2"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_PULLDOWN\fP   3"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_PERIPHERAL\fP(port, pin)   MCU_IO_PERIPHERAL_PREP(port, pin)"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_INPUT\fP(port, pin, func)   MCU_IO_INPUT_PREP(port, pin, func)"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_OUTPUT\fP(port, pin, val)   MCU_IO_OUTPUT_PREP(port, pin, val)"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_SET\fP(port, pin, val)   MCU_IO_SET_PREP(port, pin, val)"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_SET_HIGH\fP(port, pin)   MCU_IO_SET_HIGH_PREP(port, pin)"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_SET_LOW\fP(port, pin)   MCU_IO_SET_LOW_PREP(port, pin)"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_TGL\fP(port, pin)   MCU_IO_TGL_PREP(port, pin)"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_GET\fP(port, pin)   MCU_IO_GET_PREP(port, pin)"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_DIR_INPUT\fP(port, pin)   MCU_IO_DIR_INPUT_PREP(port, pin)"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_DIR_OUTPUT\fP(port, pin)   MCU_IO_DIR_OUTPUT_PREP(port, pin)"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_PERIPHERAL_PREP\fP(port, pin)   st( P##port##SEL |= BM(pin); )"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_INPUT_PREP\fP(port, pin, func)"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_OUTPUT_PREP\fP(port, pin, val)"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_SET_HIGH_PREP\fP(port, pin)   st( P##port##_##pin## = 1; )"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_SET_LOW_PREP\fP(port, pin)   st( P##port##_##pin## = 0; )"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_SET_PREP\fP(port, pin, val)   st( P##port##_##pin## = val; )"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_TGL_PREP\fP(port, pin)   st( P##port##_##pin## ^= 1; )"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_GET_PREP\fP(port, pin)   (P##port## & BM(pin))"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_DIR_INPUT_PREP\fP(port, pin)   st( P##port##DIR &= ~BM(pin); )"
+.br
+.ti -1c
+.RI "#define \fBMCU_IO_DIR_OUTPUT_PREP\fP(port, pin)   st( P##port##DIR |= BM(pin); )"
+.br
+.ti -1c
+.RI "#define \fBIO_DIR_PORT_PIN\fP(port, pin, dir)"
+.br
+.ti -1c
+.RI "#define \fBIO_IN\fP   0"
+.br
+.ti -1c
+.RI "#define \fBIO_OUT\fP   1"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define BIT0   0x01"
+.PP
+Definition at line 20 of file hal_cc8051.h.
+.SS "#define BIT1   0x02"
+.PP
+Definition at line 21 of file hal_cc8051.h.
+.SS "#define BIT2   0x04"
+.PP
+Definition at line 22 of file hal_cc8051.h.
+.SS "#define BIT3   0x08"
+.PP
+Definition at line 23 of file hal_cc8051.h.
+.SS "#define BIT4   0x10"
+.PP
+Definition at line 24 of file hal_cc8051.h.
+.SS "#define BIT5   0x20"
+.PP
+Definition at line 25 of file hal_cc8051.h.
+.SS "#define BIT6   0x40"
+.PP
+Definition at line 26 of file hal_cc8051.h.
+.SS "#define BIT7   0x80"
+.PP
+Definition at line 27 of file hal_cc8051.h.
+.SS "#define IO_DIR_PORT_PIN(port, pin, dir)"\fBValue:\fP
+.PP
+.nf
+do {                                  \
+      if (dir == IO_OUT)                 \
+         P##port##DIR |= (0x01<<(pin));  \
+      else                               \
+         P##port##DIR &= ~(0x01<<(pin)); \
+   }while(0)
+.fi
+.PP
+Definition at line 90 of file hal_cc8051.h.
+.SS "#define IO_IN   0"
+.PP
+Definition at line 99 of file hal_cc8051.h.
+.SS "#define IO_OUT   1"
+.PP
+Definition at line 100 of file hal_cc8051.h.
+.SS "#define MCU_IO_DIR_INPUT(port, pin)   MCU_IO_DIR_INPUT_PREP(port, pin)"
+.PP
+Definition at line 51 of file hal_cc8051.h.
+.SS "#define MCU_IO_DIR_INPUT_PREP(port, pin)   st( P##port##DIR &= ~BM(pin); )"
+.PP
+Definition at line 86 of file hal_cc8051.h.
+.SS "#define MCU_IO_DIR_OUTPUT(port, pin)   MCU_IO_DIR_OUTPUT_PREP(port, pin)"
+.PP
+Definition at line 52 of file hal_cc8051.h.
+.SS "#define MCU_IO_DIR_OUTPUT_PREP(port, pin)   st( P##port##DIR |= BM(pin); )"
+.PP
+Definition at line 87 of file hal_cc8051.h.
+.SS "#define MCU_IO_GET(port, pin)   MCU_IO_GET_PREP(port, pin)"
+.PP
+Definition at line 49 of file hal_cc8051.h.
+.SS "#define MCU_IO_GET_PREP(port, pin)   (P##port## & BM(pin))"
+.PP
+Definition at line 84 of file hal_cc8051.h.
+.SS "#define MCU_IO_INPUT(port, pin, func)   MCU_IO_INPUT_PREP(port, pin, func)"
+.PP
+Definition at line 43 of file hal_cc8051.h.
+.SS "#define MCU_IO_INPUT_PREP(port, pin, func)"\fBValue:\fP
+.PP
+.nf
+st( P##port##SEL &= ~BM(pin); \
+                                                P##port##DIR &= ~BM(pin); \
+                                                switch (func) { \
+                                                case MCU_IO_PULLUP: \
+                                                    P##port##INP &= ~BM(pin); \
+                                                    P2INP &= ~BM(port + 5); \
+                                                    break; \
+                                                case MCU_IO_PULLDOWN: \
+                                                    P##port##INP &= ~BM(pin); \
+                                                    P2INP |= BM(port + 5); \
+                                                    break; \
+                                                default: \
+                                                    P##port##INP |= BM(pin); \
+                                                    break; } )
+.fi
+.PP
+Definition at line 60 of file hal_cc8051.h.
+.SS "#define MCU_IO_OUTPUT(port, pin, val)   MCU_IO_OUTPUT_PREP(port, pin, val)"
+.PP
+Definition at line 44 of file hal_cc8051.h.
+.SS "#define MCU_IO_OUTPUT_PREP(port, pin, val)"\fBValue:\fP
+.PP
+.nf
+st( P##port##SEL &= ~BM(pin); \
+                                                P##port##_##pin## = val; \
+                                                P##port##DIR |= BM(pin); )
+.fi
+.PP
+Definition at line 75 of file hal_cc8051.h.
+.SS "#define MCU_IO_PERIPHERAL(port, pin)   MCU_IO_PERIPHERAL_PREP(port, pin)"
+.PP
+Definition at line 42 of file hal_cc8051.h.
+.SS "#define MCU_IO_PERIPHERAL_PREP(port, pin)   st( P##port##SEL |= BM(pin); )"
+.PP
+Definition at line 58 of file hal_cc8051.h.
+.SS "#define MCU_IO_PULLDOWN   3"
+.PP
+Definition at line 36 of file hal_cc8051.h.
+.SS "#define MCU_IO_PULLUP   2"
+.PP
+Definition at line 35 of file hal_cc8051.h.
+.SS "#define MCU_IO_SET(port, pin, val)   MCU_IO_SET_PREP(port, pin, val)"
+.PP
+Definition at line 45 of file hal_cc8051.h.
+.SS "#define MCU_IO_SET_HIGH(port, pin)   MCU_IO_SET_HIGH_PREP(port, pin)"
+.PP
+Definition at line 46 of file hal_cc8051.h.
+.SS "#define MCU_IO_SET_HIGH_PREP(port, pin)   st( P##port##_##pin## = 1; )"
+.PP
+Definition at line 79 of file hal_cc8051.h.
+.SS "#define MCU_IO_SET_LOW(port, pin)   MCU_IO_SET_LOW_PREP(port, pin)"
+.PP
+Definition at line 47 of file hal_cc8051.h.
+.SS "#define MCU_IO_SET_LOW_PREP(port, pin)   st( P##port##_##pin## = 0; )"
+.PP
+Definition at line 80 of file hal_cc8051.h.
+.SS "#define MCU_IO_SET_PREP(port, pin, val)   st( P##port##_##pin## = val; )"
+.PP
+Definition at line 82 of file hal_cc8051.h.
+.SS "#define MCU_IO_TGL(port, pin)   MCU_IO_TGL_PREP(port, pin)"
+.PP
+Definition at line 48 of file hal_cc8051.h.
+.SS "#define MCU_IO_TGL_PREP(port, pin)   st( P##port##_##pin## ^= 1; )"
+.PP
+Definition at line 83 of file hal_cc8051.h.
+.SS "#define MCU_IO_TRISTATE   1"
+.PP
+Definition at line 34 of file hal_cc8051.h.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

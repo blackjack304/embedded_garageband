@@ -1,0 +1,61 @@
+\hypertarget{hal__assert_8h}{
+\section{hal\_\-assert.h File Reference}
+\label{hal__assert_8h}\index{hal\_\-assert.h@{hal\_\-assert.h}}
+}
+{\ttfamily \#include \char`\"{}hal\_\-defs.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{hal__assert_8h_abf67074868aef51e389b11829a7480ad}{HAL\_\-ASSERT}(expr)~st( if (!( expr )) halAssertHandler(); )
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{hal__assert_8h_a089d242af9040e8e264a33a450c65150}{halAssertHandler} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{hal__assert_8h_abf67074868aef51e389b11829a7480ad}{
+\index{hal\_\-assert.h@{hal\_\-assert.h}!HAL\_\-ASSERT@{HAL\_\-ASSERT}}
+\index{HAL\_\-ASSERT@{HAL\_\-ASSERT}!hal_assert.h@{hal\_\-assert.h}}
+\subsubsection[{HAL\_\-ASSERT}]{\setlength{\rightskip}{0pt plus 5cm}\#define HAL\_\-ASSERT(
+\begin{DoxyParamCaption}
+\item[{}]{expr}
+\end{DoxyParamCaption}
+)~st( if (!( expr )) halAssertHandler(); )}}
+\label{hal__assert_8h_abf67074868aef51e389b11829a7480ad}
+
+
+Definition at line 21 of file hal\_\-assert.h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{hal__assert_8h_a089d242af9040e8e264a33a450c65150}{
+\index{hal\_\-assert.h@{hal\_\-assert.h}!halAssertHandler@{halAssertHandler}}
+\index{halAssertHandler@{halAssertHandler}!hal_assert.h@{hal\_\-assert.h}}
+\subsubsection[{halAssertHandler}]{\setlength{\rightskip}{0pt plus 5cm}void halAssertHandler (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal__assert_8h_a089d242af9040e8e264a33a450c65150}
+
+
+Definition at line 36 of file hal\_\-assert.c.
+
+
+\begin{DoxyCode}
+{
+    // execute code that handles asserts 
+    // blink all leds
+    while(TRUE){
+        halLedToggle(1);
+        halLedToggle(2);
+        halLedToggle(3);
+        halLedToggle(4);
+        halMcuWaitMs(50);
+    }
+}
+\end{DoxyCode}

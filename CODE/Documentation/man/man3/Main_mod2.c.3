@@ -1,0 +1,475 @@
+.TH "Main_mod2.c" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Main_mod2.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <hal_led.h>\fP
+.br
+\fC#include <hal_assert.h>\fP
+.br
+\fC#include <hal_board.h>\fP
+.br
+\fC#include <hal_int.h>\fP
+.br
+\fC#include 'hal_mcu.h'\fP
+.br
+\fC#include 'hal_rf.h'\fP
+.br
+\fC#include 'basic_rf.h'\fP
+.br
+\fC#include 'uart_intfc.h'\fP
+.br
+\fC#include 'TouchScreen.h'\fP
+.br
+\fC#include <stdio.h>\fP
+.br
+\fC#include <string.h>\fP
+.br
+\fC#include <stdlib.h>\fP
+.br
+\fC#include 'hal_spi.h'\fP
+.br
+\fC#include 'TimerManager.h'\fP
+.br
+\fC#include 'Drum.h'\fP
+.br
+\fC#include 'midi.h'\fP
+.br
+\fC#include 'graphics_lcd.h'\fP
+.br
+\fC#include 'key_map.h'\fP
+.br
+\fC#include 'App_RF.h'\fP
+.br
+\fC#include 'utilMisc.h'\fP
+.br
+\fC#include 'user_interface.h'\fP
+.br
+
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBSZ_RFBUF\fP   50"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBrfStat\fP { \fBrfHello\fP =  1, \fBrfVPiano\fP, \fBrfVDrum\fP, \fBrfVGuitar\fP, \fBrfHello\fP =  1, \fBrfVPiano\fP, \fBrfVDrum\fP, \fBrfVGuitar\fP, \fBrfRPiano\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBmidiTest\fP (void)"
+.br
+.ti -1c
+.RI "void \fBplayRfNotes\fP ()"
+.br
+.ti -1c
+.RI "void \fBplayRfNotesSD\fP ()"
+.br
+.ti -1c
+.RI "void \fBmain\fP (void)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "unsigned char \fBrfBuf\fP [SZ_RFBUF] = {0}"
+.br
+.ti -1c
+.RI "unsigned char \fBCheck_Flag\fP = 1"
+.br
+.ti -1c
+.RI "char \fBdrum_piano_guitar\fP"
+.br
+.ti -1c
+.RI "char \fBreal_virtual\fP"
+.br
+.ti -1c
+.RI "char \fBdrum_piano_guitar_rv\fP"
+.br
+.ti -1c
+.RI "char \fBpiano_type\fP"
+.br
+.ti -1c
+.RI "char \fBguitar_type\fP"
+.br
+.ti -1c
+.RI "char \fBaudio_termination\fP"
+.br
+.ti -1c
+.RI "char \fBrecord_notes\fP"
+.br
+.ti -1c
+.RI "char \fBplay_recorded_notes\fP"
+.br
+.ti -1c
+.RI "char \fBtrack\fP"
+.br
+.ti -1c
+.RI "char \fBplayback\fP"
+.br
+.ti -1c
+.RI "unsigned char \fBendPacket\fP [3] = {0xFF, 0xFF, 0xFF}"
+.br
+.ti -1c
+.RI "unsigned char \fBRecord_0\fP [] = 'Record_0'"
+.br
+.ti -1c
+.RI "unsigned char \fBRecord_1\fP [] = 'Record_1'"
+.br
+.ti -1c
+.RI "unsigned char \fBRecord_2\fP [] = 'Record_2'"
+.br
+.ti -1c
+.RI "unsigned char \fBRecord_3\fP [] = 'Record_3'"
+.br
+.ti -1c
+.RI "unsigned char \fBPlay_0\fP [] = 'Play_0'"
+.br
+.ti -1c
+.RI "unsigned char \fBPlay_1\fP [] = 'Play_1'"
+.br
+.ti -1c
+.RI "unsigned char \fBPlay_2\fP [] = 'Play_2'"
+.br
+.ti -1c
+.RI "unsigned char \fBPlay_3\fP [] = 'Play_3'"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define SZ_RFBUF   50"
+.PP
+Definition at line 35 of file Main_mod2.c.
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBrfStat\fP"
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fIrfHello \fP\fP
+.TP
+\fB\fIrfVPiano \fP\fP
+.TP
+\fB\fIrfVDrum \fP\fP
+.TP
+\fB\fIrfVGuitar \fP\fP
+.TP
+\fB\fIrfHello \fP\fP
+.TP
+\fB\fIrfVPiano \fP\fP
+.TP
+\fB\fIrfVDrum \fP\fP
+.TP
+\fB\fIrfVGuitar \fP\fP
+.TP
+\fB\fIrfRPiano \fP\fP
+
+.PP
+Definition at line 37 of file Main_mod2.c.
+.PP
+.nf
+            {
+        rfHello = 1,
+        rfVPiano,
+        rfVDrum,
+        rfVGuitar,
+        rfRPiano
+};
+.fi
+.SH "Function Documentation"
+.PP 
+.SS "void main (void)"
+.PP
+Definition at line 85 of file Main_mod2.c.
+.PP
+.nf
+{  
+        unsigned char cmd = 0;
+        char keyNote = 0;
+        //char printBuf[50] = {0};
+        
+        // Initalise board peripherals
+  halBoardInit();
+  uart_intfc_init();
+  TimerInterface_Initialize();
+        Init_AppRF();
+        halMcuWaitMs(1000);
+
+  printf_pc('Init done (M2)\n\r');      
+        halMcuWaitMs(1000);
+        
+        RF_puts('HELLO');
+        RF_gets_blk(rfBuf);
+        //printf_pc(rfBuf);
+        
+        while(1) {
+                bzero(rfBuf, SZ_RFBUF);
+                start_my_menu();
+                
+                if (record_notes == TRUE) {
+                        switch (track) {
+                                case 0: RF_puts_SD(Record_0, 8); break;
+                                case 1: RF_puts_SD(Record_1, 8); break;
+                                case 2: RF_puts_SD(Record_2, 8); break;
+                                case 3: RF_puts_SD(Record_3, 8); break;
+                                default: break;
+                        }
+                }
+                
+                if (play_recorded_notes == TRUE) {
+                        printf_pc('\n\rWill play recorded notes\n\r');  
+                        midiReset();
+                        switch (playback) {
+                                case 0: RF_puts_SD(Play_0, 6); break;
+                                case 1: RF_puts_SD(Play_1, 6); break;
+                                case 2: RF_puts_SD(Play_2, 6); break;
+                                case 3: RF_puts_SD(Play_3, 6); break;
+                                default: break;
+                        }
+                        playRfNotesSD();
+                }
+                else {
+                        switch (drum_piano_guitar_rv) {
+                                case DRUM_REAL_INSTRUMENT:
+                                        midiInit();
+                                        DrumSet();
+                                        RF_puts_SD(endPacket, 3);
+                                        break;
+                                        
+                                case PIANO_REAL_INSTRUMENT:
+                                        //printf_pc('PIANO_REAL_INSTRUMENT\n\r');
+                                        midiInit();
+                                        while(1) {
+                                                cmd = getchar_pc();
+                                                if (cmd == 27) {
+                                                        RF_puts_SD(endPacket, 3);
+                                                        break;
+                                                }
+                                                else {
+                                                        keyNote = ps2_key_match(cmd);
+                                                        tx1_send(&keyNote, 1);
+                                                        if (keyNote != 0) {
+                                                                noteOn(0, keyNote, 0x7F);
+                                                        }
+                                                }
+                                        }
+                                        break;
+                                        
+                                case DRUM_VIRTUAL_INSTRUMENT:
+                                        //printf_pc('DRUM_VIRTUAL_INSTRUMENT\n\r');
+                                        midiInit();
+                                        RF_puts('VDRUM');
+                                        RF_gets_blk(rfBuf);
+                                        printf_pc(rfBuf);
+                                        playRfNotes();
+                                        RF_puts_SD(endPacket, 3);
+                                        break;
+                                        
+                                case PIANO_VIRTUAL_INSTRUMENT:
+                                        //printf_pc('PIANO_VIRTUAL_INSTRUMENT\n\r');
+                                        midiInit();
+                                        RF_puts('VPIANO');
+                                        RF_gets_blk(rfBuf);
+                                        printf_pc(rfBuf);
+                                        playRfNotes();
+                                        RF_puts_SD(endPacket, 3);
+                                        break;
+                                        
+                                case GUITAR_VIRTUAL_INSTRUMENT:
+                                        //printf_pc('GUITAR_VIRTUAL_INSTRUMENT\n\r');
+                                        midiInit();
+                                        RF_puts('VGUITAR');
+                                        RF_gets_blk(rfBuf);
+                                        printf_pc(rfBuf);
+                                        playRfNotes();
+                                        RF_puts_SD(endPacket, 3);
+                                        break;
+                                        
+                                default:
+                                        printf_pc('default\n\r');
+                                        break;
+                        }
+                }
+        }
+        
+//
+//      //DrumSet();
+//      
+//      while (1) {
+//              while (!RF_Peek());
+//              rfLen = RF_Receive(&keyNote);   
+//              noteOn(0, keyNote, 0x3D);
+//              tx1_send(&keyNote, 1);
+//      }
+}
+.fi
+.SS "void midiTest (void)"
+.PP
+Definition at line 265 of file Main_mod2.c.
+.PP
+.nf
+                {
+        
+        midiReset();
+        midiVolSet(120);
+        //midiBankSet(DRUMS1);
+        //midiPatchSet(5);
+        midiBankSet(MELODY);
+        midiPatchSet(PIANO_ELG);
+        halMcuWaitMs(100);
+
+//  midiReset();
+//      midiVolSet(120); //set channel volume to near max (127)
+//      midiBankSet(MELODY); //0x79 = melodious instruments
+//      midiPatchSet(118);
+//      noteOn(0, 51, 0x3D);
+//      halMcuWaitMs(500);
+        
+        
+//      for (i=0; i<50; i++) {
+//              noteOn(0, i+30, 0x48);
+//              halMcuWaitMs(100);
+//              //noteOff(0, i+30, 0x48);
+//              halMcuWaitMs(100);
+//
+//      }
+//      for (i=50; i>=0; i--) {
+//              noteOn(0, i+30, 0x48);
+//              halMcuWaitMs(100);
+//              //noteOff(0, i+30, 0x48);
+//              halMcuWaitMs(100);
+//      }
+        
+        //tx1_send('Done\n\r', 6);
+        while (1);
+}
+.fi
+.SS "void playRfNotes ()"
+.PP
+Definition at line 206 of file Main_mod2.c.
+.PP
+.nf
+                   {
+        
+        char cmd = 0;
+        
+        while (1) {
+                cmd = getchar_pc_nb();
+                if (cmd == 27) {
+                        RF_puts('STOP');
+                        break;
+                }
+                else {
+                        if (RF_gets_nblk(rfBuf) != 0) {
+                                noteOn(rfBuf[0], rfBuf[1], rfBuf[2]);
+                        }
+                }
+        }
+}
+.fi
+.SS "void playRfNotesSD ()"
+.PP
+Definition at line 234 of file Main_mod2.c.
+.PP
+.nf
+                     {
+        
+        char cmd = 0;
+        
+        while (1) {
+                cmd = getchar_pc_nb();
+                if (cmd == 27) {
+                        break;
+                }
+                else {
+                        if (RF_gets_nblk(rfBuf) != 0) {
+                                tx1_send(rfBuf, 3);
+                                talkMIDI(rfBuf[0], rfBuf[1], rfBuf[2]);
+                                if (rfBuf[0] == 0xFF && rfBuf[1] == 0xFF && rfBuf[2] == 0xFF) {
+                                        break;
+                                }
+                        }
+                }
+        }//while (1)
+}
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "char \fBaudio_termination\fP"
+.PP
+Definition at line 24 of file user_interface.c.
+.SS "unsigned char \fBCheck_Flag\fP = 1"
+.PP
+Definition at line 46 of file Main_mod2.c.
+.SS "char \fBdrum_piano_guitar\fP"
+.PP
+Definition at line 19 of file user_interface.c.
+.SS "char \fBdrum_piano_guitar_rv\fP"
+.PP
+Definition at line 21 of file user_interface.c.
+.SS "unsigned char \fBendPacket\fP[3] = {0xFF, 0xFF, 0xFF}"
+.PP
+Definition at line 59 of file Main_mod2.c.
+.SS "char \fBguitar_type\fP"
+.PP
+Definition at line 23 of file user_interface.c.
+.SS "char \fBpiano_type\fP"
+.PP
+Definition at line 22 of file user_interface.c.
+.SS "unsigned char \fBPlay_0\fP[] = 'Play_0'"
+.PP
+Definition at line 64 of file Main_mod2.c.
+.SS "unsigned char \fBPlay_1\fP[] = 'Play_1'"
+.PP
+Definition at line 65 of file Main_mod2.c.
+.SS "unsigned char \fBPlay_2\fP[] = 'Play_2'"
+.PP
+Definition at line 66 of file Main_mod2.c.
+.SS "unsigned char \fBPlay_3\fP[] = 'Play_3'"
+.PP
+Definition at line 67 of file Main_mod2.c.
+.SS "char \fBplay_recorded_notes\fP"
+.PP
+Definition at line 26 of file user_interface.c.
+.SS "char \fBplayback\fP"
+.PP
+Definition at line 28 of file user_interface.c.
+.SS "char \fBreal_virtual\fP"
+.PP
+Definition at line 20 of file user_interface.c.
+.SS "unsigned char \fBRecord_0\fP[] = 'Record_0'"
+.PP
+Definition at line 60 of file Main_mod2.c.
+.SS "unsigned char \fBRecord_1\fP[] = 'Record_1'"
+.PP
+Definition at line 61 of file Main_mod2.c.
+.SS "unsigned char \fBRecord_2\fP[] = 'Record_2'"
+.PP
+Definition at line 62 of file Main_mod2.c.
+.SS "unsigned char \fBRecord_3\fP[] = 'Record_3'"
+.PP
+Definition at line 63 of file Main_mod2.c.
+.SS "char \fBrecord_notes\fP"
+.PP
+Definition at line 25 of file user_interface.c.
+.SS "unsigned char \fBrfBuf\fP[SZ_RFBUF] = {0}"
+.PP
+Definition at line 45 of file Main_mod2.c.
+.SS "char \fBtrack\fP"
+.PP
+Definition at line 27 of file user_interface.c.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

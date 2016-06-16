@@ -1,0 +1,745 @@
+.TH "key_map.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+key_map.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'hal_defs.h'\fP
+.br
+\fC#include 'hal_types.h'\fP
+.br
+
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBxmax\fP   4425"
+.br
+.ti -1c
+.RI "#define \fBxmin\fP   1225"
+.br
+.ti -1c
+.RI "#define \fBymax\fP   3594"
+.br
+.ti -1c
+.RI "#define \fBymin\fP   1806"
+.br
+.ti -1c
+.RI "#define \fBblack_key_ymin\fP   1806"
+.br
+.ti -1c
+.RI "#define \fBblack_key_ymax\fP   2912"
+.br
+.ti -1c
+.RI "#define \fBkeyA_xmin\fP   4284"
+.br
+.ti -1c
+.RI "#define \fBkeyA_xmax\fP   4425"
+.br
+.ti -1c
+.RI "#define \fBkeyB_xmin\fP   3719"
+.br
+.ti -1c
+.RI "#define \fBkeyB_xmax\fP   3896"
+.br
+.ti -1c
+.RI "#define \fBkeyC_xmin\fP   3190"
+.br
+.ti -1c
+.RI "#define \fBkeyC_xmax\fP   3367"
+.br
+.ti -1c
+.RI "#define \fBkeyD_xmin\fP   2661"
+.br
+.ti -1c
+.RI "#define \fBkeyD_xmax\fP   2838"
+.br
+.ti -1c
+.RI "#define \fBkeyE_xmin\fP   2132"
+.br
+.ti -1c
+.RI "#define \fBkeyE_xmax\fP   2309"
+.br
+.ti -1c
+.RI "#define \fBkeyF_xmin\fP   1603"
+.br
+.ti -1c
+.RI "#define \fBkeyF_xmax\fP   1780"
+.br
+.ti -1c
+.RI "#define \fBkey1_xmax\fP   4425"
+.br
+.ti -1c
+.RI "#define \fBkey1_xmin\fP   4349"
+.br
+.ti -1c
+.RI "#define \fBkey2_xmax\fP   4349"
+.br
+.ti -1c
+.RI "#define \fBkey2_xmin\fP   4072"
+.br
+.ti -1c
+.RI "#define \fBkey3_xmax\fP   4072"
+.br
+.ti -1c
+.RI "#define \fBkey3_xmin\fP   3795"
+.br
+.ti -1c
+.RI "#define \fBkey4_xmax\fP   3795"
+.br
+.ti -1c
+.RI "#define \fBkey4_xmin\fP   3543"
+.br
+.ti -1c
+.RI "#define \fBkey5_xmax\fP   3543"
+.br
+.ti -1c
+.RI "#define \fBkey5_xmin\fP   3291"
+.br
+.ti -1c
+.RI "#define \fBkey6_xmax\fP   3291"
+.br
+.ti -1c
+.RI "#define \fBkey6_xmin\fP   3014"
+.br
+.ti -1c
+.RI "#define \fBkey7_xmax\fP   3014"
+.br
+.ti -1c
+.RI "#define \fBkey7_xmin\fP   2737"
+.br
+.ti -1c
+.RI "#define \fBkey8_xmax\fP   2737"
+.br
+.ti -1c
+.RI "#define \fBkey8_xmin\fP   2485"
+.br
+.ti -1c
+.RI "#define \fBkey9_xmax\fP   2485"
+.br
+.ti -1c
+.RI "#define \fBkey9_xmin\fP   2233"
+.br
+.ti -1c
+.RI "#define \fBkey10_xmax\fP   2233"
+.br
+.ti -1c
+.RI "#define \fBkey10_xmin\fP   1956"
+.br
+.ti -1c
+.RI "#define \fBkey11_xmax\fP   1956"
+.br
+.ti -1c
+.RI "#define \fBkey11_xmin\fP   1679"
+.br
+.ti -1c
+.RI "#define \fBkey12_xmax\fP   1679"
+.br
+.ti -1c
+.RI "#define \fBkey12_xmin\fP   1402"
+.br
+.ti -1c
+.RI "#define \fBkey13_xmax\fP   1402"
+.br
+.ti -1c
+.RI "#define \fBkey13_xmin\fP   1225"
+.br
+.ti -1c
+.RI "#define \fBsquare1_xmin\fP   3568"
+.br
+.ti -1c
+.RI "#define \fBsquare1_xmax\fP   4425"
+.br
+.ti -1c
+.RI "#define \fBsquare1_ymin\fP   2629"
+.br
+.ti -1c
+.RI "#define \fBsquare1_ymax\fP   3594"
+.br
+.ti -1c
+.RI "#define \fBsquare2_xmin\fP   2963"
+.br
+.ti -1c
+.RI "#define \fBsquare2_xmax\fP   3820"
+.br
+.ti -1c
+.RI "#define \fBsquare2_ymin\fP   1834"
+.br
+.ti -1c
+.RI "#define \fBsquare2_ymax\fP   2799"
+.br
+.ti -1c
+.RI "#define \fBsquare3_xmin\fP   2384"
+.br
+.ti -1c
+.RI "#define \fBsquare3_xmax\fP   3241"
+.br
+.ti -1c
+.RI "#define \fBsquare3_ymin\fP   2629"
+.br
+.ti -1c
+.RI "#define \fBsquare3_ymax\fP   3594"
+.br
+.ti -1c
+.RI "#define \fBsquare4_xmin\fP   1830"
+.br
+.ti -1c
+.RI "#define \fBsquare4_xmax\fP   2686"
+.br
+.ti -1c
+.RI "#define \fBsquare4_ymin\fP   1834"
+.br
+.ti -1c
+.RI "#define \fBsquare4_ymax\fP   2799"
+.br
+.ti -1c
+.RI "#define \fBsquare5_xmin\fP   1251"
+.br
+.ti -1c
+.RI "#define \fBsquare5_xmax\fP   2107"
+.br
+.ti -1c
+.RI "#define \fBsquare5_ymin\fP   2629"
+.br
+.ti -1c
+.RI "#define \fBsquare5_ymax\fP   3594"
+.br
+.ti -1c
+.RI "#define \fBstring1_ymax\fP   3480"
+.br
+.ti -1c
+.RI "#define \fBstring1_ymin\fP   3253"
+.br
+.ti -1c
+.RI "#define \fBstring2_ymax\fP   3168"
+.br
+.ti -1c
+.RI "#define \fBstring2_ymin\fP   2969"
+.br
+.ti -1c
+.RI "#define \fBstring3_ymax\fP   2884"
+.br
+.ti -1c
+.RI "#define \fBstring3_ymin\fP   2685"
+.br
+.ti -1c
+.RI "#define \fBstring4_ymax\fP   2572"
+.br
+.ti -1c
+.RI "#define \fBstring4_ymin\fP   2402"
+.br
+.ti -1c
+.RI "#define \fBstring5_ymax\fP   2316"
+.br
+.ti -1c
+.RI "#define \fBstring5_ymin\fP   2146"
+.br
+.ti -1c
+.RI "#define \fBstring6_ymax\fP   2061"
+.br
+.ti -1c
+.RI "#define \fBstring6_ymin\fP   1891"
+.br
+.ti -1c
+.RI "#define \fBISBETWEEN\fP(B, A, C)   ( ((A-B) >= 0) && ((A-C) <= 0) )"
+.br
+.ti -1c
+.RI "#define \fBTRUE\fP   1"
+.br
+.ti -1c
+.RI "#define \fBFALSE\fP   0"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "char \fBpiano_key_match\fP (int \fBx\fP, int \fBy\fP)"
+.br
+.ti -1c
+.RI "char \fBps2_key_match\fP (char scancode)"
+.br
+.ti -1c
+.RI "char \fBdrum_key_match\fP (int \fBx\fP, int \fBy\fP)"
+.br
+.ti -1c
+.RI "char \fBguitar_key_match\fP (int \fBx\fP, int \fBy\fP)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "static const char \fBvalid_scancode\fP [19] = {'q','2','w','3','e','4','r','5','t','6','\fBy\fP','7','u','8','i','9','o','0','p'}"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define black_key_ymax   2912"
+.PP
+Definition at line 24 of file key_map.h.
+.SS "#define black_key_ymin   1806"
+.PP
+Definition at line 23 of file key_map.h.
+.SS "#define FALSE   0"
+.PP
+Definition at line 138 of file key_map.h.
+.SS "#define ISBETWEEN(B, A, C)   ( ((A-B) >= 0) && ((A-C) <= 0) )"
+.PP
+Definition at line 136 of file key_map.h.
+.SS "#define key10_xmax   2233"
+.PP
+Definition at line 71 of file key_map.h.
+.SS "#define key10_xmin   1956"
+.PP
+Definition at line 72 of file key_map.h.
+.SS "#define key11_xmax   1956"
+.PP
+Definition at line 74 of file key_map.h.
+.SS "#define key11_xmin   1679"
+.PP
+Definition at line 75 of file key_map.h.
+.SS "#define key12_xmax   1679"
+.PP
+Definition at line 77 of file key_map.h.
+.SS "#define key12_xmin   1402"
+.PP
+Definition at line 78 of file key_map.h.
+.SS "#define key13_xmax   1402"
+.PP
+Definition at line 80 of file key_map.h.
+.SS "#define key13_xmin   1225"
+.PP
+Definition at line 81 of file key_map.h.
+.SS "#define key1_xmax   4425"
+.PP
+Definition at line 44 of file key_map.h.
+.SS "#define key1_xmin   4349"
+.PP
+Definition at line 45 of file key_map.h.
+.SS "#define key2_xmax   4349"
+.PP
+Definition at line 47 of file key_map.h.
+.SS "#define key2_xmin   4072"
+.PP
+Definition at line 48 of file key_map.h.
+.SS "#define key3_xmax   4072"
+.PP
+Definition at line 50 of file key_map.h.
+.SS "#define key3_xmin   3795"
+.PP
+Definition at line 51 of file key_map.h.
+.SS "#define key4_xmax   3795"
+.PP
+Definition at line 53 of file key_map.h.
+.SS "#define key4_xmin   3543"
+.PP
+Definition at line 54 of file key_map.h.
+.SS "#define key5_xmax   3543"
+.PP
+Definition at line 56 of file key_map.h.
+.SS "#define key5_xmin   3291"
+.PP
+Definition at line 57 of file key_map.h.
+.SS "#define key6_xmax   3291"
+.PP
+Definition at line 59 of file key_map.h.
+.SS "#define key6_xmin   3014"
+.PP
+Definition at line 60 of file key_map.h.
+.SS "#define key7_xmax   3014"
+.PP
+Definition at line 62 of file key_map.h.
+.SS "#define key7_xmin   2737"
+.PP
+Definition at line 63 of file key_map.h.
+.SS "#define key8_xmax   2737"
+.PP
+Definition at line 65 of file key_map.h.
+.SS "#define key8_xmin   2485"
+.PP
+Definition at line 66 of file key_map.h.
+.SS "#define key9_xmax   2485"
+.PP
+Definition at line 68 of file key_map.h.
+.SS "#define key9_xmin   2233"
+.PP
+Definition at line 69 of file key_map.h.
+.SS "#define keyA_xmax   4425"
+.PP
+Definition at line 27 of file key_map.h.
+.SS "#define keyA_xmin   4284"
+.PP
+Definition at line 26 of file key_map.h.
+.SS "#define keyB_xmax   3896"
+.PP
+Definition at line 30 of file key_map.h.
+.SS "#define keyB_xmin   3719"
+.PP
+Definition at line 29 of file key_map.h.
+.SS "#define keyC_xmax   3367"
+.PP
+Definition at line 33 of file key_map.h.
+.SS "#define keyC_xmin   3190"
+.PP
+Definition at line 32 of file key_map.h.
+.SS "#define keyD_xmax   2838"
+.PP
+Definition at line 36 of file key_map.h.
+.SS "#define keyD_xmin   2661"
+.PP
+Definition at line 35 of file key_map.h.
+.SS "#define keyE_xmax   2309"
+.PP
+Definition at line 39 of file key_map.h.
+.SS "#define keyE_xmin   2132"
+.PP
+Definition at line 38 of file key_map.h.
+.SS "#define keyF_xmax   1780"
+.PP
+Definition at line 42 of file key_map.h.
+.SS "#define keyF_xmin   1603"
+.PP
+Definition at line 41 of file key_map.h.
+.SS "#define square1_xmax   4425"
+.PP
+Definition at line 88 of file key_map.h.
+.SS "#define square1_xmin   3568"
+.PP
+Definition at line 87 of file key_map.h.
+.SS "#define square1_ymax   3594"
+.PP
+Definition at line 90 of file key_map.h.
+.SS "#define square1_ymin   2629"
+.PP
+Definition at line 89 of file key_map.h.
+.SS "#define square2_xmax   3820"
+.PP
+Definition at line 93 of file key_map.h.
+.SS "#define square2_xmin   2963"
+.PP
+Definition at line 92 of file key_map.h.
+.SS "#define square2_ymax   2799"
+.PP
+Definition at line 95 of file key_map.h.
+.SS "#define square2_ymin   1834"
+.PP
+Definition at line 94 of file key_map.h.
+.SS "#define square3_xmax   3241"
+.PP
+Definition at line 98 of file key_map.h.
+.SS "#define square3_xmin   2384"
+.PP
+Definition at line 97 of file key_map.h.
+.SS "#define square3_ymax   3594"
+.PP
+Definition at line 100 of file key_map.h.
+.SS "#define square3_ymin   2629"
+.PP
+Definition at line 99 of file key_map.h.
+.SS "#define square4_xmax   2686"
+.PP
+Definition at line 103 of file key_map.h.
+.SS "#define square4_xmin   1830"
+.PP
+Definition at line 102 of file key_map.h.
+.SS "#define square4_ymax   2799"
+.PP
+Definition at line 105 of file key_map.h.
+.SS "#define square4_ymin   1834"
+.PP
+Definition at line 104 of file key_map.h.
+.SS "#define square5_xmax   2107"
+.PP
+Definition at line 108 of file key_map.h.
+.SS "#define square5_xmin   1251"
+.PP
+Definition at line 107 of file key_map.h.
+.SS "#define square5_ymax   3594"
+.PP
+Definition at line 110 of file key_map.h.
+.SS "#define square5_ymin   2629"
+.PP
+Definition at line 109 of file key_map.h.
+.SS "#define string1_ymax   3480"
+.PP
+Definition at line 114 of file key_map.h.
+.SS "#define string1_ymin   3253"
+.PP
+Definition at line 115 of file key_map.h.
+.SS "#define string2_ymax   3168"
+.PP
+Definition at line 117 of file key_map.h.
+.SS "#define string2_ymin   2969"
+.PP
+Definition at line 118 of file key_map.h.
+.SS "#define string3_ymax   2884"
+.PP
+Definition at line 120 of file key_map.h.
+.SS "#define string3_ymin   2685"
+.PP
+Definition at line 121 of file key_map.h.
+.SS "#define string4_ymax   2572"
+.PP
+Definition at line 123 of file key_map.h.
+.SS "#define string4_ymin   2402"
+.PP
+Definition at line 124 of file key_map.h.
+.SS "#define string5_ymax   2316"
+.PP
+Definition at line 126 of file key_map.h.
+.SS "#define string5_ymin   2146"
+.PP
+Definition at line 127 of file key_map.h.
+.SS "#define string6_ymax   2061"
+.PP
+Definition at line 129 of file key_map.h.
+.SS "#define string6_ymin   1891"
+.PP
+Definition at line 130 of file key_map.h.
+.SS "#define TRUE   1"
+.PP
+Definition at line 137 of file key_map.h.
+.SS "#define xmax   4425"
+.PP
+Definition at line 16 of file key_map.h.
+.SS "#define xmin   1225"
+.PP
+Definition at line 17 of file key_map.h.
+.SS "#define ymax   3594"
+.PP
+Definition at line 18 of file key_map.h.
+.SS "#define ymin   1806"
+.PP
+Definition at line 19 of file key_map.h.
+.SH "Function Documentation"
+.PP 
+.SS "char drum_key_match (intx, inty)"
+.PP
+Definition at line 203 of file key_map.c.
+.PP
+.nf
+{
+        char key_note = 0;
+        
+        if(ISBETWEEN(xmin,x,xmax) && ISBETWEEN(ymin,y,ymax))    //check if it is in logical range of lcd
+        {
+                if(ISBETWEEN(square1_xmin, x, square1_xmax) && ISBETWEEN(square1_ymin, y, square1_ymax))
+                                key_note = 40;          //Drum 1 SNARE DRUM
+                else if(ISBETWEEN(square2_xmin, x, square2_xmax) && ISBETWEEN(square2_ymin, y, square2_ymax))
+                                key_note = 36;          //Drum 2 Bass drum      
+                else if(ISBETWEEN(square3_xmin, x, square3_xmax) && ISBETWEEN(square3_ymin, y, square3_ymax))
+                                key_note = 48;          //drum 3 Tom Tom drum
+                else if(ISBETWEEN(square4_xmin, x, square4_xmax) && ISBETWEEN(square4_ymin, y, square4_ymax))
+                                key_note = 41;          //Drum 4 Low Floor tom
+                else if(ISBETWEEN(square5_xmin, x, square5_xmax) && ISBETWEEN(square5_ymin, y, square5_ymax))
+                                key_note = 51;          //Cymbal ride cymbal 1
+                else
+                        key_note = 0;
+
+        }
+                else    //bound check else
+        {
+                key_note=0;
+        }//end of bound check
+
+    //tx1_send(&key_note, 1);
+        return key_note;
+}
+.fi
+.SS "char guitar_key_match (intx, inty)"
+.PP
+Definition at line 244 of file key_map.c.
+.PP
+.nf
+{
+        char key_note=0;
+        
+        if(ISBETWEEN(xmin,x,xmax) && ISBETWEEN(ymin,y,ymax))    //check if it is in logical range of lcd
+        {
+                if(ISBETWEEN(string1_ymin, y, string1_ymax))    //String 1 Thickest string
+                        key_note = 52;
+                else if(ISBETWEEN(string2_ymin, y, string2_ymax))       //String 2
+                        key_note = 57;
+                else if(ISBETWEEN(string3_ymin, y, string3_ymax))       //String 3
+                        key_note = 62;
+                else if(ISBETWEEN(string4_ymin, y, string4_ymax))       //String 4
+                        key_note = 67;
+                else if(ISBETWEEN(string5_ymin, y, string5_ymax))       //String 5
+                        key_note = 71;
+                else if(ISBETWEEN(string6_ymin, y, string6_ymax))       //String 6
+                        key_note = 76;
+                else
+                        key_note=0;
+        
+        }       
+        else    //bound check else
+        {
+                key_note=0;
+        }//end of bound check
+
+        return key_note;
+}
+.fi
+.SS "char piano_key_match (intx, inty)"
+.PP
+Definition at line 31 of file key_map.c.
+.PP
+.nf
+{
+        volatile unsigned char BLACK_KEY = TRUE;
+        volatile unsigned char WHITE_KEY = TRUE;
+        char key_note=0;
+        char center_note = 0x3C;
+        
+        if(ISBETWEEN(xmin,x,xmax) && ISBETWEEN(ymin,y,ymax))    //check if it is in logical range of lcd
+        {
+                if(ISBETWEEN(black_key_ymin ,y ,black_key_ymax))        //check if it is a black key only
+                {                       
+                        if(ISBETWEEN(keyA_xmin ,x ,keyA_xmax))                  //check is key A is pressed
+                        {
+                                key_note=center_note - 16;
+                        }
+                        else if(ISBETWEEN(keyB_xmin ,x ,keyB_xmax))             //check is key B is pressed
+                        {
+                                key_note=center_note - 10;
+                        }
+                        else if(ISBETWEEN(keyC_xmin ,x ,keyC_xmax))             //check is key C is pressed
+                        {
+                                key_note=center_note - 4;
+                        }
+                        else if(ISBETWEEN(keyD_xmin ,x ,keyD_xmax))             //check is key D is pressed
+                        {
+                                key_note=center_note + 2;
+                        }
+                        else if(ISBETWEEN(keyE_xmin ,x ,keyE_xmax))             //check is key E is pressed
+                        {
+                                key_note=center_note + 8;
+                        }
+                        else if(ISBETWEEN(keyF_xmin ,x ,keyF_xmax))             //check is key F is pressed
+                        {
+                                key_note=center_note + 14;
+                        }
+                        else
+                        {
+                                BLACK_KEY = FALSE;
+                                key_note=0;
+                                //printf('The key pressed is not a black key\n\r');
+                        }
+                }
+                else
+                {
+                      BLACK_KEY = FALSE;
+                      key_note=0;
+                        //printf('It is definately not a black Key. Check for white key\n\r');
+                }
+                
+                if(BLACK_KEY==FALSE)    //see if black key is already found. WHy take pains to check for white key also.
+                {
+                        if(ISBETWEEN(key1_xmin ,x ,key1_xmax))  //check if white key1 is pressed
+                        {
+                                key_note=center_note - 18;
+                        }
+                        else if(ISBETWEEN(key2_xmin ,x ,key2_xmax))     //check if white key2 is pressed
+                        {
+                                key_note=center_note - 14;
+                        }
+                        else if(ISBETWEEN(key3_xmin ,x ,key3_xmax))     //check if white key3 is pressed
+                        {
+                                key_note=center_note - 12;
+                        }
+                        else if(ISBETWEEN(key4_xmin ,x ,key4_xmax))     //check if white key4 is pressed
+                        {
+                                key_note=center_note - 8;
+                        }
+                        else if(ISBETWEEN(key5_xmin ,x ,key5_xmax))     //check if white key5 is pressed
+                        {
+                                key_note=center_note - 6;
+                        }
+                        else if(ISBETWEEN(key6_xmin ,x ,key6_xmax))     //check if white key6 is pressed
+                        {
+                                key_note=center_note - 2;
+                        }
+                        else if(ISBETWEEN(key7_xmin ,x ,key7_xmax))     //check if white key7 is pressed
+                        {
+                                key_note=center_note;
+                        }
+                        else if(ISBETWEEN(key8_xmin ,x ,key8_xmax))     //check if white key8 is pressed
+                        {
+                                key_note=center_note + 4;
+                        }
+                        else if(ISBETWEEN(key9_xmin ,x ,key9_xmax))     //check if white key9 is pressed
+                        {
+                                key_note=center_note + 6;
+                        }
+                        else if(ISBETWEEN(key10_xmin ,x ,key10_xmax))   //check if white key10 is pressed
+                        {
+                                key_note=center_note + 10;
+                        }
+                        else if(ISBETWEEN(key11_xmin ,x ,key11_xmax))   //check if white key11 is pressed
+                        {
+                                key_note=center_note + 12;
+                        }
+                        else if(ISBETWEEN(key12_xmin ,x ,key12_xmax))   //check if white key12 is pressed
+                        {
+                                key_note=center_note + 16;
+                        }
+                        else if(ISBETWEEN(key13_xmin ,x ,key13_xmax))   //check if white key13 is pressed
+                        {
+                                key_note=center_note + 18;
+                        }
+                        else    //touched within bounds. NO white key. No black key. SO what the hell is detected???
+                        {
+                                WHITE_KEY=FALSE;
+                                key_note=0;
+                        }
+                }
+                else    //white key check ELSE
+                {
+                        WHITE_KEY=FALSE;
+                        //printf('Not checking for white key. Black key already detected in the previous check\n\r');
+                }               //END of white key check
+        }       
+        else    //bound check else
+        {
+                BLACK_KEY=FALSE;
+                WHITE_KEY=FALSE;
+                //printf('Data is out of Bounds. X = %d   Y = %d\n\r\n\r',x,y);
+                key_note=0;
+        }//end of bound check
+
+        //tx1_send(&key_note, 1);
+        return key_note;
+}
+.fi
+.SS "char ps2_key_match (charscancode)"
+.PP
+Definition at line 170 of file key_map.c.
+.PP
+.nf
+{
+        char i=0;
+        char keynote=0;
+        char base_keynote = 0x3C-18;
+        
+        for(i=0;i<19;i++)
+        {
+                if(scancode == valid_scancode[i])
+                {
+                        keynote = base_keynote + (i*2);
+                        break;
+                }
+        }
+        return keynote;
+}
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "const char \fBvalid_scancode\fP[19] = {'q','2','w','3','e','4','r','5','t','6','\fBy\fP','7','u','8','i','9','o','0','p'}\fC [static]\fP"
+.PP
+Definition at line 144 of file key_map.h.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

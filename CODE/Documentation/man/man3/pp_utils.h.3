@@ -1,0 +1,431 @@
+.TH "pp_utils.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+pp_utils.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBSTRINGIZE\fP(s)   STRINGIZE_X( s )"
+.br
+.ti -1c
+.RI "#define \fBSTRINGIZE_X\fP(s)   #s"
+.br
+.ti -1c
+.RI "#define \fBCONCATENATE\fP(a, b)   CONCATENATE_X( a, b )"
+.br
+.ti -1c
+.RI "#define \fBCONCATENATE_X\fP(a, b)   a ## b"
+.br
+.ti -1c
+.RI "#define \fBINFIX\fP(a, i, b)   CONCATENATE( CONCATENATE( a, i ), b )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_1\fP(t, w, f)   DECL_BIT_FIELDS_1( t, f, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_2\fP(t, w, f1, f0)   DECL_BIT_FIELDS_2( t, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_3\fP(t, w, f2, f1, f0)   DECL_BIT_FIELDS_3( t, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_4\fP(t, w, f3, f2, f1, f0)   DECL_BIT_FIELDS_4( t, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_5\fP(t, w, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_5( t, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_6\fP(t, w, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_6( t, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_7\fP(t, w, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_7( t, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_8\fP(t, w, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_8( t, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_9\fP(t, w, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_9( t, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_10\fP(t, w, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_10( t, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_11\fP(t, w, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_11( t, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_12\fP(t, w, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_12( t, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_13\fP(t, w, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_13( t, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_14\fP(t, w, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_14( t, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_15\fP(t, w, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_15( t, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_16\fP(t, w, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_16( t, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_17\fP(t, w, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_17( t, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_18\fP(t, w, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_18( t, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_19\fP(t, w, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_19( t, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_20\fP(t, w, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_20( t, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_21\fP(t, w, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_21( t, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_22\fP(t, w, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_22( t, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_23\fP(t, w, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_23( t, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_24\fP(t, w, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_24( t, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_25\fP(t, w, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_25( t, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_26\fP(t, w, f25, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_26( t, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_27\fP(t, w, f26, f25, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_27( t, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_28\fP(t, w, f27, f26, f25, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_28( t, f27, w, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_29\fP(t, w, f28, f27, f26, f25, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_29( t, f28, w, f27, w, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_30\fP(t, w, f29, f28, f27, f26, f25, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_30( t, f29, w, f28, w, f27, w, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_31\fP(t, w, f30, f29, f28, f27, f26, f25, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_31( t, f30, w, f29, w, f28, w, f27, w, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_WIDTH_BIT_FIELDS_32\fP(t, w, f31, f30, f29, f28, f27, f26, f25, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_32( t, f31, w, f30, w, f29, w, f28, w, f27, w, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_1\fP(t, f, w)   t f : w"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_2\fP(t, f1, w1, f0, w0)   DECL_BIT_FIELDS_1( t, f0, w0 ); DECL_BIT_FIELDS_1( t, f1, w1 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_3\fP(t, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_2( t, f1, w1, f0, w0 ); DECL_BIT_FIELDS_1( t, f2, w2 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_4\fP(t, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_2( t, f1, w1, f0, w0 ); DECL_BIT_FIELDS_2( t, f3, w3, f2, w2 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_5\fP(t, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_3( t, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_2( t, f4, w4, f3, w3 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_6\fP(t, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_3( t, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_3( t, f5, w5, f4, w4, f3, w3 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_7\fP(t, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_4( t, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_3( t, f6, w6, f5, w5, f4, w4 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_8\fP(t, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_4( t, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_4( t, f7, w7, f6, w6, f5, w5, f4, w4 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_9\fP(t, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_5( t, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_4( t, f8, w8, f7, w7, f6, w6, f5, w5 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_10\fP(t, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_5( t, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_5( t, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_11\fP(t, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_6( t, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_5( t, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_12\fP(t, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_6( t, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_6( t, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_13\fP(t, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_7( t, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_6( t, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_14\fP(t, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_7( t, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_7( t, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_15\fP(t, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_8( t, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_7( t, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_16\fP(t, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_8( t, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_8( t, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_17\fP(t, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_9( t, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_8( t, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_18\fP(t, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_9( t, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_9( t, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_19\fP(t, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_10( t, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_9( t, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_20\fP(t, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_10( t, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_10( t, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_21\fP(t, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_11( t, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_10( t, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_22\fP(t, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_11( t, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_11( t, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_23\fP(t, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_12( t, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_11( t, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_24\fP(t, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_12( t, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_12( t, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_25\fP(t, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_13( t, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_12( t, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_26\fP(t, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_13( t, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_13( t, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_27\fP(t, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_14( t, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_13( t, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_28\fP(t, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_14( t, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_14( t, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_29\fP(t, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_15( t, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_14( t, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_30\fP(t, f29, w29, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_15( t, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_15( t, f29, w29, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_31\fP(t, f30, w30, f29, w29, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_16( t, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_15( t, f30, w30, f29, w29, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16 )"
+.br
+.ti -1c
+.RI "#define \fBDECL_BIT_FIELDS_32\fP(t, f31, w31, f30, w30, f29, w29, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_16( t, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_16( t, f31, w31, f30, w30, f29, w29, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16 )"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define CONCATENATE(a, b)   CONCATENATE_X( a, b )"
+.PP
+Definition at line 51 of file pp_utils.h.
+.SS "#define CONCATENATE_X(a, b)   a ## b"
+.PP
+Definition at line 52 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_1(t, f, w)   t f : w"
+.PP
+Definition at line 127 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_10(t, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_5( t, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_5( t, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5 )"
+.PP
+Definition at line 136 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_11(t, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_6( t, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_5( t, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6 )"
+.PP
+Definition at line 137 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_12(t, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_6( t, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_6( t, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6 )"
+.PP
+Definition at line 138 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_13(t, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_7( t, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_6( t, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7 )"
+.PP
+Definition at line 139 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_14(t, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_7( t, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_7( t, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7 )"
+.PP
+Definition at line 140 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_15(t, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_8( t, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_7( t, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8 )"
+.PP
+Definition at line 141 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_16(t, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_8( t, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_8( t, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8 )"
+.PP
+Definition at line 142 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_17(t, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_9( t, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_8( t, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9 )"
+.PP
+Definition at line 143 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_18(t, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_9( t, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_9( t, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9 )"
+.PP
+Definition at line 144 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_19(t, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_10( t, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_9( t, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10 )"
+.PP
+Definition at line 145 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_2(t, f1, w1, f0, w0)   DECL_BIT_FIELDS_1( t, f0, w0 ); DECL_BIT_FIELDS_1( t, f1, w1 )"
+.PP
+Definition at line 128 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_20(t, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_10( t, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_10( t, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10 )"
+.PP
+Definition at line 146 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_21(t, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_11( t, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_10( t, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11 )"
+.PP
+Definition at line 147 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_22(t, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_11( t, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_11( t, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11 )"
+.PP
+Definition at line 148 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_23(t, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_12( t, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_11( t, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12 )"
+.PP
+Definition at line 149 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_24(t, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_12( t, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_12( t, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12 )"
+.PP
+Definition at line 150 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_25(t, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_13( t, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_12( t, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13 )"
+.PP
+Definition at line 151 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_26(t, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_13( t, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_13( t, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13 )"
+.PP
+Definition at line 152 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_27(t, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_14( t, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_13( t, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14 )"
+.PP
+Definition at line 153 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_28(t, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_14( t, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_14( t, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14 )"
+.PP
+Definition at line 154 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_29(t, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_15( t, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_14( t, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15 )"
+.PP
+Definition at line 155 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_3(t, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_2( t, f1, w1, f0, w0 ); DECL_BIT_FIELDS_1( t, f2, w2 )"
+.PP
+Definition at line 129 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_30(t, f29, w29, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_15( t, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_15( t, f29, w29, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15 )"
+.PP
+Definition at line 156 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_31(t, f30, w30, f29, w29, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_16( t, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_15( t, f30, w30, f29, w29, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16 )"
+.PP
+Definition at line 157 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_32(t, f31, w31, f30, w30, f29, w29, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_16( t, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_16( t, f31, w31, f30, w30, f29, w29, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16 )"
+.PP
+Definition at line 158 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_4(t, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_2( t, f1, w1, f0, w0 ); DECL_BIT_FIELDS_2( t, f3, w3, f2, w2 )"
+.PP
+Definition at line 130 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_5(t, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_3( t, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_2( t, f4, w4, f3, w3 )"
+.PP
+Definition at line 131 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_6(t, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_3( t, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_3( t, f5, w5, f4, w4, f3, w3 )"
+.PP
+Definition at line 132 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_7(t, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_4( t, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_3( t, f6, w6, f5, w5, f4, w4 )"
+.PP
+Definition at line 133 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_8(t, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_4( t, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_4( t, f7, w7, f6, w6, f5, w5, f4, w4 )"
+.PP
+Definition at line 134 of file pp_utils.h.
+.SS "#define DECL_BIT_FIELDS_9(t, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)   DECL_BIT_FIELDS_5( t, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL_BIT_FIELDS_4( t, f8, w8, f7, w7, f6, w6, f5, w5 )"
+.PP
+Definition at line 135 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_1(t, w, f)   DECL_BIT_FIELDS_1( t, f, w )"
+.PP
+Definition at line 84 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_10(t, w, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_10( t, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 93 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_11(t, w, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_11( t, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 94 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_12(t, w, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_12( t, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 95 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_13(t, w, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_13( t, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 96 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_14(t, w, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_14( t, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 97 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_15(t, w, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_15( t, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 98 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_16(t, w, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_16( t, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 99 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_17(t, w, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_17( t, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 100 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_18(t, w, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_18( t, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 101 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_19(t, w, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_19( t, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 102 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_2(t, w, f1, f0)   DECL_BIT_FIELDS_2( t, f1, w, f0, w )"
+.PP
+Definition at line 85 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_20(t, w, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_20( t, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 103 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_21(t, w, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_21( t, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 104 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_22(t, w, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_22( t, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 105 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_23(t, w, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_23( t, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 106 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_24(t, w, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_24( t, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 107 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_25(t, w, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_25( t, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 108 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_26(t, w, f25, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_26( t, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 109 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_27(t, w, f26, f25, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_27( t, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 110 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_28(t, w, f27, f26, f25, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_28( t, f27, w, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 111 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_29(t, w, f28, f27, f26, f25, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_29( t, f28, w, f27, w, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 112 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_3(t, w, f2, f1, f0)   DECL_BIT_FIELDS_3( t, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 86 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_30(t, w, f29, f28, f27, f26, f25, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_30( t, f29, w, f28, w, f27, w, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 113 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_31(t, w, f30, f29, f28, f27, f26, f25, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_31( t, f30, w, f29, w, f28, w, f27, w, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 114 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_32(t, w, f31, f30, f29, f28, f27, f26, f25, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_32( t, f31, w, f30, w, f29, w, f28, w, f27, w, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 115 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_4(t, w, f3, f2, f1, f0)   DECL_BIT_FIELDS_4( t, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 87 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_5(t, w, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_5( t, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 88 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_6(t, w, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_6( t, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 89 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_7(t, w, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_7( t, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 90 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_8(t, w, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_8( t, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 91 of file pp_utils.h.
+.SS "#define DECL_WIDTH_BIT_FIELDS_9(t, w, f8, f7, f6, f5, f4, f3, f2, f1, f0)   DECL_BIT_FIELDS_9( t, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )"
+.PP
+Definition at line 92 of file pp_utils.h.
+.SS "#define INFIX(a, i, b)   CONCATENATE( CONCATENATE( a, i ), b )"
+.PP
+Definition at line 56 of file pp_utils.h.
+.SS "#define STRINGIZE(s)   STRINGIZE_X( s )"
+.PP
+Definition at line 45 of file pp_utils.h.
+.SS "#define STRINGIZE_X(s)   #s"
+.PP
+Definition at line 46 of file pp_utils.h.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

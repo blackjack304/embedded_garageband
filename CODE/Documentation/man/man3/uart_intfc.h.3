@@ -1,0 +1,267 @@
+.TH "uart_intfc.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+uart_intfc.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stddef.h>\fP
+.br
+\fC#include 'uart.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBuart_intfc_init\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBtx1_send\fP (const void *data, size_t len)"
+.br
+.ti -1c
+.RI "bool \fBtx1_send_wait\fP (const void *data, size_t len)"
+.br
+.ti -1c
+.RI "int \fBtx1_peek\fP (void)"
+.br
+.ti -1c
+.RI "int \fBrx_peek\fP (void)"
+.br
+.ti -1c
+.RI "int \fBrx_receive\fP (void *data, int max_len)"
+.br
+.ti -1c
+.RI "bool \fBuart_busy\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBtx0_send\fP (const void *data, size_t len)"
+.br
+.ti -1c
+.RI "bool \fBtx0_send_wait\fP (const void *data, size_t len)"
+.br
+.ti -1c
+.RI "int \fBtx0_peek\fP (void)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "int rx_peek (void)"
+.PP
+Definition at line 364 of file uart_intfc.c.
+.PP
+.nf
+  {
+  unsigned char* head;
+  unsigned char* tail;
+
+  BSP_CRITICAL_STATEMENT( head = rx_head; tail = rx_tail );
+
+  return buffer_used_space( head, tail );
+  }
+.fi
+.SS "int rx_receive (void *data, intmax_len)"
+.PP
+Definition at line 393 of file uart_intfc.c.
+.PP
+.nf
+  {
+  int cnt;
+  unsigned char* head;
+
+  /* get current state of head pointer */
+  BSP_CRITICAL_STATEMENT( head = rx_head );
+
+  /* retrieve data from buffer */
+  cnt = pop_buffer( head, &rx_tail, rx_buff, data, max_len );
+
+#if( defined UART_HARDWARE_HANDSHAKE_IN_SOFTWARE )
+  /* if we need to hold off the remote transmitter */
+  if( rx_peek( ) < RX_TX_BUFFER_THROTTLE_LIMIT )
+     UART_ASSERT_RTS( UART_RTS_DEASSERTED ); /* deassert the RTS line */
+#endif
+
+  return cnt; /* indicate the number of bytes retrieved from the buffer */
+  }
+.fi
+.SS "int tx0_peek (void)"
+.PP
+Definition at line 615 of file uart_intfc.c.
+.PP
+.nf
+  {
+  unsigned char* head;
+  unsigned char* tail;
+
+  BSP_CRITICAL_STATEMENT( head = tx0_head; tail = tx0_tail );
+
+  return buffer_free_space( head, tail );
+  }
+.fi
+.SS "bool tx0_send (const void *data, size_tlen)"
+.PP
+Definition at line 534 of file uart_intfc.c.
+.PP
+.nf
+  {
+  bool status;
+  unsigned char* tail;
+
+  /* get current state of tail pointer */
+  BSP_CRITICAL_STATEMENT( tail = tx0_tail );
+
+  /* put data into transmit buffer */
+  status = push_buffer( &tx0_head, tail, tx0_buff, (unsigned char*)data, len );
+
+  if( status != false ) /* if data was put in the buffer properly */
+    uart0_tx_message( tx0_handler ); /* notify the irq that data is ready to send */
+
+  return status; /* return status */
+  }
+.fi
+.SS "bool tx0_send_wait (const void *data, size_tlen)"
+.PP
+Definition at line 575 of file uart_intfc.c.
+.PP
+.nf
+  {
+  if( len > 0 && data != NULL ) /* if the information looks viable */
+    {
+    while( len > 0 )            /* while there is data left to transfer */
+      {
+      int sz = tx0_peek( );      /* get free space in the fifo */
+
+      if( sz > 0 )              /* if there is room for at least some data */
+        {
+        if( sz > len )          /* if more room than required          */
+          sz = len;             /* limit size to just the data to send */
+
+        tx0_send( data, sz );    /* send this portion of the information */
+
+        data = (unsigned char*)data + sz; /* move the pointer */
+
+        len -= sz;              /* adjust the count of remaining data to send */
+        }
+      }
+
+    return true; /* indicate success */
+    }
+
+  return false; /* otherwise indicate failure */
+  }
+.fi
+.SS "int tx1_peek (void)"
+.PP
+Definition at line 341 of file uart_intfc.c.
+.PP
+.nf
+  {
+  unsigned char* head;
+  unsigned char* tail;
+
+  BSP_CRITICAL_STATEMENT( head = tx1_head; tail = tx1_tail );
+
+  return buffer_free_space( head, tail );
+  }
+.fi
+.SS "bool tx1_send (const void *data, size_tlen)"
+.PP
+Definition at line 312 of file uart_intfc.c.
+.PP
+.nf
+{
+  bool status;
+  unsigned char* tail;
+
+  /* get current state of tail pointer */
+  BSP_CRITICAL_STATEMENT( tail = tx1_tail );
+
+  /* put data into transmit buffer */
+  status = push_buffer( &tx1_head, tail, tx1_buff, (unsigned char*)data, len );
+
+  if( status != false ) /* if data was put in the buffer properly */
+    uart1_tx_message( tx1_handler ); /* notify the irq that data is ready to send */
+
+  return status; /* return status */
+  }
+.fi
+.SS "bool tx1_send_wait (const void *data, size_tlen)"
+.PP
+Definition at line 266 of file uart_intfc.c.
+.PP
+.nf
+  {
+  if( len > 0 && data != NULL ) /* if the information looks viable */
+    {
+    while( len > 0 )            /* while there is data left to transfer */
+      {
+      int sz = tx1_peek( );      /* get free space in the fifo */
+
+      if( sz > 0 )              /* if there is room for at least some data */
+        {
+        if( sz > len )          /* if more room than required          */
+          sz = len;             /* limit size to just the data to send */
+
+        tx1_send( data, sz );    /* send this portion of the information */
+
+        data = (unsigned char*)data + sz; /* move the pointer */
+
+        len -= sz;              /* adjust the count of remaining data to send */
+        }
+      }
+
+    return true; /* indicate success */
+    }
+
+  return false; /* otherwise indicate failure */
+  }
+.fi
+.SS "bool uart_busy (void)"
+.PP
+Definition at line 428 of file uart_intfc.c.
+.PP
+.nf
+  {
+  int cnt;
+  unsigned char* head;
+  unsigned char* tail;
+
+  /* get receive buffer count */
+  BSP_CRITICAL_STATEMENT( head = rx_head; tail = rx_tail );
+  cnt = buffer_used_space( head, tail );
+
+  /* get transmit buffer count */
+  BSP_CRITICAL_STATEMENT( head = tx1_head; tail = tx1_tail );
+  cnt += buffer_used_space( head, tail );
+
+  return ( ( cnt == 0 ) ? false : true ); /* return status of uart */
+  }
+.fi
+.SS "void uart_intfc_init (void)"
+.PP
+Definition at line 81 of file uart_intfc.c.
+.PP
+.nf
+  {
+  /* initialize the buffer pointers in case we are re-initialized */
+  rx_head = rx_buff;
+  rx_tail = rx_buff;
+  tx1_head = tx1_buff;
+  tx1_tail = tx1_buff;
+  tx0_head = tx0_buff;
+  tx0_tail = tx0_buff;
+
+  uart_init( ); /* initialize the uart for operations */
+  uart_rx_message( rx_handler ); /* enable us to receive uart data */
+
+#if( defined UART_HARDWARE_HANDSHAKE_IN_SOFTWARE )
+   UART_ASSERT_RTS( UART_RTS_DEASSERTED ); /* release flow control */
+#endif
+
+  return;
+  }
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

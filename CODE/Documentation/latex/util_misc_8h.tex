@@ -1,0 +1,243 @@
+\hypertarget{util_misc_8h}{
+\section{utilMisc.h File Reference}
+\label{util_misc_8h}\index{utilMisc.h@{utilMisc.h}}
+}
+{\ttfamily \#include \char`\"{}hal\_\-defs.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-types.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{util_misc_8h_ae259660715c248fa1153bb5a098de374}{bzero}(b, len)~(memset((b), '$\backslash$0', (len)), (void) 0)
+\item 
+\#define \hyperlink{util_misc_8h_a7d3a67966d59945543298ac00709fb9e}{ISBETWEEN}(B, A, C)~( ((A-\/B) $>$= 0) \&\& ((A-\/C) $<$= 0) )
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{util_misc_8h_abdfc3f00afc1f176d0b1e7d032171abb}{printf\_\-lcd} (char $\ast$buf)
+\item 
+void \hyperlink{util_misc_8h_ae7f1b730496d88677fe06e99ed2d0957}{send\_\-midi} (char $\ast$buf)
+\item 
+void \hyperlink{util_misc_8h_a245c7e0af1fc507564ece6279d61b8eb}{printf\_\-pc} (char $\ast$buf)
+\item 
+void \hyperlink{util_misc_8h_a071043af5187c3e78377bb26fb6e242f}{printf\_\-pc\_\-code} (char \_\-\_\-code $\ast$buf)
+\item 
+void \hyperlink{util_misc_8h_a4ceaf2dd31a9bd704276334961b05916}{putchar\_\-pc} (char buf)
+\item 
+char \hyperlink{util_misc_8h_a18a4f73c726e3b31e8249aa31500a3c2}{getchar\_\-pc} (void)
+\item 
+int \hyperlink{util_misc_8h_ab1f410164cb2defd63ab2fe4962bb118}{getstr} (char $\ast$s)
+\item 
+char \hyperlink{util_misc_8h_a5a7df0ac668fa271c20743b7e80865f9}{getchar\_\-pc\_\-nb} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{util_misc_8h_ae259660715c248fa1153bb5a098de374}{
+\index{utilMisc.h@{utilMisc.h}!bzero@{bzero}}
+\index{bzero@{bzero}!utilMisc.h@{utilMisc.h}}
+\subsubsection[{bzero}]{\setlength{\rightskip}{0pt plus 5cm}\#define bzero(
+\begin{DoxyParamCaption}
+\item[{}]{b, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)~(memset((b), '$\backslash$0', (len)), (void) 0)}}
+\label{util_misc_8h_ae259660715c248fa1153bb5a098de374}
+
+
+Definition at line 16 of file utilMisc.h.
+
+\hypertarget{util_misc_8h_a7d3a67966d59945543298ac00709fb9e}{
+\index{utilMisc.h@{utilMisc.h}!ISBETWEEN@{ISBETWEEN}}
+\index{ISBETWEEN@{ISBETWEEN}!utilMisc.h@{utilMisc.h}}
+\subsubsection[{ISBETWEEN}]{\setlength{\rightskip}{0pt plus 5cm}\#define ISBETWEEN(
+\begin{DoxyParamCaption}
+\item[{}]{B, }
+\item[{}]{A, }
+\item[{}]{C}
+\end{DoxyParamCaption}
+)~( ((A-\/B) $>$= 0) \&\& ((A-\/C) $<$= 0) )}}
+\label{util_misc_8h_a7d3a67966d59945543298ac00709fb9e}
+
+
+Definition at line 17 of file utilMisc.h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{util_misc_8h_a18a4f73c726e3b31e8249aa31500a3c2}{
+\index{utilMisc.h@{utilMisc.h}!getchar\_\-pc@{getchar\_\-pc}}
+\index{getchar\_\-pc@{getchar\_\-pc}!utilMisc.h@{utilMisc.h}}
+\subsubsection[{getchar\_\-pc}]{\setlength{\rightskip}{0pt plus 5cm}char getchar\_\-pc (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{util_misc_8h_a18a4f73c726e3b31e8249aa31500a3c2}
+
+
+Definition at line 45 of file utilMisc.c.
+
+
+\begin{DoxyCode}
+                      {
+        
+        char ch = 0;
+        
+  while (!rx_peek());
+        rx_receive((void*)&ch, 1);
+        return ch;
+}
+\end{DoxyCode}
+\hypertarget{util_misc_8h_a5a7df0ac668fa271c20743b7e80865f9}{
+\index{utilMisc.h@{utilMisc.h}!getchar\_\-pc\_\-nb@{getchar\_\-pc\_\-nb}}
+\index{getchar\_\-pc\_\-nb@{getchar\_\-pc\_\-nb}!utilMisc.h@{utilMisc.h}}
+\subsubsection[{getchar\_\-pc\_\-nb}]{\setlength{\rightskip}{0pt plus 5cm}char getchar\_\-pc\_\-nb (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{util_misc_8h_a5a7df0ac668fa271c20743b7e80865f9}
+
+
+Definition at line 69 of file utilMisc.c.
+
+
+\begin{DoxyCode}
+                         {
+        
+        char ch = 0;
+        
+  if (rx_peek())
+        {
+                rx_receive((void*)&ch, 1);
+                return ch;
+        }
+        else
+                return 0;
+}\end{DoxyCode}
+\hypertarget{util_misc_8h_ab1f410164cb2defd63ab2fe4962bb118}{
+\index{utilMisc.h@{utilMisc.h}!getstr@{getstr}}
+\index{getstr@{getstr}!utilMisc.h@{utilMisc.h}}
+\subsubsection[{getstr}]{\setlength{\rightskip}{0pt plus 5cm}int getstr (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s}
+\end{DoxyParamCaption}
+)}}
+\label{util_misc_8h_ab1f410164cb2defd63ab2fe4962bb118}
+
+
+Definition at line 54 of file utilMisc.c.
+
+
+\begin{DoxyCode}
+                     {
+        
+        int i = 0;
+        
+        do {
+                                        s[i] = getchar_pc();
+                                        putchar_pc(s[i]);
+                                        i++;
+        } while(s[i-1] != 0x0D);              //0x0D is <CR>
+        s[i-1] = 0x00;                        //replace <CR> with NULL (0x00)
+        putchar_pc('\n');
+        putchar_pc('\r');
+        return (i-1);
+}
+\end{DoxyCode}
+\hypertarget{util_misc_8h_abdfc3f00afc1f176d0b1e7d032171abb}{
+\index{utilMisc.h@{utilMisc.h}!printf\_\-lcd@{printf\_\-lcd}}
+\index{printf\_\-lcd@{printf\_\-lcd}!utilMisc.h@{utilMisc.h}}
+\subsubsection[{printf\_\-lcd}]{\setlength{\rightskip}{0pt plus 5cm}void printf\_\-lcd (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{buf}
+\end{DoxyParamCaption}
+)}}
+\label{util_misc_8h_abdfc3f00afc1f176d0b1e7d032171abb}
+
+
+Definition at line 23 of file utilMisc.c.
+
+
+\begin{DoxyCode}
+                           {
+  tx0_send(buf, strlen(buf));
+}
+\end{DoxyCode}
+\hypertarget{util_misc_8h_a245c7e0af1fc507564ece6279d61b8eb}{
+\index{utilMisc.h@{utilMisc.h}!printf\_\-pc@{printf\_\-pc}}
+\index{printf\_\-pc@{printf\_\-pc}!utilMisc.h@{utilMisc.h}}
+\subsubsection[{printf\_\-pc}]{\setlength{\rightskip}{0pt plus 5cm}void printf\_\-pc (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{buf}
+\end{DoxyParamCaption}
+)}}
+\label{util_misc_8h_a245c7e0af1fc507564ece6279d61b8eb}
+
+
+Definition at line 31 of file utilMisc.c.
+
+
+\begin{DoxyCode}
+                          {
+  tx1_send(buf, strlen(buf));
+}
+\end{DoxyCode}
+\hypertarget{util_misc_8h_a071043af5187c3e78377bb26fb6e242f}{
+\index{utilMisc.h@{utilMisc.h}!printf\_\-pc\_\-code@{printf\_\-pc\_\-code}}
+\index{printf\_\-pc\_\-code@{printf\_\-pc\_\-code}!utilMisc.h@{utilMisc.h}}
+\subsubsection[{printf\_\-pc\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}void printf\_\-pc\_\-code (
+\begin{DoxyParamCaption}
+\item[{char \_\-\_\-code $\ast$}]{buf}
+\end{DoxyParamCaption}
+)}}
+\label{util_misc_8h_a071043af5187c3e78377bb26fb6e242f}
+
+
+Definition at line 35 of file utilMisc.c.
+
+
+\begin{DoxyCode}
+                                      {
+  tx1_send((const char*)buf, strlen((const char*)buf));
+}
+\end{DoxyCode}
+\hypertarget{util_misc_8h_a4ceaf2dd31a9bd704276334961b05916}{
+\index{utilMisc.h@{utilMisc.h}!putchar\_\-pc@{putchar\_\-pc}}
+\index{putchar\_\-pc@{putchar\_\-pc}!utilMisc.h@{utilMisc.h}}
+\subsubsection[{putchar\_\-pc}]{\setlength{\rightskip}{0pt plus 5cm}void putchar\_\-pc (
+\begin{DoxyParamCaption}
+\item[{char}]{buf}
+\end{DoxyParamCaption}
+)}}
+\label{util_misc_8h_a4ceaf2dd31a9bd704276334961b05916}
+
+
+Definition at line 41 of file utilMisc.c.
+
+
+\begin{DoxyCode}
+                          {
+  tx1_send((void*)&buf, 1);
+}
+\end{DoxyCode}
+\hypertarget{util_misc_8h_ae7f1b730496d88677fe06e99ed2d0957}{
+\index{utilMisc.h@{utilMisc.h}!send\_\-midi@{send\_\-midi}}
+\index{send\_\-midi@{send\_\-midi}!utilMisc.h@{utilMisc.h}}
+\subsubsection[{send\_\-midi}]{\setlength{\rightskip}{0pt plus 5cm}void send\_\-midi (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{buf}
+\end{DoxyParamCaption}
+)}}
+\label{util_misc_8h_ae7f1b730496d88677fe06e99ed2d0957}
+
+
+Definition at line 27 of file utilMisc.c.
+
+
+\begin{DoxyCode}
+                          {
+  tx0_send(buf, strlen(buf));
+}
+\end{DoxyCode}

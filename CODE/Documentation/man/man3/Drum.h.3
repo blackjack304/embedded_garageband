@@ -1,0 +1,223 @@
+.TH "Drum.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Drum.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'hal_defs.h'\fP
+.br
+\fC#include 'hal_types.h'\fP
+.br
+
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBDR0\fP   0x01"
+.br
+.ti -1c
+.RI "#define \fBDR1\fP   0x02"
+.br
+.ti -1c
+.RI "#define \fBDR2\fP   0x04"
+.br
+.ti -1c
+.RI "#define \fBDR3\fP   0x08"
+.br
+.ti -1c
+.RI "#define \fBDR4\fP   0x10"
+.br
+.ti -1c
+.RI "#define \fBDR5\fP   0x20"
+.br
+.ti -1c
+.RI "#define \fBDRUM_PORT\fP   0"
+.br
+.ti -1c
+.RI "#define \fBDR0_PIN\fP   0"
+.br
+.ti -1c
+.RI "#define \fBDR1_PIN\fP   1"
+.br
+.ti -1c
+.RI "#define \fBDR2_PIN\fP   2"
+.br
+.ti -1c
+.RI "#define \fBDR3_PIN\fP   3"
+.br
+.ti -1c
+.RI "#define \fBDR4_PIN\fP   4"
+.br
+.ti -1c
+.RI "#define \fBDR5_PIN\fP   5"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBIntitialize_Drumset\fP ()"
+.br
+.ti -1c
+.RI "void \fBDrumSet\fP ()"
+.br
+.ti -1c
+.RI "void \fBplayVDrum\fP ()"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define DR0   0x01"
+.PP
+Definition at line 19 of file Drum.h.
+.SS "#define DR0_PIN   0"
+.PP
+Definition at line 30 of file Drum.h.
+.SS "#define DR1   0x02"
+.PP
+Definition at line 20 of file Drum.h.
+.SS "#define DR1_PIN   1"
+.PP
+Definition at line 31 of file Drum.h.
+.SS "#define DR2   0x04"
+.PP
+Definition at line 21 of file Drum.h.
+.SS "#define DR2_PIN   2"
+.PP
+Definition at line 32 of file Drum.h.
+.SS "#define DR3   0x08"
+.PP
+Definition at line 22 of file Drum.h.
+.SS "#define DR3_PIN   3"
+.PP
+Definition at line 33 of file Drum.h.
+.SS "#define DR4   0x10"
+.PP
+Definition at line 23 of file Drum.h.
+.SS "#define DR4_PIN   4"
+.PP
+Definition at line 34 of file Drum.h.
+.SS "#define DR5   0x20"
+.PP
+Definition at line 24 of file Drum.h.
+.SS "#define DR5_PIN   5"
+.PP
+Definition at line 35 of file Drum.h.
+.SS "#define DRUM_PORT   0"
+.PP
+Definition at line 26 of file Drum.h.
+.SH "Function Documentation"
+.PP 
+.SS "void DrumSet ()"
+.PP
+Definition at line 96 of file Drum.c.
+.PP
+.nf
+{
+  Intitialize_Drumset();
+  while(1)
+  {
+    if(P0 & 0x3F)
+    {
+      tmp_port = P0;
+      for(inn=0;inn<6;inn++)
+      {
+        if((tmp_port>>inn) & 0x01)
+           break;
+      }
+      if(inn<6 && timerID_DR[inn] == TimerId_INVALID)
+      {
+         timerID_DR[inn] = SetTimerReq(&Drum_ISR,200);
+         halLedToggle(1);
+         P0IFG &= ~(1<<inn);
+         Capture_DR[inn] = 0;
+      }
+    }
+
+    if(Print_Flag == 1)
+    {
+      tx1_send(tx1_buf,3);
+      Print_Flag = 0;
+    }
+  }
+}
+.fi
+.SS "void Intitialize_Drumset ()"
+.PP
+Definition at line 53 of file Drum.c.
+.PP
+.nf
+{
+  P0SEL = 0;
+
+  MCU_IO_OUTPUT(DRUM_PORT, DR0_PIN, 1);
+  MCU_IO_OUTPUT(DRUM_PORT, DR1_PIN, 1);
+  MCU_IO_OUTPUT(DRUM_PORT, DR2_PIN, 1);
+  MCU_IO_OUTPUT(DRUM_PORT, DR3_PIN, 1);
+  MCU_IO_OUTPUT(DRUM_PORT, DR4_PIN, 1);
+  MCU_IO_OUTPUT(DRUM_PORT, DR5_PIN, 1);
+
+  MCU_IO_INPUT(DRUM_PORT, DR0_PIN, MCU_IO_PULLUP);
+  MCU_IO_INPUT(DRUM_PORT, DR1_PIN, MCU_IO_PULLUP);
+  MCU_IO_INPUT(DRUM_PORT, DR2_PIN, MCU_IO_PULLUP);
+  MCU_IO_INPUT(DRUM_PORT, DR3_PIN, MCU_IO_PULLUP);
+  MCU_IO_INPUT(DRUM_PORT, DR4_PIN, MCU_IO_PULLUP);
+  MCU_IO_INPUT(DRUM_PORT, DR5_PIN, MCU_IO_PULLUP);
+
+  MCU_IO_INPUT(DRUM_PORT, 6, MCU_IO_PULLDOWN);
+  MCU_IO_INPUT(DRUM_PORT, 7, MCU_IO_PULLDOWN);
+
+
+  PICTL |= 0x01;   //High to Low Edge
+  PICTL |= 0x18;    //Enable Interrupts P0ENH, P0ENL
+  P0IF = 0;
+  P0IFG = 0;
+  P0IE = 1;
+
+  halLedSet(1);
+  halLedSet(3);
+
+}
+.fi
+.SS "void playVDrum ()"
+.PP
+Definition at line 201 of file Drum.c.
+.PP
+.nf
+                 {
+        
+        unsigned char usrExit[] = {0};
+        char keyNote = 0;
+        unsigned int xCoord = 0;
+        unsigned int yCoord = 0;
+        unsigned char sendBuf[3] = {0};
+        
+        while(1) {
+                //usrExit = getchar() nblocking in M2
+                //In this module do a non blocking recv and chk for STOPMAGIC
+                if (RF_gets_nblk(usrExit) != 0) {
+                        if (strncmp ((char *)usrExit, 'STOP', 4) == 0) {
+                                break;
+                        }
+                }
+                else {
+                        getTsXY(&xCoord, &yCoord);
+                        keyNote = drum_key_match(xCoord, yCoord);
+                        halMcuWaitMs(30);
+                        if (keyNote) {
+                                //send the note over rf and serial
+                                sendBuf[0] = 0;                                 //Channel
+                                sendBuf[1] = keyNote;           //Note
+                                sendBuf[2] = 0x7f;                      //Attack Velocity //TODO: use pressure
+                                halMcuWaitMs(50);
+                                RF_Send(sendBuf, 3);
+                        }
+                }
+        }//while(1)
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

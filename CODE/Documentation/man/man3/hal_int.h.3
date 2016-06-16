@@ -1,0 +1,70 @@
+.TH "hal_int.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+hal_int.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <hal_types.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBhalIntOn\fP (void)"
+.br
+.ti -1c
+.RI "void \fBhalIntOff\fP (void)"
+.br
+.ti -1c
+.RI "\fBuint16\fP \fBhalIntLock\fP (void)"
+.br
+.ti -1c
+.RI "void \fBhalIntUnlock\fP (\fBuint16\fP key)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "\fBuint16\fP halIntLock (void)"
+.PP
+Definition at line 66 of file hal_int.c.
+.PP
+.nf
+{
+    istate_t key;
+    HAL_INT_LOCK(key);
+    return(key);
+}
+.fi
+.SS "void halIntOff (void)"
+.PP
+Definition at line 50 of file hal_int.c.
+.PP
+.nf
+{
+    HAL_INT_OFF();
+}
+.fi
+.SS "void halIntOn (void)"
+.PP
+Definition at line 35 of file hal_int.c.
+.PP
+.nf
+{
+    HAL_INT_ON();
+}
+.fi
+.SS "void halIntUnlock (\fBuint16\fPkey)"
+.PP
+Definition at line 84 of file hal_int.c.
+.PP
+.nf
+{
+    HAL_INT_UNLOCK(key);
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

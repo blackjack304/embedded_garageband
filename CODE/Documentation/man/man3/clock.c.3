@@ -1,0 +1,84 @@
+.TH "clock.c" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+clock.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'clock.h'\fP
+.br
+\fC#include <hal_mcu.h>\fP
+.br
+\fC#include <ioCC2430.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBclockSetMainSrc\fP (\fBuint8\fP source)"
+.br
+.ti -1c
+.RI "void \fBclockSelect32k\fP (\fBuint8\fP source)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void clockSelect32k (\fBuint8\fPsource)"
+.PP
+Definition at line 82 of file clock.c.
+.PP
+.nf
+{
+    if (source == CLOCK_32K_XTAL)
+    {
+        CLKCON &= ~CLKCON_OSC32K_BM;
+    }
+    else if (source == CLOCK_32K_RCOSC)
+    {
+        CLKCON |= CLKCON_OSC32K_BM;
+    }
+}
+.fi
+.SS "void clockSetMainSrc (\fBuint8\fPsource)"
+.PP
+Definition at line 38 of file clock.c.
+.PP
+.nf
+{
+    register uint8 osc32k_bm = CLKCON & CLKCON_OSC32K_BM;
+
+    // Source can have the following values:
+    // CLOCK_SRC_XOSC   0x00  High speed Crystal Oscillator (XOSC)
+    // CLOCK_SRC_HFRC   0x01  Low power RC Oscillator (HFRC)
+
+    if (source == CLOCK_SRC_HFRC)
+    {
+        SLEEP &= ~SLEEP_OSC_PD_BM;       // power up both oscillators
+        while (!CC2430_IS_HFRC_STABLE());// wait until the oscillator is stable
+
+        asm('NOP');
+        CLKCON = (osc32k_bm | CLKCON_OSC_BM | TICKSPD_DIV_1 | CLKCON_CLKSPD_BM);
+        while (CLKCON != (osc32k_bm | CLKCON_OSC_BM | TICKSPD_DIV_1 | CLKCON_CLKSPD_BM));
+
+        SLEEP |= SLEEP_OSC_PD_BM;        // power down the unused oscillator
+    }
+    else if (source == CLOCK_SRC_XOSC)
+    {
+        SLEEP &= ~SLEEP_OSC_PD_BM;       // power up both oscillators
+        while (!CC2430_IS_XOSC_STABLE());// wait until the XOSC is stable
+
+        asm('NOP');
+        halMcuWaitUs(64);
+        CLKCON = (osc32k_bm | TICKSPD_DIV_1);
+        while (CLKCON != (osc32k_bm | TICKSPD_DIV_1));
+
+        SLEEP |= SLEEP_OSC_PD_BM;        // power down the unused oscillator
+    }
+
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

@@ -1,0 +1,194 @@
+\hypertarget{hal___s_p_i_8c}{
+\section{hal\_\-SPI.c File Reference}
+\label{hal___s_p_i_8c}\index{hal\_\-SPI.c@{hal\_\-SPI.c}}
+}
+{\ttfamily \#include \char`\"{}hal\_\-SPI.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-board.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-cc8051.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-mcu.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{hal___s_p_i_8c_a847ad02fd47ceb679f691d0600738393}{\_\-SPILIB\_\-C}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{hal___s_p_i_8c_afbecb4c823529eb4fee58ba57a918d44}{halSPISetup} (void)
+\item 
+unsigned char \hyperlink{hal___s_p_i_8c_a5756cd21ae20527cd49ce198a46c87ca}{spiSendByte} (const unsigned char data)
+\item 
+unsigned char \hyperlink{hal___s_p_i_8c_ae91f0e3fc95ae042003b55c25ffeadcc}{spiReadFrame} (unsigned char $\ast$pBuffer, unsigned int size)
+\item 
+unsigned char \hyperlink{hal___s_p_i_8c_a1cbc9b6919c21e2a0693da554fa6dd13}{spiSendFrame} (unsigned char $\ast$pBuffer, unsigned int size)
+\item 
+unsigned char \hyperlink{hal___s_p_i_8c_aac2a10918390006f9b3eca36566e9f7d}{SPI\_\-transmit} (const unsigned char data)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{hal___s_p_i_8c_a847ad02fd47ceb679f691d0600738393}{
+\index{hal\_\-SPI.c@{hal\_\-SPI.c}!\_\-SPILIB\_\-C@{\_\-SPILIB\_\-C}}
+\index{\_\-SPILIB\_\-C@{\_\-SPILIB\_\-C}!hal_SPI.c@{hal\_\-SPI.c}}
+\subsubsection[{\_\-SPILIB\_\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-SPILIB\_\-C}}
+\label{hal___s_p_i_8c_a847ad02fd47ceb679f691d0600738393}
+
+
+Definition at line 12 of file hal\_\-SPI.c.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{hal___s_p_i_8c_afbecb4c823529eb4fee58ba57a918d44}{
+\index{hal\_\-SPI.c@{hal\_\-SPI.c}!halSPISetup@{halSPISetup}}
+\index{halSPISetup@{halSPISetup}!hal_SPI.c@{hal\_\-SPI.c}}
+\subsubsection[{halSPISetup}]{\setlength{\rightskip}{0pt plus 5cm}void halSPISetup (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal___s_p_i_8c_afbecb4c823529eb4fee58ba57a918d44}
+
+
+Definition at line 36 of file hal\_\-SPI.c.
+
+
+\begin{DoxyCode}
+{
+    U0CSR |= 0X40;                              
+    U0UCR = 0x80;
+    U0CSR = 0x00; 
+    P0SEL |= (SPI_SIMO + SPI_SOMI + SPI_UCLK);
+    
+    PERCFG |= 0x00;
+    
+    //IO_DIR_PORT_PIN(0,3,IO_OUT); // txd / MOSI
+    //IO_DIR_PORT_PIN(0,2,IO_IN); // Rxd / MISO
+    //IO_DIR_PORT_PIN(0,4,IO_OUT); // CTS / SS_N
+    //IO_DIR_PORT_PIN(0,5,IO_OUT); // txd / SCK
+    
+    U0GCR = BAUD_E(115200, CLKSPD);
+    U0BAUD = BAUD_M(115200);
+    
+     //Configure SPI Polarity, Clock Phase, and Bit Order
+    U0CSR =   U0CSR & ~0x80;    // Set U0CSR bit 7 to 0 for SPI Mode
+    U0CSR =   U0CSR & ~0x20;    // Set U0CSR bit 5 to 0 for Master
+    U0GCR =  (U0GCR | 0x80);   // Set U0GCR bit 7   to 1 for CPOL = 1
+    U0GCR =  (U0GCR | 0x20);    // Set U0GCR bit 5 to 1 for MSB first
+    U0GCR =  (U0GCR & ~0x40);    // Set U0GCR bit 6 to 0 for CPHA = 0
+    
+    U0CSR |= 0x40;      
+    
+    URX0IF = 0;
+
+    halSPI_SEND(DUMMY_CHAR);
+}
+\end{DoxyCode}
+\hypertarget{hal___s_p_i_8c_aac2a10918390006f9b3eca36566e9f7d}{
+\index{hal\_\-SPI.c@{hal\_\-SPI.c}!SPI\_\-transmit@{SPI\_\-transmit}}
+\index{SPI\_\-transmit@{SPI\_\-transmit}!hal_SPI.c@{hal\_\-SPI.c}}
+\subsubsection[{SPI\_\-transmit}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char SPI\_\-transmit (
+\begin{DoxyParamCaption}
+\item[{const unsigned char}]{data}
+\end{DoxyParamCaption}
+)}}
+\label{hal___s_p_i_8c_aac2a10918390006f9b3eca36566e9f7d}
+
+
+Definition at line 158 of file hal\_\-SPI.c.
+
+
+\begin{DoxyCode}
+{
+  while (halSPITXREADY);    // wait while not ready for TX
+  halSPI_SEND(data);            // write
+  while(!(U0CSR & U0CSR_TX_BYTE));            // wait
+  U0CSR &= ~U0CSR_TX_BYTE;                       // clear flag
+  while (halSPIRXREADY ==0);    // wait for RX buffer (full)
+  return (halSPIRXBUF);
+}
+\end{DoxyCode}
+\hypertarget{hal___s_p_i_8c_ae91f0e3fc95ae042003b55c25ffeadcc}{
+\index{hal\_\-SPI.c@{hal\_\-SPI.c}!spiReadFrame@{spiReadFrame}}
+\index{spiReadFrame@{spiReadFrame}!hal_SPI.c@{hal\_\-SPI.c}}
+\subsubsection[{spiReadFrame}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char spiReadFrame (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{pBuffer, }
+\item[{unsigned int}]{size}
+\end{DoxyParamCaption}
+)}}
+\label{hal___s_p_i_8c_ae91f0e3fc95ae042003b55c25ffeadcc}
+
+
+Definition at line 104 of file hal\_\-SPI.c.
+
+
+\begin{DoxyCode}
+{
+  unsigned long i = 0;
+  // clock the actual data transfer and receive the bytes; spi_read automatically
+       finds the Data Block
+  for (i = 0; i < size; i++){
+    while (halSPITXREADY);   // wait while not ready for TX
+    halSPI_SEND(DUMMY_CHAR);     // dummy write
+    while(!(U0CSR & U0CSR_TX_BYTE));            // wait
+    U0CSR &= ~U0CSR_TX_BYTE;                       // clear fl
+    pBuffer[i] = halSPIRXBUF;
+  }
+  return(0);
+}
+\end{DoxyCode}
+\hypertarget{hal___s_p_i_8c_a5756cd21ae20527cd49ce198a46c87ca}{
+\index{hal\_\-SPI.c@{hal\_\-SPI.c}!spiSendByte@{spiSendByte}}
+\index{spiSendByte@{spiSendByte}!hal_SPI.c@{hal\_\-SPI.c}}
+\subsubsection[{spiSendByte}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char spiSendByte (
+\begin{DoxyParamCaption}
+\item[{const unsigned char}]{data}
+\end{DoxyParamCaption}
+)}}
+\label{hal___s_p_i_8c_a5756cd21ae20527cd49ce198a46c87ca}
+
+
+Definition at line 79 of file hal\_\-SPI.c.
+
+
+\begin{DoxyCode}
+{
+  while (halSPITXREADY);    // wait while not ready for TX
+  halSPI_SEND(data);            // write
+  while(!(U0CSR & U0CSR_TX_BYTE));            // wait
+  U0CSR &= ~U0CSR_TX_BYTE;                       // clear flag
+  while (halSPIRXREADY ==0);    // wait for RX buffer (full)
+  return (halSPIRXBUF);
+}
+\end{DoxyCode}
+\hypertarget{hal___s_p_i_8c_a1cbc9b6919c21e2a0693da554fa6dd13}{
+\index{hal\_\-SPI.c@{hal\_\-SPI.c}!spiSendFrame@{spiSendFrame}}
+\index{spiSendFrame@{spiSendFrame}!hal_SPI.c@{hal\_\-SPI.c}}
+\subsubsection[{spiSendFrame}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char spiSendFrame (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{pBuffer, }
+\item[{unsigned int}]{size}
+\end{DoxyParamCaption}
+)}}
+\label{hal___s_p_i_8c_a1cbc9b6919c21e2a0693da554fa6dd13}
+
+
+Definition at line 132 of file hal\_\-SPI.c.
+
+
+\begin{DoxyCode}
+{
+  unsigned long i = 0;
+  // clock the actual data transfer and receive the bytes; spi_read automatically
+       finds the Data Block
+  for (i = 0; i < size; i++){
+    while (halSPITXREADY);   // wait while not ready for TX
+    halSPI_SEND(pBuffer[i]);     // write
+    while(!(U0CSR & U0CSR_TX_BYTE));            // wait
+    U0CSR &= ~U0CSR_TX_BYTE;                       // clear fl
+    pBuffer[i] = halSPIRXBUF;
+  }
+  return(0);
+}
+\end{DoxyCode}

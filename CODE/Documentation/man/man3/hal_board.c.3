@@ -1,0 +1,48 @@
+.TH "hal_board.c" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+hal_board.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'hal_board.h'\fP
+.br
+\fC#include 'hal_mcu.h'\fP
+.br
+\fC#include 'hal_int.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBhalBoardInit\fP (void)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void halBoardInit (void)"
+.PP
+Definition at line 16 of file hal_board.c.
+.PP
+.nf
+{
+    halMcuInit();
+
+    // LED
+    MCU_IO_OUTPUT(HAL_BOARD_IO_LED_1_PORT, HAL_BOARD_IO_LED_1_PIN, 0);
+    MCU_IO_OUTPUT(HAL_BOARD_IO_LED_3_PORT, HAL_BOARD_IO_LED_3_PIN, 0);
+
+    HAL_LED_CLR_1();
+    HAL_LED_CLR_3();
+
+    // Button
+   // MCU_IO_INPUT(0, 1, MCU_IO_TRISTATE);
+
+    halIntOn();
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

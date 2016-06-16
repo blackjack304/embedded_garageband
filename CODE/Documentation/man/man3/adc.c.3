@@ -1,0 +1,60 @@
+.TH "adc.c" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+adc.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'adc.h'\fP
+.br
+\fC#include <ioCC2431.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBint16\fP \fBadcSampleSingle\fP (\fBuint8\fP reference, \fBuint8\fP resolution, \fBuint8\fP channel)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "\fBint16\fP adcSampleSingle (\fBuint8\fPreference, \fBuint8\fPresolution, \fBuint8\fPchannel)"
+.PP
+Definition at line 33 of file adc.c.
+.PP
+.nf
+{
+    int16 value;
+
+    ADC_ENABLE_CHANNEL(channel);
+
+    ADCIF = 0;
+
+    ADC_SINGLE_CONVERSION(reference | resolution | channel);
+    while(!ADCIF);
+
+    value  = (ADCH << 8) & 0xff00;
+    value |= ADCL;
+
+    ADC_DISABLE_CHANNEL(channel);
+
+    //  The variable 'value' contains 16 bits where
+    //     bit 15 is a sign bit
+    //     bit [14 .. 0] contain the absolute sample value
+    //     Only the r upper bits are significant, where r is the resolution
+    //     Resolution:
+    //        12   -> [14 .. 3] (bitmask 0x7FF8)
+    //        10   -> [14 .. 5] (bitmask 0x7FE0)
+    //         9   -> [14 .. 6] (bitmask 0x7FC0)
+    //         7   -> [14 .. 8] (bitmask 0x7F00)
+    
+    value = (value & 0x7FF8) >> 3;
+
+    return value;
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

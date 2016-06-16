@@ -1,0 +1,356 @@
+.TH "midi.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+midi.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'hal_defs.h'\fP
+.br
+\fC#include 'hal_types.h'\fP
+.br
+
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBDEF_BANK\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBDRUMS1\fP   0x78"
+.br
+.ti -1c
+.RI "#define \fBDRUMS2\fP   0x7F"
+.br
+.ti -1c
+.RI "#define \fBMELODY\fP   0x79"
+.br
+.ti -1c
+.RI "#define \fBPIANO_AC\fP   1"
+.br
+.ti -1c
+.RI "#define \fBPIANO_ELG\fP   3"
+.br
+.ti -1c
+.RI "#define \fBPIANO_EL1\fP   5"
+.br
+.ti -1c
+.RI "#define \fBPIANO_EL2\fP   6"
+.br
+.ti -1c
+.RI "#define \fBHARP\fP   7"
+.br
+.ti -1c
+.RI "#define \fBMUSICBOX\fP   11"
+.br
+.ti -1c
+.RI "#define \fBXYLO\fP   14"
+.br
+.ti -1c
+.RI "#define \fBORGAN_CH\fP   20"
+.br
+.ti -1c
+.RI "#define \fBACCORDIAN\fP   22"
+.br
+.ti -1c
+.RI "#define \fBGUITAR_AC\fP   26"
+.br
+.ti -1c
+.RI "#define \fBGUITAR_EL\fP   28"
+.br
+.ti -1c
+.RI "#define \fBGUITAR_EL_BASS\fP   34"
+.br
+.ti -1c
+.RI "#define \fBVIOLIN\fP   41"
+.br
+.ti -1c
+.RI "#define \fBCELLO\fP   43"
+.br
+.ti -1c
+.RI "#define \fBTRUMPET\fP   57"
+.br
+.ti -1c
+.RI "#define \fBFLUTE\fP   74"
+.br
+.ti -1c
+.RI "#define \fBVOICE_LEAD\fP   86"
+.br
+.ti -1c
+.RI "#define \fBRAIN\fP   97"
+.br
+.ti -1c
+.RI "#define \fBSCIFI\fP   104"
+.br
+.ti -1c
+.RI "#define \fBSITAR\fP   105"
+.br
+.ti -1c
+.RI "#define \fBBAGPIPE\fP   110"
+.br
+.ti -1c
+.RI "#define \fBBIRD\fP   124"
+.br
+.ti -1c
+.RI "#define \fBTELEPHONE\fP   125"
+.br
+.ti -1c
+.RI "#define \fBGUNSHOT\fP   128"
+.br
+.ti -1c
+.RI "#define \fBMIDI_RESET\fP   P1_1"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBmidiReset\fP (void)"
+.br
+.ti -1c
+.RI "void \fBmidiVolSet\fP (unsigned char vol)"
+.br
+.ti -1c
+.RI "void \fBmidiBankSet\fP (unsigned char bank)"
+.br
+.ti -1c
+.RI "void \fBmidiPatchSet\fP (unsigned char instr)"
+.br
+.ti -1c
+.RI "void \fBmidiSilence\fP (void)"
+.br
+.ti -1c
+.RI "void \fBmidiChannelSet\fP (unsigned char chan)"
+.br
+.ti -1c
+.RI "void \fBnoteOn\fP (unsigned char channel, unsigned char note, unsigned char attack_velocity)"
+.br
+.ti -1c
+.RI "void \fBnoteOff\fP (unsigned char channel, unsigned char note, unsigned char release_velocity)"
+.br
+.ti -1c
+.RI "void \fBtalkMIDI\fP (unsigned char cmd, unsigned char data1, unsigned char data2)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "static unsigned char \fBmidiChannel\fP = 0"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define ACCORDIAN   22"
+.PP
+Definition at line 32 of file midi.h.
+.SS "#define BAGPIPE   110"
+.PP
+Definition at line 44 of file midi.h.
+.SS "#define BIRD   124"
+.PP
+Definition at line 45 of file midi.h.
+.SS "#define CELLO   43"
+.PP
+Definition at line 37 of file midi.h.
+.SS "#define DEF_BANK   0x00"
+.PP
+Definition at line 18 of file midi.h.
+.SS "#define DRUMS1   0x78"
+.PP
+Definition at line 19 of file midi.h.
+.SS "#define DRUMS2   0x7F"
+.PP
+Definition at line 20 of file midi.h.
+.SS "#define FLUTE   74"
+.PP
+Definition at line 39 of file midi.h.
+.SS "#define GUITAR_AC   26"
+.PP
+Definition at line 33 of file midi.h.
+.SS "#define GUITAR_EL   28"
+.PP
+Definition at line 34 of file midi.h.
+.SS "#define GUITAR_EL_BASS   34"
+.PP
+Definition at line 35 of file midi.h.
+.SS "#define GUNSHOT   128"
+.PP
+Definition at line 47 of file midi.h.
+.SS "#define HARP   7"
+.PP
+Definition at line 28 of file midi.h.
+.SS "#define MELODY   0x79"
+.PP
+Definition at line 21 of file midi.h.
+.SS "#define MIDI_RESET   P1_1"
+.PP
+Definition at line 49 of file midi.h.
+.SS "#define MUSICBOX   11"
+.PP
+Definition at line 29 of file midi.h.
+.SS "#define ORGAN_CH   20"
+.PP
+Definition at line 31 of file midi.h.
+.SS "#define PIANO_AC   1"
+.PP
+Definition at line 24 of file midi.h.
+.SS "#define PIANO_EL1   5"
+.PP
+Definition at line 26 of file midi.h.
+.SS "#define PIANO_EL2   6"
+.PP
+Definition at line 27 of file midi.h.
+.SS "#define PIANO_ELG   3"
+.PP
+Definition at line 25 of file midi.h.
+.SS "#define RAIN   97"
+.PP
+Definition at line 41 of file midi.h.
+.SS "#define SCIFI   104"
+.PP
+Definition at line 42 of file midi.h.
+.SS "#define SITAR   105"
+.PP
+Definition at line 43 of file midi.h.
+.SS "#define TELEPHONE   125"
+.PP
+Definition at line 46 of file midi.h.
+.SS "#define TRUMPET   57"
+.PP
+Definition at line 38 of file midi.h.
+.SS "#define VIOLIN   41"
+.PP
+Definition at line 36 of file midi.h.
+.SS "#define VOICE_LEAD   86"
+.PP
+Definition at line 40 of file midi.h.
+.SS "#define XYLO   14"
+.PP
+Definition at line 30 of file midi.h.
+.SH "Function Documentation"
+.PP 
+.SS "void midiBankSet (unsigned charbank)"
+.PP
+Definition at line 157 of file midi.c.
+.PP
+.nf
+                                     {
+        talkMIDI(0xB0, 0, bank);
+}
+.fi
+.SS "void midiChannelSet (unsigned charchan)"
+.PP
+Definition at line 203 of file midi.c.
+.PP
+.nf
+                                        {
+        midiChannel = chan;
+}
+.fi
+.SS "void midiPatchSet (unsigned charinstr)"
+.PP
+Definition at line 173 of file midi.c.
+.PP
+.nf
+                                       {
+        talkMIDI(0xC0, instr, 0);
+}
+.fi
+.SS "void midiReset (void)"
+.PP
+Definition at line 29 of file midi.c.
+.PP
+.nf
+                 {
+
+        //MIDI_RESET = 1;
+        MCU_IO_OUTPUT(1,1,1);
+        //delay_millisec(100);
+        halMcuWaitMs(100);
+
+        MCU_IO_OUTPUT(1,1,0);
+        //MIDI_RESET = 0;
+        //delay_millisec(100);
+        halMcuWaitMs(100);
+        
+        //MIDI_RESET = 1;
+        MCU_IO_OUTPUT(1,1,1);
+        //delay_millisec(100);
+        halMcuWaitMs(200);
+}
+.fi
+.SS "void midiSilence (void)"
+.PP
+Definition at line 188 of file midi.c.
+.PP
+.nf
+                   {
+        talkMIDI(0xB0, 0x78, 0);
+}
+.fi
+.SS "void midiVolSet (unsigned charvol)"
+.PP
+Definition at line 141 of file midi.c.
+.PP
+.nf
+                                   {
+        talkMIDI(0xB0, 0x07, vol);
+}
+.fi
+.SS "void noteOff (unsigned charchannel, unsigned charnote, unsigned charrelease_velocity)"
+.PP
+Definition at line 85 of file midi.c.
+.PP
+.nf
+                                                                                        {
+        talkMIDI( (0x80 | channel), note, release_velocity);
+}
+.fi
+.SS "void noteOn (unsigned charchannel, unsigned charnote, unsigned charattack_velocity)"
+.PP
+Definition at line 64 of file midi.c.
+.PP
+.nf
+                                                                                      {
+        talkMIDI( (0x90 | channel), note, attack_velocity);
+}
+.fi
+.SS "void talkMIDI (unsigned charcmd, unsigned chardata1, unsigned chardata2)"
+.PP
+Definition at line 105 of file midi.c.
+.PP
+.nf
+                                                                           {
+
+        //bit_bang_tx(cmd);
+        //putchar (cmd);
+        tx0_send(&cmd, 1);
+        tx1_send(&cmd, 1);
+
+        //bit_bang_tx(data1);
+        //putchar (data1);
+        tx0_send(&data1, 1);
+        tx1_send(&data1, 1);
+        
+        //Some commands only have one data byte. All cmds less than 0xBn have 2 data bytes
+        //(sort of: http://253.ccarh.org/handout/midiprotocol/)
+        //if( (cmd & 0xF0) <= 0xB0) {
+        if(cmd <= 0xB0) {
+                //bit_bang_tx(data2);
+                //putchar (data2);
+                tx0_send(&data2, 1);
+                tx1_send(&data2, 1);
+        }
+        tx1_send('\n\r', 2);
+}
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "unsigned char \fBmidiChannel\fP = 0\fC [static]\fP"
+.PP
+Definition at line 51 of file midi.h.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

@@ -1,0 +1,175 @@
+\hypertarget{util_8c}{
+\section{util.c File Reference}
+\label{util_8c}\index{util.c@{util.c}}
+}
+{\ttfamily \#include \char`\"{}util.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-defs.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-rf.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \hyperlink{util_8c_a2c0530d729face968064ae9731ae9f00}{utilChipIdToStr} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} chipID)
+\item 
+char $\ast$ \hyperlink{util_8c_a871e085e4ef7bf60971fa7fe86a2dc09}{convInt32ToText} (\hyperlink{hal__types_8h_ac44d0188f4f50fd9b03031c1a06bd0a9}{int32} value)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{util_8c_a118ccf681a4104d11c88df783ec1d625}{min} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} v1, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} v2)
+\item 
+void \hyperlink{util_8c_af0945383949f3e76df6226eed9fe337f}{utilReverseBuf} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$pBuf, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} length)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{util_8c_a871e085e4ef7bf60971fa7fe86a2dc09}{
+\index{util.c@{util.c}!convInt32ToText@{convInt32ToText}}
+\index{convInt32ToText@{convInt32ToText}!util.c@{util.c}}
+\subsubsection[{convInt32ToText}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ convInt32ToText (
+\begin{DoxyParamCaption}
+\item[{{\bf int32}}]{value}
+\end{DoxyParamCaption}
+)}}
+\label{util_8c_a871e085e4ef7bf60971fa7fe86a2dc09}
+
+
+Definition at line 81 of file util.c.
+
+
+\begin{DoxyCode}
+{
+    static char pValueToTextBuffer[12];
+    char *pLast;
+    char *pFirst;
+    char last;
+    uint8 negative;
+
+    pLast = pValueToTextBuffer;
+
+    // Record the sign of the value
+    negative = (value < 0);
+    value = ABS(value);
+
+    // Print the value in the reverse order
+    do {
+        *(pLast++) = '0' + (uint8)(value % 10);
+        value /= 10;
+    } while (value);
+
+    // Add the '-' when the number is negative, and terminate the string
+    if (negative) *(pLast++) = '-';
+    *(pLast--) = 0x00;
+
+    // Now reverse the string
+    pFirst = pValueToTextBuffer;
+    while (pLast > pFirst) {
+        last = *pLast;
+        *(pLast--) = *pFirst;
+        *(pFirst++) = last;
+    }
+
+    return pValueToTextBuffer;
+}
+\end{DoxyCode}
+\hypertarget{util_8c_a118ccf681a4104d11c88df783ec1d625}{
+\index{util.c@{util.c}!min@{min}}
+\index{min@{min}!util.c@{util.c}}
+\subsubsection[{min}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} min (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8}}]{v1, }
+\item[{{\bf uint8}}]{v2}
+\end{DoxyParamCaption}
+)}}
+\label{util_8c_a118ccf681a4104d11c88df783ec1d625}
+
+
+Definition at line 127 of file util.c.
+
+
+\begin{DoxyCode}
+{
+    if(v1 < v2)
+        return v1;
+    else return v2;
+}
+\end{DoxyCode}
+\hypertarget{util_8c_a2c0530d729face968064ae9731ae9f00}{
+\index{util.c@{util.c}!utilChipIdToStr@{utilChipIdToStr}}
+\index{utilChipIdToStr@{utilChipIdToStr}!util.c@{util.c}}
+\subsubsection[{utilChipIdToStr}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ utilChipIdToStr (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8}}]{chipID}
+\end{DoxyParamCaption}
+)}}
+\label{util_8c_a2c0530d729face968064ae9731ae9f00}
+
+
+Definition at line 30 of file util.c.
+
+
+\begin{DoxyCode}
+{
+    const char* szId;
+
+    switch(chipID) {
+    case HAL_RF_CHIP_ID_CC2420:
+        szId= "2420";
+        break;
+    case HAL_RF_CHIP_ID_CC2430:
+        szId= "2430";
+        break;
+    case HAL_RF_CHIP_ID_CC2431:
+        szId= "2431";
+        break;
+    case HAL_RF_CHIP_ID_CC2520:
+        szId= "2520";
+        break;
+    case HAL_RF_CHIP_ID_CC2530:
+        szId= "2530";
+        break;
+    case HAL_RF_CHIP_ID_CC2531:
+        szId= "2531";
+        break;
+    case HAL_RF_CHIP_ID_CC2510:
+        szId= "2510";
+        break;
+    case HAL_RF_CHIP_ID_CC2511:
+        szId= "2511";
+        break;
+    case HAL_RF_CHIP_ID_CC1110:
+        szId= "1110";
+        break;
+    case HAL_RF_CHIP_ID_CC1111:
+        szId= "1111";
+        break;
+    default:
+        szId= "----";
+    };
+
+    return szId;
+}
+\end{DoxyCode}
+\hypertarget{util_8c_af0945383949f3e76df6226eed9fe337f}{
+\index{util.c@{util.c}!utilReverseBuf@{utilReverseBuf}}
+\index{utilReverseBuf@{utilReverseBuf}!util.c@{util.c}}
+\subsubsection[{utilReverseBuf}]{\setlength{\rightskip}{0pt plus 5cm}void utilReverseBuf (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8} $\ast$}]{pBuf, }
+\item[{{\bf uint8}}]{length}
+\end{DoxyParamCaption}
+)}}
+\label{util_8c_af0945383949f3e76df6226eed9fe337f}
+
+
+Definition at line 144 of file util.c.
+
+
+\begin{DoxyCode}
+{
+   uint8 temp;
+   uint8* pBufLast = (pBuf + length - 1);
+
+   while(pBufLast > pBuf){
+     temp = *pBuf;
+     *pBuf++ = *pBufLast;
+     *pBufLast-- = temp;        
+  }
+}
+\end{DoxyCode}

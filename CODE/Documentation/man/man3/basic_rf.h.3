@@ -1,0 +1,229 @@
+.TH "basic_rf.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+basic_rf.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'hal_types.h'\fP
+.br
+\fC#include 'hal_defs.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBbasicRfCfg_t\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBuint8\fP \fBbasicRfInit\fP (\fBbasicRfCfg_t\fP *pRfConfig)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBbasicRfSendPacket\fP (\fBuint16\fP destAddr, \fBuint8\fP *pPayload, \fBuint8\fP length)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBbasicRfPacketIsReady\fP (void)"
+.br
+.ti -1c
+.RI "\fBint8\fP \fBbasicRfGetRssi\fP (void)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBbasicRfReceive\fP (\fBuint8\fP *pRxData, \fBuint8\fP len, \fBint16\fP *pRssi)"
+.br
+.ti -1c
+.RI "void \fBbasicRfReceiveOn\fP (void)"
+.br
+.ti -1c
+.RI "void \fBbasicRfReceiveOff\fP (void)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "\fBint8\fP basicRfGetRssi (void)"
+.PP
+Definition at line 543 of file basic_rf.c.
+.PP
+.nf
+{
+    if(rxi.rssi < 128){
+        return rxi.rssi - halRfGetRssiOffset();
+    }
+    else{
+        return (rxi.rssi - 256) - halRfGetRssiOffset();
+    }
+}
+.fi
+.SS "\fBuint8\fP basicRfInit (\fBbasicRfCfg_t\fP *pRfConfig)"
+.PP
+Definition at line 365 of file basic_rf.c.
+.PP
+.nf
+{
+    if (halRfInit()==FAILED)
+        return FAILED;
+
+    halIntOff();
+
+    // Set the protocol configuration
+    pConfig = pRfConfig;
+    rxi.pPayload   = NULL;
+
+    txState.receiveOn = TRUE;
+    txState.frameCounter = 0;
+
+    // Set channel
+    halRfSetChannel(pConfig->channel);
+
+    // Write the short address and the PAN ID to the CC2520 RAM
+    halRfSetShortAddr(pConfig->myAddr);
+    halRfSetPanId(pConfig->panId);
+
+    // if security is enabled, write key and nonce
+    #ifdef SECURITY_CCM
+    basicRfSecurityInit(pConfig);
+    #endif
+
+    // Set up receive interrupt (received data or acknowlegment)
+    halRfRxInterruptConfig(basicRfRxFrmDoneIsr);
+
+    halIntOn();
+
+    return SUCCESS;
+}
+.fi
+.SS "\fBuint8\fP basicRfPacketIsReady (void)"
+.PP
+Definition at line 492 of file basic_rf.c.
+.PP
+.nf
+{
+    return rxi.isReady;
+}
+.fi
+.SS "\fBuint8\fP basicRfReceive (\fBuint8\fP *pRxData, \fBuint8\fPlen, \fBint16\fP *pRssi)"
+.PP
+Definition at line 511 of file basic_rf.c.
+.PP
+.nf
+{
+    // Accessing shared variables -> this is a critical region
+    // Critical region start
+    halIntOff();
+    memcpy(pRxData, rxi.pPayload, min(rxi.length, len));
+    if(pRssi != NULL) {
+        if(rxi.rssi < 128){
+            *pRssi = rxi.rssi - halRfGetRssiOffset();
+        }
+        else{
+            *pRssi = (rxi.rssi - 256) - halRfGetRssiOffset();
+        }
+    }
+    rxi.isReady = FALSE;
+    halIntOn();
+
+    // Critical region end
+
+    return min(rxi.length, len);
+}
+.fi
+.SS "void basicRfReceiveOff (void)"
+.PP
+Definition at line 578 of file basic_rf.c.
+.PP
+.nf
+{
+    txState.receiveOn = FALSE;
+    halRfReceiveOff();
+}
+.fi
+.SS "void basicRfReceiveOn (void)"
+.PP
+Definition at line 562 of file basic_rf.c.
+.PP
+.nf
+{
+    txState.receiveOn = TRUE;
+    halRfReceiveOn();
+}
+.fi
+.SS "\fBuint8\fP basicRfSendPacket (\fBuint16\fPdestAddr, \fBuint8\fP *pPayload, \fBuint8\fPlength)"
+.PP
+Definition at line 414 of file basic_rf.c.
+.PP
+.nf
+{
+    uint8 mpduLength;
+    uint8 status;
+
+    // Turn on receiver if its not on
+    if(!txState.receiveOn) {
+        halRfReceiveOn();
+    }
+
+    // Check packet length
+    length = min(length, BASIC_RF_MAX_PAYLOAD_SIZE);
+
+    // Wait until the transceiver is idle
+    halRfWaitTransceiverReady();
+
+    // Turn off RX frame done interrupt to avoid interference on the SPI interface
+    halRfDisableRxInterrupt();
+
+    mpduLength = basicRfBuildMpdu(destAddr, pPayload, length);
+
+    #ifdef SECURITY_CCM
+    halRfWriteTxBufSecure(txMpdu, mpduLength, length, BASIC_RF_LEN_AUTH, BASIC_RF_SECURITY_M);
+    txState.frameCounter++;     // Increment frame counter field
+    #else
+    halRfWriteTxBuf(txMpdu, mpduLength);
+    #endif
+
+    // Turn on RX frame done interrupt for ACK reception
+    halRfEnableRxInterrupt();
+
+    // Send frame with CCA. return FAILED if not successful
+    if(halRfTransmit() != SUCCESS) {
+        status = FAILED;
+    }
+
+    // Wait for the acknowledge to be received, if any
+    if (pConfig->ackRequest) {
+        txState.ackReceived = FALSE;
+
+        // We'll enter RX automatically, so just wait until we can be sure that the ack reception should have finished
+        // The timeout consists of a 12-symbol turnaround time, the ack packet duration, and a small margin
+        halMcuWaitUs((12 * BASIC_RF_SYMBOL_DURATION) + (BASIC_RF_ACK_DURATION) + (2 * BASIC_RF_SYMBOL_DURATION) + 10);
+
+        // If an acknowledgment has been received (by RxFrmDoneIsr), the ackReceived flag should be set
+        status = txState.ackReceived ? SUCCESS : FAILED;
+
+    } else {
+        status = SUCCESS;
+    }
+
+    // Turn off the receiver if it should not continue to be enabled
+    if (!txState.receiveOn) {
+        halRfReceiveOff();
+    }
+
+    if(status == SUCCESS) {
+        txState.txSeqNumber++;
+    }
+
+#ifdef SECURITY_CCM
+    halRfIncNonceTx();          // Increment nonce value
+#endif
+
+    return status;
+
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

@@ -1,0 +1,897 @@
+\hypertarget{basic__rf_8c}{
+\section{basic\_\-rf.c File Reference}
+\label{basic__rf_8c}\index{basic\_\-rf.c@{basic\_\-rf.c}}
+}
+{\ttfamily \#include \char`\"{}hal\_\-int.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-mcu.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}util.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}string.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-types.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-defs.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}hal\_\-rf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}basic\_\-rf.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structbasic_rf_rx_info__t}{basicRfRxInfo\_\-t}
+\item 
+struct \hyperlink{structbasic_rf_tx_state__t}{basicRfTxState\_\-t}
+\item 
+struct \hyperlink{structbasic_rf_pkt_hdr__t}{basicRfPktHdr\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{basic__rf_8c_ad8b9cce8b5696df98a3d65fb656d340a}{PKT\_\-LEN\_\-MIC}~8
+\item 
+\#define \hyperlink{basic__rf_8c_a71bb9cb9dbb31ccf5ace5de8bdf06c34}{PKT\_\-LEN\_\-SEC}~PKT\_\-LEN\_\-UNSEC + PKT\_\-LEN\_\-MIC
+\item 
+\#define \hyperlink{basic__rf_8c_ad061a5b2c034b9b894c9ba60493b2295}{PKT\_\-LEN\_\-AUTH}~8
+\item 
+\#define \hyperlink{basic__rf_8c_abadb6d6a2544471fd97c1eb6f3a78a53}{PKT\_\-LEN\_\-ENCR}~24
+\item 
+\#define \hyperlink{basic__rf_8c_a03d796febb1dbfaf4ed66228bec06bdb}{BASIC\_\-RF\_\-PACKET\_\-OVERHEAD\_\-SIZE}~((2 + 1 + 2 + 2 + 2) + (2))
+\item 
+\#define \hyperlink{basic__rf_8c_a1aaceba4b43df3d8b6e09d002859aff5}{BASIC\_\-RF\_\-MAX\_\-PAYLOAD\_\-SIZE}
+\item 
+\#define \hyperlink{basic__rf_8c_a917845e1b4b471a67b07a2acf9620026}{BASIC\_\-RF\_\-ACK\_\-PACKET\_\-SIZE}~5
+\item 
+\#define \hyperlink{basic__rf_8c_a070670ea1c677539ef054b92b8559cee}{BASIC\_\-RF\_\-FOOTER\_\-SIZE}~2
+\item 
+\#define \hyperlink{basic__rf_8c_a93de3fb6eaf0e00f633fc1c802a63d1e}{BASIC\_\-RF\_\-HDR\_\-SIZE}~10
+\item 
+\#define \hyperlink{basic__rf_8c_a00dc3203411cce0fc54f4e339e2cfdef}{BASIC\_\-RF\_\-ACK\_\-DURATION}~(0.5 $\ast$ 32 $\ast$ 2 $\ast$ ((4 + 1) + (1) + (2 + 1) + (2)))
+\item 
+\#define \hyperlink{basic__rf_8c_af6c812a67a14425b9307263ff91f9343}{BASIC\_\-RF\_\-SYMBOL\_\-DURATION}~(32 $\ast$ 0.5)
+\item 
+\#define \hyperlink{basic__rf_8c_a67573d3115cf1b16df66f9d15597c09f}{BASIC\_\-RF\_\-PLD\_\-LEN\_\-MASK}~0x7F
+\item 
+\#define \hyperlink{basic__rf_8c_a6ea2ba00a82bbe9446d78e60b5877a85}{BASIC\_\-RF\_\-FCF\_\-NOACK}~0x8841
+\item 
+\#define \hyperlink{basic__rf_8c_a73fdc6f2d5b73abfa45fb03a847269e8}{BASIC\_\-RF\_\-FCF\_\-ACK}~0x8861
+\item 
+\#define \hyperlink{basic__rf_8c_acab5cb317f2f95dc91cd5b317277af7e}{BASIC\_\-RF\_\-FCF\_\-ACK\_\-BM}~0x0020
+\item 
+\#define \hyperlink{basic__rf_8c_a7b4a3705bb712e7358cf6e62db69e4c2}{BASIC\_\-RF\_\-FCF\_\-BM}~($\sim$BASIC\_\-RF\_\-FCF\_\-ACK\_\-BM)
+\item 
+\#define \hyperlink{basic__rf_8c_a774a5fe4703f2b9f0f569b4917561ee8}{BASIC\_\-RF\_\-SEC\_\-ENABLED\_\-FCF\_\-BM}~0x0008
+\item 
+\#define \hyperlink{basic__rf_8c_af2096cac191097e690cd9e4172affe85}{BASIC\_\-RF\_\-FCF\_\-NOACK\_\-L}~LO\_\-UINT16(BASIC\_\-RF\_\-FCF\_\-NOACK)
+\item 
+\#define \hyperlink{basic__rf_8c_a0504b1e638a25e50087c2b8883eb04ac}{BASIC\_\-RF\_\-FCF\_\-ACK\_\-L}~LO\_\-UINT16(BASIC\_\-RF\_\-FCF\_\-ACK)
+\item 
+\#define \hyperlink{basic__rf_8c_aa3ba9656d5d70f95c3680b006cfd1c12}{BASIC\_\-RF\_\-FCF\_\-ACK\_\-BM\_\-L}~LO\_\-UINT16(BASIC\_\-RF\_\-FCF\_\-ACK\_\-BM)
+\item 
+\#define \hyperlink{basic__rf_8c_a9729e98c6ca2155eb4a86e6be796e07f}{BASIC\_\-RF\_\-FCF\_\-BM\_\-L}~LO\_\-UINT16(BASIC\_\-RF\_\-FCF\_\-BM)
+\item 
+\#define \hyperlink{basic__rf_8c_a32c71a0e33d991ac9c88caa13e2e3182}{BASIC\_\-RF\_\-SEC\_\-ENABLED\_\-FCF\_\-BM\_\-L}~LO\_\-UINT16(BASIC\_\-RF\_\-SEC\_\-ENABLED\_\-FCF\_\-BM)
+\item 
+\#define \hyperlink{basic__rf_8c_ab8bad2e9b755d4a637e5f9be9b8d335f}{BASIC\_\-RF\_\-AUX\_\-HDR\_\-LENGTH}~5
+\item 
+\#define \hyperlink{basic__rf_8c_a953ad92953ad4cbc16bf46d26f6aebf6}{BASIC\_\-RF\_\-LEN\_\-AUTH}
+\item 
+\#define \hyperlink{basic__rf_8c_a3f9317fb3b47f4a775adbb543ca299d4}{BASIC\_\-RF\_\-SECURITY\_\-M}~2
+\item 
+\#define \hyperlink{basic__rf_8c_a9263ce5a370dcb9b2a20dfdd53a08c6c}{BASIC\_\-RF\_\-LEN\_\-MIC}~8
+\item 
+\#define \hyperlink{basic__rf_8c_a2f7ff81ecb98a711b00ecf05062de467}{BASIC\_\-RF\_\-CRC\_\-OK\_\-BM}~0x80
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{basic__rf_8c_a40ba57f496a28fff78f3967dcc5ca35c}{basicRfBuildHeader} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$buffer, \hyperlink{hal__types_8h_a05f6b0ae8f6a6e135b0e290c25fe0e4e}{uint16} destAddr, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} payloadLength)
+\item 
+static \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{basic__rf_8c_a989a51f7c51b3de2dceffd9796703b93}{basicRfBuildMpdu} (\hyperlink{hal__types_8h_a05f6b0ae8f6a6e135b0e290c25fe0e4e}{uint16} destAddr, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$pPayload, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} payloadLength)
+\item 
+static void \hyperlink{basic__rf_8c_aaf218f041e672fa284de7f68f1c0d822}{basicRfRxFrmDoneIsr} (void)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{basic__rf_8c_ae2490e5735320b9688cab4c259287801}{basicRfInit} (\hyperlink{structbasic_rf_cfg__t}{basicRfCfg\_\-t} $\ast$pRfConfig)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{basic__rf_8c_aca5cf1dd9663ea55c8b77a0c315e7e95}{basicRfSendPacket} (\hyperlink{hal__types_8h_a05f6b0ae8f6a6e135b0e290c25fe0e4e}{uint16} destAddr, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$pPayload, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} length)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{basic__rf_8c_a222c6dfbb12d4b67ce35257de2138d92}{basicRfPacketIsReady} (void)
+\item 
+\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{basic__rf_8c_af9fb2231fcee94f6996af72b5a9a80e7}{basicRfReceive} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} $\ast$pRxData, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} len, \hyperlink{hal__types_8h_a259fa4834387bd68627ddf37bb3ebdb9}{int16} $\ast$pRssi)
+\item 
+\hyperlink{hal__types_8h_a1b956fe1df85f3c132b21edb4e116458}{int8} \hyperlink{basic__rf_8c_aa2412e5f3dd41253f37116354e856e2a}{basicRfGetRssi} (void)
+\item 
+void \hyperlink{basic__rf_8c_ae4911221feea8be8e36f8e497d3e0a87}{basicRfReceiveOn} (void)
+\item 
+void \hyperlink{basic__rf_8c_afb44c177594fb28d443c35289e4a87df}{basicRfReceiveOff} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{structbasic_rf_rx_info__t}{basicRfRxInfo\_\-t} \hyperlink{basic__rf_8c_a5c331f61a00367c2d911e2dc071d829c}{rxi} = \{ 0xFF \}
+\item 
+static \hyperlink{structbasic_rf_tx_state__t}{basicRfTxState\_\-t} \hyperlink{basic__rf_8c_a30f0e1237418cb399715ec882124f36f}{txState} = \{ 0x00 \}
+\item 
+static \hyperlink{structbasic_rf_cfg__t}{basicRfCfg\_\-t} $\ast$ \hyperlink{basic__rf_8c_a62df39fc3dc7e7489bb77ff389ab84ad}{pConfig}
+\item 
+static \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{basic__rf_8c_a26238c725dbf1e4cd33796ce86d29b7f}{txMpdu} \mbox{[}BASIC\_\-RF\_\-MAX\_\-PAYLOAD\_\-SIZE+BASIC\_\-RF\_\-PACKET\_\-OVERHEAD\_\-SIZE+1\mbox{]}
+\item 
+static \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} \hyperlink{basic__rf_8c_aaf2e9226ca3594d47cab724ba1d04a6b}{rxMpdu} \mbox{[}128\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{basic__rf_8c_a00dc3203411cce0fc54f4e339e2cfdef}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-ACK\_\-DURATION@{BASIC\_\-RF\_\-ACK\_\-DURATION}}
+\index{BASIC\_\-RF\_\-ACK\_\-DURATION@{BASIC\_\-RF\_\-ACK\_\-DURATION}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-ACK\_\-DURATION}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-ACK\_\-DURATION~(0.5 $\ast$ 32 $\ast$ 2 $\ast$ ((4 + 1) + (1) + (2 + 1) + (2)))}}
+\label{basic__rf_8c_a00dc3203411cce0fc54f4e339e2cfdef}
+
+
+Definition at line 50 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_a917845e1b4b471a67b07a2acf9620026}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-ACK\_\-PACKET\_\-SIZE@{BASIC\_\-RF\_\-ACK\_\-PACKET\_\-SIZE}}
+\index{BASIC\_\-RF\_\-ACK\_\-PACKET\_\-SIZE@{BASIC\_\-RF\_\-ACK\_\-PACKET\_\-SIZE}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-ACK\_\-PACKET\_\-SIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-ACK\_\-PACKET\_\-SIZE~5}}
+\label{basic__rf_8c_a917845e1b4b471a67b07a2acf9620026}
+
+
+Definition at line 44 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_ab8bad2e9b755d4a637e5f9be9b8d335f}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-AUX\_\-HDR\_\-LENGTH@{BASIC\_\-RF\_\-AUX\_\-HDR\_\-LENGTH}}
+\index{BASIC\_\-RF\_\-AUX\_\-HDR\_\-LENGTH@{BASIC\_\-RF\_\-AUX\_\-HDR\_\-LENGTH}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-AUX\_\-HDR\_\-LENGTH}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-AUX\_\-HDR\_\-LENGTH~5}}
+\label{basic__rf_8c_ab8bad2e9b755d4a637e5f9be9b8d335f}
+
+
+Definition at line 71 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_a2f7ff81ecb98a711b00ecf05062de467}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-CRC\_\-OK\_\-BM@{BASIC\_\-RF\_\-CRC\_\-OK\_\-BM}}
+\index{BASIC\_\-RF\_\-CRC\_\-OK\_\-BM@{BASIC\_\-RF\_\-CRC\_\-OK\_\-BM}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-CRC\_\-OK\_\-BM}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-CRC\_\-OK\_\-BM~0x80}}
+\label{basic__rf_8c_a2f7ff81ecb98a711b00ecf05062de467}
+
+
+Definition at line 82 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_a73fdc6f2d5b73abfa45fb03a847269e8}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-FCF\_\-ACK@{BASIC\_\-RF\_\-FCF\_\-ACK}}
+\index{BASIC\_\-RF\_\-FCF\_\-ACK@{BASIC\_\-RF\_\-FCF\_\-ACK}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-FCF\_\-ACK}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-FCF\_\-ACK~0x8861}}
+\label{basic__rf_8c_a73fdc6f2d5b73abfa45fb03a847269e8}
+
+
+Definition at line 58 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_acab5cb317f2f95dc91cd5b317277af7e}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-FCF\_\-ACK\_\-BM@{BASIC\_\-RF\_\-FCF\_\-ACK\_\-BM}}
+\index{BASIC\_\-RF\_\-FCF\_\-ACK\_\-BM@{BASIC\_\-RF\_\-FCF\_\-ACK\_\-BM}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-FCF\_\-ACK\_\-BM}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-FCF\_\-ACK\_\-BM~0x0020}}
+\label{basic__rf_8c_acab5cb317f2f95dc91cd5b317277af7e}
+
+
+Definition at line 59 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_aa3ba9656d5d70f95c3680b006cfd1c12}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-FCF\_\-ACK\_\-BM\_\-L@{BASIC\_\-RF\_\-FCF\_\-ACK\_\-BM\_\-L}}
+\index{BASIC\_\-RF\_\-FCF\_\-ACK\_\-BM\_\-L@{BASIC\_\-RF\_\-FCF\_\-ACK\_\-BM\_\-L}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-FCF\_\-ACK\_\-BM\_\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-FCF\_\-ACK\_\-BM\_\-L~LO\_\-UINT16(BASIC\_\-RF\_\-FCF\_\-ACK\_\-BM)}}
+\label{basic__rf_8c_aa3ba9656d5d70f95c3680b006cfd1c12}
+
+
+Definition at line 66 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_a0504b1e638a25e50087c2b8883eb04ac}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-FCF\_\-ACK\_\-L@{BASIC\_\-RF\_\-FCF\_\-ACK\_\-L}}
+\index{BASIC\_\-RF\_\-FCF\_\-ACK\_\-L@{BASIC\_\-RF\_\-FCF\_\-ACK\_\-L}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-FCF\_\-ACK\_\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-FCF\_\-ACK\_\-L~LO\_\-UINT16(BASIC\_\-RF\_\-FCF\_\-ACK)}}
+\label{basic__rf_8c_a0504b1e638a25e50087c2b8883eb04ac}
+
+
+Definition at line 65 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_a7b4a3705bb712e7358cf6e62db69e4c2}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-FCF\_\-BM@{BASIC\_\-RF\_\-FCF\_\-BM}}
+\index{BASIC\_\-RF\_\-FCF\_\-BM@{BASIC\_\-RF\_\-FCF\_\-BM}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-FCF\_\-BM}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-FCF\_\-BM~($\sim$BASIC\_\-RF\_\-FCF\_\-ACK\_\-BM)}}
+\label{basic__rf_8c_a7b4a3705bb712e7358cf6e62db69e4c2}
+
+
+Definition at line 60 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_a9729e98c6ca2155eb4a86e6be796e07f}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-FCF\_\-BM\_\-L@{BASIC\_\-RF\_\-FCF\_\-BM\_\-L}}
+\index{BASIC\_\-RF\_\-FCF\_\-BM\_\-L@{BASIC\_\-RF\_\-FCF\_\-BM\_\-L}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-FCF\_\-BM\_\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-FCF\_\-BM\_\-L~LO\_\-UINT16(BASIC\_\-RF\_\-FCF\_\-BM)}}
+\label{basic__rf_8c_a9729e98c6ca2155eb4a86e6be796e07f}
+
+
+Definition at line 67 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_a6ea2ba00a82bbe9446d78e60b5877a85}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-FCF\_\-NOACK@{BASIC\_\-RF\_\-FCF\_\-NOACK}}
+\index{BASIC\_\-RF\_\-FCF\_\-NOACK@{BASIC\_\-RF\_\-FCF\_\-NOACK}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-FCF\_\-NOACK}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-FCF\_\-NOACK~0x8841}}
+\label{basic__rf_8c_a6ea2ba00a82bbe9446d78e60b5877a85}
+
+
+Definition at line 57 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_af2096cac191097e690cd9e4172affe85}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-FCF\_\-NOACK\_\-L@{BASIC\_\-RF\_\-FCF\_\-NOACK\_\-L}}
+\index{BASIC\_\-RF\_\-FCF\_\-NOACK\_\-L@{BASIC\_\-RF\_\-FCF\_\-NOACK\_\-L}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-FCF\_\-NOACK\_\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-FCF\_\-NOACK\_\-L~LO\_\-UINT16(BASIC\_\-RF\_\-FCF\_\-NOACK)}}
+\label{basic__rf_8c_af2096cac191097e690cd9e4172affe85}
+
+
+Definition at line 64 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_a070670ea1c677539ef054b92b8559cee}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-FOOTER\_\-SIZE@{BASIC\_\-RF\_\-FOOTER\_\-SIZE}}
+\index{BASIC\_\-RF\_\-FOOTER\_\-SIZE@{BASIC\_\-RF\_\-FOOTER\_\-SIZE}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-FOOTER\_\-SIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-FOOTER\_\-SIZE~2}}
+\label{basic__rf_8c_a070670ea1c677539ef054b92b8559cee}
+
+
+Definition at line 45 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_a93de3fb6eaf0e00f633fc1c802a63d1e}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-HDR\_\-SIZE@{BASIC\_\-RF\_\-HDR\_\-SIZE}}
+\index{BASIC\_\-RF\_\-HDR\_\-SIZE@{BASIC\_\-RF\_\-HDR\_\-SIZE}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-HDR\_\-SIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-HDR\_\-SIZE~10}}
+\label{basic__rf_8c_a93de3fb6eaf0e00f633fc1c802a63d1e}
+
+
+Definition at line 46 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_a953ad92953ad4cbc16bf46d26f6aebf6}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-LEN\_\-AUTH@{BASIC\_\-RF\_\-LEN\_\-AUTH}}
+\index{BASIC\_\-RF\_\-LEN\_\-AUTH@{BASIC\_\-RF\_\-LEN\_\-AUTH}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-LEN\_\-AUTH}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-LEN\_\-AUTH}}
+\label{basic__rf_8c_a953ad92953ad4cbc16bf46d26f6aebf6}
+{\bfseries Value:}
+\begin{DoxyCode}
+BASIC_RF_PACKET_OVERHEAD_SIZE + \
+    BASIC_RF_AUX_HDR_LENGTH - BASIC_RF_FOOTER_SIZE
+\end{DoxyCode}
+
+
+Definition at line 72 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_a9263ce5a370dcb9b2a20dfdd53a08c6c}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-LEN\_\-MIC@{BASIC\_\-RF\_\-LEN\_\-MIC}}
+\index{BASIC\_\-RF\_\-LEN\_\-MIC@{BASIC\_\-RF\_\-LEN\_\-MIC}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-LEN\_\-MIC}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-LEN\_\-MIC~8}}
+\label{basic__rf_8c_a9263ce5a370dcb9b2a20dfdd53a08c6c}
+
+
+Definition at line 75 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_a1aaceba4b43df3d8b6e09d002859aff5}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-MAX\_\-PAYLOAD\_\-SIZE@{BASIC\_\-RF\_\-MAX\_\-PAYLOAD\_\-SIZE}}
+\index{BASIC\_\-RF\_\-MAX\_\-PAYLOAD\_\-SIZE@{BASIC\_\-RF\_\-MAX\_\-PAYLOAD\_\-SIZE}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-MAX\_\-PAYLOAD\_\-SIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-MAX\_\-PAYLOAD\_\-SIZE}}
+\label{basic__rf_8c_a1aaceba4b43df3d8b6e09d002859aff5}
+{\bfseries Value:}
+\begin{DoxyCode}
+(127 - BASIC_RF_PACKET_OVERHEAD_SIZE - \
+    BASIC_RF_AUX_HDR_LENGTH - BASIC_RF_LEN_MIC)
+\end{DoxyCode}
+
+
+Definition at line 42 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_a03d796febb1dbfaf4ed66228bec06bdb}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-PACKET\_\-OVERHEAD\_\-SIZE@{BASIC\_\-RF\_\-PACKET\_\-OVERHEAD\_\-SIZE}}
+\index{BASIC\_\-RF\_\-PACKET\_\-OVERHEAD\_\-SIZE@{BASIC\_\-RF\_\-PACKET\_\-OVERHEAD\_\-SIZE}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-PACKET\_\-OVERHEAD\_\-SIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-PACKET\_\-OVERHEAD\_\-SIZE~((2 + 1 + 2 + 2 + 2) + (2))}}
+\label{basic__rf_8c_a03d796febb1dbfaf4ed66228bec06bdb}
+
+
+Definition at line 41 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_a67573d3115cf1b16df66f9d15597c09f}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-PLD\_\-LEN\_\-MASK@{BASIC\_\-RF\_\-PLD\_\-LEN\_\-MASK}}
+\index{BASIC\_\-RF\_\-PLD\_\-LEN\_\-MASK@{BASIC\_\-RF\_\-PLD\_\-LEN\_\-MASK}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-PLD\_\-LEN\_\-MASK}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-PLD\_\-LEN\_\-MASK~0x7F}}
+\label{basic__rf_8c_a67573d3115cf1b16df66f9d15597c09f}
+
+
+Definition at line 54 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_a774a5fe4703f2b9f0f569b4917561ee8}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-SEC\_\-ENABLED\_\-FCF\_\-BM@{BASIC\_\-RF\_\-SEC\_\-ENABLED\_\-FCF\_\-BM}}
+\index{BASIC\_\-RF\_\-SEC\_\-ENABLED\_\-FCF\_\-BM@{BASIC\_\-RF\_\-SEC\_\-ENABLED\_\-FCF\_\-BM}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-SEC\_\-ENABLED\_\-FCF\_\-BM}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-SEC\_\-ENABLED\_\-FCF\_\-BM~0x0008}}
+\label{basic__rf_8c_a774a5fe4703f2b9f0f569b4917561ee8}
+
+
+Definition at line 61 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_a32c71a0e33d991ac9c88caa13e2e3182}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-SEC\_\-ENABLED\_\-FCF\_\-BM\_\-L@{BASIC\_\-RF\_\-SEC\_\-ENABLED\_\-FCF\_\-BM\_\-L}}
+\index{BASIC\_\-RF\_\-SEC\_\-ENABLED\_\-FCF\_\-BM\_\-L@{BASIC\_\-RF\_\-SEC\_\-ENABLED\_\-FCF\_\-BM\_\-L}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-SEC\_\-ENABLED\_\-FCF\_\-BM\_\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-SEC\_\-ENABLED\_\-FCF\_\-BM\_\-L~LO\_\-UINT16(BASIC\_\-RF\_\-SEC\_\-ENABLED\_\-FCF\_\-BM)}}
+\label{basic__rf_8c_a32c71a0e33d991ac9c88caa13e2e3182}
+
+
+Definition at line 68 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_a3f9317fb3b47f4a775adbb543ca299d4}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-SECURITY\_\-M@{BASIC\_\-RF\_\-SECURITY\_\-M}}
+\index{BASIC\_\-RF\_\-SECURITY\_\-M@{BASIC\_\-RF\_\-SECURITY\_\-M}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-SECURITY\_\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-SECURITY\_\-M~2}}
+\label{basic__rf_8c_a3f9317fb3b47f4a775adbb543ca299d4}
+
+
+Definition at line 74 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_af6c812a67a14425b9307263ff91f9343}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!BASIC\_\-RF\_\-SYMBOL\_\-DURATION@{BASIC\_\-RF\_\-SYMBOL\_\-DURATION}}
+\index{BASIC\_\-RF\_\-SYMBOL\_\-DURATION@{BASIC\_\-RF\_\-SYMBOL\_\-DURATION}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{BASIC\_\-RF\_\-SYMBOL\_\-DURATION}]{\setlength{\rightskip}{0pt plus 5cm}\#define BASIC\_\-RF\_\-SYMBOL\_\-DURATION~(32 $\ast$ 0.5)}}
+\label{basic__rf_8c_af6c812a67a14425b9307263ff91f9343}
+
+
+Definition at line 51 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_ad061a5b2c034b9b894c9ba60493b2295}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!PKT\_\-LEN\_\-AUTH@{PKT\_\-LEN\_\-AUTH}}
+\index{PKT\_\-LEN\_\-AUTH@{PKT\_\-LEN\_\-AUTH}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{PKT\_\-LEN\_\-AUTH}]{\setlength{\rightskip}{0pt plus 5cm}\#define PKT\_\-LEN\_\-AUTH~8}}
+\label{basic__rf_8c_ad061a5b2c034b9b894c9ba60493b2295}
+
+
+Definition at line 35 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_abadb6d6a2544471fd97c1eb6f3a78a53}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!PKT\_\-LEN\_\-ENCR@{PKT\_\-LEN\_\-ENCR}}
+\index{PKT\_\-LEN\_\-ENCR@{PKT\_\-LEN\_\-ENCR}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{PKT\_\-LEN\_\-ENCR}]{\setlength{\rightskip}{0pt plus 5cm}\#define PKT\_\-LEN\_\-ENCR~24}}
+\label{basic__rf_8c_abadb6d6a2544471fd97c1eb6f3a78a53}
+
+
+Definition at line 36 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_ad8b9cce8b5696df98a3d65fb656d340a}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!PKT\_\-LEN\_\-MIC@{PKT\_\-LEN\_\-MIC}}
+\index{PKT\_\-LEN\_\-MIC@{PKT\_\-LEN\_\-MIC}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{PKT\_\-LEN\_\-MIC}]{\setlength{\rightskip}{0pt plus 5cm}\#define PKT\_\-LEN\_\-MIC~8}}
+\label{basic__rf_8c_ad8b9cce8b5696df98a3d65fb656d340a}
+
+
+Definition at line 33 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_a71bb9cb9dbb31ccf5ace5de8bdf06c34}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!PKT\_\-LEN\_\-SEC@{PKT\_\-LEN\_\-SEC}}
+\index{PKT\_\-LEN\_\-SEC@{PKT\_\-LEN\_\-SEC}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{PKT\_\-LEN\_\-SEC}]{\setlength{\rightskip}{0pt plus 5cm}\#define PKT\_\-LEN\_\-SEC~PKT\_\-LEN\_\-UNSEC + PKT\_\-LEN\_\-MIC}}
+\label{basic__rf_8c_a71bb9cb9dbb31ccf5ace5de8bdf06c34}
+
+
+Definition at line 34 of file basic\_\-rf.c.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{basic__rf_8c_a40ba57f496a28fff78f3967dcc5ca35c}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!basicRfBuildHeader@{basicRfBuildHeader}}
+\index{basicRfBuildHeader@{basicRfBuildHeader}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{basicRfBuildHeader}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf uint8} basicRfBuildHeader (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8} $\ast$}]{buffer, }
+\item[{{\bf uint16}}]{destAddr, }
+\item[{{\bf uint8}}]{payloadLength}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{basic__rf_8c_a40ba57f496a28fff78f3967dcc5ca35c}
+
+
+Definition at line 156 of file basic\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    basicRfPktHdr_t *pHdr;
+    uint16 fcf;
+
+    pHdr= (basicRfPktHdr_t*)buffer;
+
+    // Populate packet header
+    pHdr->packetLength = payloadLength + BASIC_RF_PACKET_OVERHEAD_SIZE;
+    //pHdr->frameControlField = pConfig->ackRequest ? BASIC_RF_FCF_ACK : BASIC_RF
+      _FCF_NOACK;
+    fcf= pConfig->ackRequest ? BASIC_RF_FCF_ACK : BASIC_RF_FCF_NOACK;
+    pHdr->fcf0 = LO_UINT16(fcf);
+    pHdr->fcf1 = HI_UINT16(fcf);
+    pHdr->seqNumber= txState.txSeqNumber;
+    pHdr->panId= pConfig->panId;
+    pHdr->destAddr= destAddr;
+    pHdr->srcAddr= pConfig->myAddr;
+
+    #ifdef SECURITY_CCM
+
+    // Add security to FCF, length and security header
+    pHdr->fcf0 |= BASIC_RF_SEC_ENABLED_FCF_BM_L;
+    pHdr->packetLength += PKT_LEN_MIC;
+    pHdr->packetLength += BASIC_RF_AUX_HDR_LENGTH;
+
+    pHdr->securityControl= SECURITY_CONTROL;
+    pHdr->frameCounter[0]=   LO_UINT16(LO_UINT32(txState.frameCounter));
+    pHdr->frameCounter[1]=   HI_UINT16(LO_UINT32(txState.frameCounter));
+    pHdr->frameCounter[2]=   LO_UINT16(HI_UINT32(txState.frameCounter));
+    pHdr->frameCounter[3]=   HI_UINT16(HI_UINT32(txState.frameCounter));
+
+    #endif
+
+    // Make sure bytefields are network byte order
+    UINT16_HTON(pHdr->panId);
+    UINT16_HTON(pHdr->destAddr);
+    UINT16_HTON(pHdr->srcAddr);
+
+    return BASIC_RF_HDR_SIZE;
+}
+\end{DoxyCode}
+\hypertarget{basic__rf_8c_a989a51f7c51b3de2dceffd9796703b93}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!basicRfBuildMpdu@{basicRfBuildMpdu}}
+\index{basicRfBuildMpdu@{basicRfBuildMpdu}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{basicRfBuildMpdu}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf uint8} basicRfBuildMpdu (
+\begin{DoxyParamCaption}
+\item[{{\bf uint16}}]{destAddr, }
+\item[{{\bf uint8} $\ast$}]{pPayload, }
+\item[{{\bf uint8}}]{payloadLength}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{basic__rf_8c_a989a51f7c51b3de2dceffd9796703b93}
+
+
+Definition at line 210 of file basic\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    uint8 hdrLength, n;
+
+    hdrLength = basicRfBuildHeader(txMpdu, destAddr, payloadLength);
+
+    for(n=0;n<payloadLength;n++)
+    {
+        txMpdu[hdrLength+n] = pPayload[n];
+    }
+    return hdrLength + payloadLength; // total mpdu length
+}
+\end{DoxyCode}
+\hypertarget{basic__rf_8c_aa2412e5f3dd41253f37116354e856e2a}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!basicRfGetRssi@{basicRfGetRssi}}
+\index{basicRfGetRssi@{basicRfGetRssi}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{basicRfGetRssi}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int8} basicRfGetRssi (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{basic__rf_8c_aa2412e5f3dd41253f37116354e856e2a}
+
+
+Definition at line 543 of file basic\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    if(rxi.rssi < 128){
+        return rxi.rssi - halRfGetRssiOffset();
+    }
+    else{
+        return (rxi.rssi - 256) - halRfGetRssiOffset();
+    }
+}
+\end{DoxyCode}
+\hypertarget{basic__rf_8c_ae2490e5735320b9688cab4c259287801}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!basicRfInit@{basicRfInit}}
+\index{basicRfInit@{basicRfInit}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{basicRfInit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} basicRfInit (
+\begin{DoxyParamCaption}
+\item[{{\bf basicRfCfg\_\-t} $\ast$}]{pRfConfig}
+\end{DoxyParamCaption}
+)}}
+\label{basic__rf_8c_ae2490e5735320b9688cab4c259287801}
+
+
+Definition at line 365 of file basic\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    if (halRfInit()==FAILED)
+        return FAILED;
+
+    halIntOff();
+
+    // Set the protocol configuration
+    pConfig = pRfConfig;
+    rxi.pPayload   = NULL;
+
+    txState.receiveOn = TRUE;
+    txState.frameCounter = 0;
+
+    // Set channel
+    halRfSetChannel(pConfig->channel);
+
+    // Write the short address and the PAN ID to the CC2520 RAM
+    halRfSetShortAddr(pConfig->myAddr);
+    halRfSetPanId(pConfig->panId);
+
+    // if security is enabled, write key and nonce
+    #ifdef SECURITY_CCM
+    basicRfSecurityInit(pConfig);
+    #endif
+
+    // Set up receive interrupt (received data or acknowlegment)
+    halRfRxInterruptConfig(basicRfRxFrmDoneIsr);
+
+    halIntOn();
+
+    return SUCCESS;
+}
+\end{DoxyCode}
+\hypertarget{basic__rf_8c_a222c6dfbb12d4b67ce35257de2138d92}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!basicRfPacketIsReady@{basicRfPacketIsReady}}
+\index{basicRfPacketIsReady@{basicRfPacketIsReady}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{basicRfPacketIsReady}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} basicRfPacketIsReady (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{basic__rf_8c_a222c6dfbb12d4b67ce35257de2138d92}
+
+
+Definition at line 492 of file basic\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    return rxi.isReady;
+}
+\end{DoxyCode}
+\hypertarget{basic__rf_8c_af9fb2231fcee94f6996af72b5a9a80e7}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!basicRfReceive@{basicRfReceive}}
+\index{basicRfReceive@{basicRfReceive}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{basicRfReceive}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} basicRfReceive (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8} $\ast$}]{pRxData, }
+\item[{{\bf uint8}}]{len, }
+\item[{{\bf int16} $\ast$}]{pRssi}
+\end{DoxyParamCaption}
+)}}
+\label{basic__rf_8c_af9fb2231fcee94f6996af72b5a9a80e7}
+
+
+Definition at line 511 of file basic\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    // Accessing shared variables -> this is a critical region
+    // Critical region start
+    halIntOff();
+    memcpy(pRxData, rxi.pPayload, min(rxi.length, len));
+    if(pRssi != NULL) {
+        if(rxi.rssi < 128){
+            *pRssi = rxi.rssi - halRfGetRssiOffset();
+        }
+        else{
+            *pRssi = (rxi.rssi - 256) - halRfGetRssiOffset();
+        }
+    }
+    rxi.isReady = FALSE;
+    halIntOn();
+
+    // Critical region end
+
+    return min(rxi.length, len);
+}
+\end{DoxyCode}
+\hypertarget{basic__rf_8c_afb44c177594fb28d443c35289e4a87df}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!basicRfReceiveOff@{basicRfReceiveOff}}
+\index{basicRfReceiveOff@{basicRfReceiveOff}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{basicRfReceiveOff}]{\setlength{\rightskip}{0pt plus 5cm}void basicRfReceiveOff (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{basic__rf_8c_afb44c177594fb28d443c35289e4a87df}
+
+
+Definition at line 578 of file basic\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    txState.receiveOn = FALSE;
+    halRfReceiveOff();
+}
+\end{DoxyCode}
+\hypertarget{basic__rf_8c_ae4911221feea8be8e36f8e497d3e0a87}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!basicRfReceiveOn@{basicRfReceiveOn}}
+\index{basicRfReceiveOn@{basicRfReceiveOn}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{basicRfReceiveOn}]{\setlength{\rightskip}{0pt plus 5cm}void basicRfReceiveOn (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{basic__rf_8c_ae4911221feea8be8e36f8e497d3e0a87}
+
+
+Definition at line 562 of file basic\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    txState.receiveOn = TRUE;
+    halRfReceiveOn();
+}
+\end{DoxyCode}
+\hypertarget{basic__rf_8c_aaf218f041e672fa284de7f68f1c0d822}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!basicRfRxFrmDoneIsr@{basicRfRxFrmDoneIsr}}
+\index{basicRfRxFrmDoneIsr@{basicRfRxFrmDoneIsr}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{basicRfRxFrmDoneIsr}]{\setlength{\rightskip}{0pt plus 5cm}static void basicRfRxFrmDoneIsr (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{basic__rf_8c_aaf218f041e672fa284de7f68f1c0d822}
+
+
+Definition at line 236 of file basic\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    basicRfPktHdr_t *pHdr;
+    uint8 *pStatusWord;
+    #ifdef SECURITY_CCM
+    uint8 authStatus=0;
+    #endif
+
+    // Map header to packet buffer
+    pHdr= (basicRfPktHdr_t*)rxMpdu;
+
+    // Clear interrupt and disable new RX frame done interrupt
+    halRfDisableRxInterrupt();
+
+    // Enable all other interrupt sources (enables interrupt nesting)
+    halIntOn();
+
+    // Read payload length.
+    halRfReadRxBuf(&pHdr->packetLength,1);
+    pHdr->packetLength &= BASIC_RF_PLD_LEN_MASK; // Ignore MSB
+    
+    // Is this an acknowledgment packet?
+    // Only ack packets may be 5 bytes in total.
+    if (pHdr->packetLength == BASIC_RF_ACK_PACKET_SIZE) {
+
+        // Read the packet
+        halRfReadRxBuf(&rxMpdu[1], pHdr->packetLength);
+
+        // Make sure byte fields are changed from network to host byte order
+        UINT16_NTOH(pHdr->panId);
+        UINT16_NTOH(pHdr->destAddr);
+        UINT16_NTOH(pHdr->srcAddr);
+        #ifdef SECURITY_CCM
+        UINT32_NTOH(pHdr->frameCounter);
+        #endif
+
+        rxi.ackRequest = !!(pHdr->fcf0 & BASIC_RF_FCF_ACK_BM_L);
+
+        // Read the status word and check for CRC OK
+        pStatusWord= rxMpdu + 4;
+
+        // Indicate the successful ACK reception if CRC and sequence number OK
+        if ((pStatusWord[1] & BASIC_RF_CRC_OK_BM) && (pHdr->seqNumber == txState.
+      txSeqNumber)) {
+            txState.ackReceived = TRUE;
+        }
+
+        // No, it is data
+    } else {
+
+        // It is assumed that the radio rejects packets with invalid length.
+        // Subtract the number of bytes in the frame overhead to get actual paylo
+      ad.
+
+        rxi.length = pHdr->packetLength - BASIC_RF_PACKET_OVERHEAD_SIZE;
+
+        #ifdef SECURITY_CCM
+        rxi.length -= (BASIC_RF_AUX_HDR_LENGTH + BASIC_RF_LEN_MIC);
+        authStatus = halRfReadRxBufSecure(&rxMpdu[1], pHdr->packetLength, rxi.
+      length,
+                                        BASIC_RF_LEN_AUTH, BASIC_RF_SECURITY_M);
+        #else
+        halRfReadRxBuf(&rxMpdu[1], pHdr->packetLength);
+        #endif
+
+        // Make sure byte fields are changed from network to host byte order
+        UINT16_NTOH(pHdr->panId);
+        UINT16_NTOH(pHdr->destAddr);
+        UINT16_NTOH(pHdr->srcAddr);
+        #ifdef SECURITY_CCM
+        UINT32_NTOH(pHdr->frameCounter);
+        #endif
+
+        rxi.ackRequest = !!(pHdr->fcf0 & BASIC_RF_FCF_ACK_BM_L);
+
+        // Read the source address
+        rxi.srcAddr= pHdr->srcAddr;
+
+        // Read the packet payload
+        rxi.pPayload = rxMpdu + BASIC_RF_HDR_SIZE;
+
+        // Read the FCS to get the RSSI and CRC
+        pStatusWord= rxi.pPayload+rxi.length;
+        #ifdef SECURITY_CCM
+        pStatusWord+= BASIC_RF_LEN_MIC;
+        #endif
+        rxi.rssi = pStatusWord[0];
+
+        // Notify the application about the received data packet if the CRC is OK
+      
+        // Throw packet if the previous packet had the same sequence number
+        if( (pStatusWord[1] & BASIC_RF_CRC_OK_BM) && (rxi.seqNumber != pHdr->
+      seqNumber) ) {
+            // If security is used check also that authentication passed
+            #ifdef SECURITY_CCM
+            if( authStatus==SUCCESS ) {
+                if ( (pHdr->fcf0 & BASIC_RF_FCF_BM_L) ==
+                    (BASIC_RF_FCF_NOACK_L | BASIC_RF_SEC_ENABLED_FCF_BM_L)) {
+                        rxi.isReady = TRUE;
+                }
+            }
+            #else
+            if ( ((pHdr->fcf0 & (BASIC_RF_FCF_BM_L)) == BASIC_RF_FCF_NOACK_L) ) {
+      
+                rxi.isReady = TRUE;
+            }              
+            #endif
+        }
+        rxi.seqNumber = pHdr->seqNumber;
+    }
+  
+    // Enable RX frame done interrupt again
+    halIntOff();
+    halRfEnableRxInterrupt();
+}
+\end{DoxyCode}
+\hypertarget{basic__rf_8c_aca5cf1dd9663ea55c8b77a0c315e7e95}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!basicRfSendPacket@{basicRfSendPacket}}
+\index{basicRfSendPacket@{basicRfSendPacket}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{basicRfSendPacket}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} basicRfSendPacket (
+\begin{DoxyParamCaption}
+\item[{{\bf uint16}}]{destAddr, }
+\item[{{\bf uint8} $\ast$}]{pPayload, }
+\item[{{\bf uint8}}]{length}
+\end{DoxyParamCaption}
+)}}
+\label{basic__rf_8c_aca5cf1dd9663ea55c8b77a0c315e7e95}
+
+
+Definition at line 414 of file basic\_\-rf.c.
+
+
+\begin{DoxyCode}
+{
+    uint8 mpduLength;
+    uint8 status;
+
+    // Turn on receiver if its not on
+    if(!txState.receiveOn) {
+        halRfReceiveOn();
+    }
+
+    // Check packet length
+    length = min(length, BASIC_RF_MAX_PAYLOAD_SIZE);
+
+    // Wait until the transceiver is idle
+    halRfWaitTransceiverReady();
+
+    // Turn off RX frame done interrupt to avoid interference on the SPI interfac
+      e
+    halRfDisableRxInterrupt();
+
+    mpduLength = basicRfBuildMpdu(destAddr, pPayload, length);
+
+    #ifdef SECURITY_CCM
+    halRfWriteTxBufSecure(txMpdu, mpduLength, length, BASIC_RF_LEN_AUTH, 
+      BASIC_RF_SECURITY_M);
+    txState.frameCounter++;     // Increment frame counter field
+    #else
+    halRfWriteTxBuf(txMpdu, mpduLength);
+    #endif
+
+    // Turn on RX frame done interrupt for ACK reception
+    halRfEnableRxInterrupt();
+
+    // Send frame with CCA. return FAILED if not successful
+    if(halRfTransmit() != SUCCESS) {
+        status = FAILED;
+    }
+
+    // Wait for the acknowledge to be received, if any
+    if (pConfig->ackRequest) {
+        txState.ackReceived = FALSE;
+
+        // We'll enter RX automatically, so just wait until we can be sure that t
+      he ack reception should have finished
+        // The timeout consists of a 12-symbol turnaround time, the ack packet du
+      ration, and a small margin
+        halMcuWaitUs((12 * BASIC_RF_SYMBOL_DURATION) + (BASIC_RF_ACK_DURATION) + 
+      (2 * BASIC_RF_SYMBOL_DURATION) + 10);
+
+        // If an acknowledgment has been received (by RxFrmDoneIsr), the ackRecei
+      ved flag should be set
+        status = txState.ackReceived ? SUCCESS : FAILED;
+
+    } else {
+        status = SUCCESS;
+    }
+
+    // Turn off the receiver if it should not continue to be enabled
+    if (!txState.receiveOn) {
+        halRfReceiveOff();
+    }
+
+    if(status == SUCCESS) {
+        txState.txSeqNumber++;
+    }
+
+#ifdef SECURITY_CCM
+    halRfIncNonceTx();          // Increment nonce value
+#endif
+
+    return status;
+
+}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\hypertarget{basic__rf_8c_a62df39fc3dc7e7489bb77ff389ab84ad}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!pConfig@{pConfig}}
+\index{pConfig@{pConfig}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{pConfig}]{\setlength{\rightskip}{0pt plus 5cm}{\bf basicRfCfg\_\-t}$\ast$ {\bf pConfig}\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{basic__rf_8c_a62df39fc3dc7e7489bb77ff389ab84ad}
+
+
+Definition at line 131 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_a5c331f61a00367c2d911e2dc071d829c}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!rxi@{rxi}}
+\index{rxi@{rxi}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{rxi}]{\setlength{\rightskip}{0pt plus 5cm}{\bf basicRfRxInfo\_\-t} {\bf rxi} = \{ 0xFF \}\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{basic__rf_8c_a5c331f61a00367c2d911e2dc071d829c}
+
+
+Definition at line 128 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_aaf2e9226ca3594d47cab724ba1d04a6b}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!rxMpdu@{rxMpdu}}
+\index{rxMpdu@{rxMpdu}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{rxMpdu}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} {\bf rxMpdu}\mbox{[}128\mbox{]}\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{basic__rf_8c_aaf2e9226ca3594d47cab724ba1d04a6b}
+
+
+Definition at line 133 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_a26238c725dbf1e4cd33796ce86d29b7f}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!txMpdu@{txMpdu}}
+\index{txMpdu@{txMpdu}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{txMpdu}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8} {\bf txMpdu}\mbox{[}BASIC\_\-RF\_\-MAX\_\-PAYLOAD\_\-SIZE+BASIC\_\-RF\_\-PACKET\_\-OVERHEAD\_\-SIZE+1\mbox{]}\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{basic__rf_8c_a26238c725dbf1e4cd33796ce86d29b7f}
+
+
+Definition at line 132 of file basic\_\-rf.c.
+
+\hypertarget{basic__rf_8c_a30f0e1237418cb399715ec882124f36f}{
+\index{basic\_\-rf.c@{basic\_\-rf.c}!txState@{txState}}
+\index{txState@{txState}!basic_rf.c@{basic\_\-rf.c}}
+\subsubsection[{txState}]{\setlength{\rightskip}{0pt plus 5cm}{\bf basicRfTxState\_\-t} {\bf txState} = \{ 0x00 \}\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{basic__rf_8c_a30f0e1237418cb399715ec882124f36f}
+
+
+Definition at line 129 of file basic\_\-rf.c.
+

@@ -1,0 +1,2665 @@
+\hypertarget{pp__utils_8h}{
+\section{pp\_\-utils.h File Reference}
+\label{pp__utils_8h}\index{pp\_\-utils.h@{pp\_\-utils.h}}
+}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{pp__utils_8h_a30d26964995580586ac787c24b82b2c3}{STRINGIZE}(s)~STRINGIZE\_\-X( s )
+\item 
+\#define \hyperlink{pp__utils_8h_a1a08dc30e37a7403186585818f4c535d}{STRINGIZE\_\-X}(s)~\#s
+\item 
+\#define \hyperlink{pp__utils_8h_acf379219b407608810b85ab83f955916}{CONCATENATE}(a, b)~CONCATENATE\_\-X( a, b )
+\item 
+\#define \hyperlink{pp__utils_8h_a4a91b0741534fb4776cc81724552c191}{CONCATENATE\_\-X}(a, b)~a \#\# b
+\item 
+\#define \hyperlink{pp__utils_8h_a3cdf560981fe42f8f74fd0818d75eb68}{INFIX}(a, i, b)~CONCATENATE( CONCATENATE( a, i ), b )
+\item 
+\#define \hyperlink{pp__utils_8h_a658e337389986c1c51a07f0a6687584a}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-1}(t, w, f)~DECL\_\-BIT\_\-FIELDS\_\-1( t, f, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a00ae6270bcb199ec506541b2b6fbbcfe}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-2}(t, w, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-2( t, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_afb77d5b4391e6ab26a79f99b2639c741}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-3}(t, w, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-3( t, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a21eb8451bc4a75f3292b32afcc2d4312}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-4}(t, w, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-4( t, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a9d06fcf17ffb3dd4e7bc710127bf6bed}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-5}(t, w, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-5( t, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a9139636973879d96e65cfdd509e393ea}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-6}(t, w, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-6( t, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a89367be3f8260ceb51406a8cff72a1d1}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-7}(t, w, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-7( t, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a33c58c17d2b8609344c09a737f3249ce}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-8}(t, w, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-8( t, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a644d8490ae4573371ba2b989fee90435}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-9}(t, w, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-9( t, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_abd783792a736f1c04841751944782a68}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-10}(t, w, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-10( t, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a6a97f88a8d3ad0235666355c8571c3a2}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-11}(t, w, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-11( t, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a7ed9b081c6e42f2bb93aa0f0f9aab640}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-12}(t, w, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-12( t, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a8542750e671b519f7c38150bbb6b465b}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-13}(t, w, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-13( t, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a1554b247173d2b966019db5e81e6fb5b}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-14}(t, w, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-14( t, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a0f1e89246bf7a4b4c2ceeedbea53d2d4}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-15}(t, w, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-15( t, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a0ea43669e5f4415d83497022b145a361}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-16}(t, w, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-16( t, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a89e331f4fefab647adda1788c67c1992}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-17}(t, w, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-17( t, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a287d41f5fa0a373f82f8fa8dad4a93f8}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-18}(t, w, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-18( t, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a821c9131291cbd55a2eff5f6954f7682}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-19}(t, w, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-19( t, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a9e78b19f95f47256b4dcac69e895408b}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-20}(t, w, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-20( t, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a52eccade9bca35bf759b11fb232f4545}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-21}(t, w, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-21( t, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a17b41ffbf3950cdeedc710a8257ec308}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-22}(t, w, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-22( t, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a473bffa7dd1eb02a07fb6db232b2ca66}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-23}(t, w, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-23( t, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a90f136b73a5985d770090a4ea774c259}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-24}(t, w, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-24( t, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_ae6edc3032cf55c147d2e804f5dff9489}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-25}(t, w, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-25( t, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a2e972ba1ead419a3e50f06cc1d735f2f}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-26}(t, w, f25, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-26( t, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a3d548ee205a37930a3413b4bc7bf6901}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-27}(t, w, f26, f25, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-27( t, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a29825ecbeeb436d8e6b15d4409e9b933}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-28}(t, w, f27, f26, f25, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-28( t, f27, w, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a6c4d475cd21605d8e7eeb42c37ad4d3c}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-29}(t, w, f28, f27, f26, f25, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-29( t, f28, w, f27, w, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a1da6d1c07e304a7d968b84e62aa6e106}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-30}(t, w, f29, f28, f27, f26, f25, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-30( t, f29, w, f28, w, f27, w, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_ad2b1553805baae46c111340fa79109c6}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-31}(t, w, f30, f29, f28, f27, f26, f25, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-31( t, f30, w, f29, w, f28, w, f27, w, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_a0c60b29daeac08ce3f8001b1c2c833d1}{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-32}(t, w, f31, f30, f29, f28, f27, f26, f25, f24, f23, f22, f21, f20, f19, f18, f17, f16, f15, f14, f13, f12, f11, f10, f9, f8, f7, f6, f5, f4, f3, f2, f1, f0)~DECL\_\-BIT\_\-FIELDS\_\-32( t, f31, w, f30, w, f29, w, f28, w, f27, w, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )
+\item 
+\#define \hyperlink{pp__utils_8h_abce908b0ac99360ac2d7fb06095b44b3}{DECL\_\-BIT\_\-FIELDS\_\-1}(t, f, w)~t f : w
+\item 
+\#define \hyperlink{pp__utils_8h_a885a17ca808fcd704fad79851ff724d8}{DECL\_\-BIT\_\-FIELDS\_\-2}(t, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-1( t, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-1( t, f1, w1 )
+\item 
+\#define \hyperlink{pp__utils_8h_ad823b9d9f64f937a8f99e2aa4f026e1b}{DECL\_\-BIT\_\-FIELDS\_\-3}(t, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-2( t, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-1( t, f2, w2 )
+\item 
+\#define \hyperlink{pp__utils_8h_a88478a72bcca40e870af0ba8e09ea5b0}{DECL\_\-BIT\_\-FIELDS\_\-4}(t, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-2( t, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-2( t, f3, w3, f2, w2 )
+\item 
+\#define \hyperlink{pp__utils_8h_a99e0cf174083af226f83a2b3a69afb14}{DECL\_\-BIT\_\-FIELDS\_\-5}(t, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-3( t, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-2( t, f4, w4, f3, w3 )
+\item 
+\#define \hyperlink{pp__utils_8h_a6141f1f5b9242a53ee34714eb5e73dcb}{DECL\_\-BIT\_\-FIELDS\_\-6}(t, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-3( t, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-3( t, f5, w5, f4, w4, f3, w3 )
+\item 
+\#define \hyperlink{pp__utils_8h_a9d05162f30c9ebb787857317d986e19d}{DECL\_\-BIT\_\-FIELDS\_\-7}(t, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-4( t, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-3( t, f6, w6, f5, w5, f4, w4 )
+\item 
+\#define \hyperlink{pp__utils_8h_aea073d5c57c3301beb1bb4998f3ecfda}{DECL\_\-BIT\_\-FIELDS\_\-8}(t, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-4( t, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-4( t, f7, w7, f6, w6, f5, w5, f4, w4 )
+\item 
+\#define \hyperlink{pp__utils_8h_a314b2d99fefdb58c4edaf2922e6a4910}{DECL\_\-BIT\_\-FIELDS\_\-9}(t, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-5( t, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-4( t, f8, w8, f7, w7, f6, w6, f5, w5 )
+\item 
+\#define \hyperlink{pp__utils_8h_af47b1e7a354c80ac238f78927fb25689}{DECL\_\-BIT\_\-FIELDS\_\-10}(t, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-5( t, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-5( t, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5 )
+\item 
+\#define \hyperlink{pp__utils_8h_a4b7f94cc3b02652170b40d028d12a1e0}{DECL\_\-BIT\_\-FIELDS\_\-11}(t, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-6( t, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-5( t, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6 )
+\item 
+\#define \hyperlink{pp__utils_8h_ac4e18505585fad0b5ff7d3c572a0b6e0}{DECL\_\-BIT\_\-FIELDS\_\-12}(t, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-6( t, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-6( t, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6 )
+\item 
+\#define \hyperlink{pp__utils_8h_a15343b8b77b5a23e0abaab6ae1546579}{DECL\_\-BIT\_\-FIELDS\_\-13}(t, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-7( t, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-6( t, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7 )
+\item 
+\#define \hyperlink{pp__utils_8h_abf74dace1c4e54d402ae14f89fcbd2bb}{DECL\_\-BIT\_\-FIELDS\_\-14}(t, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-7( t, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-7( t, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7 )
+\item 
+\#define \hyperlink{pp__utils_8h_a1cb5513ebafd4ac9dd27bdfbaf6d54e8}{DECL\_\-BIT\_\-FIELDS\_\-15}(t, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-8( t, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-7( t, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8 )
+\item 
+\#define \hyperlink{pp__utils_8h_a958009c1caaf4c14b193332a80388106}{DECL\_\-BIT\_\-FIELDS\_\-16}(t, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-8( t, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-8( t, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8 )
+\item 
+\#define \hyperlink{pp__utils_8h_aa3ca3c29df781cc161d0d4cb9d1f342a}{DECL\_\-BIT\_\-FIELDS\_\-17}(t, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-9( t, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-8( t, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9 )
+\item 
+\#define \hyperlink{pp__utils_8h_abf7a25d67c1682c8e0bd4b41f74c0589}{DECL\_\-BIT\_\-FIELDS\_\-18}(t, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-9( t, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-9( t, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9 )
+\item 
+\#define \hyperlink{pp__utils_8h_afaafaa7746419b8b7be07b95a80aab6c}{DECL\_\-BIT\_\-FIELDS\_\-19}(t, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-10( t, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-9( t, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10 )
+\item 
+\#define \hyperlink{pp__utils_8h_afb48a8a575f7ef46b5dd1684f53a5ebb}{DECL\_\-BIT\_\-FIELDS\_\-20}(t, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-10( t, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-10( t, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10 )
+\item 
+\#define \hyperlink{pp__utils_8h_a70dab5281eb4102bf8cbe9a1198d91f2}{DECL\_\-BIT\_\-FIELDS\_\-21}(t, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-11( t, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-10( t, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11 )
+\item 
+\#define \hyperlink{pp__utils_8h_acc8296f742d03b09452330ae5413c501}{DECL\_\-BIT\_\-FIELDS\_\-22}(t, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-11( t, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-11( t, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11 )
+\item 
+\#define \hyperlink{pp__utils_8h_ae74c044db2cdb481195bdf25c0b7fec5}{DECL\_\-BIT\_\-FIELDS\_\-23}(t, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-12( t, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-11( t, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12 )
+\item 
+\#define \hyperlink{pp__utils_8h_a72baa0d90b9a915b12232ea5f309d723}{DECL\_\-BIT\_\-FIELDS\_\-24}(t, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-12( t, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-12( t, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12 )
+\item 
+\#define \hyperlink{pp__utils_8h_aee6ce6c5d1fd1997fdab146aac0d39bf}{DECL\_\-BIT\_\-FIELDS\_\-25}(t, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-13( t, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-12( t, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13 )
+\item 
+\#define \hyperlink{pp__utils_8h_a4fd1c6455046a6572f90b16dac759ebe}{DECL\_\-BIT\_\-FIELDS\_\-26}(t, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-13( t, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-13( t, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13 )
+\item 
+\#define \hyperlink{pp__utils_8h_acbfddb851fb5af4708f2a2f698a7b7d0}{DECL\_\-BIT\_\-FIELDS\_\-27}(t, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-14( t, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-13( t, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14 )
+\item 
+\#define \hyperlink{pp__utils_8h_a329be8c598e0d4c71ade3ad69f65942c}{DECL\_\-BIT\_\-FIELDS\_\-28}(t, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-14( t, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-14( t, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14 )
+\item 
+\#define \hyperlink{pp__utils_8h_a0e0066d3568ad0da754b58ec43a07536}{DECL\_\-BIT\_\-FIELDS\_\-29}(t, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-15( t, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-14( t, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15 )
+\item 
+\#define \hyperlink{pp__utils_8h_a2002952220086c4cefa351fa56943d59}{DECL\_\-BIT\_\-FIELDS\_\-30}(t, f29, w29, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-15( t, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-15( t, f29, w29, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15 )
+\item 
+\#define \hyperlink{pp__utils_8h_a3754d45e8bf83c24c4d146494784027d}{DECL\_\-BIT\_\-FIELDS\_\-31}(t, f30, w30, f29, w29, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-16( t, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-15( t, f30, w30, f29, w29, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16 )
+\item 
+\#define \hyperlink{pp__utils_8h_a9639e4fd3a3f2c7322b086e518b4ae20}{DECL\_\-BIT\_\-FIELDS\_\-32}(t, f31, w31, f30, w30, f29, w29, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, w20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0)~DECL\_\-BIT\_\-FIELDS\_\-16( t, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-16( t, f31, w31, f30, w30, f29, w29, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16 )
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{pp__utils_8h_acf379219b407608810b85ab83f955916}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!CONCATENATE@{CONCATENATE}}
+\index{CONCATENATE@{CONCATENATE}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{CONCATENATE}]{\setlength{\rightskip}{0pt plus 5cm}\#define CONCATENATE(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b}
+\end{DoxyParamCaption}
+)~CONCATENATE\_\-X( a, b )}}
+\label{pp__utils_8h_acf379219b407608810b85ab83f955916}
+
+
+Definition at line 51 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a4a91b0741534fb4776cc81724552c191}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!CONCATENATE\_\-X@{CONCATENATE\_\-X}}
+\index{CONCATENATE\_\-X@{CONCATENATE\_\-X}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{CONCATENATE\_\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define CONCATENATE\_\-X(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b}
+\end{DoxyParamCaption}
+)~a \#\# b}}
+\label{pp__utils_8h_a4a91b0741534fb4776cc81724552c191}
+
+
+Definition at line 52 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_abce908b0ac99360ac2d7fb06095b44b3}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-1@{DECL\_\-BIT\_\-FIELDS\_\-1}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-1@{DECL\_\-BIT\_\-FIELDS\_\-1}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-1(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f, }
+\item[{}]{w}
+\end{DoxyParamCaption}
+)~t f : w}}
+\label{pp__utils_8h_abce908b0ac99360ac2d7fb06095b44b3}
+
+
+Definition at line 127 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_af47b1e7a354c80ac238f78927fb25689}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-10@{DECL\_\-BIT\_\-FIELDS\_\-10}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-10@{DECL\_\-BIT\_\-FIELDS\_\-10}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-10}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-10(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-5( t, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-5( t, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5 )}}
+\label{pp__utils_8h_af47b1e7a354c80ac238f78927fb25689}
+
+
+Definition at line 136 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a4b7f94cc3b02652170b40d028d12a1e0}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-11@{DECL\_\-BIT\_\-FIELDS\_\-11}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-11@{DECL\_\-BIT\_\-FIELDS\_\-11}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-11}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-11(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-6( t, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-5( t, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6 )}}
+\label{pp__utils_8h_a4b7f94cc3b02652170b40d028d12a1e0}
+
+
+Definition at line 137 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_ac4e18505585fad0b5ff7d3c572a0b6e0}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-12@{DECL\_\-BIT\_\-FIELDS\_\-12}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-12@{DECL\_\-BIT\_\-FIELDS\_\-12}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-12}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-12(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f11, }
+\item[{}]{w11, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-6( t, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-6( t, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6 )}}
+\label{pp__utils_8h_ac4e18505585fad0b5ff7d3c572a0b6e0}
+
+
+Definition at line 138 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a15343b8b77b5a23e0abaab6ae1546579}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-13@{DECL\_\-BIT\_\-FIELDS\_\-13}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-13@{DECL\_\-BIT\_\-FIELDS\_\-13}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-13}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-13(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f12, }
+\item[{}]{w12, }
+\item[{}]{f11, }
+\item[{}]{w11, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-7( t, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-6( t, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7 )}}
+\label{pp__utils_8h_a15343b8b77b5a23e0abaab6ae1546579}
+
+
+Definition at line 139 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_abf74dace1c4e54d402ae14f89fcbd2bb}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-14@{DECL\_\-BIT\_\-FIELDS\_\-14}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-14@{DECL\_\-BIT\_\-FIELDS\_\-14}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-14}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-14(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f13, }
+\item[{}]{w13, }
+\item[{}]{f12, }
+\item[{}]{w12, }
+\item[{}]{f11, }
+\item[{}]{w11, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-7( t, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-7( t, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7 )}}
+\label{pp__utils_8h_abf74dace1c4e54d402ae14f89fcbd2bb}
+
+
+Definition at line 140 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a1cb5513ebafd4ac9dd27bdfbaf6d54e8}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-15@{DECL\_\-BIT\_\-FIELDS\_\-15}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-15@{DECL\_\-BIT\_\-FIELDS\_\-15}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-15}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-15(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f14, }
+\item[{}]{w14, }
+\item[{}]{f13, }
+\item[{}]{w13, }
+\item[{}]{f12, }
+\item[{}]{w12, }
+\item[{}]{f11, }
+\item[{}]{w11, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-8( t, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-7( t, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8 )}}
+\label{pp__utils_8h_a1cb5513ebafd4ac9dd27bdfbaf6d54e8}
+
+
+Definition at line 141 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a958009c1caaf4c14b193332a80388106}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-16@{DECL\_\-BIT\_\-FIELDS\_\-16}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-16@{DECL\_\-BIT\_\-FIELDS\_\-16}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-16}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-16(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f15, }
+\item[{}]{w15, }
+\item[{}]{f14, }
+\item[{}]{w14, }
+\item[{}]{f13, }
+\item[{}]{w13, }
+\item[{}]{f12, }
+\item[{}]{w12, }
+\item[{}]{f11, }
+\item[{}]{w11, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-8( t, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-8( t, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8 )}}
+\label{pp__utils_8h_a958009c1caaf4c14b193332a80388106}
+
+
+Definition at line 142 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_aa3ca3c29df781cc161d0d4cb9d1f342a}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-17@{DECL\_\-BIT\_\-FIELDS\_\-17}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-17@{DECL\_\-BIT\_\-FIELDS\_\-17}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-17}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-17(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f16, }
+\item[{}]{w16, }
+\item[{}]{f15, }
+\item[{}]{w15, }
+\item[{}]{f14, }
+\item[{}]{w14, }
+\item[{}]{f13, }
+\item[{}]{w13, }
+\item[{}]{f12, }
+\item[{}]{w12, }
+\item[{}]{f11, }
+\item[{}]{w11, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-9( t, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-8( t, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9 )}}
+\label{pp__utils_8h_aa3ca3c29df781cc161d0d4cb9d1f342a}
+
+
+Definition at line 143 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_abf7a25d67c1682c8e0bd4b41f74c0589}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-18@{DECL\_\-BIT\_\-FIELDS\_\-18}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-18@{DECL\_\-BIT\_\-FIELDS\_\-18}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-18}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-18(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f17, }
+\item[{}]{w17, }
+\item[{}]{f16, }
+\item[{}]{w16, }
+\item[{}]{f15, }
+\item[{}]{w15, }
+\item[{}]{f14, }
+\item[{}]{w14, }
+\item[{}]{f13, }
+\item[{}]{w13, }
+\item[{}]{f12, }
+\item[{}]{w12, }
+\item[{}]{f11, }
+\item[{}]{w11, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-9( t, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-9( t, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9 )}}
+\label{pp__utils_8h_abf7a25d67c1682c8e0bd4b41f74c0589}
+
+
+Definition at line 144 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_afaafaa7746419b8b7be07b95a80aab6c}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-19@{DECL\_\-BIT\_\-FIELDS\_\-19}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-19@{DECL\_\-BIT\_\-FIELDS\_\-19}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-19}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-19(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f18, }
+\item[{}]{w18, }
+\item[{}]{f17, }
+\item[{}]{w17, }
+\item[{}]{f16, }
+\item[{}]{w16, }
+\item[{}]{f15, }
+\item[{}]{w15, }
+\item[{}]{f14, }
+\item[{}]{w14, }
+\item[{}]{f13, }
+\item[{}]{w13, }
+\item[{}]{f12, }
+\item[{}]{w12, }
+\item[{}]{f11, }
+\item[{}]{w11, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-10( t, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-9( t, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10 )}}
+\label{pp__utils_8h_afaafaa7746419b8b7be07b95a80aab6c}
+
+
+Definition at line 145 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a885a17ca808fcd704fad79851ff724d8}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-2@{DECL\_\-BIT\_\-FIELDS\_\-2}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-2@{DECL\_\-BIT\_\-FIELDS\_\-2}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-2}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-2(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-1( t, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-1( t, f1, w1 )}}
+\label{pp__utils_8h_a885a17ca808fcd704fad79851ff724d8}
+
+
+Definition at line 128 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_afb48a8a575f7ef46b5dd1684f53a5ebb}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-20@{DECL\_\-BIT\_\-FIELDS\_\-20}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-20@{DECL\_\-BIT\_\-FIELDS\_\-20}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-20}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-20(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f19, }
+\item[{}]{w19, }
+\item[{}]{f18, }
+\item[{}]{w18, }
+\item[{}]{f17, }
+\item[{}]{w17, }
+\item[{}]{f16, }
+\item[{}]{w16, }
+\item[{}]{f15, }
+\item[{}]{w15, }
+\item[{}]{f14, }
+\item[{}]{w14, }
+\item[{}]{f13, }
+\item[{}]{w13, }
+\item[{}]{f12, }
+\item[{}]{w12, }
+\item[{}]{f11, }
+\item[{}]{w11, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-10( t, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-10( t, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10 )}}
+\label{pp__utils_8h_afb48a8a575f7ef46b5dd1684f53a5ebb}
+
+
+Definition at line 146 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a70dab5281eb4102bf8cbe9a1198d91f2}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-21@{DECL\_\-BIT\_\-FIELDS\_\-21}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-21@{DECL\_\-BIT\_\-FIELDS\_\-21}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-21}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-21(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f20, }
+\item[{}]{w20, }
+\item[{}]{f19, }
+\item[{}]{w19, }
+\item[{}]{f18, }
+\item[{}]{w18, }
+\item[{}]{f17, }
+\item[{}]{w17, }
+\item[{}]{f16, }
+\item[{}]{w16, }
+\item[{}]{f15, }
+\item[{}]{w15, }
+\item[{}]{f14, }
+\item[{}]{w14, }
+\item[{}]{f13, }
+\item[{}]{w13, }
+\item[{}]{f12, }
+\item[{}]{w12, }
+\item[{}]{f11, }
+\item[{}]{w11, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-11( t, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-10( t, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11 )}}
+\label{pp__utils_8h_a70dab5281eb4102bf8cbe9a1198d91f2}
+
+
+Definition at line 147 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_acc8296f742d03b09452330ae5413c501}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-22@{DECL\_\-BIT\_\-FIELDS\_\-22}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-22@{DECL\_\-BIT\_\-FIELDS\_\-22}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-22}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-22(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f21, }
+\item[{}]{w21, }
+\item[{}]{f20, }
+\item[{}]{w20, }
+\item[{}]{f19, }
+\item[{}]{w19, }
+\item[{}]{f18, }
+\item[{}]{w18, }
+\item[{}]{f17, }
+\item[{}]{w17, }
+\item[{}]{f16, }
+\item[{}]{w16, }
+\item[{}]{f15, }
+\item[{}]{w15, }
+\item[{}]{f14, }
+\item[{}]{w14, }
+\item[{}]{f13, }
+\item[{}]{w13, }
+\item[{}]{f12, }
+\item[{}]{w12, }
+\item[{}]{f11, }
+\item[{}]{w11, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-11( t, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-11( t, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11 )}}
+\label{pp__utils_8h_acc8296f742d03b09452330ae5413c501}
+
+
+Definition at line 148 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_ae74c044db2cdb481195bdf25c0b7fec5}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-23@{DECL\_\-BIT\_\-FIELDS\_\-23}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-23@{DECL\_\-BIT\_\-FIELDS\_\-23}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-23}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-23(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f22, }
+\item[{}]{w22, }
+\item[{}]{f21, }
+\item[{}]{w21, }
+\item[{}]{f20, }
+\item[{}]{w20, }
+\item[{}]{f19, }
+\item[{}]{w19, }
+\item[{}]{f18, }
+\item[{}]{w18, }
+\item[{}]{f17, }
+\item[{}]{w17, }
+\item[{}]{f16, }
+\item[{}]{w16, }
+\item[{}]{f15, }
+\item[{}]{w15, }
+\item[{}]{f14, }
+\item[{}]{w14, }
+\item[{}]{f13, }
+\item[{}]{w13, }
+\item[{}]{f12, }
+\item[{}]{w12, }
+\item[{}]{f11, }
+\item[{}]{w11, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-12( t, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-11( t, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12 )}}
+\label{pp__utils_8h_ae74c044db2cdb481195bdf25c0b7fec5}
+
+
+Definition at line 149 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a72baa0d90b9a915b12232ea5f309d723}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-24@{DECL\_\-BIT\_\-FIELDS\_\-24}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-24@{DECL\_\-BIT\_\-FIELDS\_\-24}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-24}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-24(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f23, }
+\item[{}]{w23, }
+\item[{}]{f22, }
+\item[{}]{w22, }
+\item[{}]{f21, }
+\item[{}]{w21, }
+\item[{}]{f20, }
+\item[{}]{w20, }
+\item[{}]{f19, }
+\item[{}]{w19, }
+\item[{}]{f18, }
+\item[{}]{w18, }
+\item[{}]{f17, }
+\item[{}]{w17, }
+\item[{}]{f16, }
+\item[{}]{w16, }
+\item[{}]{f15, }
+\item[{}]{w15, }
+\item[{}]{f14, }
+\item[{}]{w14, }
+\item[{}]{f13, }
+\item[{}]{w13, }
+\item[{}]{f12, }
+\item[{}]{w12, }
+\item[{}]{f11, }
+\item[{}]{w11, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-12( t, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-12( t, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13, f12, w12 )}}
+\label{pp__utils_8h_a72baa0d90b9a915b12232ea5f309d723}
+
+
+Definition at line 150 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_aee6ce6c5d1fd1997fdab146aac0d39bf}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-25@{DECL\_\-BIT\_\-FIELDS\_\-25}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-25@{DECL\_\-BIT\_\-FIELDS\_\-25}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-25}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-25(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f24, }
+\item[{}]{w24, }
+\item[{}]{f23, }
+\item[{}]{w23, }
+\item[{}]{f22, }
+\item[{}]{w22, }
+\item[{}]{f21, }
+\item[{}]{w21, }
+\item[{}]{f20, }
+\item[{}]{w20, }
+\item[{}]{f19, }
+\item[{}]{w19, }
+\item[{}]{f18, }
+\item[{}]{w18, }
+\item[{}]{f17, }
+\item[{}]{w17, }
+\item[{}]{f16, }
+\item[{}]{w16, }
+\item[{}]{f15, }
+\item[{}]{w15, }
+\item[{}]{f14, }
+\item[{}]{w14, }
+\item[{}]{f13, }
+\item[{}]{w13, }
+\item[{}]{f12, }
+\item[{}]{w12, }
+\item[{}]{f11, }
+\item[{}]{w11, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-13( t, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-12( t, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13 )}}
+\label{pp__utils_8h_aee6ce6c5d1fd1997fdab146aac0d39bf}
+
+
+Definition at line 151 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a4fd1c6455046a6572f90b16dac759ebe}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-26@{DECL\_\-BIT\_\-FIELDS\_\-26}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-26@{DECL\_\-BIT\_\-FIELDS\_\-26}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-26}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-26(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f25, }
+\item[{}]{w25, }
+\item[{}]{f24, }
+\item[{}]{w24, }
+\item[{}]{f23, }
+\item[{}]{w23, }
+\item[{}]{f22, }
+\item[{}]{w22, }
+\item[{}]{f21, }
+\item[{}]{w21, }
+\item[{}]{f20, }
+\item[{}]{w20, }
+\item[{}]{f19, }
+\item[{}]{w19, }
+\item[{}]{f18, }
+\item[{}]{w18, }
+\item[{}]{f17, }
+\item[{}]{w17, }
+\item[{}]{f16, }
+\item[{}]{w16, }
+\item[{}]{f15, }
+\item[{}]{w15, }
+\item[{}]{f14, }
+\item[{}]{w14, }
+\item[{}]{f13, }
+\item[{}]{w13, }
+\item[{}]{f12, }
+\item[{}]{w12, }
+\item[{}]{f11, }
+\item[{}]{w11, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-13( t, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-13( t, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14, f13, w13 )}}
+\label{pp__utils_8h_a4fd1c6455046a6572f90b16dac759ebe}
+
+
+Definition at line 152 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_acbfddb851fb5af4708f2a2f698a7b7d0}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-27@{DECL\_\-BIT\_\-FIELDS\_\-27}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-27@{DECL\_\-BIT\_\-FIELDS\_\-27}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-27}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-27(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f26, }
+\item[{}]{w26, }
+\item[{}]{f25, }
+\item[{}]{w25, }
+\item[{}]{f24, }
+\item[{}]{w24, }
+\item[{}]{f23, }
+\item[{}]{w23, }
+\item[{}]{f22, }
+\item[{}]{w22, }
+\item[{}]{f21, }
+\item[{}]{w21, }
+\item[{}]{f20, }
+\item[{}]{w20, }
+\item[{}]{f19, }
+\item[{}]{w19, }
+\item[{}]{f18, }
+\item[{}]{w18, }
+\item[{}]{f17, }
+\item[{}]{w17, }
+\item[{}]{f16, }
+\item[{}]{w16, }
+\item[{}]{f15, }
+\item[{}]{w15, }
+\item[{}]{f14, }
+\item[{}]{w14, }
+\item[{}]{f13, }
+\item[{}]{w13, }
+\item[{}]{f12, }
+\item[{}]{w12, }
+\item[{}]{f11, }
+\item[{}]{w11, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-14( t, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-13( t, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14 )}}
+\label{pp__utils_8h_acbfddb851fb5af4708f2a2f698a7b7d0}
+
+
+Definition at line 153 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a329be8c598e0d4c71ade3ad69f65942c}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-28@{DECL\_\-BIT\_\-FIELDS\_\-28}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-28@{DECL\_\-BIT\_\-FIELDS\_\-28}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-28}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-28(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f27, }
+\item[{}]{w27, }
+\item[{}]{f26, }
+\item[{}]{w26, }
+\item[{}]{f25, }
+\item[{}]{w25, }
+\item[{}]{f24, }
+\item[{}]{w24, }
+\item[{}]{f23, }
+\item[{}]{w23, }
+\item[{}]{f22, }
+\item[{}]{w22, }
+\item[{}]{f21, }
+\item[{}]{w21, }
+\item[{}]{f20, }
+\item[{}]{w20, }
+\item[{}]{f19, }
+\item[{}]{w19, }
+\item[{}]{f18, }
+\item[{}]{w18, }
+\item[{}]{f17, }
+\item[{}]{w17, }
+\item[{}]{f16, }
+\item[{}]{w16, }
+\item[{}]{f15, }
+\item[{}]{w15, }
+\item[{}]{f14, }
+\item[{}]{w14, }
+\item[{}]{f13, }
+\item[{}]{w13, }
+\item[{}]{f12, }
+\item[{}]{w12, }
+\item[{}]{f11, }
+\item[{}]{w11, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-14( t, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-14( t, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15, f14, w14 )}}
+\label{pp__utils_8h_a329be8c598e0d4c71ade3ad69f65942c}
+
+
+Definition at line 154 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a0e0066d3568ad0da754b58ec43a07536}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-29@{DECL\_\-BIT\_\-FIELDS\_\-29}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-29@{DECL\_\-BIT\_\-FIELDS\_\-29}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-29}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-29(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f28, }
+\item[{}]{w28, }
+\item[{}]{f27, }
+\item[{}]{w27, }
+\item[{}]{f26, }
+\item[{}]{w26, }
+\item[{}]{f25, }
+\item[{}]{w25, }
+\item[{}]{f24, }
+\item[{}]{w24, }
+\item[{}]{f23, }
+\item[{}]{w23, }
+\item[{}]{f22, }
+\item[{}]{w22, }
+\item[{}]{f21, }
+\item[{}]{w21, }
+\item[{}]{f20, }
+\item[{}]{w20, }
+\item[{}]{f19, }
+\item[{}]{w19, }
+\item[{}]{f18, }
+\item[{}]{w18, }
+\item[{}]{f17, }
+\item[{}]{w17, }
+\item[{}]{f16, }
+\item[{}]{w16, }
+\item[{}]{f15, }
+\item[{}]{w15, }
+\item[{}]{f14, }
+\item[{}]{w14, }
+\item[{}]{f13, }
+\item[{}]{w13, }
+\item[{}]{f12, }
+\item[{}]{w12, }
+\item[{}]{f11, }
+\item[{}]{w11, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-15( t, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-14( t, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15 )}}
+\label{pp__utils_8h_a0e0066d3568ad0da754b58ec43a07536}
+
+
+Definition at line 155 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_ad823b9d9f64f937a8f99e2aa4f026e1b}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-3@{DECL\_\-BIT\_\-FIELDS\_\-3}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-3@{DECL\_\-BIT\_\-FIELDS\_\-3}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-3}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-3(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-2( t, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-1( t, f2, w2 )}}
+\label{pp__utils_8h_ad823b9d9f64f937a8f99e2aa4f026e1b}
+
+
+Definition at line 129 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a2002952220086c4cefa351fa56943d59}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-30@{DECL\_\-BIT\_\-FIELDS\_\-30}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-30@{DECL\_\-BIT\_\-FIELDS\_\-30}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-30}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-30(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f29, }
+\item[{}]{w29, }
+\item[{}]{f28, }
+\item[{}]{w28, }
+\item[{}]{f27, }
+\item[{}]{w27, }
+\item[{}]{f26, }
+\item[{}]{w26, }
+\item[{}]{f25, }
+\item[{}]{w25, }
+\item[{}]{f24, }
+\item[{}]{w24, }
+\item[{}]{f23, }
+\item[{}]{w23, }
+\item[{}]{f22, }
+\item[{}]{w22, }
+\item[{}]{f21, }
+\item[{}]{w21, }
+\item[{}]{f20, }
+\item[{}]{w20, }
+\item[{}]{f19, }
+\item[{}]{w19, }
+\item[{}]{f18, }
+\item[{}]{w18, }
+\item[{}]{f17, }
+\item[{}]{w17, }
+\item[{}]{f16, }
+\item[{}]{w16, }
+\item[{}]{f15, }
+\item[{}]{w15, }
+\item[{}]{f14, }
+\item[{}]{w14, }
+\item[{}]{f13, }
+\item[{}]{w13, }
+\item[{}]{f12, }
+\item[{}]{w12, }
+\item[{}]{f11, }
+\item[{}]{w11, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-15( t, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-15( t, f29, w29, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16, f15, w15 )}}
+\label{pp__utils_8h_a2002952220086c4cefa351fa56943d59}
+
+
+Definition at line 156 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a3754d45e8bf83c24c4d146494784027d}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-31@{DECL\_\-BIT\_\-FIELDS\_\-31}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-31@{DECL\_\-BIT\_\-FIELDS\_\-31}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-31}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-31(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f30, }
+\item[{}]{w30, }
+\item[{}]{f29, }
+\item[{}]{w29, }
+\item[{}]{f28, }
+\item[{}]{w28, }
+\item[{}]{f27, }
+\item[{}]{w27, }
+\item[{}]{f26, }
+\item[{}]{w26, }
+\item[{}]{f25, }
+\item[{}]{w25, }
+\item[{}]{f24, }
+\item[{}]{w24, }
+\item[{}]{f23, }
+\item[{}]{w23, }
+\item[{}]{f22, }
+\item[{}]{w22, }
+\item[{}]{f21, }
+\item[{}]{w21, }
+\item[{}]{f20, }
+\item[{}]{w20, }
+\item[{}]{f19, }
+\item[{}]{w19, }
+\item[{}]{f18, }
+\item[{}]{w18, }
+\item[{}]{f17, }
+\item[{}]{w17, }
+\item[{}]{f16, }
+\item[{}]{w16, }
+\item[{}]{f15, }
+\item[{}]{w15, }
+\item[{}]{f14, }
+\item[{}]{w14, }
+\item[{}]{f13, }
+\item[{}]{w13, }
+\item[{}]{f12, }
+\item[{}]{w12, }
+\item[{}]{f11, }
+\item[{}]{w11, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-16( t, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-15( t, f30, w30, f29, w29, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16 )}}
+\label{pp__utils_8h_a3754d45e8bf83c24c4d146494784027d}
+
+
+Definition at line 157 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a9639e4fd3a3f2c7322b086e518b4ae20}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-32@{DECL\_\-BIT\_\-FIELDS\_\-32}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-32@{DECL\_\-BIT\_\-FIELDS\_\-32}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-32}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-32(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f31, }
+\item[{}]{w31, }
+\item[{}]{f30, }
+\item[{}]{w30, }
+\item[{}]{f29, }
+\item[{}]{w29, }
+\item[{}]{f28, }
+\item[{}]{w28, }
+\item[{}]{f27, }
+\item[{}]{w27, }
+\item[{}]{f26, }
+\item[{}]{w26, }
+\item[{}]{f25, }
+\item[{}]{w25, }
+\item[{}]{f24, }
+\item[{}]{w24, }
+\item[{}]{f23, }
+\item[{}]{w23, }
+\item[{}]{f22, }
+\item[{}]{w22, }
+\item[{}]{f21, }
+\item[{}]{w21, }
+\item[{}]{f20, }
+\item[{}]{w20, }
+\item[{}]{f19, }
+\item[{}]{w19, }
+\item[{}]{f18, }
+\item[{}]{w18, }
+\item[{}]{f17, }
+\item[{}]{w17, }
+\item[{}]{f16, }
+\item[{}]{w16, }
+\item[{}]{f15, }
+\item[{}]{w15, }
+\item[{}]{f14, }
+\item[{}]{w14, }
+\item[{}]{f13, }
+\item[{}]{w13, }
+\item[{}]{f12, }
+\item[{}]{w12, }
+\item[{}]{f11, }
+\item[{}]{w11, }
+\item[{}]{f10, }
+\item[{}]{w10, }
+\item[{}]{f9, }
+\item[{}]{w9, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-16( t, f15, w15, f14, w14, f13, w13, f12, w12, f11, w11, f10, w10, f9, w9, f8, w8, f7, w7, f6, w6, f5, w5, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-16( t, f31, w31, f30, w30, f29, w29, f28, w28, f27, w27, f26, w26, f25, w25, f24, w24, f23, w23, f22, w22, f21, w21, f20, f20, f19, w19, f18, w18, f17, w17, f16, w16 )}}
+\label{pp__utils_8h_a9639e4fd3a3f2c7322b086e518b4ae20}
+
+
+Definition at line 158 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a88478a72bcca40e870af0ba8e09ea5b0}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-4@{DECL\_\-BIT\_\-FIELDS\_\-4}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-4@{DECL\_\-BIT\_\-FIELDS\_\-4}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-4}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-4(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-2( t, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-2( t, f3, w3, f2, w2 )}}
+\label{pp__utils_8h_a88478a72bcca40e870af0ba8e09ea5b0}
+
+
+Definition at line 130 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a99e0cf174083af226f83a2b3a69afb14}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-5@{DECL\_\-BIT\_\-FIELDS\_\-5}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-5@{DECL\_\-BIT\_\-FIELDS\_\-5}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-5}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-5(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-3( t, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-2( t, f4, w4, f3, w3 )}}
+\label{pp__utils_8h_a99e0cf174083af226f83a2b3a69afb14}
+
+
+Definition at line 131 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a6141f1f5b9242a53ee34714eb5e73dcb}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-6@{DECL\_\-BIT\_\-FIELDS\_\-6}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-6@{DECL\_\-BIT\_\-FIELDS\_\-6}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-6}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-6(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-3( t, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-3( t, f5, w5, f4, w4, f3, w3 )}}
+\label{pp__utils_8h_a6141f1f5b9242a53ee34714eb5e73dcb}
+
+
+Definition at line 132 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a9d05162f30c9ebb787857317d986e19d}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-7@{DECL\_\-BIT\_\-FIELDS\_\-7}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-7@{DECL\_\-BIT\_\-FIELDS\_\-7}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-7}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-7(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-4( t, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-3( t, f6, w6, f5, w5, f4, w4 )}}
+\label{pp__utils_8h_a9d05162f30c9ebb787857317d986e19d}
+
+
+Definition at line 133 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_aea073d5c57c3301beb1bb4998f3ecfda}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-8@{DECL\_\-BIT\_\-FIELDS\_\-8}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-8@{DECL\_\-BIT\_\-FIELDS\_\-8}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-8}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-8(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-4( t, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-4( t, f7, w7, f6, w6, f5, w5, f4, w4 )}}
+\label{pp__utils_8h_aea073d5c57c3301beb1bb4998f3ecfda}
+
+
+Definition at line 134 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a314b2d99fefdb58c4edaf2922e6a4910}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-BIT\_\-FIELDS\_\-9@{DECL\_\-BIT\_\-FIELDS\_\-9}}
+\index{DECL\_\-BIT\_\-FIELDS\_\-9@{DECL\_\-BIT\_\-FIELDS\_\-9}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-BIT\_\-FIELDS\_\-9}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-BIT\_\-FIELDS\_\-9(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{f8, }
+\item[{}]{w8, }
+\item[{}]{f7, }
+\item[{}]{w7, }
+\item[{}]{f6, }
+\item[{}]{w6, }
+\item[{}]{f5, }
+\item[{}]{w5, }
+\item[{}]{f4, }
+\item[{}]{w4, }
+\item[{}]{f3, }
+\item[{}]{w3, }
+\item[{}]{f2, }
+\item[{}]{w2, }
+\item[{}]{f1, }
+\item[{}]{w1, }
+\item[{}]{f0, }
+\item[{}]{w0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-5( t, f4, w4, f3, w3, f2, w2, f1, w1, f0, w0 ); DECL\_\-BIT\_\-FIELDS\_\-4( t, f8, w8, f7, w7, f6, w6, f5, w5 )}}
+\label{pp__utils_8h_a314b2d99fefdb58c4edaf2922e6a4910}
+
+
+Definition at line 135 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a658e337389986c1c51a07f0a6687584a}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-1@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-1}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-1@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-1}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-1(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-1( t, f, w )}}
+\label{pp__utils_8h_a658e337389986c1c51a07f0a6687584a}
+
+
+Definition at line 84 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_abd783792a736f1c04841751944782a68}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-10@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-10}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-10@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-10}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-10}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-10(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-10( t, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_abd783792a736f1c04841751944782a68}
+
+
+Definition at line 93 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a6a97f88a8d3ad0235666355c8571c3a2}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-11@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-11}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-11@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-11}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-11}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-11(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-11( t, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a6a97f88a8d3ad0235666355c8571c3a2}
+
+
+Definition at line 94 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a7ed9b081c6e42f2bb93aa0f0f9aab640}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-12@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-12}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-12@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-12}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-12}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-12(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f11, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-12( t, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a7ed9b081c6e42f2bb93aa0f0f9aab640}
+
+
+Definition at line 95 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a8542750e671b519f7c38150bbb6b465b}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-13@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-13}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-13@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-13}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-13}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-13(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f12, }
+\item[{}]{f11, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-13( t, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a8542750e671b519f7c38150bbb6b465b}
+
+
+Definition at line 96 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a1554b247173d2b966019db5e81e6fb5b}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-14@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-14}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-14@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-14}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-14}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-14(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f13, }
+\item[{}]{f12, }
+\item[{}]{f11, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-14( t, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a1554b247173d2b966019db5e81e6fb5b}
+
+
+Definition at line 97 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a0f1e89246bf7a4b4c2ceeedbea53d2d4}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-15@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-15}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-15@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-15}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-15}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-15(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f14, }
+\item[{}]{f13, }
+\item[{}]{f12, }
+\item[{}]{f11, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-15( t, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a0f1e89246bf7a4b4c2ceeedbea53d2d4}
+
+
+Definition at line 98 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a0ea43669e5f4415d83497022b145a361}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-16@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-16}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-16@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-16}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-16}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-16(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f15, }
+\item[{}]{f14, }
+\item[{}]{f13, }
+\item[{}]{f12, }
+\item[{}]{f11, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-16( t, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a0ea43669e5f4415d83497022b145a361}
+
+
+Definition at line 99 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a89e331f4fefab647adda1788c67c1992}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-17@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-17}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-17@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-17}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-17}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-17(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f16, }
+\item[{}]{f15, }
+\item[{}]{f14, }
+\item[{}]{f13, }
+\item[{}]{f12, }
+\item[{}]{f11, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-17( t, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a89e331f4fefab647adda1788c67c1992}
+
+
+Definition at line 100 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a287d41f5fa0a373f82f8fa8dad4a93f8}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-18@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-18}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-18@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-18}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-18}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-18(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f17, }
+\item[{}]{f16, }
+\item[{}]{f15, }
+\item[{}]{f14, }
+\item[{}]{f13, }
+\item[{}]{f12, }
+\item[{}]{f11, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-18( t, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a287d41f5fa0a373f82f8fa8dad4a93f8}
+
+
+Definition at line 101 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a821c9131291cbd55a2eff5f6954f7682}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-19@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-19}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-19@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-19}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-19}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-19(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f18, }
+\item[{}]{f17, }
+\item[{}]{f16, }
+\item[{}]{f15, }
+\item[{}]{f14, }
+\item[{}]{f13, }
+\item[{}]{f12, }
+\item[{}]{f11, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-19( t, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a821c9131291cbd55a2eff5f6954f7682}
+
+
+Definition at line 102 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a00ae6270bcb199ec506541b2b6fbbcfe}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-2@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-2}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-2@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-2}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-2}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-2(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-2( t, f1, w, f0, w )}}
+\label{pp__utils_8h_a00ae6270bcb199ec506541b2b6fbbcfe}
+
+
+Definition at line 85 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a9e78b19f95f47256b4dcac69e895408b}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-20@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-20}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-20@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-20}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-20}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-20(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f19, }
+\item[{}]{f18, }
+\item[{}]{f17, }
+\item[{}]{f16, }
+\item[{}]{f15, }
+\item[{}]{f14, }
+\item[{}]{f13, }
+\item[{}]{f12, }
+\item[{}]{f11, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-20( t, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a9e78b19f95f47256b4dcac69e895408b}
+
+
+Definition at line 103 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a52eccade9bca35bf759b11fb232f4545}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-21@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-21}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-21@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-21}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-21}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-21(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f20, }
+\item[{}]{f19, }
+\item[{}]{f18, }
+\item[{}]{f17, }
+\item[{}]{f16, }
+\item[{}]{f15, }
+\item[{}]{f14, }
+\item[{}]{f13, }
+\item[{}]{f12, }
+\item[{}]{f11, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-21( t, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a52eccade9bca35bf759b11fb232f4545}
+
+
+Definition at line 104 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a17b41ffbf3950cdeedc710a8257ec308}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-22@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-22}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-22@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-22}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-22}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-22(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f21, }
+\item[{}]{f20, }
+\item[{}]{f19, }
+\item[{}]{f18, }
+\item[{}]{f17, }
+\item[{}]{f16, }
+\item[{}]{f15, }
+\item[{}]{f14, }
+\item[{}]{f13, }
+\item[{}]{f12, }
+\item[{}]{f11, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-22( t, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a17b41ffbf3950cdeedc710a8257ec308}
+
+
+Definition at line 105 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a473bffa7dd1eb02a07fb6db232b2ca66}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-23@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-23}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-23@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-23}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-23}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-23(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f22, }
+\item[{}]{f21, }
+\item[{}]{f20, }
+\item[{}]{f19, }
+\item[{}]{f18, }
+\item[{}]{f17, }
+\item[{}]{f16, }
+\item[{}]{f15, }
+\item[{}]{f14, }
+\item[{}]{f13, }
+\item[{}]{f12, }
+\item[{}]{f11, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-23( t, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a473bffa7dd1eb02a07fb6db232b2ca66}
+
+
+Definition at line 106 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a90f136b73a5985d770090a4ea774c259}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-24@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-24}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-24@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-24}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-24}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-24(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f23, }
+\item[{}]{f22, }
+\item[{}]{f21, }
+\item[{}]{f20, }
+\item[{}]{f19, }
+\item[{}]{f18, }
+\item[{}]{f17, }
+\item[{}]{f16, }
+\item[{}]{f15, }
+\item[{}]{f14, }
+\item[{}]{f13, }
+\item[{}]{f12, }
+\item[{}]{f11, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-24( t, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a90f136b73a5985d770090a4ea774c259}
+
+
+Definition at line 107 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_ae6edc3032cf55c147d2e804f5dff9489}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-25@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-25}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-25@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-25}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-25}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-25(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f24, }
+\item[{}]{f23, }
+\item[{}]{f22, }
+\item[{}]{f21, }
+\item[{}]{f20, }
+\item[{}]{f19, }
+\item[{}]{f18, }
+\item[{}]{f17, }
+\item[{}]{f16, }
+\item[{}]{f15, }
+\item[{}]{f14, }
+\item[{}]{f13, }
+\item[{}]{f12, }
+\item[{}]{f11, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-25( t, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_ae6edc3032cf55c147d2e804f5dff9489}
+
+
+Definition at line 108 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a2e972ba1ead419a3e50f06cc1d735f2f}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-26@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-26}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-26@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-26}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-26}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-26(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f25, }
+\item[{}]{f24, }
+\item[{}]{f23, }
+\item[{}]{f22, }
+\item[{}]{f21, }
+\item[{}]{f20, }
+\item[{}]{f19, }
+\item[{}]{f18, }
+\item[{}]{f17, }
+\item[{}]{f16, }
+\item[{}]{f15, }
+\item[{}]{f14, }
+\item[{}]{f13, }
+\item[{}]{f12, }
+\item[{}]{f11, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-26( t, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a2e972ba1ead419a3e50f06cc1d735f2f}
+
+
+Definition at line 109 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a3d548ee205a37930a3413b4bc7bf6901}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-27@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-27}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-27@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-27}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-27}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-27(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f26, }
+\item[{}]{f25, }
+\item[{}]{f24, }
+\item[{}]{f23, }
+\item[{}]{f22, }
+\item[{}]{f21, }
+\item[{}]{f20, }
+\item[{}]{f19, }
+\item[{}]{f18, }
+\item[{}]{f17, }
+\item[{}]{f16, }
+\item[{}]{f15, }
+\item[{}]{f14, }
+\item[{}]{f13, }
+\item[{}]{f12, }
+\item[{}]{f11, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-27( t, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a3d548ee205a37930a3413b4bc7bf6901}
+
+
+Definition at line 110 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a29825ecbeeb436d8e6b15d4409e9b933}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-28@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-28}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-28@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-28}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-28}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-28(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f27, }
+\item[{}]{f26, }
+\item[{}]{f25, }
+\item[{}]{f24, }
+\item[{}]{f23, }
+\item[{}]{f22, }
+\item[{}]{f21, }
+\item[{}]{f20, }
+\item[{}]{f19, }
+\item[{}]{f18, }
+\item[{}]{f17, }
+\item[{}]{f16, }
+\item[{}]{f15, }
+\item[{}]{f14, }
+\item[{}]{f13, }
+\item[{}]{f12, }
+\item[{}]{f11, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-28( t, f27, w, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a29825ecbeeb436d8e6b15d4409e9b933}
+
+
+Definition at line 111 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a6c4d475cd21605d8e7eeb42c37ad4d3c}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-29@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-29}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-29@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-29}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-29}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-29(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f28, }
+\item[{}]{f27, }
+\item[{}]{f26, }
+\item[{}]{f25, }
+\item[{}]{f24, }
+\item[{}]{f23, }
+\item[{}]{f22, }
+\item[{}]{f21, }
+\item[{}]{f20, }
+\item[{}]{f19, }
+\item[{}]{f18, }
+\item[{}]{f17, }
+\item[{}]{f16, }
+\item[{}]{f15, }
+\item[{}]{f14, }
+\item[{}]{f13, }
+\item[{}]{f12, }
+\item[{}]{f11, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-29( t, f28, w, f27, w, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a6c4d475cd21605d8e7eeb42c37ad4d3c}
+
+
+Definition at line 112 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_afb77d5b4391e6ab26a79f99b2639c741}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-3@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-3}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-3@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-3}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-3}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-3(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-3( t, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_afb77d5b4391e6ab26a79f99b2639c741}
+
+
+Definition at line 86 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a1da6d1c07e304a7d968b84e62aa6e106}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-30@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-30}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-30@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-30}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-30}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-30(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f29, }
+\item[{}]{f28, }
+\item[{}]{f27, }
+\item[{}]{f26, }
+\item[{}]{f25, }
+\item[{}]{f24, }
+\item[{}]{f23, }
+\item[{}]{f22, }
+\item[{}]{f21, }
+\item[{}]{f20, }
+\item[{}]{f19, }
+\item[{}]{f18, }
+\item[{}]{f17, }
+\item[{}]{f16, }
+\item[{}]{f15, }
+\item[{}]{f14, }
+\item[{}]{f13, }
+\item[{}]{f12, }
+\item[{}]{f11, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-30( t, f29, w, f28, w, f27, w, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a1da6d1c07e304a7d968b84e62aa6e106}
+
+
+Definition at line 113 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_ad2b1553805baae46c111340fa79109c6}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-31@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-31}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-31@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-31}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-31}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-31(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f30, }
+\item[{}]{f29, }
+\item[{}]{f28, }
+\item[{}]{f27, }
+\item[{}]{f26, }
+\item[{}]{f25, }
+\item[{}]{f24, }
+\item[{}]{f23, }
+\item[{}]{f22, }
+\item[{}]{f21, }
+\item[{}]{f20, }
+\item[{}]{f19, }
+\item[{}]{f18, }
+\item[{}]{f17, }
+\item[{}]{f16, }
+\item[{}]{f15, }
+\item[{}]{f14, }
+\item[{}]{f13, }
+\item[{}]{f12, }
+\item[{}]{f11, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-31( t, f30, w, f29, w, f28, w, f27, w, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_ad2b1553805baae46c111340fa79109c6}
+
+
+Definition at line 114 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a0c60b29daeac08ce3f8001b1c2c833d1}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-32@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-32}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-32@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-32}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-32}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-32(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f31, }
+\item[{}]{f30, }
+\item[{}]{f29, }
+\item[{}]{f28, }
+\item[{}]{f27, }
+\item[{}]{f26, }
+\item[{}]{f25, }
+\item[{}]{f24, }
+\item[{}]{f23, }
+\item[{}]{f22, }
+\item[{}]{f21, }
+\item[{}]{f20, }
+\item[{}]{f19, }
+\item[{}]{f18, }
+\item[{}]{f17, }
+\item[{}]{f16, }
+\item[{}]{f15, }
+\item[{}]{f14, }
+\item[{}]{f13, }
+\item[{}]{f12, }
+\item[{}]{f11, }
+\item[{}]{f10, }
+\item[{}]{f9, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-32( t, f31, w, f30, w, f29, w, f28, w, f27, w, f26, w, f25, w, f24, w, f23, w, f22, w, f21, w, f20, w, f19, w, f18, w, f17, w, f16, w, f15, w, f14, w, f13, w, f12, w, f11, w, f10, w, f9, w, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a0c60b29daeac08ce3f8001b1c2c833d1}
+
+
+Definition at line 115 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a21eb8451bc4a75f3292b32afcc2d4312}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-4@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-4}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-4@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-4}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-4}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-4(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-4( t, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a21eb8451bc4a75f3292b32afcc2d4312}
+
+
+Definition at line 87 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a9d06fcf17ffb3dd4e7bc710127bf6bed}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-5@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-5}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-5@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-5}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-5}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-5(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-5( t, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a9d06fcf17ffb3dd4e7bc710127bf6bed}
+
+
+Definition at line 88 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a9139636973879d96e65cfdd509e393ea}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-6@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-6}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-6@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-6}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-6}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-6(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-6( t, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a9139636973879d96e65cfdd509e393ea}
+
+
+Definition at line 89 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a89367be3f8260ceb51406a8cff72a1d1}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-7@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-7}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-7@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-7}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-7}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-7(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-7( t, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a89367be3f8260ceb51406a8cff72a1d1}
+
+
+Definition at line 90 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a33c58c17d2b8609344c09a737f3249ce}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-8@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-8}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-8@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-8}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-8}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-8(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-8( t, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a33c58c17d2b8609344c09a737f3249ce}
+
+
+Definition at line 91 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a644d8490ae4573371ba2b989fee90435}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-9@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-9}}
+\index{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-9@{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-9}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-9}]{\setlength{\rightskip}{0pt plus 5cm}\#define DECL\_\-WIDTH\_\-BIT\_\-FIELDS\_\-9(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{w, }
+\item[{}]{f8, }
+\item[{}]{f7, }
+\item[{}]{f6, }
+\item[{}]{f5, }
+\item[{}]{f4, }
+\item[{}]{f3, }
+\item[{}]{f2, }
+\item[{}]{f1, }
+\item[{}]{f0}
+\end{DoxyParamCaption}
+)~DECL\_\-BIT\_\-FIELDS\_\-9( t, f8, w, f7, w, f6, w, f5, w, f4, w, f3, w, f2, w, f1, w, f0, w )}}
+\label{pp__utils_8h_a644d8490ae4573371ba2b989fee90435}
+
+
+Definition at line 92 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a3cdf560981fe42f8f74fd0818d75eb68}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!INFIX@{INFIX}}
+\index{INFIX@{INFIX}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{INFIX}]{\setlength{\rightskip}{0pt plus 5cm}\#define INFIX(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{i, }
+\item[{}]{b}
+\end{DoxyParamCaption}
+)~CONCATENATE( CONCATENATE( a, i ), b )}}
+\label{pp__utils_8h_a3cdf560981fe42f8f74fd0818d75eb68}
+
+
+Definition at line 56 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a30d26964995580586ac787c24b82b2c3}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!STRINGIZE@{STRINGIZE}}
+\index{STRINGIZE@{STRINGIZE}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{STRINGIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define STRINGIZE(
+\begin{DoxyParamCaption}
+\item[{}]{s}
+\end{DoxyParamCaption}
+)~STRINGIZE\_\-X( s )}}
+\label{pp__utils_8h_a30d26964995580586ac787c24b82b2c3}
+
+
+Definition at line 45 of file pp\_\-utils.h.
+
+\hypertarget{pp__utils_8h_a1a08dc30e37a7403186585818f4c535d}{
+\index{pp\_\-utils.h@{pp\_\-utils.h}!STRINGIZE\_\-X@{STRINGIZE\_\-X}}
+\index{STRINGIZE\_\-X@{STRINGIZE\_\-X}!pp_utils.h@{pp\_\-utils.h}}
+\subsubsection[{STRINGIZE\_\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define STRINGIZE\_\-X(
+\begin{DoxyParamCaption}
+\item[{}]{s}
+\end{DoxyParamCaption}
+)~\#s}}
+\label{pp__utils_8h_a1a08dc30e37a7403186585818f4c535d}
+
+
+Definition at line 46 of file pp\_\-utils.h.
+

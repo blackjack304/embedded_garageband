@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Workspace>
+  <ConfigDictionary>
+    
+  <CurrentConfigs><Project>CC2431_Basic/Module_2</Project></CurrentConfigs></ConfigDictionary>
+  <Desktop>
+    <Static>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>289</Column0><Column1>0</Column1><Column2>27</Column2><Column3>1242260</Column3></ColumnWidths>
+      </Workspace>
+      <Build>
+        
+        
+        
+        
+      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>1491</ColumnWidth1><ColumnWidth2>397</ColumnWidth2><ColumnWidth3>99</ColumnWidth3></Build>
+    <TerminalIO/><Debug-Log><ColumnWidth0>19</ColumnWidth0><ColumnWidth1>1990</ColumnWidth1></Debug-Log><Find-in-Files><ColumnWidth0>709</ColumnWidth0><ColumnWidth1>101</ColumnWidth1><ColumnWidth2>1215</ColumnWidth2></Find-in-Files></Static>
+    <Windows>
+      
+      
+    <Wnd2>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-8085-30753</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>CC2431_Basic</ExpandedNode><ExpandedNode>CC2431_Basic/App_Layer</ExpandedNode><ExpandedNode>CC2431_Basic/Common</ExpandedNode><ExpandedNode>CC2431_Basic/Drivers</ExpandedNode><ExpandedNode>CC2431_Basic/Interface</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd2><Wnd3>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-30586-32173</Identity>
+            <TabName>Build</TabName>
+            <Factory>Build</Factory>
+            <Session/>
+          </Tab>
+        <Tab><Identity>TabID-26689-24679</Identity><TabName>Debug Log</TabName><Factory>Debug-Log</Factory><Session/></Tab><Tab><Identity>TabID-10953-10254</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab></Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd3></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Drivers\uart_intfc.c</Filename><XPos>0</XPos><YPos>330</YPos><SelStart>12841</SelStart><SelEnd>12841</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\App_Layer\utilMisc.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>200</SelStart><SelEnd>200</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\App_Layer\utilMisc.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>362</SelStart><SelEnd>371</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Interface\TouchScreen.h</Filename><XPos>0</XPos><YPos>45</YPos><SelStart>1889</SelStart><SelEnd>1889</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Interface\TouchScreen.c</Filename><XPos>0</XPos><YPos>171</YPos><SelStart>5259</SelStart><SelEnd>5259</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\App_Layer\key_map.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>2054</SelStart><SelEnd>2054</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Drivers\graphics_lcd.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>469</SelStart><SelEnd>469</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Drivers\graphics_lcd.c</Filename><XPos>0</XPos><YPos>217</YPos><SelStart>3483</SelStart><SelEnd>3494</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\App_Layer\piano.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>146</SelStart><SelEnd>146</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\App_Layer\piano.c</Filename><XPos>0</XPos><YPos>67</YPos><SelStart>2146</SelStart><SelEnd>2146</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\App_Layer\Drum.c</Filename><XPos>0</XPos><YPos>3</YPos><SelStart>4793</SelStart><SelEnd>4793</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\App_Layer\key_map.c</Filename><XPos>0</XPos><YPos>5</YPos><SelStart>870</SelStart><SelEnd>870</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\App_Layer\Drum.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>502</SelStart><SelEnd>502</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\App_Layer\Main_mod3.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>1274</SelStart><SelEnd>1274</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Interface\basic_rf.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>741</SelStart><SelEnd>741</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Interface\basic_rf.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>2383</SelStart><SelEnd>2383</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Interface\hal_board.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>405</SelStart><SelEnd>405</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Drivers\mmc2.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>1627</SelStart><SelEnd>1627</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Drivers\hal_SPI.c</Filename><XPos>0</XPos><YPos>117</YPos><SelStart>4589</SelStart><SelEnd>4641</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Drivers\hal_SPI.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>2168</SelStart><SelEnd>2168</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Drivers\mmc2.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\App_Layer\Main_mod1.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>882</SelStart><SelEnd>882</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Common\hal_cc8051.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Common\hal_defs.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Common\hal_types.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Drivers\adc.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Drivers\clock.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Drivers\hal_int.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Drivers\hal_mcu.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Drivers\hal_rf.h</Filename><XPos>0</XPos><YPos>3</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Drivers\kb.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Drivers\midi.h</Filename><XPos>0</XPos><YPos>9</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Drivers\uart.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Drivers\scancodes.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Interface\hal_assert.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\App_Layer\App_RF.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>389</SelStart><SelEnd>389</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\App_Layer\App_RF.c</Filename><XPos>0</XPos><YPos>1</YPos><SelStart>580</SelStart><SelEnd>580</SelEnd></Tab><ActiveTab>36</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\App_Layer\Main_mod2.c</Filename><XPos>0</XPos><YPos>111</YPos><SelStart>2996</SelStart><SelEnd>2996</SelEnd></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-0135fca8><key>iaridepm.enu1</key></Toolbar-0135fca8></Sizes></Row0></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>776</Bottom><Right>353</Right><x>-2</x><y>-2</y><xscreen>2</xscreen><yscreen>5</yscreen><sizeHorzCX>977</sizeHorzCX><sizeHorzCY>4673</sizeHorzCY><sizeVertCX>173340</sizeVertCX><sizeVertCY>727103</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>249</Bottom><Right>2050</Right><x>-2</x><y>-2</y><xscreen>2052</xscreen><yscreen>251</yscreen><sizeHorzCX>1001953</sizeHorzCX><sizeHorzCY>234579</sizeHorzCY><sizeVertCX>977</sizeVertCX><sizeVertCY>4673</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Workspace>
+
+

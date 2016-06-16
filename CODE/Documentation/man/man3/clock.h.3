@@ -1,0 +1,248 @@
+.TH "clock.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+clock.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'hal_types.h'\fP
+.br
+
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBCLOCK_SRC_XOSC\fP   0"
+.br
+.ti -1c
+.RI "#define \fBCLOCK_SRC_HFRC\fP   1"
+.br
+.ti -1c
+.RI "#define \fBCLOCK_32K_XTAL\fP   0"
+.br
+.ti -1c
+.RI "#define \fBCLOCK_32K_RCOSC\fP   1"
+.br
+.ti -1c
+.RI "#define \fBCLKCON_OSC32K_BM\fP   0x80"
+.br
+.ti -1c
+.RI "#define \fBCLKCON_OSC_BM\fP   0x40"
+.br
+.ti -1c
+.RI "#define \fBCLKCON_TICKSPD_BM\fP   0x38"
+.br
+.ti -1c
+.RI "#define \fBCLKCON_CLKSPD_BM\fP   0x01"
+.br
+.ti -1c
+.RI "#define \fBTICKSPD_DIV_1\fP   (0x00 << 3)"
+.br
+.ti -1c
+.RI "#define \fBTICKSPD_DIV_2\fP   (0x01 << 3)"
+.br
+.ti -1c
+.RI "#define \fBTICKSPD_DIV_4\fP   (0x02 << 3)"
+.br
+.ti -1c
+.RI "#define \fBTICKSPD_DIV_8\fP   (0x03 << 3)"
+.br
+.ti -1c
+.RI "#define \fBTICKSPD_DIV_16\fP   (0x04 << 3)"
+.br
+.ti -1c
+.RI "#define \fBTICKSPD_DIV_32\fP   (0x05 << 3)"
+.br
+.ti -1c
+.RI "#define \fBTICKSPD_DIV_64\fP   (0x06 << 3)"
+.br
+.ti -1c
+.RI "#define \fBTICKSPD_DIV_128\fP   (0x07 << 3)"
+.br
+.ti -1c
+.RI "#define \fBSLEEP_XOSC_STB_BM\fP   0x40"
+.br
+.ti -1c
+.RI "#define \fBSLEEP_HFRC_STB_BM\fP   0x20"
+.br
+.ti -1c
+.RI "#define \fBSLEEP_OSC_PD_BM\fP   0x04"
+.br
+.ti -1c
+.RI "#define \fBCC2430_IS_HFRC_STABLE\fP(\fBx\fP)   (SLEEP & SLEEP_HFRC_STB_BM)"
+.br
+.ti -1c
+.RI "#define \fBCC2430_IS_XOSC_STABLE\fP(\fBx\fP)   (SLEEP & SLEEP_XOSC_STB_BM)"
+.br
+.ti -1c
+.RI "#define \fBCC2430_GET_CLKSPD\fP(\fBx\fP)   (CLKCON & CLKCON_CLKSPD_BM)"
+.br
+.ti -1c
+.RI "#define \fBCC2430_GET_TICKSPD\fP(\fBx\fP)   ((CLKCON & CLKCON_TICKSPD_BM) >> 3)"
+.br
+.ti -1c
+.RI "#define \fBCC2430_SET_TICKSPD\fP(\fBx\fP)"
+.br
+.ti -1c
+.RI "#define \fBCC2430_SET_CLKSPD\fP(\fBx\fP)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBclockSetMainSrc\fP (\fBuint8\fP source)"
+.br
+.ti -1c
+.RI "void \fBclockSelect32k\fP (\fBuint8\fP source)"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define CC2430_GET_CLKSPD(\fBx\fP)   (CLKCON & CLKCON_CLKSPD_BM)"
+.PP
+Definition at line 72 of file clock.h.
+.SS "#define CC2430_GET_TICKSPD(\fBx\fP)   ((CLKCON & CLKCON_TICKSPD_BM) >> 3)"
+.PP
+Definition at line 76 of file clock.h.
+.SS "#define CC2430_IS_HFRC_STABLE(\fBx\fP)   (SLEEP & SLEEP_HFRC_STB_BM)"
+.PP
+Definition at line 66 of file clock.h.
+.SS "#define CC2430_IS_XOSC_STABLE(\fBx\fP)   (SLEEP & SLEEP_XOSC_STB_BM)"
+.PP
+Definition at line 69 of file clock.h.
+.SS "#define CC2430_SET_CLKSPD(\fBx\fP)"\fBValue:\fP
+.PP
+.nf
+st( CLKCON = (((x) & 0x07)         \
+                                                    | (CLKCON & 0xF8)); \
+                                                                         )
+.fi
+.PP
+Definition at line 84 of file clock.h.
+.SS "#define CC2430_SET_TICKSPD(\fBx\fP)"\fBValue:\fP
+.PP
+.nf
+st( CLKCON = ((((x) << 3) & 0x38)  \
+                                                    | (CLKCON & 0xC7)); \
+                )
+.fi
+.PP
+Definition at line 79 of file clock.h.
+.SS "#define CLKCON_CLKSPD_BM   0x01"
+.PP
+Definition at line 44 of file clock.h.
+.SS "#define CLKCON_OSC32K_BM   0x80"
+.PP
+Definition at line 41 of file clock.h.
+.SS "#define CLKCON_OSC_BM   0x40"
+.PP
+Definition at line 42 of file clock.h.
+.SS "#define CLKCON_TICKSPD_BM   0x38"
+.PP
+Definition at line 43 of file clock.h.
+.SS "#define CLOCK_32K_RCOSC   1"
+.PP
+Definition at line 38 of file clock.h.
+.SS "#define CLOCK_32K_XTAL   0"
+.PP
+Definition at line 37 of file clock.h.
+.SS "#define CLOCK_SRC_HFRC   1"
+.PP
+Definition at line 34 of file clock.h.
+.SS "#define CLOCK_SRC_XOSC   0"
+.PP
+Definition at line 33 of file clock.h.
+.SS "#define SLEEP_HFRC_STB_BM   0x20"
+.PP
+Definition at line 57 of file clock.h.
+.SS "#define SLEEP_OSC_PD_BM   0x04"
+.PP
+Definition at line 58 of file clock.h.
+.SS "#define SLEEP_XOSC_STB_BM   0x40"
+.PP
+Definition at line 56 of file clock.h.
+.SS "#define TICKSPD_DIV_1   (0x00 << 3)"
+.PP
+Definition at line 46 of file clock.h.
+.SS "#define TICKSPD_DIV_128   (0x07 << 3)"
+.PP
+Definition at line 53 of file clock.h.
+.SS "#define TICKSPD_DIV_16   (0x04 << 3)"
+.PP
+Definition at line 50 of file clock.h.
+.SS "#define TICKSPD_DIV_2   (0x01 << 3)"
+.PP
+Definition at line 47 of file clock.h.
+.SS "#define TICKSPD_DIV_32   (0x05 << 3)"
+.PP
+Definition at line 51 of file clock.h.
+.SS "#define TICKSPD_DIV_4   (0x02 << 3)"
+.PP
+Definition at line 48 of file clock.h.
+.SS "#define TICKSPD_DIV_64   (0x06 << 3)"
+.PP
+Definition at line 52 of file clock.h.
+.SS "#define TICKSPD_DIV_8   (0x03 << 3)"
+.PP
+Definition at line 49 of file clock.h.
+.SH "Function Documentation"
+.PP 
+.SS "void clockSelect32k (\fBuint8\fPsource)"
+.PP
+Definition at line 82 of file clock.c.
+.PP
+.nf
+{
+    if (source == CLOCK_32K_XTAL)
+    {
+        CLKCON &= ~CLKCON_OSC32K_BM;
+    }
+    else if (source == CLOCK_32K_RCOSC)
+    {
+        CLKCON |= CLKCON_OSC32K_BM;
+    }
+}
+.fi
+.SS "void clockSetMainSrc (\fBuint8\fPsource)"
+.PP
+Definition at line 38 of file clock.c.
+.PP
+.nf
+{
+    register uint8 osc32k_bm = CLKCON & CLKCON_OSC32K_BM;
+
+    // Source can have the following values:
+    // CLOCK_SRC_XOSC   0x00  High speed Crystal Oscillator (XOSC)
+    // CLOCK_SRC_HFRC   0x01  Low power RC Oscillator (HFRC)
+
+    if (source == CLOCK_SRC_HFRC)
+    {
+        SLEEP &= ~SLEEP_OSC_PD_BM;       // power up both oscillators
+        while (!CC2430_IS_HFRC_STABLE());// wait until the oscillator is stable
+
+        asm('NOP');
+        CLKCON = (osc32k_bm | CLKCON_OSC_BM | TICKSPD_DIV_1 | CLKCON_CLKSPD_BM);
+        while (CLKCON != (osc32k_bm | CLKCON_OSC_BM | TICKSPD_DIV_1 | CLKCON_CLKSPD_BM));
+
+        SLEEP |= SLEEP_OSC_PD_BM;        // power down the unused oscillator
+    }
+    else if (source == CLOCK_SRC_XOSC)
+    {
+        SLEEP &= ~SLEEP_OSC_PD_BM;       // power up both oscillators
+        while (!CC2430_IS_XOSC_STABLE());// wait until the XOSC is stable
+
+        asm('NOP');
+        halMcuWaitUs(64);
+        CLKCON = (osc32k_bm | TICKSPD_DIV_1);
+        while (CLKCON != (osc32k_bm | TICKSPD_DIV_1));
+
+        SLEEP |= SLEEP_OSC_PD_BM;        // power down the unused oscillator
+    }
+
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

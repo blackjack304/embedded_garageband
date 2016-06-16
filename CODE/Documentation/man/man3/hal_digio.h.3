@@ -1,0 +1,415 @@
+.TH "hal_digio.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+hal_digio.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <hal_types.h>\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBdigioConfig\fP"
+.br
+.in -1c
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBHAL_DIGIO_OK\fP   0"
+.br
+.ti -1c
+.RI "#define \fBHAL_DIGIO_ERROR\fP   (~0)"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBHAL_DIGIO_INPUT\fP, \fBHAL_DIGIO_OUTPUT\fP }"
+.br
+.ti -1c
+.RI "enum { \fBHAL_DIGIO_INT_FALLING_EDGE\fP, \fBHAL_DIGIO_INT_RISING_EDGE\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBuint8\fP \fBhalDigioConfig\fP (const \fBdigioConfig\fP *p)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBhalDigioClear\fP (const \fBdigioConfig\fP *p)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBhalDigioToggle\fP (const \fBdigioConfig\fP *p)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBhalDigioSet\fP (const \fBdigioConfig\fP *p)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBhalDigioGet\fP (const \fBdigioConfig\fP *p)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBhalDigioIntConnect\fP (const \fBdigioConfig\fP *p, \fBISR_FUNC_PTR\fP func)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBhalDigioIntEnable\fP (const \fBdigioConfig\fP *p)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBhalDigioIntDisable\fP (const \fBdigioConfig\fP *p)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBhalDigioIntClear\fP (const \fBdigioConfig\fP *p)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBhalDigioIntSetEdge\fP (const \fBdigioConfig\fP *p, \fBuint8\fP \fBedge\fP)"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define HAL_DIGIO_ERROR   (~0)"
+.PP
+Definition at line 36 of file hal_digio.h.
+.SS "#define HAL_DIGIO_OK   0"
+.PP
+Definition at line 35 of file hal_digio.h.
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "anonymous enum"
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fIHAL_DIGIO_INPUT \fP\fP
+.TP
+\fB\fIHAL_DIGIO_OUTPUT \fP\fP
+
+.PP
+Definition at line 25 of file hal_digio.h.
+.PP
+.nf
+     {
+    HAL_DIGIO_INPUT,
+    HAL_DIGIO_OUTPUT
+};
+.fi
+.SS "anonymous enum"
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fIHAL_DIGIO_INT_FALLING_EDGE \fP\fP
+.TP
+\fB\fIHAL_DIGIO_INT_RISING_EDGE \fP\fP
+
+.PP
+Definition at line 30 of file hal_digio.h.
+.PP
+.nf
+     {
+    HAL_DIGIO_INT_FALLING_EDGE,
+    HAL_DIGIO_INT_RISING_EDGE
+};
+.fi
+.SH "Function Documentation"
+.PP 
+.SS "\fBuint8\fP halDigioClear (const \fBdigioConfig\fP *p)"
+.PP
+Definition at line 169 of file hal_digio.c.
+.PP
+.nf
+{
+   if (p->dir == HAL_DIGIO_OUTPUT)
+    {
+        switch (p->port)
+        {
+        case 0: P0 &= ~p->pin_bm; break;
+        case 1: P1 &= ~p->pin_bm; break;
+        case 2: P2 &= ~p->pin_bm; break;
+        default: return(HAL_DIGIO_ERROR);
+        }
+        return(HAL_DIGIO_OK);
+    }
+    return(HAL_DIGIO_ERROR);
+}
+.fi
+.SS "\fBuint8\fP halDigioConfig (const \fBdigioConfig\fP *p)"
+.PP
+Definition at line 59 of file hal_digio.c.
+.PP
+.nf
+{
+  //  register volatile uint8* dir;
+    register const uint8 bitmask = p->pin_bm;
+
+    // Sanity check
+    if ((bitmask == 0) || (bitmask != (uint8)BV(p->pin)))
+    {
+        return(HAL_DIGIO_ERROR);
+    }
+
+    switch(p->port)
+    {
+    case 0: P0SEL &= ~bitmask; 
+            if (p->dir == HAL_DIGIO_OUTPUT)
+            {
+                if (p->initval == 1)
+                {
+                  P0 |= bitmask;  
+                }
+                else
+                {
+                  P0 &= ~bitmask;
+                }
+                P0DIR |= bitmask;
+             }
+             else // input
+             {
+                P0DIR &= ~bitmask;
+             }
+            break;
+     case 1: P1SEL &= ~bitmask; 
+            if (p->dir == HAL_DIGIO_OUTPUT)
+            {
+                if (p->initval == 1)
+                {
+                  P1 |= bitmask;  
+                }
+                else
+                {
+                  P1 &= ~bitmask;
+                }
+                P1DIR |= bitmask;
+             }
+             else // input
+             {
+                P1DIR &= ~bitmask;
+             }
+            break;
+     case 2: P2SEL &= ~bitmask; 
+            if (p->dir == HAL_DIGIO_OUTPUT)
+            {
+                if (p->initval == 1)
+                {
+                  P2 |= bitmask;  
+                }
+                else
+                {
+                  P2 &= ~bitmask;
+                }
+                P2DIR |= bitmask;
+             }
+             else // input
+             {
+                P2DIR &= ~bitmask;
+             }
+            break;
+    //case 1: P1SEL &= ~bitmask; out = &P1OUT; dir = &P1DIR; break;
+    //case 2: P2SEL &= ~bitmask; out = &P2OUT; dir = &P2DIR; break;
+    default: return(HAL_DIGIO_ERROR);
+    }
+    return(HAL_DIGIO_OK);
+}
+.fi
+.SS "\fBuint8\fP halDigioGet (const \fBdigioConfig\fP *p)"
+.PP
+Definition at line 221 of file hal_digio.c.
+.PP
+.nf
+{
+    if (p->dir == HAL_DIGIO_INPUT)
+    {
+        switch (p->port)
+        {
+        case 0: return (P0 & p->pin_bm ? 1 : 0);
+        case 1: return (P1 & p->pin_bm ? 1 : 0);
+        case 2: return (P2 & p->pin_bm ? 1 : 0);
+        default: break;
+        }
+    }
+    return(HAL_DIGIO_ERROR);
+}
+.fi
+.SS "\fBuint8\fP halDigioIntClear (const \fBdigioConfig\fP *p)"
+.PP
+Definition at line 344 of file hal_digio.c.
+.PP
+.nf
+{
+    switch (p->port)
+    {
+    case 0: P0IFG &= ~p->pin_bm; break;
+    case 1: P1IFG &= ~p->pin_bm; break;
+    case 2: P2IFG &= ~p->pin_bm; break;
+    default: return(HAL_DIGIO_ERROR);
+    }
+    return(HAL_DIGIO_OK);
+}
+.fi
+.SS "\fBuint8\fP halDigioIntConnect (const \fBdigioConfig\fP *p, \fBISR_FUNC_PTR\fPfunc)"
+.PP
+Definition at line 247 of file hal_digio.c.
+.PP
+.nf
+{
+  istate_t key;
+    HAL_INT_LOCK(key);
+    switch (p->port)
+    {
+    case 0: port0_isr_tbl[p->pin] = func; break;
+    case 1: port1_isr_tbl[p->pin] = func; break;
+    case 2: port2_isr_tbl[p->pin] = func; break;
+    default: HAL_INT_UNLOCK(key); return(HAL_DIGIO_ERROR);
+    }
+    halDigioIntClear(p);
+    HAL_INT_UNLOCK(key);
+    return(HAL_DIGIO_OK);
+}
+.fi
+.SS "\fBuint8\fP halDigioIntDisable (const \fBdigioConfig\fP *p)"
+.PP
+Definition at line 310 of file hal_digio.c.
+.PP
+.nf
+{
+   switch (p->port)
+    {
+    case 0: 
+      if (p->pin  < 4) {
+        PICTL &= ~PICTL_P0IENL_BM; // clear P0IENL
+      }
+      else {
+        PICTL &= ~PICTL_P0IENH_BM;    // clear P0IENH
+      }
+            break;
+    case 1:
+      P1IEN &= ~p->pin_bm;
+      break;
+    case 2:
+      PICTL &= ~PICTL_P2IEN_BM; // Clear P2IEN
+      break;
+    default: 
+      return(HAL_DIGIO_ERROR);
+    }
+    return(HAL_DIGIO_OK);
+}
+.fi
+.SS "\fBuint8\fP halDigioIntEnable (const \fBdigioConfig\fP *p)"
+.PP
+Definition at line 273 of file hal_digio.c.
+.PP
+.nf
+{
+     switch (p->port)
+    {
+    case 0: 
+      P0IE = 1;    // set P0IE bit
+      if (p->pin < 4) {
+        PICTL |= PICTL_P0IENL_BM; // set P0IENL
+      }
+      else {
+        PICTL |= PICTL_P0IENH_BM; // set P0IENH
+      }
+            break;
+    case 1:
+      IEN2 |= 0x10;    // set P1IE bit
+      P1IEN |= p->pin_bm;
+      break;
+    case 2:
+      IEN2 |= 0x02;
+      PICTL |= PICTL_P2IEN_BM; // Set P2IEN
+      break;
+    default: 
+      return(HAL_DIGIO_ERROR);
+    }
+    return(HAL_DIGIO_OK);
+}
+.fi
+.SS "\fBuint8\fP halDigioIntSetEdge (const \fBdigioConfig\fP *p, \fBuint8\fPedge)"
+.PP
+Definition at line 369 of file hal_digio.c.
+.PP
+.nf
+{
+  switch(edge)
+    {
+    case HAL_DIGIO_INT_FALLING_EDGE:
+        switch(p->port)
+        {
+        case 0: PICTL |= PICTL_P0ICON_BM; // set P0ICON high
+                break;
+        case 1: PICTL |= PICTL_P1ICON_BM; // set P1ICON high
+                break;
+        case 2: PICTL |= PICTL_P2ICON_BM; // set P2ICON high
+                break;
+        default: return(HAL_DIGIO_ERROR);
+        }
+        break;
+
+    case HAL_DIGIO_INT_RISING_EDGE:
+        switch(p->port)
+        {
+        case 0: PICTL &= ~PICTL_P0ICON_BM; // set P0ICON low
+                break;
+        case 1: PICTL &= ~PICTL_P1ICON_BM; // set P0ICON low
+                break;
+        case 2: PICTL &= ~PICTL_P2ICON_BM; // set P0ICON low
+                break;
+        default: return(HAL_DIGIO_ERROR);
+        }
+        break;
+
+    default:
+        return(HAL_DIGIO_ERROR);
+    }
+    return(HAL_DIGIO_OK);
+}
+.fi
+.SS "\fBuint8\fP halDigioSet (const \fBdigioConfig\fP *p)"
+.PP
+Definition at line 143 of file hal_digio.c.
+.PP
+.nf
+{
+   if (p->dir == HAL_DIGIO_OUTPUT)
+    {
+        switch (p->port)
+        {
+        case 0: P0 |= p->pin_bm; break;
+        case 1: P1 |= p->pin_bm; break;
+        case 2: P2 |= p->pin_bm; break;
+        default: return(HAL_DIGIO_ERROR);
+        }
+        return(HAL_DIGIO_OK);
+    }
+    return(HAL_DIGIO_ERROR);
+}
+.fi
+.SS "\fBuint8\fP halDigioToggle (const \fBdigioConfig\fP *p)"
+.PP
+Definition at line 195 of file hal_digio.c.
+.PP
+.nf
+{
+  if (p->dir == HAL_DIGIO_OUTPUT)
+    {
+        switch (p->port)
+        {
+        case 0: P0 ^= p->pin_bm; break;
+        case 1: P1 ^= p->pin_bm; break;
+        case 2: P2 ^= p->pin_bm; break;
+        default: return(HAL_DIGIO_ERROR);
+        }
+        return(HAL_DIGIO_OK);
+    }
+    return(HAL_DIGIO_ERROR);
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

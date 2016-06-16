@@ -1,0 +1,180 @@
+.TH "hal_mcu.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+hal_mcu.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <hal_types.h>\fP
+.br
+
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBHAL_MCU_LPM_0\fP, \fBHAL_MCU_LPM_1\fP, \fBHAL_MCU_LPM_2\fP, \fBHAL_MCU_LPM_3\fP, \fBHAL_MCU_LPM_4\fP }"
+.br
+.ti -1c
+.RI "enum { \fBHAL_MCU_RESET_CAUSE_POR\fP, \fBHAL_MCU_RESET_CAUSE_EXTERNAL\fP, \fBHAL_MCU_RESET_CAUSE_WATCHDOG\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBhalMcuInit\fP (void)"
+.br
+.ti -1c
+.RI "void \fBhalMcuWaitUs\fP (\fBuint16\fP usec)"
+.br
+.ti -1c
+.RI "void \fBhalMcuWaitMs\fP (\fBuint16\fP msec)"
+.br
+.ti -1c
+.RI "void \fBhalMcuSetLowPowerMode\fP (\fBuint8\fP \fBmode\fP)"
+.br
+.ti -1c
+.RI "void \fBhalMcuReset\fP (void)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBhalMcuGetResetCause\fP (void)"
+.br
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "anonymous enum"
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fIHAL_MCU_LPM_0 \fP\fP
+.TP
+\fB\fIHAL_MCU_LPM_1 \fP\fP
+.TP
+\fB\fIHAL_MCU_LPM_2 \fP\fP
+.TP
+\fB\fIHAL_MCU_LPM_3 \fP\fP
+.TP
+\fB\fIHAL_MCU_LPM_4 \fP\fP
+
+.PP
+Definition at line 29 of file hal_mcu.h.
+.PP
+.nf
+     {                  // Input values to halMcuSetLowPowerMode()
+    HAL_MCU_LPM_0,
+    HAL_MCU_LPM_1,
+    HAL_MCU_LPM_2,
+    HAL_MCU_LPM_3,
+    HAL_MCU_LPM_4
+};
+.fi
+.SS "anonymous enum"
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fIHAL_MCU_RESET_CAUSE_POR \fP\fP
+.TP
+\fB\fIHAL_MCU_RESET_CAUSE_EXTERNAL \fP\fP
+.TP
+\fB\fIHAL_MCU_RESET_CAUSE_WATCHDOG \fP\fP
+
+.PP
+Definition at line 38 of file hal_mcu.h.
+.PP
+.nf
+     {                  // Return values of halMcuGetResetCause()
+    HAL_MCU_RESET_CAUSE_POR,
+    HAL_MCU_RESET_CAUSE_EXTERNAL,
+    HAL_MCU_RESET_CAUSE_WATCHDOG
+};
+.fi
+.SH "Function Documentation"
+.PP 
+.SS "\fBuint8\fP halMcuGetResetCause (void)"
+.SS "void halMcuInit (void)"
+.PP
+Definition at line 28 of file hal_mcu.c.
+.PP
+.nf
+{
+    clockSetMainSrc(CLOCK_SRC_XOSC);
+}
+.fi
+.SS "void halMcuReset (void)"
+.PP
+Definition at line 136 of file hal_mcu.c.
+.PP
+.nf
+{
+    const uint8 WDT_INTERVAL_MSEC_2=   0x03;   // after ~2 ms
+
+    WDCTL = ((WDCTL & 0xFC) | (WDT_INTERVAL_MSEC_2 & 0x03));
+    // Start watchdog
+    WDCTL &= ~0x04;     // Select watchdog mode
+    WDCTL |= 0x08;      // Enable timer
+    while(1);                                   // Halt here until reset
+}
+.fi
+.SS "void halMcuSetLowPowerMode (\fBuint8\fPmode)"
+.PP
+Definition at line 114 of file hal_mcu.c.
+.PP
+.nf
+{
+  // comment: not yet implemented
+  //HAL_ASSERT(FALSE);
+}
+.fi
+.SS "void halMcuWaitMs (\fBuint16\fPmsec)"
+.PP
+Definition at line 95 of file hal_mcu.c.
+.PP
+.nf
+{
+    while(msec--)
+        halMcuWaitUs(1000);
+}
+.fi
+.SS "void halMcuWaitUs (\fBuint16\fPusec)"
+.PP
+Definition at line 48 of file hal_mcu.c.
+.PP
+.nf
+{
+    usec>>= 1;
+
+    while(usec-->0)
+    {
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+    }
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

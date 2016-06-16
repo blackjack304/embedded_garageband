@@ -1,0 +1,460 @@
+\hypertarget{hal___s_p_i_8h}{
+\section{hal\_\-SPI.h File Reference}
+\label{hal___s_p_i_8h}\index{hal\_\-SPI.h@{hal\_\-SPI.h}}
+}
+{\ttfamily \#include \char`\"{}hal\_\-board.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{hal___s_p_i_8h_afb4d3feb36f22460eb363c193a0b4bfa}{SER\_\-INTF\_\-NULL}~0
+\item 
+\#define \hyperlink{hal___s_p_i_8h_a9e4c2056002f8da35ec07cbfbc86b530}{SER\_\-INTF\_\-USART0}~1
+\item 
+\#define \hyperlink{hal___s_p_i_8h_a47482fd0393c59c2ff50610fbe423f36}{SER\_\-INTF\_\-BITBANG}~8
+\item 
+\#define \hyperlink{hal___s_p_i_8h_ac293fde74fb4d19bbae848d59761ef42}{SPI\_\-SER\_\-INTF}~SER\_\-INTF\_\-USART0
+\item 
+\#define \hyperlink{hal___s_p_i_8h_af113ef8698527437ed3ec7f3b1a7ab9f}{DUMMY\_\-CHAR}~0xFF
+\item 
+\#define \hyperlink{hal___s_p_i_8h_a52791c6deb9fa76929f89981d8f6ccca}{U0CSR\_\-TX\_\-BYTE}~0x02
+\item 
+\#define \hyperlink{hal___s_p_i_8h_a9875af947e4460789cde21b73b3879ac}{halSPIRXBUF}~U0DBUF
+\item 
+\#define \hyperlink{hal___s_p_i_8h_add1b58d991bf637cf9bb78eef453eb16}{halSPI\_\-SEND}(\hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x})~U0DBUF=\hyperlink{_touch_screen_8h_a676e0da0ef83bbbdf42538e54b97506b}{x}
+\item 
+\#define \hyperlink{hal___s_p_i_8h_a71f90ecc1354bb1a6aca09736b270d9c}{halSPITXREADY}~(U0CSR\&0x01)
+\item 
+\#define \hyperlink{hal___s_p_i_8h_a681a8c7108035ed6f613a61d4cbba029}{halSPITXDONE}~((U0CSR\&0x02)$>$$>$1)
+\item 
+\#define \hyperlink{hal___s_p_i_8h_a8553a026aeb9c0f444a78ec03c917449}{halSPIRXREADY}~(URX0IF)
+\item 
+\#define \hyperlink{hal___s_p_i_8h_ac5ec7257df8462332c5e62345ecaf3ff}{BAUD\_\-E}(baud, clkDivPow)
+\item 
+\#define \hyperlink{hal___s_p_i_8h_aff5aa9e679c52f7a5190e2cc2fc76acd}{BAUD\_\-M}(baud)
+\item 
+\#define \hyperlink{hal___s_p_i_8h_a943af7f8a98cf5a3f2107ed593215a4b}{SPI\_\-SLAVE}~0x01
+\item 
+\#define \hyperlink{hal___s_p_i_8h_ae09a2779c2d141aa6a8f8be6d78fe210}{SPI\_\-MASTER}~0x00
+\item 
+\#define \hyperlink{hal___s_p_i_8h_a7f569fe0c016790c3f3c007fcb403be8}{SPI\_\-CLOCK\_\-POL\_\-LO}~0x00
+\item 
+\#define \hyperlink{hal___s_p_i_8h_a7223c8423e3d43d649446ddeefe553dd}{SPI\_\-CLOCK\_\-POL\_\-HI}~0x80
+\item 
+\#define \hyperlink{hal___s_p_i_8h_aa1c72fdeb9b4261783736b2b4a5fcbc4}{SPI\_\-CLOCK\_\-PHA\_\-0}~0x00
+\item 
+\#define \hyperlink{hal___s_p_i_8h_a39fb9305fdd3b74a116ec73d3a025c55}{SPI\_\-CLOCK\_\-PHA\_\-1}~0x40
+\item 
+\#define \hyperlink{hal___s_p_i_8h_aa9dc24175ee4509b9c94ea911741ee27}{SPI\_\-TRANSFER\_\-MSB\_\-FIRST}~0x20
+\item 
+\#define \hyperlink{hal___s_p_i_8h_a2f32cd06f5c589bbb0aa74448196edb4}{SPI\_\-TRANSFER\_\-MSB\_\-LAST}~0x00
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{hal___s_p_i_8h_afbecb4c823529eb4fee58ba57a918d44}{halSPISetup} (void)
+\item 
+unsigned char \hyperlink{hal___s_p_i_8h_a5756cd21ae20527cd49ce198a46c87ca}{spiSendByte} (const unsigned char data)
+\item 
+unsigned char \hyperlink{hal___s_p_i_8h_ae91f0e3fc95ae042003b55c25ffeadcc}{spiReadFrame} (unsigned char $\ast$pBuffer, unsigned int size)
+\item 
+unsigned char \hyperlink{hal___s_p_i_8h_a1cbc9b6919c21e2a0693da554fa6dd13}{spiSendFrame} (unsigned char $\ast$pBuffer, unsigned int size)
+\item 
+unsigned char \hyperlink{hal___s_p_i_8h_aac2a10918390006f9b3eca36566e9f7d}{SPI\_\-transmit} (const unsigned char data)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{hal___s_p_i_8h_ac5ec7257df8462332c5e62345ecaf3ff}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!BAUD\_\-E@{BAUD\_\-E}}
+\index{BAUD\_\-E@{BAUD\_\-E}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{BAUD\_\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define BAUD\_\-E(
+\begin{DoxyParamCaption}
+\item[{}]{baud, }
+\item[{}]{clkDivPow}
+\end{DoxyParamCaption}
+)}}
+\label{hal___s_p_i_8h_ac5ec7257df8462332c5e62345ecaf3ff}
+{\bfseries Value:}
+\begin{DoxyCode}
+(     \
+    (baud==2400)   ?  6  +clkDivPow : \
+    (baud==4800)   ?  7  +clkDivPow : \
+    (baud==9600)   ?  8  +clkDivPow : \
+    (baud==14400)  ?  8  +clkDivPow : \
+    (baud==19200)  ?  9  +clkDivPow : \
+    (baud==28800)  ?  9  +clkDivPow : \
+    (baud==38400)  ?  10 +clkDivPow : \
+    (baud==57600)  ?  10 +clkDivPow : \
+    (baud==76800)  ?  11 +clkDivPow : \
+    (baud==115200) ?  11 +clkDivPow : \
+    (baud==153600) ?  12 +clkDivPow : \
+    (baud==230400) ?  12 +clkDivPow : \
+    (baud==307200) ?  13 +clkDivPow : \
+    0  )
+\end{DoxyCode}
+
+
+Definition at line 75 of file hal\_\-SPI.h.
+
+\hypertarget{hal___s_p_i_8h_aff5aa9e679c52f7a5190e2cc2fc76acd}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!BAUD\_\-M@{BAUD\_\-M}}
+\index{BAUD\_\-M@{BAUD\_\-M}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{BAUD\_\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define BAUD\_\-M(
+\begin{DoxyParamCaption}
+\item[{}]{baud}
+\end{DoxyParamCaption}
+)}}
+\label{hal___s_p_i_8h_aff5aa9e679c52f7a5190e2cc2fc76acd}
+{\bfseries Value:}
+\begin{DoxyCode}
+(      \
+    (baud==2400)   ?  59  : \
+    (baud==4800)   ?  59  : \
+    (baud==9600)   ?  59  : \
+    (baud==14400)  ?  216 : \
+    (baud==19200)  ?  59  : \
+    (baud==28800)  ?  216 : \
+    (baud==38400)  ?  59  : \
+    (baud==57600)  ?  216 : \
+    (baud==76800)  ?  59  : \
+    (baud==115200) ?  216 : \
+    (baud==153600) ?  59  : \
+    (baud==230400) ?  216 : \
+    (baud==307200) ?  59  : \
+  0)
+\end{DoxyCode}
+
+
+Definition at line 92 of file hal\_\-SPI.h.
+
+\hypertarget{hal___s_p_i_8h_af113ef8698527437ed3ec7f3b1a7ab9f}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!DUMMY\_\-CHAR@{DUMMY\_\-CHAR}}
+\index{DUMMY\_\-CHAR@{DUMMY\_\-CHAR}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{DUMMY\_\-CHAR}]{\setlength{\rightskip}{0pt plus 5cm}\#define DUMMY\_\-CHAR~0xFF}}
+\label{hal___s_p_i_8h_af113ef8698527437ed3ec7f3b1a7ab9f}
+
+
+Definition at line 34 of file hal\_\-SPI.h.
+
+\hypertarget{hal___s_p_i_8h_add1b58d991bf637cf9bb78eef453eb16}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!halSPI\_\-SEND@{halSPI\_\-SEND}}
+\index{halSPI\_\-SEND@{halSPI\_\-SEND}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{halSPI\_\-SEND}]{\setlength{\rightskip}{0pt plus 5cm}\#define halSPI\_\-SEND(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)~U0DBUF={\bf x}}}
+\label{hal___s_p_i_8h_add1b58d991bf637cf9bb78eef453eb16}
+
+
+Definition at line 41 of file hal\_\-SPI.h.
+
+\hypertarget{hal___s_p_i_8h_a9875af947e4460789cde21b73b3879ac}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!halSPIRXBUF@{halSPIRXBUF}}
+\index{halSPIRXBUF@{halSPIRXBUF}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{halSPIRXBUF}]{\setlength{\rightskip}{0pt plus 5cm}\#define halSPIRXBUF~U0DBUF}}
+\label{hal___s_p_i_8h_a9875af947e4460789cde21b73b3879ac}
+
+
+Definition at line 40 of file hal\_\-SPI.h.
+
+\hypertarget{hal___s_p_i_8h_a8553a026aeb9c0f444a78ec03c917449}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!halSPIRXREADY@{halSPIRXREADY}}
+\index{halSPIRXREADY@{halSPIRXREADY}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{halSPIRXREADY}]{\setlength{\rightskip}{0pt plus 5cm}\#define halSPIRXREADY~(URX0IF)}}
+\label{hal___s_p_i_8h_a8553a026aeb9c0f444a78ec03c917449}
+
+
+Definition at line 44 of file hal\_\-SPI.h.
+
+\hypertarget{hal___s_p_i_8h_a681a8c7108035ed6f613a61d4cbba029}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!halSPITXDONE@{halSPITXDONE}}
+\index{halSPITXDONE@{halSPITXDONE}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{halSPITXDONE}]{\setlength{\rightskip}{0pt plus 5cm}\#define halSPITXDONE~((U0CSR\&0x02)$>$$>$1)}}
+\label{hal___s_p_i_8h_a681a8c7108035ed6f613a61d4cbba029}
+
+
+Definition at line 43 of file hal\_\-SPI.h.
+
+\hypertarget{hal___s_p_i_8h_a71f90ecc1354bb1a6aca09736b270d9c}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!halSPITXREADY@{halSPITXREADY}}
+\index{halSPITXREADY@{halSPITXREADY}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{halSPITXREADY}]{\setlength{\rightskip}{0pt plus 5cm}\#define halSPITXREADY~(U0CSR\&0x01)}}
+\label{hal___s_p_i_8h_a71f90ecc1354bb1a6aca09736b270d9c}
+
+
+Definition at line 42 of file hal\_\-SPI.h.
+
+\hypertarget{hal___s_p_i_8h_a47482fd0393c59c2ff50610fbe423f36}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!SER\_\-INTF\_\-BITBANG@{SER\_\-INTF\_\-BITBANG}}
+\index{SER\_\-INTF\_\-BITBANG@{SER\_\-INTF\_\-BITBANG}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{SER\_\-INTF\_\-BITBANG}]{\setlength{\rightskip}{0pt plus 5cm}\#define SER\_\-INTF\_\-BITBANG~8}}
+\label{hal___s_p_i_8h_a47482fd0393c59c2ff50610fbe423f36}
+
+
+Definition at line 22 of file hal\_\-SPI.h.
+
+\hypertarget{hal___s_p_i_8h_afb4d3feb36f22460eb363c193a0b4bfa}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!SER\_\-INTF\_\-NULL@{SER\_\-INTF\_\-NULL}}
+\index{SER\_\-INTF\_\-NULL@{SER\_\-INTF\_\-NULL}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{SER\_\-INTF\_\-NULL}]{\setlength{\rightskip}{0pt plus 5cm}\#define SER\_\-INTF\_\-NULL~0}}
+\label{hal___s_p_i_8h_afb4d3feb36f22460eb363c193a0b4bfa}
+
+
+Definition at line 20 of file hal\_\-SPI.h.
+
+\hypertarget{hal___s_p_i_8h_a9e4c2056002f8da35ec07cbfbc86b530}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!SER\_\-INTF\_\-USART0@{SER\_\-INTF\_\-USART0}}
+\index{SER\_\-INTF\_\-USART0@{SER\_\-INTF\_\-USART0}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{SER\_\-INTF\_\-USART0}]{\setlength{\rightskip}{0pt plus 5cm}\#define SER\_\-INTF\_\-USART0~1}}
+\label{hal___s_p_i_8h_a9e4c2056002f8da35ec07cbfbc86b530}
+
+
+Definition at line 21 of file hal\_\-SPI.h.
+
+\hypertarget{hal___s_p_i_8h_aa1c72fdeb9b4261783736b2b4a5fcbc4}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!SPI\_\-CLOCK\_\-PHA\_\-0@{SPI\_\-CLOCK\_\-PHA\_\-0}}
+\index{SPI\_\-CLOCK\_\-PHA\_\-0@{SPI\_\-CLOCK\_\-PHA\_\-0}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{SPI\_\-CLOCK\_\-PHA\_\-0}]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-CLOCK\_\-PHA\_\-0~0x00}}
+\label{hal___s_p_i_8h_aa1c72fdeb9b4261783736b2b4a5fcbc4}
+
+
+Definition at line 114 of file hal\_\-SPI.h.
+
+\hypertarget{hal___s_p_i_8h_a39fb9305fdd3b74a116ec73d3a025c55}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!SPI\_\-CLOCK\_\-PHA\_\-1@{SPI\_\-CLOCK\_\-PHA\_\-1}}
+\index{SPI\_\-CLOCK\_\-PHA\_\-1@{SPI\_\-CLOCK\_\-PHA\_\-1}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{SPI\_\-CLOCK\_\-PHA\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-CLOCK\_\-PHA\_\-1~0x40}}
+\label{hal___s_p_i_8h_a39fb9305fdd3b74a116ec73d3a025c55}
+
+
+Definition at line 115 of file hal\_\-SPI.h.
+
+\hypertarget{hal___s_p_i_8h_a7223c8423e3d43d649446ddeefe553dd}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!SPI\_\-CLOCK\_\-POL\_\-HI@{SPI\_\-CLOCK\_\-POL\_\-HI}}
+\index{SPI\_\-CLOCK\_\-POL\_\-HI@{SPI\_\-CLOCK\_\-POL\_\-HI}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{SPI\_\-CLOCK\_\-POL\_\-HI}]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-CLOCK\_\-POL\_\-HI~0x80}}
+\label{hal___s_p_i_8h_a7223c8423e3d43d649446ddeefe553dd}
+
+
+Definition at line 113 of file hal\_\-SPI.h.
+
+\hypertarget{hal___s_p_i_8h_a7f569fe0c016790c3f3c007fcb403be8}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!SPI\_\-CLOCK\_\-POL\_\-LO@{SPI\_\-CLOCK\_\-POL\_\-LO}}
+\index{SPI\_\-CLOCK\_\-POL\_\-LO@{SPI\_\-CLOCK\_\-POL\_\-LO}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{SPI\_\-CLOCK\_\-POL\_\-LO}]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-CLOCK\_\-POL\_\-LO~0x00}}
+\label{hal___s_p_i_8h_a7f569fe0c016790c3f3c007fcb403be8}
+
+
+Definition at line 112 of file hal\_\-SPI.h.
+
+\hypertarget{hal___s_p_i_8h_ae09a2779c2d141aa6a8f8be6d78fe210}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!SPI\_\-MASTER@{SPI\_\-MASTER}}
+\index{SPI\_\-MASTER@{SPI\_\-MASTER}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{SPI\_\-MASTER}]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-MASTER~0x00}}
+\label{hal___s_p_i_8h_ae09a2779c2d141aa6a8f8be6d78fe210}
+
+
+Definition at line 111 of file hal\_\-SPI.h.
+
+\hypertarget{hal___s_p_i_8h_ac293fde74fb4d19bbae848d59761ef42}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!SPI\_\-SER\_\-INTF@{SPI\_\-SER\_\-INTF}}
+\index{SPI\_\-SER\_\-INTF@{SPI\_\-SER\_\-INTF}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{SPI\_\-SER\_\-INTF}]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-SER\_\-INTF~SER\_\-INTF\_\-USART0}}
+\label{hal___s_p_i_8h_ac293fde74fb4d19bbae848d59761ef42}
+
+
+Definition at line 28 of file hal\_\-SPI.h.
+
+\hypertarget{hal___s_p_i_8h_a943af7f8a98cf5a3f2107ed593215a4b}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!SPI\_\-SLAVE@{SPI\_\-SLAVE}}
+\index{SPI\_\-SLAVE@{SPI\_\-SLAVE}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{SPI\_\-SLAVE}]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-SLAVE~0x01}}
+\label{hal___s_p_i_8h_a943af7f8a98cf5a3f2107ed593215a4b}
+
+
+Definition at line 110 of file hal\_\-SPI.h.
+
+\hypertarget{hal___s_p_i_8h_aa9dc24175ee4509b9c94ea911741ee27}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!SPI\_\-TRANSFER\_\-MSB\_\-FIRST@{SPI\_\-TRANSFER\_\-MSB\_\-FIRST}}
+\index{SPI\_\-TRANSFER\_\-MSB\_\-FIRST@{SPI\_\-TRANSFER\_\-MSB\_\-FIRST}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{SPI\_\-TRANSFER\_\-MSB\_\-FIRST}]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-TRANSFER\_\-MSB\_\-FIRST~0x20}}
+\label{hal___s_p_i_8h_aa9dc24175ee4509b9c94ea911741ee27}
+
+
+Definition at line 116 of file hal\_\-SPI.h.
+
+\hypertarget{hal___s_p_i_8h_a2f32cd06f5c589bbb0aa74448196edb4}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!SPI\_\-TRANSFER\_\-MSB\_\-LAST@{SPI\_\-TRANSFER\_\-MSB\_\-LAST}}
+\index{SPI\_\-TRANSFER\_\-MSB\_\-LAST@{SPI\_\-TRANSFER\_\-MSB\_\-LAST}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{SPI\_\-TRANSFER\_\-MSB\_\-LAST}]{\setlength{\rightskip}{0pt plus 5cm}\#define SPI\_\-TRANSFER\_\-MSB\_\-LAST~0x00}}
+\label{hal___s_p_i_8h_a2f32cd06f5c589bbb0aa74448196edb4}
+
+
+Definition at line 117 of file hal\_\-SPI.h.
+
+\hypertarget{hal___s_p_i_8h_a52791c6deb9fa76929f89981d8f6ccca}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!U0CSR\_\-TX\_\-BYTE@{U0CSR\_\-TX\_\-BYTE}}
+\index{U0CSR\_\-TX\_\-BYTE@{U0CSR\_\-TX\_\-BYTE}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{U0CSR\_\-TX\_\-BYTE}]{\setlength{\rightskip}{0pt plus 5cm}\#define U0CSR\_\-TX\_\-BYTE~0x02}}
+\label{hal___s_p_i_8h_a52791c6deb9fa76929f89981d8f6ccca}
+
+
+Definition at line 39 of file hal\_\-SPI.h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{hal___s_p_i_8h_afbecb4c823529eb4fee58ba57a918d44}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!halSPISetup@{halSPISetup}}
+\index{halSPISetup@{halSPISetup}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{halSPISetup}]{\setlength{\rightskip}{0pt plus 5cm}void halSPISetup (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{hal___s_p_i_8h_afbecb4c823529eb4fee58ba57a918d44}
+
+
+Definition at line 36 of file hal\_\-SPI.c.
+
+
+\begin{DoxyCode}
+{
+    U0CSR |= 0X40;                              
+    U0UCR = 0x80;
+    U0CSR = 0x00; 
+    P0SEL |= (SPI_SIMO + SPI_SOMI + SPI_UCLK);
+    
+    PERCFG |= 0x00;
+    
+    //IO_DIR_PORT_PIN(0,3,IO_OUT); // txd / MOSI
+    //IO_DIR_PORT_PIN(0,2,IO_IN); // Rxd / MISO
+    //IO_DIR_PORT_PIN(0,4,IO_OUT); // CTS / SS_N
+    //IO_DIR_PORT_PIN(0,5,IO_OUT); // txd / SCK
+    
+    U0GCR = BAUD_E(115200, CLKSPD);
+    U0BAUD = BAUD_M(115200);
+    
+     //Configure SPI Polarity, Clock Phase, and Bit Order
+    U0CSR =   U0CSR & ~0x80;    // Set U0CSR bit 7 to 0 for SPI Mode
+    U0CSR =   U0CSR & ~0x20;    // Set U0CSR bit 5 to 0 for Master
+    U0GCR =  (U0GCR | 0x80);   // Set U0GCR bit 7   to 1 for CPOL = 1
+    U0GCR =  (U0GCR | 0x20);    // Set U0GCR bit 5 to 1 for MSB first
+    U0GCR =  (U0GCR & ~0x40);    // Set U0GCR bit 6 to 0 for CPHA = 0
+    
+    U0CSR |= 0x40;      
+    
+    URX0IF = 0;
+
+    halSPI_SEND(DUMMY_CHAR);
+}
+\end{DoxyCode}
+\hypertarget{hal___s_p_i_8h_aac2a10918390006f9b3eca36566e9f7d}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!SPI\_\-transmit@{SPI\_\-transmit}}
+\index{SPI\_\-transmit@{SPI\_\-transmit}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{SPI\_\-transmit}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char SPI\_\-transmit (
+\begin{DoxyParamCaption}
+\item[{const unsigned char}]{data}
+\end{DoxyParamCaption}
+)}}
+\label{hal___s_p_i_8h_aac2a10918390006f9b3eca36566e9f7d}
+
+
+Definition at line 158 of file hal\_\-SPI.c.
+
+
+\begin{DoxyCode}
+{
+  while (halSPITXREADY);    // wait while not ready for TX
+  halSPI_SEND(data);            // write
+  while(!(U0CSR & U0CSR_TX_BYTE));            // wait
+  U0CSR &= ~U0CSR_TX_BYTE;                       // clear flag
+  while (halSPIRXREADY ==0);    // wait for RX buffer (full)
+  return (halSPIRXBUF);
+}
+\end{DoxyCode}
+\hypertarget{hal___s_p_i_8h_ae91f0e3fc95ae042003b55c25ffeadcc}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!spiReadFrame@{spiReadFrame}}
+\index{spiReadFrame@{spiReadFrame}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{spiReadFrame}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char spiReadFrame (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{pBuffer, }
+\item[{unsigned int}]{size}
+\end{DoxyParamCaption}
+)}}
+\label{hal___s_p_i_8h_ae91f0e3fc95ae042003b55c25ffeadcc}
+
+
+Definition at line 104 of file hal\_\-SPI.c.
+
+
+\begin{DoxyCode}
+{
+  unsigned long i = 0;
+  // clock the actual data transfer and receive the bytes; spi_read automatically
+       finds the Data Block
+  for (i = 0; i < size; i++){
+    while (halSPITXREADY);   // wait while not ready for TX
+    halSPI_SEND(DUMMY_CHAR);     // dummy write
+    while(!(U0CSR & U0CSR_TX_BYTE));            // wait
+    U0CSR &= ~U0CSR_TX_BYTE;                       // clear fl
+    pBuffer[i] = halSPIRXBUF;
+  }
+  return(0);
+}
+\end{DoxyCode}
+\hypertarget{hal___s_p_i_8h_a5756cd21ae20527cd49ce198a46c87ca}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!spiSendByte@{spiSendByte}}
+\index{spiSendByte@{spiSendByte}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{spiSendByte}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char spiSendByte (
+\begin{DoxyParamCaption}
+\item[{const unsigned char}]{data}
+\end{DoxyParamCaption}
+)}}
+\label{hal___s_p_i_8h_a5756cd21ae20527cd49ce198a46c87ca}
+
+
+Definition at line 79 of file hal\_\-SPI.c.
+
+
+\begin{DoxyCode}
+{
+  while (halSPITXREADY);    // wait while not ready for TX
+  halSPI_SEND(data);            // write
+  while(!(U0CSR & U0CSR_TX_BYTE));            // wait
+  U0CSR &= ~U0CSR_TX_BYTE;                       // clear flag
+  while (halSPIRXREADY ==0);    // wait for RX buffer (full)
+  return (halSPIRXBUF);
+}
+\end{DoxyCode}
+\hypertarget{hal___s_p_i_8h_a1cbc9b6919c21e2a0693da554fa6dd13}{
+\index{hal\_\-SPI.h@{hal\_\-SPI.h}!spiSendFrame@{spiSendFrame}}
+\index{spiSendFrame@{spiSendFrame}!hal_SPI.h@{hal\_\-SPI.h}}
+\subsubsection[{spiSendFrame}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char spiSendFrame (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{pBuffer, }
+\item[{unsigned int}]{size}
+\end{DoxyParamCaption}
+)}}
+\label{hal___s_p_i_8h_a1cbc9b6919c21e2a0693da554fa6dd13}
+
+
+Definition at line 132 of file hal\_\-SPI.c.
+
+
+\begin{DoxyCode}
+{
+  unsigned long i = 0;
+  // clock the actual data transfer and receive the bytes; spi_read automatically
+       finds the Data Block
+  for (i = 0; i < size; i++){
+    while (halSPITXREADY);   // wait while not ready for TX
+    halSPI_SEND(pBuffer[i]);     // write
+    while(!(U0CSR & U0CSR_TX_BYTE));            // wait
+    U0CSR &= ~U0CSR_TX_BYTE;                       // clear fl
+    pBuffer[i] = halSPIRXBUF;
+  }
+  return(0);
+}
+\end{DoxyCode}

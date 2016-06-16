@@ -1,0 +1,484 @@
+\hypertarget{adc_8h}{
+\section{adc.h File Reference}
+\label{adc_8h}\index{adc.h@{adc.h}}
+}
+{\ttfamily \#include $<$hal\_\-types.h$>$}\par
+{\ttfamily \#include $<$hal\_\-defs.h$>$}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{adc_8h_aacf2d0e8c7e6c8065cb1b55fa9937078}{ADC\_\-SINGLE\_\-CONVERSION}(settings)~st(ADCCON3 = (settings);)
+\item 
+\#define \hyperlink{adc_8h_aa59495e5f2aa98ac075929135f417e55}{ADC\_\-SEQUENCE\_\-SETUP}(settings)~st(ADCCON2 = (settings);)
+\item 
+\#define \hyperlink{adc_8h_ad47fc1875971e9c4a1cad134041befb5}{ADC\_\-REF\_\-1\_\-25\_\-V}~0x00
+\item 
+\#define \hyperlink{adc_8h_a6bccc318f9426038a87e01c8b7f23b47}{ADC\_\-REF\_\-P0\_\-7}~0x40
+\item 
+\#define \hyperlink{adc_8h_a3351312ccf970065784014d894725fac}{ADC\_\-REF\_\-AVDD}~0x80
+\item 
+\#define \hyperlink{adc_8h_ab876c99f126c4269ccce36137d93eada}{ADC\_\-REF\_\-P0\_\-6\_\-P0\_\-7}~0xC0
+\item 
+\#define \hyperlink{adc_8h_a3539e260980a7ba54440bd7ea441be73}{ADC\_\-7\_\-BIT}~0x00
+\item 
+\#define \hyperlink{adc_8h_ae1b64ca4573971cabdbabb29a34a332b}{ADC\_\-9\_\-BIT}~0x10
+\item 
+\#define \hyperlink{adc_8h_ae1014a7810e0b26d3553ef9c570ee0d4}{ADC\_\-10\_\-BIT}~0x20
+\item 
+\#define \hyperlink{adc_8h_af8e9dc8f68291bfeb3708e1859876d2f}{ADC\_\-12\_\-BIT}~0x30
+\item 
+\#define \hyperlink{adc_8h_ab501ab79c1a11f4dfd31dc163ac25cf9}{ADC\_\-AIN0}~0x00
+\item 
+\#define \hyperlink{adc_8h_a4bec1da4968146830aa7af9c9dfe1a27}{ADC\_\-AIN1}~0x01
+\item 
+\#define \hyperlink{adc_8h_a62142d766010781bc20ffc749aff4a85}{ADC\_\-AIN2}~0x02
+\item 
+\#define \hyperlink{adc_8h_ab796548c607d1924eda50303704c1ea6}{ADC\_\-AIN3}~0x03
+\item 
+\#define \hyperlink{adc_8h_acf78b53f118cc96ba9d69833134bbbfa}{ADC\_\-AIN4}~0x04
+\item 
+\#define \hyperlink{adc_8h_a3d2eab5f7c8e7ce95923acc20bb6a909}{ADC\_\-AIN5}~0x05
+\item 
+\#define \hyperlink{adc_8h_ac413603a803c0f23462f710c33e628f4}{ADC\_\-AIN6}~0x06
+\item 
+\#define \hyperlink{adc_8h_a209bcbb26f21787e5daa9a9531ae3b56}{ADC\_\-AIN7}~0x07
+\item 
+\#define \hyperlink{adc_8h_a74b6c3aaa88e8bc5bc9daea83d41b9e5}{ADC\_\-GND}~0x0C
+\item 
+\#define \hyperlink{adc_8h_ae05144dc8dd2fae477c09a0e84250597}{ADC\_\-TEMP\_\-SENS}~0x0E
+\item 
+\#define \hyperlink{adc_8h_aeedd2dba288b60ff0d3a75555be7dbae}{ADC\_\-VDD\_\-3}~0x0F
+\item 
+\#define \hyperlink{adc_8h_ae442ee2b74355d90a59451296709719b}{ADC\_\-SAMPLE\_\-CONTINUOUS}()
+\item 
+\#define \hyperlink{adc_8h_a0c39153533e0104e77d36457ea238f4b}{ADC\_\-STOP}()
+\item 
+\#define \hyperlink{adc_8h_a1ab6247da2a141bb6c53eb693a317aee}{ADC\_\-SAMPLE\_\-SINGLE}()
+\item 
+\#define \hyperlink{adc_8h_a4b98144d63126ad42d969bb7ba64c073}{ADC\_\-TRIGGER\_\-FROM\_\-TIMER1}()
+\item 
+\#define \hyperlink{adc_8h_ade734693ddf21f1234521fdcd089eab6}{ADC\_\-SAMPLE\_\-READY}()~(ADCCON1 \& 0x80)
+\item 
+\#define \hyperlink{adc_8h_a386d0612c07fa7bc4779b4df4391278c}{ADC\_\-ENABLE\_\-CHANNEL}(ch)~ADCCFG $|$=  (0x01 $<$$<$ ch)
+\item 
+\#define \hyperlink{adc_8h_a2c72919d5f8e533d190b13767de5e5ec}{ADC\_\-DISABLE\_\-CHANNEL}(ch)~ADCCFG \&= $\sim$(0x01 $<$$<$ ch)
+\item 
+\#define \hyperlink{adc_8h_aeb472872cad000e6149942a8778bb76b}{IO\_\-ADC\_\-PORT0\_\-PIN}(pin, adcEn)
+\item 
+\#define \hyperlink{adc_8h_abdef4983e7b234af907c313736cdb7a7}{IO\_\-ADC\_\-EN}~1
+\item 
+\#define \hyperlink{adc_8h_a279cfc6828199a00c1d8224fa81b0d3d}{IO\_\-ADC\_\-DIS}~0
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{hal__types_8h_a259fa4834387bd68627ddf37bb3ebdb9}{int16} \hyperlink{adc_8h_a889de971419f723b43f0ebdc6a1062f8}{adcSampleSingle} (\hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} reference, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} resolution, \hyperlink{hal__types_8h_adde6aaee8457bee49c2a92621fe22b79}{uint8} channel)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{adc_8h_ae1014a7810e0b26d3553ef9c570ee0d4}{
+\index{adc.h@{adc.h}!ADC\_\-10\_\-BIT@{ADC\_\-10\_\-BIT}}
+\index{ADC\_\-10\_\-BIT@{ADC\_\-10\_\-BIT}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-10\_\-BIT}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-10\_\-BIT~0x20}}
+\label{adc_8h_ae1014a7810e0b26d3553ef9c570ee0d4}
+
+
+Definition at line 45 of file adc.h.
+
+\hypertarget{adc_8h_af8e9dc8f68291bfeb3708e1859876d2f}{
+\index{adc.h@{adc.h}!ADC\_\-12\_\-BIT@{ADC\_\-12\_\-BIT}}
+\index{ADC\_\-12\_\-BIT@{ADC\_\-12\_\-BIT}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-12\_\-BIT}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-12\_\-BIT~0x30}}
+\label{adc_8h_af8e9dc8f68291bfeb3708e1859876d2f}
+
+
+Definition at line 46 of file adc.h.
+
+\hypertarget{adc_8h_a3539e260980a7ba54440bd7ea441be73}{
+\index{adc.h@{adc.h}!ADC\_\-7\_\-BIT@{ADC\_\-7\_\-BIT}}
+\index{ADC\_\-7\_\-BIT@{ADC\_\-7\_\-BIT}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-7\_\-BIT}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-7\_\-BIT~0x00}}
+\label{adc_8h_a3539e260980a7ba54440bd7ea441be73}
+
+
+Definition at line 43 of file adc.h.
+
+\hypertarget{adc_8h_ae1b64ca4573971cabdbabb29a34a332b}{
+\index{adc.h@{adc.h}!ADC\_\-9\_\-BIT@{ADC\_\-9\_\-BIT}}
+\index{ADC\_\-9\_\-BIT@{ADC\_\-9\_\-BIT}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-9\_\-BIT}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-9\_\-BIT~0x10}}
+\label{adc_8h_ae1b64ca4573971cabdbabb29a34a332b}
+
+
+Definition at line 44 of file adc.h.
+
+\hypertarget{adc_8h_ab501ab79c1a11f4dfd31dc163ac25cf9}{
+\index{adc.h@{adc.h}!ADC\_\-AIN0@{ADC\_\-AIN0}}
+\index{ADC\_\-AIN0@{ADC\_\-AIN0}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-AIN0}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-AIN0~0x00}}
+\label{adc_8h_ab501ab79c1a11f4dfd31dc163ac25cf9}
+
+
+Definition at line 49 of file adc.h.
+
+\hypertarget{adc_8h_a4bec1da4968146830aa7af9c9dfe1a27}{
+\index{adc.h@{adc.h}!ADC\_\-AIN1@{ADC\_\-AIN1}}
+\index{ADC\_\-AIN1@{ADC\_\-AIN1}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-AIN1}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-AIN1~0x01}}
+\label{adc_8h_a4bec1da4968146830aa7af9c9dfe1a27}
+
+
+Definition at line 50 of file adc.h.
+
+\hypertarget{adc_8h_a62142d766010781bc20ffc749aff4a85}{
+\index{adc.h@{adc.h}!ADC\_\-AIN2@{ADC\_\-AIN2}}
+\index{ADC\_\-AIN2@{ADC\_\-AIN2}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-AIN2}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-AIN2~0x02}}
+\label{adc_8h_a62142d766010781bc20ffc749aff4a85}
+
+
+Definition at line 51 of file adc.h.
+
+\hypertarget{adc_8h_ab796548c607d1924eda50303704c1ea6}{
+\index{adc.h@{adc.h}!ADC\_\-AIN3@{ADC\_\-AIN3}}
+\index{ADC\_\-AIN3@{ADC\_\-AIN3}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-AIN3}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-AIN3~0x03}}
+\label{adc_8h_ab796548c607d1924eda50303704c1ea6}
+
+
+Definition at line 52 of file adc.h.
+
+\hypertarget{adc_8h_acf78b53f118cc96ba9d69833134bbbfa}{
+\index{adc.h@{adc.h}!ADC\_\-AIN4@{ADC\_\-AIN4}}
+\index{ADC\_\-AIN4@{ADC\_\-AIN4}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-AIN4}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-AIN4~0x04}}
+\label{adc_8h_acf78b53f118cc96ba9d69833134bbbfa}
+
+
+Definition at line 53 of file adc.h.
+
+\hypertarget{adc_8h_a3d2eab5f7c8e7ce95923acc20bb6a909}{
+\index{adc.h@{adc.h}!ADC\_\-AIN5@{ADC\_\-AIN5}}
+\index{ADC\_\-AIN5@{ADC\_\-AIN5}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-AIN5}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-AIN5~0x05}}
+\label{adc_8h_a3d2eab5f7c8e7ce95923acc20bb6a909}
+
+
+Definition at line 54 of file adc.h.
+
+\hypertarget{adc_8h_ac413603a803c0f23462f710c33e628f4}{
+\index{adc.h@{adc.h}!ADC\_\-AIN6@{ADC\_\-AIN6}}
+\index{ADC\_\-AIN6@{ADC\_\-AIN6}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-AIN6}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-AIN6~0x06}}
+\label{adc_8h_ac413603a803c0f23462f710c33e628f4}
+
+
+Definition at line 55 of file adc.h.
+
+\hypertarget{adc_8h_a209bcbb26f21787e5daa9a9531ae3b56}{
+\index{adc.h@{adc.h}!ADC\_\-AIN7@{ADC\_\-AIN7}}
+\index{ADC\_\-AIN7@{ADC\_\-AIN7}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-AIN7}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-AIN7~0x07}}
+\label{adc_8h_a209bcbb26f21787e5daa9a9531ae3b56}
+
+
+Definition at line 56 of file adc.h.
+
+\hypertarget{adc_8h_a2c72919d5f8e533d190b13767de5e5ec}{
+\index{adc.h@{adc.h}!ADC\_\-DISABLE\_\-CHANNEL@{ADC\_\-DISABLE\_\-CHANNEL}}
+\index{ADC\_\-DISABLE\_\-CHANNEL@{ADC\_\-DISABLE\_\-CHANNEL}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-DISABLE\_\-CHANNEL}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-DISABLE\_\-CHANNEL(
+\begin{DoxyParamCaption}
+\item[{}]{ch}
+\end{DoxyParamCaption}
+)~ADCCFG \&= $\sim$(0x01 $<$$<$ ch)}}
+\label{adc_8h_a2c72919d5f8e533d190b13767de5e5ec}
+
+
+Definition at line 93 of file adc.h.
+
+\hypertarget{adc_8h_a386d0612c07fa7bc4779b4df4391278c}{
+\index{adc.h@{adc.h}!ADC\_\-ENABLE\_\-CHANNEL@{ADC\_\-ENABLE\_\-CHANNEL}}
+\index{ADC\_\-ENABLE\_\-CHANNEL@{ADC\_\-ENABLE\_\-CHANNEL}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-ENABLE\_\-CHANNEL}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-ENABLE\_\-CHANNEL(
+\begin{DoxyParamCaption}
+\item[{}]{ch}
+\end{DoxyParamCaption}
+)~ADCCFG $|$=  (0x01 $<$$<$ ch)}}
+\label{adc_8h_a386d0612c07fa7bc4779b4df4391278c}
+
+
+Definition at line 92 of file adc.h.
+
+\hypertarget{adc_8h_a74b6c3aaa88e8bc5bc9daea83d41b9e5}{
+\index{adc.h@{adc.h}!ADC\_\-GND@{ADC\_\-GND}}
+\index{ADC\_\-GND@{ADC\_\-GND}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-GND}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-GND~0x0C}}
+\label{adc_8h_a74b6c3aaa88e8bc5bc9daea83d41b9e5}
+
+
+Definition at line 57 of file adc.h.
+
+\hypertarget{adc_8h_ad47fc1875971e9c4a1cad134041befb5}{
+\index{adc.h@{adc.h}!ADC\_\-REF\_\-1\_\-25\_\-V@{ADC\_\-REF\_\-1\_\-25\_\-V}}
+\index{ADC\_\-REF\_\-1\_\-25\_\-V@{ADC\_\-REF\_\-1\_\-25\_\-V}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-REF\_\-1\_\-25\_\-V}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-REF\_\-1\_\-25\_\-V~0x00}}
+\label{adc_8h_ad47fc1875971e9c4a1cad134041befb5}
+
+
+Definition at line 37 of file adc.h.
+
+\hypertarget{adc_8h_a3351312ccf970065784014d894725fac}{
+\index{adc.h@{adc.h}!ADC\_\-REF\_\-AVDD@{ADC\_\-REF\_\-AVDD}}
+\index{ADC\_\-REF\_\-AVDD@{ADC\_\-REF\_\-AVDD}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-REF\_\-AVDD}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-REF\_\-AVDD~0x80}}
+\label{adc_8h_a3351312ccf970065784014d894725fac}
+
+
+Definition at line 39 of file adc.h.
+
+\hypertarget{adc_8h_ab876c99f126c4269ccce36137d93eada}{
+\index{adc.h@{adc.h}!ADC\_\-REF\_\-P0\_\-6\_\-P0\_\-7@{ADC\_\-REF\_\-P0\_\-6\_\-P0\_\-7}}
+\index{ADC\_\-REF\_\-P0\_\-6\_\-P0\_\-7@{ADC\_\-REF\_\-P0\_\-6\_\-P0\_\-7}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-REF\_\-P0\_\-6\_\-P0\_\-7}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-REF\_\-P0\_\-6\_\-P0\_\-7~0xC0}}
+\label{adc_8h_ab876c99f126c4269ccce36137d93eada}
+
+
+Definition at line 40 of file adc.h.
+
+\hypertarget{adc_8h_a6bccc318f9426038a87e01c8b7f23b47}{
+\index{adc.h@{adc.h}!ADC\_\-REF\_\-P0\_\-7@{ADC\_\-REF\_\-P0\_\-7}}
+\index{ADC\_\-REF\_\-P0\_\-7@{ADC\_\-REF\_\-P0\_\-7}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-REF\_\-P0\_\-7}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-REF\_\-P0\_\-7~0x40}}
+\label{adc_8h_a6bccc318f9426038a87e01c8b7f23b47}
+
+
+Definition at line 38 of file adc.h.
+
+\hypertarget{adc_8h_ae442ee2b74355d90a59451296709719b}{
+\index{adc.h@{adc.h}!ADC\_\-SAMPLE\_\-CONTINUOUS@{ADC\_\-SAMPLE\_\-CONTINUOUS}}
+\index{ADC\_\-SAMPLE\_\-CONTINUOUS@{ADC\_\-SAMPLE\_\-CONTINUOUS}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-SAMPLE\_\-CONTINUOUS}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-SAMPLE\_\-CONTINUOUS(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{adc_8h_ae442ee2b74355d90a59451296709719b}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                            \
+    ADCCON1 &= ~0x30;             \
+    ADCCON1 |= 0x10;              \
+  } while (0)
+\end{DoxyCode}
+
+
+Definition at line 62 of file adc.h.
+
+\hypertarget{adc_8h_ade734693ddf21f1234521fdcd089eab6}{
+\index{adc.h@{adc.h}!ADC\_\-SAMPLE\_\-READY@{ADC\_\-SAMPLE\_\-READY}}
+\index{ADC\_\-SAMPLE\_\-READY@{ADC\_\-SAMPLE\_\-READY}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-SAMPLE\_\-READY}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-SAMPLE\_\-READY(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~(ADCCON1 \& 0x80)}}
+\label{adc_8h_ade734693ddf21f1234521fdcd089eab6}
+
+
+Definition at line 89 of file adc.h.
+
+\hypertarget{adc_8h_a1ab6247da2a141bb6c53eb693a317aee}{
+\index{adc.h@{adc.h}!ADC\_\-SAMPLE\_\-SINGLE@{ADC\_\-SAMPLE\_\-SINGLE}}
+\index{ADC\_\-SAMPLE\_\-SINGLE@{ADC\_\-SAMPLE\_\-SINGLE}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-SAMPLE\_\-SINGLE}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-SAMPLE\_\-SINGLE(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{adc_8h_a1ab6247da2a141bb6c53eb693a317aee}
+{\bfseries Value:}
+\begin{DoxyCode}
+do{                             \
+    ADC_STOP();                   \
+    ADCCON1 |= 0x40;              \
+} while (0)
+\end{DoxyCode}
+
+
+Definition at line 75 of file adc.h.
+
+\hypertarget{adc_8h_aa59495e5f2aa98ac075929135f417e55}{
+\index{adc.h@{adc.h}!ADC\_\-SEQUENCE\_\-SETUP@{ADC\_\-SEQUENCE\_\-SETUP}}
+\index{ADC\_\-SEQUENCE\_\-SETUP@{ADC\_\-SEQUENCE\_\-SETUP}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-SEQUENCE\_\-SETUP}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-SEQUENCE\_\-SETUP(
+\begin{DoxyParamCaption}
+\item[{}]{settings}
+\end{DoxyParamCaption}
+)~st(ADCCON2 = (settings);)}}
+\label{adc_8h_aa59495e5f2aa98ac075929135f417e55}
+
+
+Definition at line 33 of file adc.h.
+
+\hypertarget{adc_8h_aacf2d0e8c7e6c8065cb1b55fa9937078}{
+\index{adc.h@{adc.h}!ADC\_\-SINGLE\_\-CONVERSION@{ADC\_\-SINGLE\_\-CONVERSION}}
+\index{ADC\_\-SINGLE\_\-CONVERSION@{ADC\_\-SINGLE\_\-CONVERSION}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-SINGLE\_\-CONVERSION}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-SINGLE\_\-CONVERSION(
+\begin{DoxyParamCaption}
+\item[{}]{settings}
+\end{DoxyParamCaption}
+)~st(ADCCON3 = (settings);)}}
+\label{adc_8h_aacf2d0e8c7e6c8065cb1b55fa9937078}
+
+
+Definition at line 30 of file adc.h.
+
+\hypertarget{adc_8h_a0c39153533e0104e77d36457ea238f4b}{
+\index{adc.h@{adc.h}!ADC\_\-STOP@{ADC\_\-STOP}}
+\index{ADC\_\-STOP@{ADC\_\-STOP}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-STOP}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-STOP(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{adc_8h_a0c39153533e0104e77d36457ea238f4b}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                            \
+    ADCCON1 |= 0x30;              \
+  } while (0)
+\end{DoxyCode}
+
+
+Definition at line 69 of file adc.h.
+
+\hypertarget{adc_8h_ae05144dc8dd2fae477c09a0e84250597}{
+\index{adc.h@{adc.h}!ADC\_\-TEMP\_\-SENS@{ADC\_\-TEMP\_\-SENS}}
+\index{ADC\_\-TEMP\_\-SENS@{ADC\_\-TEMP\_\-SENS}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-TEMP\_\-SENS}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-TEMP\_\-SENS~0x0E}}
+\label{adc_8h_ae05144dc8dd2fae477c09a0e84250597}
+
+
+Definition at line 58 of file adc.h.
+
+\hypertarget{adc_8h_a4b98144d63126ad42d969bb7ba64c073}{
+\index{adc.h@{adc.h}!ADC\_\-TRIGGER\_\-FROM\_\-TIMER1@{ADC\_\-TRIGGER\_\-FROM\_\-TIMER1}}
+\index{ADC\_\-TRIGGER\_\-FROM\_\-TIMER1@{ADC\_\-TRIGGER\_\-FROM\_\-TIMER1}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-TRIGGER\_\-FROM\_\-TIMER1}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-TRIGGER\_\-FROM\_\-TIMER1(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{adc_8h_a4b98144d63126ad42d969bb7ba64c073}
+{\bfseries Value:}
+\begin{DoxyCode}
+do {                            \
+    ADC_STOP();                   \
+    ADCCON1 &= ~0x10;             \
+  } while (0)
+\end{DoxyCode}
+
+
+Definition at line 82 of file adc.h.
+
+\hypertarget{adc_8h_aeedd2dba288b60ff0d3a75555be7dbae}{
+\index{adc.h@{adc.h}!ADC\_\-VDD\_\-3@{ADC\_\-VDD\_\-3}}
+\index{ADC\_\-VDD\_\-3@{ADC\_\-VDD\_\-3}!adc.h@{adc.h}}
+\subsubsection[{ADC\_\-VDD\_\-3}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADC\_\-VDD\_\-3~0x0F}}
+\label{adc_8h_aeedd2dba288b60ff0d3a75555be7dbae}
+
+
+Definition at line 59 of file adc.h.
+
+\hypertarget{adc_8h_a279cfc6828199a00c1d8224fa81b0d3d}{
+\index{adc.h@{adc.h}!IO\_\-ADC\_\-DIS@{IO\_\-ADC\_\-DIS}}
+\index{IO\_\-ADC\_\-DIS@{IO\_\-ADC\_\-DIS}!adc.h@{adc.h}}
+\subsubsection[{IO\_\-ADC\_\-DIS}]{\setlength{\rightskip}{0pt plus 5cm}\#define IO\_\-ADC\_\-DIS~0}}
+\label{adc_8h_a279cfc6828199a00c1d8224fa81b0d3d}
+
+
+Definition at line 112 of file adc.h.
+
+\hypertarget{adc_8h_abdef4983e7b234af907c313736cdb7a7}{
+\index{adc.h@{adc.h}!IO\_\-ADC\_\-EN@{IO\_\-ADC\_\-EN}}
+\index{IO\_\-ADC\_\-EN@{IO\_\-ADC\_\-EN}!adc.h@{adc.h}}
+\subsubsection[{IO\_\-ADC\_\-EN}]{\setlength{\rightskip}{0pt plus 5cm}\#define IO\_\-ADC\_\-EN~1}}
+\label{adc_8h_abdef4983e7b234af907c313736cdb7a7}
+
+
+Definition at line 111 of file adc.h.
+
+\hypertarget{adc_8h_aeb472872cad000e6149942a8778bb76b}{
+\index{adc.h@{adc.h}!IO\_\-ADC\_\-PORT0\_\-PIN@{IO\_\-ADC\_\-PORT0\_\-PIN}}
+\index{IO\_\-ADC\_\-PORT0\_\-PIN@{IO\_\-ADC\_\-PORT0\_\-PIN}!adc.h@{adc.h}}
+\subsubsection[{IO\_\-ADC\_\-PORT0\_\-PIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define IO\_\-ADC\_\-PORT0\_\-PIN(
+\begin{DoxyParamCaption}
+\item[{}]{pin, }
+\item[{}]{adcEn}
+\end{DoxyParamCaption}
+)}}
+\label{adc_8h_aeb472872cad000e6149942a8778bb76b}
+{\bfseries Value:}
+\begin{DoxyCode}
+st (                                \
+    if (adcEn)                        \
+      ADCCFG |= BM( pin );            \
+    else                              \
+      ADCCFG &= ~BM( pin );           \
+  )
+\end{DoxyCode}
+
+
+Definition at line 102 of file adc.h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{adc_8h_a889de971419f723b43f0ebdc6a1062f8}{
+\index{adc.h@{adc.h}!adcSampleSingle@{adcSampleSingle}}
+\index{adcSampleSingle@{adcSampleSingle}!adc.h@{adc.h}}
+\subsubsection[{adcSampleSingle}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int16} adcSampleSingle (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8}}]{reference, }
+\item[{{\bf uint8}}]{resolution, }
+\item[{{\bf uint8}}]{channel}
+\end{DoxyParamCaption}
+)}}
+\label{adc_8h_a889de971419f723b43f0ebdc6a1062f8}
+
+
+Definition at line 33 of file adc.c.
+
+
+\begin{DoxyCode}
+{
+    int16 value;
+
+    ADC_ENABLE_CHANNEL(channel);
+
+    ADCIF = 0;
+
+    ADC_SINGLE_CONVERSION(reference | resolution | channel);
+    while(!ADCIF);
+
+    value  = (ADCH << 8) & 0xff00;
+    value |= ADCL;
+
+    ADC_DISABLE_CHANNEL(channel);
+
+    //  The variable 'value' contains 16 bits where
+    //     bit 15 is a sign bit
+    //     bit [14 .. 0] contain the absolute sample value
+    //     Only the r upper bits are significant, where r is the resolution
+    //     Resolution:
+    //        12   -> [14 .. 3] (bitmask 0x7FF8)
+    //        10   -> [14 .. 5] (bitmask 0x7FE0)
+    //         9   -> [14 .. 6] (bitmask 0x7FC0)
+    //         7   -> [14 .. 8] (bitmask 0x7F00)
+    
+    value = (value & 0x7FF8) >> 3;
+
+    return value;
+}\end{DoxyCode}

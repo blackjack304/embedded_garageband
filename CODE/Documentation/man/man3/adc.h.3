@@ -1,0 +1,288 @@
+.TH "adc.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+adc.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <hal_types.h>\fP
+.br
+\fC#include <hal_defs.h>\fP
+.br
+
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBADC_SINGLE_CONVERSION\fP(settings)   st(ADCCON3 = (settings);)"
+.br
+.ti -1c
+.RI "#define \fBADC_SEQUENCE_SETUP\fP(settings)   st(ADCCON2 = (settings);)"
+.br
+.ti -1c
+.RI "#define \fBADC_REF_1_25_V\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBADC_REF_P0_7\fP   0x40"
+.br
+.ti -1c
+.RI "#define \fBADC_REF_AVDD\fP   0x80"
+.br
+.ti -1c
+.RI "#define \fBADC_REF_P0_6_P0_7\fP   0xC0"
+.br
+.ti -1c
+.RI "#define \fBADC_7_BIT\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBADC_9_BIT\fP   0x10"
+.br
+.ti -1c
+.RI "#define \fBADC_10_BIT\fP   0x20"
+.br
+.ti -1c
+.RI "#define \fBADC_12_BIT\fP   0x30"
+.br
+.ti -1c
+.RI "#define \fBADC_AIN0\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBADC_AIN1\fP   0x01"
+.br
+.ti -1c
+.RI "#define \fBADC_AIN2\fP   0x02"
+.br
+.ti -1c
+.RI "#define \fBADC_AIN3\fP   0x03"
+.br
+.ti -1c
+.RI "#define \fBADC_AIN4\fP   0x04"
+.br
+.ti -1c
+.RI "#define \fBADC_AIN5\fP   0x05"
+.br
+.ti -1c
+.RI "#define \fBADC_AIN6\fP   0x06"
+.br
+.ti -1c
+.RI "#define \fBADC_AIN7\fP   0x07"
+.br
+.ti -1c
+.RI "#define \fBADC_GND\fP   0x0C"
+.br
+.ti -1c
+.RI "#define \fBADC_TEMP_SENS\fP   0x0E"
+.br
+.ti -1c
+.RI "#define \fBADC_VDD_3\fP   0x0F"
+.br
+.ti -1c
+.RI "#define \fBADC_SAMPLE_CONTINUOUS\fP()"
+.br
+.ti -1c
+.RI "#define \fBADC_STOP\fP()"
+.br
+.ti -1c
+.RI "#define \fBADC_SAMPLE_SINGLE\fP()"
+.br
+.ti -1c
+.RI "#define \fBADC_TRIGGER_FROM_TIMER1\fP()"
+.br
+.ti -1c
+.RI "#define \fBADC_SAMPLE_READY\fP()   (ADCCON1 & 0x80)"
+.br
+.ti -1c
+.RI "#define \fBADC_ENABLE_CHANNEL\fP(ch)   ADCCFG |=  (0x01 << ch)"
+.br
+.ti -1c
+.RI "#define \fBADC_DISABLE_CHANNEL\fP(ch)   ADCCFG &= ~(0x01 << ch)"
+.br
+.ti -1c
+.RI "#define \fBIO_ADC_PORT0_PIN\fP(pin, adcEn)"
+.br
+.ti -1c
+.RI "#define \fBIO_ADC_EN\fP   1"
+.br
+.ti -1c
+.RI "#define \fBIO_ADC_DIS\fP   0"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBint16\fP \fBadcSampleSingle\fP (\fBuint8\fP reference, \fBuint8\fP resolution, \fBuint8\fP channel)"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define ADC_10_BIT   0x20"
+.PP
+Definition at line 45 of file adc.h.
+.SS "#define ADC_12_BIT   0x30"
+.PP
+Definition at line 46 of file adc.h.
+.SS "#define ADC_7_BIT   0x00"
+.PP
+Definition at line 43 of file adc.h.
+.SS "#define ADC_9_BIT   0x10"
+.PP
+Definition at line 44 of file adc.h.
+.SS "#define ADC_AIN0   0x00"
+.PP
+Definition at line 49 of file adc.h.
+.SS "#define ADC_AIN1   0x01"
+.PP
+Definition at line 50 of file adc.h.
+.SS "#define ADC_AIN2   0x02"
+.PP
+Definition at line 51 of file adc.h.
+.SS "#define ADC_AIN3   0x03"
+.PP
+Definition at line 52 of file adc.h.
+.SS "#define ADC_AIN4   0x04"
+.PP
+Definition at line 53 of file adc.h.
+.SS "#define ADC_AIN5   0x05"
+.PP
+Definition at line 54 of file adc.h.
+.SS "#define ADC_AIN6   0x06"
+.PP
+Definition at line 55 of file adc.h.
+.SS "#define ADC_AIN7   0x07"
+.PP
+Definition at line 56 of file adc.h.
+.SS "#define ADC_DISABLE_CHANNEL(ch)   ADCCFG &= ~(0x01 << ch)"
+.PP
+Definition at line 93 of file adc.h.
+.SS "#define ADC_ENABLE_CHANNEL(ch)   ADCCFG |=  (0x01 << ch)"
+.PP
+Definition at line 92 of file adc.h.
+.SS "#define ADC_GND   0x0C"
+.PP
+Definition at line 57 of file adc.h.
+.SS "#define ADC_REF_1_25_V   0x00"
+.PP
+Definition at line 37 of file adc.h.
+.SS "#define ADC_REF_AVDD   0x80"
+.PP
+Definition at line 39 of file adc.h.
+.SS "#define ADC_REF_P0_6_P0_7   0xC0"
+.PP
+Definition at line 40 of file adc.h.
+.SS "#define ADC_REF_P0_7   0x40"
+.PP
+Definition at line 38 of file adc.h.
+.SS "#define ADC_SAMPLE_CONTINUOUS()"\fBValue:\fP
+.PP
+.nf
+do {                            \
+    ADCCON1 &= ~0x30;             \
+    ADCCON1 |= 0x10;              \
+  } while (0)
+.fi
+.PP
+Definition at line 62 of file adc.h.
+.SS "#define ADC_SAMPLE_READY()   (ADCCON1 & 0x80)"
+.PP
+Definition at line 89 of file adc.h.
+.SS "#define ADC_SAMPLE_SINGLE()"\fBValue:\fP
+.PP
+.nf
+do{                             \
+    ADC_STOP();                   \
+    ADCCON1 |= 0x40;              \
+} while (0)
+.fi
+.PP
+Definition at line 75 of file adc.h.
+.SS "#define ADC_SEQUENCE_SETUP(settings)   st(ADCCON2 = (settings);)"
+.PP
+Definition at line 33 of file adc.h.
+.SS "#define ADC_SINGLE_CONVERSION(settings)   st(ADCCON3 = (settings);)"
+.PP
+Definition at line 30 of file adc.h.
+.SS "#define ADC_STOP()"\fBValue:\fP
+.PP
+.nf
+do {                            \
+    ADCCON1 |= 0x30;              \
+  } while (0)
+.fi
+.PP
+Definition at line 69 of file adc.h.
+.SS "#define ADC_TEMP_SENS   0x0E"
+.PP
+Definition at line 58 of file adc.h.
+.SS "#define ADC_TRIGGER_FROM_TIMER1()"\fBValue:\fP
+.PP
+.nf
+do {                            \
+    ADC_STOP();                   \
+    ADCCON1 &= ~0x10;             \
+  } while (0)
+.fi
+.PP
+Definition at line 82 of file adc.h.
+.SS "#define ADC_VDD_3   0x0F"
+.PP
+Definition at line 59 of file adc.h.
+.SS "#define IO_ADC_DIS   0"
+.PP
+Definition at line 112 of file adc.h.
+.SS "#define IO_ADC_EN   1"
+.PP
+Definition at line 111 of file adc.h.
+.SS "#define IO_ADC_PORT0_PIN(pin, adcEn)"\fBValue:\fP
+.PP
+.nf
+st (                                \
+    if (adcEn)                        \
+      ADCCFG |= BM( pin );            \
+    else                              \
+      ADCCFG &= ~BM( pin );           \
+  )
+.fi
+.PP
+Definition at line 102 of file adc.h.
+.SH "Function Documentation"
+.PP 
+.SS "\fBint16\fP adcSampleSingle (\fBuint8\fPreference, \fBuint8\fPresolution, \fBuint8\fPchannel)"
+.PP
+Definition at line 33 of file adc.c.
+.PP
+.nf
+{
+    int16 value;
+
+    ADC_ENABLE_CHANNEL(channel);
+
+    ADCIF = 0;
+
+    ADC_SINGLE_CONVERSION(reference | resolution | channel);
+    while(!ADCIF);
+
+    value  = (ADCH << 8) & 0xff00;
+    value |= ADCL;
+
+    ADC_DISABLE_CHANNEL(channel);
+
+    //  The variable 'value' contains 16 bits where
+    //     bit 15 is a sign bit
+    //     bit [14 .. 0] contain the absolute sample value
+    //     Only the r upper bits are significant, where r is the resolution
+    //     Resolution:
+    //        12   -> [14 .. 3] (bitmask 0x7FF8)
+    //        10   -> [14 .. 5] (bitmask 0x7FE0)
+    //         9   -> [14 .. 6] (bitmask 0x7FC0)
+    //         7   -> [14 .. 8] (bitmask 0x7F00)
+    
+    value = (value & 0x7FF8) >> 3;
+
+    return value;
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

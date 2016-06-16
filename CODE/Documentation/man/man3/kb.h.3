@@ -1,0 +1,217 @@
+.TH "kb.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+kb.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'hal_types.h'\fP
+.br
+\fC#include 'hal_defs.h'\fP
+.br
+
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBISC00\fP   0"
+.br
+.ti -1c
+.RI "#define \fBISC01\fP   1"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBinit_kb\fP (void)"
+.br
+.ti -1c
+.RI "void \fBdecode\fP (unsigned char sc)"
+.br
+.ti -1c
+.RI "void \fBput_kbbuff\fP (unsigned char c)"
+.br
+.ti -1c
+.RI "char \fBkb_getchar\fP ()"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define ISC00   0"
+.PP
+Definition at line 18 of file kb.h.
+.SS "#define ISC01   1"
+.PP
+Definition at line 19 of file kb.h.
+.SH "Function Documentation"
+.PP 
+.SS "void decode (unsigned charsc)"
+.PP
+Definition at line 140 of file kb.c.
+.PP
+.nf
+{
+  unsigned char i;
+  if (!is_up)// Last data received was the up-key identifier
+  {
+    switch (sc)
+    {
+    case 0xF0 :// The up-key identifier
+      is_up = 1;
+      spec = 0;
+      break;
+    case 0x12 :// Left SHIFT
+      shift = 1;
+      break;
+    case 0x59 :// Right SHIFT
+      shift = 1;
+      break;
+    case 0x05 :// F1
+      /*if(mode == 0)
+      mode = 1;// Enter scan code mode
+      if(mode == 2)
+      mode = 3;// Leave scan code mode*/
+      break;
+    case 0xE0 :
+      //print_line('in E0');
+      spec = 1;
+      /*for(i = 0; special[i][0]!=sc && special[i][0]; i++);
+      if (special[i][0] == sc) {
+      put_kbbuff(special[i][1]);
+    }
+      */
+      break;
+
+    default:
+      if(mode == 0 || mode == 3)// If ASCII mode
+      {
+        if(!shift)// If shift not pressed,
+        { // do a table look-up
+
+          if (spec)
+          {for(i = 0; special[i][0]!=sc && special[i][0]; i++);
+          if (special[i][0] == sc) {
+            put_kbbuff(special[i][1]);
+          }
+
+          }
+          else
+          {
+            for(i = 0; unshifted[i][0]!=sc && unshifted[i][0]; i++);
+            if (unshifted[i][0] == sc) {
+              put_kbbuff(unshifted[i][1]);
+            }
+          }
+        } else {// If shift pressed
+          for(i = 0; shifted[i][0]!=sc && shifted[i][0]; i++);
+          if (shifted[i][0] == sc) {
+            put_kbbuff(shifted[i][1]);
+          }
+        }
+      } else{ // Scan code mode
+        put_kbbuff(' ');
+        put_kbbuff(' ');
+      }
+      break;
+    }
+  }
+  else {
+    is_up = 0;// Two 0xF0 in a row not allowed
+    switch (sc)
+    {
+    case 0x12 :// Left SHIFT
+      shift = 0;
+      break;
+    case 0x59 :// Right SHIFT
+      shift = 0;
+      break;
+    case 0x05 :// F1
+      /*if(mode == 1)
+      mode = 2;
+      if(mode == 3)
+      mode = 0;*/
+      break;
+    case 0x06 :// F2
+      break;
+    case 0xE0 :
+      spec = 0;
+      break;
+
+    }
+  }
+}
+.fi
+.SS "void init_kb (void)"
+.PP
+Definition at line 49 of file kb.c.
+.PP
+.nf
+{
+  data_ready=FALSE;
+  is_up=0;
+  spec=0;
+  shift=0;
+  mode=0;
+
+  inpt = kb_buffer;// Initialize buffer
+  outpt = kb_buffer;
+  buffcnt = 0;
+  edge = 0;
+  bitcount = 11;
+
+  halLedSet(3);
+
+  MCU_IO_OUTPUT(KPORT, KDATA_PIN, 0);
+  MCU_IO_OUTPUT(1, 0, 0);
+
+  MCU_IO_INPUT(1, 0, MCU_IO_TRISTATE);
+  MCU_IO_INPUT(KPORT, KCLOCK_PIN, MCU_IO_TRISTATE);
+
+  P1IF = 0;
+  PICTL |= 0x02;  //IT0 = 1;                            // Ext INT0 falling edge triggered
+  IEN2 |= 0x10;         //IEN2.P2IE = 1;
+  P1IEN = 0x01;
+
+  bitcount = 11;
+}
+.fi
+.SS "char kb_getchar ()"
+.PP
+Definition at line 268 of file kb.c.
+.PP
+.nf
+{
+  char byte;
+  while(buffcnt == 0);// Wait for data
+  byte = *outpt;// Get byte
+  outpt++; // Increment pointer
+  if (outpt >= kb_buffer + BUFF_SIZE)// Pointer wrapping
+    outpt = kb_buffer;
+  buffcnt--; // Decrement buffer count
+  data_ready=FALSE;
+  return byte;
+}
+.fi
+.SS "void put_kbbuff (unsigned charc)"
+.PP
+Definition at line 243 of file kb.c.
+.PP
+.nf
+{
+  if (buffcnt<BUFF_SIZE && start_read == TRUE)// If buffer not full
+  {
+    *inpt = c;// Put character into buffer
+    inpt++; // Increment pointer
+    buffcnt++;
+    data_ready=TRUE;
+    if (inpt >= kb_buffer + BUFF_SIZE)// Pointer wrapping
+      inpt = kb_buffer;
+    //pc_kbd_scan();            // call scanning routine
+  }
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.

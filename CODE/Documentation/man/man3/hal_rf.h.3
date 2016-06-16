@@ -1,0 +1,537 @@
+.TH "hal_rf.h" 3 "Sat Apr 30 2011" "Version 1.0" "Embedded GarageBand" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+hal_rf.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <hal_types.h>\fP
+.br
+
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBHAL_RF_CHIP_ID_CC1100\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBHAL_RF_CHIP_ID_CC1110\fP   0x01"
+.br
+.ti -1c
+.RI "#define \fBHAL_RF_CHIP_ID_CC1111\fP   0x11"
+.br
+.ti -1c
+.RI "#define \fBHAL_RF_CHIP_ID_CC2420\fP   0x02"
+.br
+.ti -1c
+.RI "#define \fBHAL_RF_CHIP_ID_CC2500\fP   0x80"
+.br
+.ti -1c
+.RI "#define \fBHAL_RF_CHIP_ID_CC2510\fP   0x81"
+.br
+.ti -1c
+.RI "#define \fBHAL_RF_CHIP_ID_CC2511\fP   0x91"
+.br
+.ti -1c
+.RI "#define \fBHAL_RF_CHIP_ID_CC2550\fP   0x82"
+.br
+.ti -1c
+.RI "#define \fBHAL_RF_CHIP_ID_CC2520\fP   0x84"
+.br
+.ti -1c
+.RI "#define \fBHAL_RF_CHIP_ID_CC2430\fP   0x85"
+.br
+.ti -1c
+.RI "#define \fBHAL_RF_CHIP_ID_CC2431\fP   0x89"
+.br
+.ti -1c
+.RI "#define \fBHAL_RF_CHIP_ID_CC2530\fP   0xA5"
+.br
+.ti -1c
+.RI "#define \fBHAL_RF_CHIP_ID_CC2531\fP   0xB5"
+.br
+.ti -1c
+.RI "#define \fBHAL_RF_CHIP_ID_CC2540\fP   0x8D"
+.br
+.ti -1c
+.RI "#define \fBHAL_RF_GAIN_LOW\fP   0"
+.br
+.ti -1c
+.RI "#define \fBHAL_RF_GAIN_HIGH\fP   1"
+.br
+.ti -1c
+.RI "#define \fBMIN_CHANNEL\fP   11"
+.br
+.ti -1c
+.RI "#define \fBMAX_CHANNEL\fP   26"
+.br
+.ti -1c
+.RI "#define \fBCHANNEL_SPACING\fP   5"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBuint8\fP \fBhalRfInit\fP (void)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBhalRfSetTxPower\fP (\fBuint8\fP power)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBhalRfTransmit\fP (void)"
+.br
+.ti -1c
+.RI "void \fBhalRfSetGain\fP (\fBuint8\fP gainMode)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBhalRfGetChipId\fP (void)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBhalRfGetChipVer\fP (void)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBhalRfGetRandomByte\fP (void)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBhalRfGetRssiOffset\fP (void)"
+.br
+.ti -1c
+.RI "void \fBhalRfWriteTxBuf\fP (\fBuint8\fP *pData, \fBuint8\fP length)"
+.br
+.ti -1c
+.RI "void \fBhalRfReadRxBuf\fP (\fBuint8\fP *pData, \fBuint8\fP length)"
+.br
+.ti -1c
+.RI "void \fBhalRfWaitTransceiverReady\fP (void)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBhalRfReadMemory\fP (\fBuint16\fP addr, \fBuint8\fP *pData, \fBuint8\fP length)"
+.br
+.ti -1c
+.RI "\fBuint8\fP \fBhalRfWriteMemory\fP (\fBuint16\fP addr, \fBuint8\fP *pData, \fBuint8\fP length)"
+.br
+.ti -1c
+.RI "void \fBhalRfReceiveOn\fP (void)"
+.br
+.ti -1c
+.RI "void \fBhalRfReceiveOff\fP (void)"
+.br
+.ti -1c
+.RI "void \fBhalRfDisableRxInterrupt\fP (void)"
+.br
+.ti -1c
+.RI "void \fBhalRfEnableRxInterrupt\fP (void)"
+.br
+.ti -1c
+.RI "void \fBhalRfRxInterruptConfig\fP (\fBISR_FUNC_PTR\fP \fBpfISR\fP)"
+.br
+.ti -1c
+.RI "void \fBhalRfSetChannel\fP (\fBuint8\fP channel)"
+.br
+.ti -1c
+.RI "void \fBhalRfSetShortAddr\fP (\fBuint16\fP shortAddr)"
+.br
+.ti -1c
+.RI "void \fBhalRfSetPanId\fP (\fBuint16\fP PanId)"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define CHANNEL_SPACING   5"
+.PP
+Definition at line 50 of file hal_rf.h.
+.SS "#define HAL_RF_CHIP_ID_CC1100   0x00"
+.PP
+Definition at line 28 of file hal_rf.h.
+.SS "#define HAL_RF_CHIP_ID_CC1110   0x01"
+.PP
+Definition at line 29 of file hal_rf.h.
+.SS "#define HAL_RF_CHIP_ID_CC1111   0x11"
+.PP
+Definition at line 30 of file hal_rf.h.
+.SS "#define HAL_RF_CHIP_ID_CC2420   0x02"
+.PP
+Definition at line 31 of file hal_rf.h.
+.SS "#define HAL_RF_CHIP_ID_CC2430   0x85"
+.PP
+Definition at line 37 of file hal_rf.h.
+.SS "#define HAL_RF_CHIP_ID_CC2431   0x89"
+.PP
+Definition at line 38 of file hal_rf.h.
+.SS "#define HAL_RF_CHIP_ID_CC2500   0x80"
+.PP
+Definition at line 32 of file hal_rf.h.
+.SS "#define HAL_RF_CHIP_ID_CC2510   0x81"
+.PP
+Definition at line 33 of file hal_rf.h.
+.SS "#define HAL_RF_CHIP_ID_CC2511   0x91"
+.PP
+Definition at line 34 of file hal_rf.h.
+.SS "#define HAL_RF_CHIP_ID_CC2520   0x84"
+.PP
+Definition at line 36 of file hal_rf.h.
+.SS "#define HAL_RF_CHIP_ID_CC2530   0xA5"
+.PP
+Definition at line 39 of file hal_rf.h.
+.SS "#define HAL_RF_CHIP_ID_CC2531   0xB5"
+.PP
+Definition at line 40 of file hal_rf.h.
+.SS "#define HAL_RF_CHIP_ID_CC2540   0x8D"
+.PP
+Definition at line 41 of file hal_rf.h.
+.SS "#define HAL_RF_CHIP_ID_CC2550   0x82"
+.PP
+Definition at line 35 of file hal_rf.h.
+.SS "#define HAL_RF_GAIN_HIGH   1"
+.PP
+Definition at line 45 of file hal_rf.h.
+.SS "#define HAL_RF_GAIN_LOW   0"
+.PP
+Definition at line 44 of file hal_rf.h.
+.SS "#define MAX_CHANNEL   26"
+.PP
+Definition at line 49 of file hal_rf.h.
+.SS "#define MIN_CHANNEL   11"
+.PP
+Definition at line 48 of file hal_rf.h.
+.SH "Function Documentation"
+.PP 
+.SS "void halRfDisableRxInterrupt (void)"
+.PP
+Definition at line 646 of file hal_rf.c.
+.PP
+.nf
+{
+  // disable RX_FIFOP interrupt
+  RFIM &= ~BV(5);
+  // disable general RF interrupts
+  IEN2 &= ~BV(0);
+}
+.fi
+.SS "void halRfEnableRxInterrupt (void)"
+.PP
+Definition at line 664 of file hal_rf.c.
+.PP
+.nf
+{
+  // enable RX_FIFOP interrupt
+  RFIM |= BV(5);
+  // enable general RF interrupts
+  IEN2 |= BV(0);
+}
+.fi
+.SS "\fBuint8\fP halRfGetChipId (void)"
+.PP
+Definition at line 269 of file hal_rf.c.
+.PP
+.nf
+{
+    return CHIPID;
+}
+.fi
+.SS "\fBuint8\fP halRfGetChipVer (void)"
+.PP
+Definition at line 284 of file hal_rf.c.
+.PP
+.nf
+{
+    return CHVER;
+}
+.fi
+.SS "\fBuint8\fP halRfGetRandomByte (void)"
+.PP
+Definition at line 315 of file hal_rf.c.
+.PP
+.nf
+{
+    // Clock the random generator
+    ADCCON1 |= 0x04;
+
+    return RNDH;
+
+}
+.fi
+.SS "\fBuint8\fP halRfGetRssiOffset (void)"
+.PP
+Definition at line 334 of file hal_rf.c.
+.PP
+.nf
+{
+  return rssiOffset;
+}
+.fi
+.SS "\fBuint8\fP halRfInit (void)"
+.PP
+Definition at line 212 of file hal_rf.c.
+.PP
+.nf
+{
+    uint8 i;
+
+    // turning on power to analog part of radio and waiting for voltage regulator.
+    RFPWR = 0x04;
+    while( RFPWR & 0x10 );
+
+    // Setting for AUTO CRC and AUTOACK
+    MDMCTRL0L |= (AUTO_CRC | AUTO_ACK);
+
+    // Turning on AUTO_TX2RX
+    FSMTC1 = ((FSMTC1 & (~AUTO_TX2RX_OFF & ~RX2RX_TIME_OFF))  | ACCEPT_ACKPKT);
+
+    // Turning off abortRxOnSrxon.
+    FSMTC1 &= ~0x20;
+
+    // Set FIFOP threshold to maximum
+    IOCFG0 = 0x7F;
+    // tuning adjustments for optimal radio performance; details available in datasheet */
+    RXCTRL0H = 0x32;
+    RXCTRL0L = 0xF5;
+
+    // Turning on receiver to get output from IF-ADC
+    ISRXON();
+    halMcuWaitUs(1);
+
+    // Enable random generator
+    ADCCON1 &= ~0x0C;
+
+    for(i = 0 ; i < 32 ; i++)
+    {
+        RNDH = ADCTSTH;
+        // Clock random generator
+        ADCCON1 |= 0x04;
+    }
+    ISRFOFF();
+
+    // Enable CC2591 with High Gain Mode
+    halPaLnaInit();
+
+    halRfEnableRxInterrupt();
+
+    return SUCCESS;
+}
+.fi
+.SS "\fBuint8\fP halRfReadMemory (\fBuint16\fPaddr, \fBuint8\fP *pData, \fBuint8\fPlength)"
+.PP
+Definition at line 558 of file hal_rf.c.
+.PP
+.nf
+{
+    return 0;
+}
+.fi
+.SS "void halRfReadRxBuf (\fBuint8\fP *pData, \fBuint8\fPlength)"
+.PP
+Definition at line 538 of file hal_rf.c.
+.PP
+.nf
+{
+    while (length>0) {
+        *pData++= RFD;
+        length--;
+    }
+}
+.fi
+.SS "void halRfReceiveOff (void)"
+.PP
+Definition at line 630 of file hal_rf.c.
+.PP
+.nf
+{
+    ISRFOFF();
+    FLUSH_RX_FIFO();
+}
+.fi
+.SS "void halRfReceiveOn (void)"
+.PP
+Definition at line 615 of file hal_rf.c.
+.PP
+.nf
+{
+    FLUSH_RX_FIFO();
+    ISRXON();
+}
+.fi
+.SS "void halRfRxInterruptConfig (\fBISR_FUNC_PTR\fPpfISR)"
+.PP
+Definition at line 682 of file hal_rf.c.
+.PP
+.nf
+{
+    uint8 x;
+    HAL_INT_LOCK(x);
+    pfISR= pf;
+    HAL_INT_UNLOCK(x);
+}
+.fi
+.SS "void halRfSetChannel (\fBuint8\fPchannel)"
+.PP
+Definition at line 349 of file hal_rf.c.
+.PP
+.nf
+{
+    uint16 freqMHz;
+
+    freqMHz= 2405 + ((channel - MIN_CHANNEL) * CHANNEL_SPACING); // Calculate frequency
+    freqMHz -= (uint32)2048;              // Subtract; datasheet sect 14.16
+
+    FSCTRLL = LO_UINT16(freqMHz);
+    FSCTRLH &= ~0x03;
+    FSCTRLH |= (HI_UINT16(freqMHz) & 0x03);
+}
+.fi
+.SS "void halRfSetGain (\fBuint8\fPgainMode)"
+.PP
+Definition at line 470 of file hal_rf.c.
+.PP
+.nf
+{
+    if (gainMode==HAL_RF_GAIN_LOW) {
+        HAL_PA_LNA_RX_LGM();
+        rssiOffset = RSSI_OFFSET_LNA_LOWGAIN;
+    } else {
+        HAL_PA_LNA_RX_HGM();
+        rssiOffset = RSSI_OFFSET_LNA_HIGHGAIN;
+    }
+}
+.fi
+.SS "void halRfSetPanId (\fBuint16\fPPanId)"
+.PP
+Definition at line 387 of file hal_rf.c.
+.PP
+.nf
+{
+    PANIDL= LO_UINT16(panId);
+    PANIDH= HI_UINT16(panId);
+}
+.fi
+.SS "void halRfSetShortAddr (\fBuint16\fPshortAddr)"
+.PP
+Definition at line 371 of file hal_rf.c.
+.PP
+.nf
+{
+    SHORTADDRL= LO_UINT16(shortAddr);
+    SHORTADDRH= HI_UINT16(shortAddr);
+}
+.fi
+.SS "\fBuint8\fP halRfSetTxPower (\fBuint8\fPpower)"
+.PP
+Definition at line 404 of file hal_rf.c.
+.PP
+.nf
+{
+    uint8 v;
+
+    switch(power)
+    {
+#if INCLUDE_PA==2591
+    case HAL_RF_TXPOWER_0_DBM:
+        v = CC2430_TXPOWER_0_DBM;
+        break;
+    case HAL_RF_TXPOWER_13_DBM:
+        v = CC2430_TXPOWER_13_DBM;
+        break;
+    case HAL_RF_TXPOWER_15_DBM:
+        v = CC2430_TXPOWER_15_DBM;
+        break;
+    case HAL_RF_TXPOWER_18_DBM:
+        v = CC2430_TXPOWER_18_DBM;
+        break;
+    case HAL_RF_TXPOWER_19_DBM:
+        v = CC2430_TXPOWER_18_DBM;
+        break;
+#elif INCLUDE_PA==2590
+    case HAL_RF_TXPOWER_MIN_13_DBM:
+        v = CC2430_TXPOWER_MIN_13_DBM;
+        break;
+    case HAL_RF_TXPOWER_MIN_3_DBM:
+        v = CC2430_TXPOWER_MIN_3_DBM;
+        break;
+    case HAL_RF_TXPOWER_5_DBM:
+        v = CC2430_TXPOWER_5_DBM;
+        break;
+    case HAL_RF_TXPOWER_10_DBM:
+        v = CC2430_TXPOWER_10_DBM;
+        break;
+    case HAL_RF_TXPOWER_11_DBM:
+        v = CC2430_TXPOWER_11_DBM;
+        break;
+#else
+    case HAL_RF_TXPOWER_0_DBM:
+        v = CC2430_TXPOWER_0_DBM;
+        break;
+    case HAL_RF_TXPOWER_MIN_4_DBM:
+        v = CC2430_TXPOWER_MIN_4_DBM;
+        break;
+#endif
+    default:
+        return FAILED;
+    }
+
+    // Set TX power
+    TXCTRLL = v;
+
+    return SUCCESS;
+}
+.fi
+.SS "\fBuint8\fP halRfTransmit (void)"
+.PP
+Definition at line 589 of file hal_rf.c.
+.PP
+.nf
+{
+    uint8 status;
+
+    ISTXON(); // Sending
+
+    // Waiting for transmission to finish
+    while(!(RFIF & IRQ_TXDONE) );
+
+    RFIF = ~IRQ_TXDONE;
+    status= SUCCESS;
+
+    return status;
+}
+.fi
+.SS "void halRfWaitTransceiverReady (void)"
+.PP
+Definition at line 700 of file hal_rf.c.
+.PP
+.nf
+{
+    while (RFSTATUS & (BV(1) | BV(4) ));
+}
+.fi
+.SS "\fBuint8\fP halRfWriteMemory (\fBuint16\fPaddr, \fBuint8\fP *pData, \fBuint8\fPlength)"
+.PP
+Definition at line 575 of file hal_rf.c.
+.PP
+.nf
+{
+    return 0;
+}
+.fi
+.SS "void halRfWriteTxBuf (\fBuint8\fP *pData, \fBuint8\fPlength)"
+.PP
+Definition at line 491 of file hal_rf.c.
+.PP
+.nf
+{
+    uint8 i;
+
+    ISFLUSHTX();          // Making sure that the TX FIFO is empty.
+
+    RFIF = ~IRQ_TXDONE;   // Clear TX done interrupt
+
+    // Insert data
+    for(i=0;i<length;i++){
+        RFD = pData[i];
+    }
+
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Embedded GarageBand from the source code.
